@@ -3,135 +3,226 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Video Prompt Generator – Create Perfect Video Prompts | PromptKits</title>
-  <meta name="description" content="Generate detailed AI video prompts for Sora, Kling AI, Runway, Pika, and more. Free video prompt generator by PromptKits." />
-  <meta name="keywords" content="video prompt generator, AI video prompt, Sora prompt, Kling AI prompt, Runway prompt generator, Pika prompt" />
+  <title>AI Video Prompt Generator – Kling AI, Runway, Sora | PromptKits</title>
+  <meta name="description" content="Generate detailed AI video prompts for Kling AI, Runway, Sora, Pika and more. Free video prompt generator by PromptKits." />
   <link rel="canonical" href="https://promptkits.in/video-prompt.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #f9f8ff; color: #1a1a2e; min-height: 100vh; }
-    header { background: #fff; border-bottom: 1px solid #e8e5f5; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-    .logo { font-size: 17px; font-weight: 600; color: #534AB7; text-decoration: none; }
-    .logo span { color: #1a1a2e; }
-    nav a { font-size: 14px; color: #666; text-decoration: none; margin-left: 1.5rem; }
-    nav a:hover { color: #534AB7; }
-    .hero { text-align: center; padding: 3rem 1rem 1.5rem; }
-    .badge { display: inline-block; background: #EEEDFE; color: #534AB7; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 20px; margin-bottom: 1rem; }
-    .hero h1 { font-size: clamp(26px, 5vw, 38px); font-weight: 600; color: #1a1a2e; margin-bottom: 0.75rem; line-height: 1.25; }
-    .hero h1 span { color: #534AB7; }
-    .hero p { font-size: 16px; color: #666; max-width: 520px; margin: 0 auto; line-height: 1.6; }
-    .ad-top { max-width: 760px; margin: 1rem auto; padding: 0 1rem; }
-    .ad-placeholder { background: #fff; border: 1px dashed #d0cce8; border-radius: 10px; min-height: 90px; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 12px; }
-    .main { max-width: 760px; margin: 0 auto; padding: 0 1rem 3rem; }
-    .card { background: #fff; border: 1px solid #e8e5f5; border-radius: 14px; padding: 1.5rem; margin-bottom: 1rem; }
-    .field-label { font-size: 12px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 8px; display: block; }
-    textarea { width: 100%; min-height: 100px; resize: vertical; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #1a1a2e; background: #f9f8ff; border: 1px solid #e0ddf5; border-radius: 10px; padding: 12px 14px; outline: none; transition: border-color 0.15s; }
-    textarea:focus { border-color: #534AB7; }
-    textarea::placeholder { color: #bbb; }
-    .options-section { margin-top: 1.25rem; }
-    .section-label { font-size: 13px; font-weight: 500; color: #666; margin-bottom: 8px; }
-    .pill-group { display: flex; flex-wrap: wrap; gap: 7px; }
-    .pill { font-size: 13px; padding: 6px 14px; border-radius: 20px; border: 1px solid #e0ddf5; background: #fff; color: #666; cursor: pointer; transition: all 0.15s; user-select: none; }
-    .pill:hover { border-color: #9b95d8; color: #534AB7; }
-    .pill.active { background: #EEEDFE; border-color: #AFA9EC; color: #3C3489; font-weight: 500; }
-    .enhance-btn { width: 100%; margin-top: 1.25rem; padding: 13px; font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif; background: #534AB7; color: #fff; border: none; border-radius: 10px; cursor: pointer; transition: background 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .enhance-btn:hover { background: #3C3489; }
-    .enhance-btn:disabled { background: #c5c1e8; cursor: not-allowed; }
-    .spinner { width: 17px; height: 17px; border: 2px solid rgba(255,255,255,0.35); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .result-card { background: #fff; border: 1px solid #AFA9EC; border-radius: 14px; padding: 1.5rem; margin-bottom: 1rem; display: none; }
-    .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-    .result-label { font-size: 12px; font-weight: 600; color: #534AB7; text-transform: uppercase; letter-spacing: 0.7px; }
-    .copy-btn { font-size: 13px; padding: 5px 14px; border-radius: 8px; border: 1px solid #e0ddf5; background: #fff; color: #666; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: all 0.15s; font-family: 'Inter', sans-serif; }
-    .copy-btn:hover { background: #f9f8ff; color: #534AB7; border-color: #AFA9EC; }
-    .result-text { font-size: 15px; line-height: 1.75; color: #1a1a2e; white-space: pre-wrap; }
-    .tip { font-size: 13px; color: #888; line-height: 1.55; padding: 10px 14px; background: #f9f8ff; border-radius: 8px; margin-top: 8px; display: none; }
-    .error-msg { font-size: 14px; color: #c0392b; background: #fdf0ef; border: 1px solid #f5c6c2; border-radius: 10px; padding: 12px 14px; margin-top: 1rem; display: none; }
-    .ad-middle { margin: 1.5rem 0; }
-    .faq-section { margin-top: 2.5rem; }
-    .faq-section h2 { font-size: 20px; font-weight: 600; margin-bottom: 1.25rem; }
-    .faq-item { border-bottom: 1px solid #e8e5f5; padding: 1rem 0; }
-    .faq-item h3 { font-size: 15px; font-weight: 500; color: #1a1a2e; margin-bottom: 6px; }
-    .faq-item p { font-size: 14px; color: #666; line-height: 1.6; }
-    footer { text-align: center; padding: 2rem 1rem; font-size: 13px; color: #bbb; border-top: 1px solid #e8e5f5; margin-top: 3rem; }
-    footer a { color: #888; text-decoration: none; margin: 0 0.5rem; }
-    footer a:hover { color: #534AB7; }
-    @media (max-width: 480px) { .hero { padding: 2rem 1rem 1rem; } .card { padding: 1.25rem; } }
-  </style>
-  <!-- Google Analytics - Replace G-3Z7FTLCXJN with your real ID from analytics.google.com -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-3Z7FTLCXJN");
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:#f9f8ff;color:#1a1a2e;min-height:100vh;}
+    header{background:#fff;border-bottom:1px solid #e8e5f5;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .logo-icon{width:34px;height:34px;background:#1a1a2e;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .logo-text{font-size:17px;font-weight:700;letter-spacing:-0.3px;}
+    .logo-text span:first-child{color:#534AB7;}
+    .logo-text span:last-child{color:#1a1a2e;}
+    nav{display:flex;gap:4px;}
+    nav a{font-size:13px;color:#666;text-decoration:none;padding:6px 12px;border-radius:8px;transition:all 0.15s;}
+    nav a:hover{background:#f0effe;color:#534AB7;}
+    nav a.active{background:#EEEDFE;color:#534AB7;font-weight:500;}
+    .hero{text-align:center;padding:2.5rem 1rem 1.5rem;}
+    .badge{display:inline-block;background:#EEEDFE;color:#534AB7;font-size:12px;font-weight:500;padding:4px 14px;border-radius:20px;margin-bottom:1rem;}
+    .hero h1{font-size:clamp(26px,5vw,40px);font-weight:700;color:#1a1a2e;margin-bottom:0.75rem;line-height:1.2;letter-spacing:-0.5px;}
+    .hero h1 span{color:#534AB7;}
+    .hero p{font-size:15px;color:#666;max-width:520px;margin:0 auto;line-height:1.65;}
+    .main{max-width:800px;margin:0 auto;padding:0 1rem 4rem;}
+    .card{background:#fff;border:1px solid #e8e5f5;border-radius:16px;padding:1.5rem;margin-bottom:1rem;}
+    .field-label{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;display:block;}
+    textarea{width:100%;min-height:90px;resize:vertical;font-family:'Inter',sans-serif;font-size:15px;line-height:1.6;color:#1a1a2e;background:#f9f8ff;border:1px solid #e0ddf5;border-radius:10px;padding:12px 14px;outline:none;transition:border-color 0.15s;}
+    textarea:focus{border-color:#534AB7;background:#fff;}
+    textarea::placeholder{color:#bbb;}
+    .section-label{font-size:12px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.6px;margin:1.25rem 0 8px;display:flex;align-items:center;gap:6px;}
+    .section-label::after{content:'';flex:1;height:1px;background:#f0effe;}
+    .pill-group{display:flex;flex-wrap:wrap;gap:6px;}
+    .pill{font-size:13px;padding:6px 14px;border-radius:20px;border:1px solid #e8e5f5;background:#fff;color:#666;cursor:pointer;transition:all 0.15s;user-select:none;}
+    .pill:hover{border-color:#9b95d8;color:#534AB7;}
+    .pill.active{background:#EEEDFE;border-color:#AFA9EC;color:#3C3489;font-weight:500;}
+    .advanced-toggle{display:flex;align-items:center;gap:8px;cursor:pointer;margin-top:1.25rem;padding:10px 14px;background:#f9f8ff;border:1px solid #e8e5f5;border-radius:10px;transition:all 0.15s;}
+    .advanced-toggle:hover{background:#f0effe;border-color:#AFA9EC;}
+    .toggle-label{font-size:13px;font-weight:500;color:#534AB7;flex:1;}
+    .toggle-arrow{font-size:12px;color:#999;transition:transform 0.2s;}
+    .toggle-arrow.open{transform:rotate(180deg);}
+    .advanced-section{display:none;margin-top:1rem;border-top:1px solid #f0effe;padding-top:1rem;}
+    .advanced-section.open{display:block;}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    @media(max-width:500px){.two-col{grid-template-columns:1fr;}}
+    .enhance-btn{width:100%;margin-top:1.25rem;padding:14px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;background:#534AB7;color:#fff;border:none;border-radius:10px;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .enhance-btn:hover{background:#3C3489;}
+    .enhance-btn:disabled{background:#c5c1e8;cursor:not-allowed;}
+    .spinner{width:17px;height:17px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+    .result-card{background:#fff;border:1px solid #AFA9EC;border-radius:16px;padding:1.5rem;margin-bottom:1rem;display:none;}
+    .result-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+    .result-label{font-size:11px;font-weight:600;color:#534AB7;text-transform:uppercase;letter-spacing:0.8px;}
+    .copy-btn{font-size:13px;padding:5px 14px;border-radius:8px;border:1px solid #e0ddf5;background:#fff;color:#666;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.15s;font-family:'Inter',sans-serif;}
+    .copy-btn:hover{background:#f9f8ff;color:#534AB7;border-color:#AFA9EC;}
+    .result-text{font-size:14px;line-height:1.8;color:#1a1a2e;white-space:pre-wrap;}
+    .tip{font-size:13px;color:#888;padding:10px 14px;background:#f9f8ff;border-radius:8px;margin-top:8px;display:none;}
+    .error-msg{font-size:14px;color:#c0392b;background:#fdf0ef;border:1px solid #f5c6c2;border-radius:10px;padding:12px 14px;margin-top:1rem;display:none;}
+    .faq-section{margin-top:2.5rem;}
+    .faq-section h2{font-size:20px;font-weight:600;margin-bottom:1.25rem;}
+    .faq-item{border-bottom:1px solid #e8e5f5;padding:1rem 0;}
+    .faq-item h3{font-size:15px;font-weight:500;color:#1a1a2e;margin-bottom:6px;}
+    .faq-item p{font-size:14px;color:#666;line-height:1.6;}
+    footer{text-align:center;padding:2rem 1rem;font-size:13px;color:#bbb;border-top:1px solid #e8e5f5;margin-top:3rem;}
+    footer a{color:#888;text-decoration:none;margin:0 0.5rem;}
+    footer a:hover{color:#534AB7;}
+  </style>
 </head>
 <body>
 <header>
-  <a class="logo" href="/">Prompt<span>Kits</span></a>
+  <a class="logo" href="/image-prompt.html">
+    <div class="logo-icon">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect x="7" y="5" width="5" height="22" rx="2" fill="white"/>
+        <path d="M12,5 Q25,5 25,13 Q25,21 12,21" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="25" cy="28" r="2.5" fill="#a89eff"/>
+        <circle cx="30" cy="23" r="1.5" fill="#a89eff"/>
+        <line x1="25" y1="28" x2="30" y2="23" stroke="#a89eff" stroke-width="1.2"/>
+      </svg>
+    </div>
+    <div class="logo-text"><span>Prompt</span><span>Kits</span></div>
+  </a>
   <nav>
-    <a href="/">Enhancer</a>
-    <a href="/image-prompt.html">Image Prompt</a>
-    <a href="/video-prompt.html">Video Prompt</a>
-    <a href="/negative-prompt.html">Negative Prompt</a>
+    <a href="/image-prompt.html">🖼 Image</a>
+    <a href="/video-prompt.html" class="active">🎬 Video</a>
+    <a href="/">✨ Enhancer</a>
+    <a href="/negative-prompt.html">🚫 Negative</a>
+    <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
   </nav>
 </header>
 
-<div class="ad-top">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8337511118941734" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
 <div class="hero">
   <span class="badge">✦ Free AI Video Tool</span>
-  <h1>Generate perfect <span>video prompts</span><br>in seconds</h1>
-  <p>Describe any video scene and get a detailed, ready-to-use prompt for Sora, Kling AI, Runway, Pika, and more.</p>
+  <h1>Generate cinematic <span>video prompts</span><br>in seconds</h1>
+  <p>Describe any scene and get a detailed, ready-to-use prompt for Kling AI, Runway, Sora, Pika, and more.</p>
 </div>
 
 <main class="main">
   <div class="card">
     <label class="field-label" for="inputPrompt">Describe your video scene</label>
-    <textarea id="inputPrompt" placeholder="e.g. a drone flying over ancient temples at sunset"></textarea>
+    <textarea id="inputPrompt" placeholder="e.g. a drone flying over ancient Indian temples at golden hour"></textarea>
 
-    <div class="options-section">
-      <div class="section-label">Video AI tool</div>
-      <div class="pill-group" id="targetGroup">
-        <div class="pill active" data-val="Kling AI">Kling AI</div>
-        <div class="pill" data-val="Runway Gen-3">Runway</div>
-        <div class="pill" data-val="Pika">Pika</div>
-        <div class="pill" data-val="Sora">Sora</div>
-        <div class="pill" data-val="Luma Dream Machine">Luma</div>
-      </div>
+    <div class="section-label">Video AI Tool</div>
+    <div class="pill-group" id="targetGroup">
+      <div class="pill active" data-val="Kling AI">Kling AI</div>
+      <div class="pill" data-val="Runway Gen-3">Runway</div>
+      <div class="pill" data-val="Pika">Pika</div>
+      <div class="pill" data-val="Sora">Sora</div>
+      <div class="pill" data-val="Luma Dream Machine">Luma</div>
+      <div class="pill" data-val="Wan 2.1">Wan 2.1</div>
     </div>
 
-    <div class="options-section">
-      <div class="section-label">Camera movement</div>
-      <div class="pill-group" id="cameraGroup">
-        <div class="pill active" data-val="slow cinematic pan">Cinematic Pan</div>
-        <div class="pill" data-val="drone aerial shot">Drone Shot</div>
-        <div class="pill" data-val="close-up tracking shot">Close-up Track</div>
-        <div class="pill" data-val="static wide shot">Static Wide</div>
-        <div class="pill" data-val="handheld dynamic">Handheld</div>
-      </div>
+    <div class="section-label">Visual Style</div>
+    <div class="pill-group" id="styleGroup">
+      <div class="pill active" data-val="cinematic film">Cinematic</div>
+      <div class="pill" data-val="documentary">Documentary</div>
+      <div class="pill" data-val="anime">Anime</div>
+      <div class="pill" data-val="realistic">Realistic</div>
+      <div class="pill" data-val="fantasy epic">Fantasy</div>
+      <div class="pill" data-val="noir">Noir</div>
     </div>
 
-    <div class="options-section">
-      <div class="section-label">Visual style</div>
-      <div class="pill-group" id="styleGroup">
-        <div class="pill active" data-val="cinematic film">Cinematic</div>
-        <div class="pill" data-val="documentary">Documentary</div>
-        <div class="pill" data-val="anime">Anime</div>
-        <div class="pill" data-val="realistic">Realistic</div>
-        <div class="pill" data-val="fantasy epic">Fantasy</div>
+    <div class="section-label">Camera Movement</div>
+    <div class="pill-group" id="cameraGroup">
+      <div class="pill active" data-val="slow cinematic pan">Cinematic Pan</div>
+      <div class="pill" data-val="aerial drone shot">Drone Shot</div>
+      <div class="pill" data-val="close-up tracking shot">Close-up Track</div>
+      <div class="pill" data-val="static wide shot">Static Wide</div>
+      <div class="pill" data-val="handheld dynamic">Handheld</div>
+      <div class="pill" data-val="dolly zoom">Dolly Zoom</div>
+      <div class="pill" data-val="360 orbit">360 Orbit</div>
+    </div>
+
+    <!-- ADVANCED -->
+    <div class="advanced-toggle" onclick="toggleAdvanced()">
+      <span class="toggle-label">🎬 Cinematic Controls — Lens, Lighting, Speed, Color Grade</span>
+      <span class="toggle-arrow" id="toggleArrow">▼</span>
+    </div>
+
+    <div class="advanced-section" id="advancedSection">
+      <div class="two-col">
+        <div>
+          <label class="field-label">Camera Angle</label>
+          <div class="pill-group" id="angleGroup">
+            <div class="pill active" data-val="">None</div>
+            <div class="pill" data-val="eye level">Eye Level</div>
+            <div class="pill" data-val="low angle">Low Angle</div>
+            <div class="pill" data-val="bird's eye overhead">Bird's Eye</div>
+            <div class="pill" data-val="dutch tilt angle">Dutch Tilt</div>
+            <div class="pill" data-val="ground level">Ground Level</div>
+          </div>
+        </div>
+        <div>
+          <label class="field-label">Lens Type</label>
+          <div class="pill-group" id="lensGroup">
+            <div class="pill active" data-val="">None</div>
+            <div class="pill" data-val="wide angle 24mm">Wide 24mm</div>
+            <div class="pill" data-val="standard 50mm">Standard 50mm</div>
+            <div class="pill" data-val="telephoto 85mm">Tele 85mm</div>
+            <div class="pill" data-val="anamorphic lens with lens flares">Anamorphic</div>
+            <div class="pill" data-val="macro lens extreme close-up">Macro</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:1rem;">
+        <div>
+          <label class="field-label">Lighting</label>
+          <div class="pill-group" id="lightingGroup">
+            <div class="pill active" data-val="">None</div>
+            <div class="pill" data-val="golden hour warm sunlight">Golden Hour</div>
+            <div class="pill" data-val="dramatic volumetric lighting">Volumetric</div>
+            <div class="pill" data-val="neon cyberpunk lighting">Neon</div>
+            <div class="pill" data-val="moonlit night">Moonlight</div>
+            <div class="pill" data-val="overcast soft diffused light">Overcast</div>
+            <div class="pill" data-val="backlit silhouette">Backlit</div>
+          </div>
+        </div>
+        <div>
+          <label class="field-label">Motion Speed</label>
+          <div class="pill-group" id="speedGroup">
+            <div class="pill active" data-val="">Normal</div>
+            <div class="pill" data-val="ultra slow motion 0.1x speed">Ultra Slow-Mo</div>
+            <div class="pill" data-val="slow motion 0.5x speed">Slow Motion</div>
+            <div class="pill" data-val="time-lapse fast forward">Time-lapse</div>
+            <div class="pill" data-val="hyper-lapse">Hyper-lapse</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:1rem;">
+        <div>
+          <label class="field-label">Color Grade</label>
+          <div class="pill-group" id="colorGroup">
+            <div class="pill active" data-val="">None</div>
+            <div class="pill" data-val="teal and orange color grade">Teal & Orange</div>
+            <div class="pill" data-val="cold blue desaturated">Cold Blue</div>
+            <div class="pill" data-val="warm golden vintage">Warm Vintage</div>
+            <div class="pill" data-val="black and white monochrome">B&W</div>
+            <div class="pill" data-val="high contrast cinematic">High Contrast</div>
+          </div>
+        </div>
+        <div>
+          <label class="field-label">Aspect Ratio</label>
+          <div class="pill-group" id="ratioGroup">
+            <div class="pill active" data-val="">None</div>
+            <div class="pill" data-val="16:9 widescreen">16:9 Wide</div>
+            <div class="pill" data-val="9:16 vertical">9:16 Vertical</div>
+            <div class="pill" data-val="2.39:1 cinematic anamorphic">2.39:1 Cinema</div>
+            <div class="pill" data-val="1:1 square">1:1 Square</div>
+          </div>
+        </div>
       </div>
     </div>
 
     <button class="enhance-btn" id="enhanceBtn" onclick="generatePrompt()">
-      Generate video prompt
+      🎬 Generate Video Prompt
     </button>
   </div>
 
@@ -139,7 +230,7 @@
 
   <div class="result-card" id="resultCard">
     <div class="result-header">
-      <span class="result-label">✦ Generated video prompt</span>
+      <span class="result-label">✦ Generated Video Prompt</span>
       <button class="copy-btn" onclick="copyResult()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         <span id="copyLabel">Copy</span>
@@ -147,109 +238,107 @@
     </div>
     <div class="result-text" id="resultText"></div>
   </div>
-  <div class="tip" id="tipBox">💡 Tip: Copy this prompt and paste it directly into your video AI tool for best results.</div>
-
-  <div class="ad-middle">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8337511118941734" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
+  <div class="tip" id="tipBox">💡 Paste this prompt into your video AI tool. For Kling AI and Runway, paste in the text prompt box. Be specific for better results.</div>
 
   <div class="faq-section">
     <h2>Frequently asked questions</h2>
     <div class="faq-item">
       <h3>What is an AI video prompt generator?</h3>
-      <p>An AI video prompt generator takes a simple scene description and expands it into a detailed prompt with camera movements, lighting, pacing, and style details that produce much better results in video AI tools.</p>
+      <p>It takes a simple scene description and expands it into a detailed prompt with camera movements, lighting, pacing, and style details that produce much better results in video AI tools like Kling AI, Runway, and Sora.</p>
     </div>
     <div class="faq-item">
-      <h3>Which video AI tools does this work with?</h3>
-      <p>It works with Kling AI, Runway Gen-3, Pika, Sora, Luma Dream Machine, and most other text-to-video AI tools.</p>
+      <h3>What are Cinematic Controls?</h3>
+      <p>Cinematic controls let you set professional filmmaking parameters — lens type, color grade, motion speed, lighting style — giving you director-level control over the AI video output.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Which video AI tools work best with these prompts?</h3>
+      <p>Kling AI and Runway Gen-3 respond best to detailed prompts. Sora and Pika also support rich descriptions. Always match the tool selection to the platform you're using.</p>
     </div>
     <div class="faq-item">
       <h3>Is this tool free?</h3>
       <p>Yes, completely free. No account or sign-up needed.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Why do video prompts need to be detailed?</h3>
-      <p>Video AI tools need specific instructions about camera angles, motion, lighting, and style to generate consistent, high-quality videos. Vague prompts produce random or poor results.</p>
     </div>
   </div>
 </main>
 
 <footer>
   <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a></p>
-  <p style="margin-top: 6px;">Free AI prompt tools for everyone</p>
+  <p style="margin-top:6px;">Free AI prompt tools for everyone</p>
 </footer>
 
 <script>
-  let selectedTarget = 'Kling AI';
-  let selectedCamera = 'slow cinematic pan';
-  let selectedStyle = 'cinematic film';
+  let selectedTarget='Kling AI',selectedStyle='cinematic film',selectedCamera='slow cinematic pan';
+  let selectedAngle='',selectedLens='',selectedLighting='',selectedSpeed='',selectedColor='',selectedRatio='';
 
-  document.querySelectorAll('#targetGroup .pill').forEach(p => {
-    p.addEventListener('click', function() {
-      document.querySelectorAll('#targetGroup .pill').forEach(x => x.classList.remove('active'));
-      this.classList.add('active'); selectedTarget = this.dataset.val;
-    });
-  });
-  document.querySelectorAll('#cameraGroup .pill').forEach(p => {
-    p.addEventListener('click', function() {
-      document.querySelectorAll('#cameraGroup .pill').forEach(x => x.classList.remove('active'));
-      this.classList.add('active'); selectedCamera = this.dataset.val;
-    });
-  });
-  document.querySelectorAll('#styleGroup .pill').forEach(p => {
-    p.addEventListener('click', function() {
-      document.querySelectorAll('#styleGroup .pill').forEach(x => x.classList.remove('active'));
-      this.classList.add('active'); selectedStyle = this.dataset.val;
-    });
-  });
-
-  async function generatePrompt() {
-    const input = document.getElementById('inputPrompt').value.trim();
-    if (!input) { showError('Please describe your video scene first.'); return; }
-
-    const btn = document.getElementById('enhanceBtn');
-    const errorMsg = document.getElementById('errorMsg');
-    const resultCard = document.getElementById('resultCard');
-    const tipBox = document.getElementById('tipBox');
-
-    btn.disabled = true;
-    btn.innerHTML = '<div class="spinner"></div> Generating...';
-    errorMsg.style.display = 'none';
-    resultCard.style.display = 'none';
-    tipBox.style.display = 'none';
-
-    try {
-      const response = await fetch('/api/enhance', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          prompt: input,
-          target: selectedTarget + ' video AI',
-          style: `${selectedStyle} visual style with ${selectedCamera} camera movement. Include specific details about scene atmosphere, lighting, color grading, motion speed, subject behavior, background elements, and any technical tags optimized for ${selectedTarget}. Format as a single detailed video prompt paragraph.`
-        })
+  function setupPills(groupId,cb){
+    document.querySelectorAll('#'+groupId+' .pill').forEach(p=>{
+      p.addEventListener('click',function(){
+        document.querySelectorAll('#'+groupId+' .pill').forEach(x=>x.classList.remove('active'));
+        this.classList.add('active');cb(this.dataset.val);
       });
-
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Something went wrong');
-
-      document.getElementById('resultText').textContent = data.result;
-      resultCard.style.display = 'block';
-      tipBox.style.display = 'block';
-      resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    } catch (err) {
-      showError('Something went wrong: ' + err.message);
-    }
-
-    btn.disabled = false;
-    btn.innerHTML = 'Generate video prompt';
+    });
   }
 
-  function showError(msg) { const el = document.getElementById('errorMsg'); el.textContent = msg; el.style.display = 'block'; }
-  function copyResult() {
-    navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(() => {
-      document.getElementById('copyLabel').textContent = 'Copied!';
-      setTimeout(() => document.getElementById('copyLabel').textContent = 'Copy', 2000);
+  setupPills('targetGroup',v=>selectedTarget=v);
+  setupPills('styleGroup',v=>selectedStyle=v);
+  setupPills('cameraGroup',v=>selectedCamera=v);
+  setupPills('angleGroup',v=>selectedAngle=v);
+  setupPills('lensGroup',v=>selectedLens=v);
+  setupPills('lightingGroup',v=>selectedLighting=v);
+  setupPills('speedGroup',v=>selectedSpeed=v);
+  setupPills('colorGroup',v=>selectedColor=v);
+  setupPills('ratioGroup',v=>selectedRatio=v);
+
+  function toggleAdvanced(){
+    document.getElementById('advancedSection').classList.toggle('open');
+    document.getElementById('toggleArrow').classList.toggle('open');
+  }
+
+  async function generatePrompt(){
+    const input=document.getElementById('inputPrompt').value.trim();
+    if(!input){showError('Please describe your video scene first.');return;}
+
+    const btn=document.getElementById('enhanceBtn');
+    btn.disabled=true;btn.innerHTML='<div class="spinner"></div> Generating...';
+    document.getElementById('errorMsg').style.display='none';
+    document.getElementById('resultCard').style.display='none';
+    document.getElementById('tipBox').style.display='none';
+
+    const cinematic=[
+      selectedAngle&&`camera angle: ${selectedAngle}`,
+      selectedLens&&`lens: ${selectedLens}`,
+      selectedLighting&&`lighting: ${selectedLighting}`,
+      selectedSpeed&&`motion: ${selectedSpeed}`,
+      selectedColor&&`color grade: ${selectedColor}`,
+      selectedRatio&&`aspect ratio: ${selectedRatio}`
+    ].filter(Boolean).join(', ');
+
+    try{
+      const response=await fetch('/api/enhance',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          prompt:input,
+          target:selectedTarget+' video AI',
+          style:`${selectedStyle} visual style, ${selectedCamera} camera movement${cinematic?', '+cinematic:''}. Generate a single detailed video prompt paragraph for ${selectedTarget}. Include scene atmosphere, subject motion, background details, and all specified cinematic parameters. Return ONLY the prompt, no explanations.`
+        })
+      });
+      const data=await response.json();
+      if(!response.ok)throw new Error(data.error||'Something went wrong');
+      document.getElementById('resultText').textContent=data.result;
+      document.getElementById('resultCard').style.display='block';
+      document.getElementById('tipBox').style.display='block';
+      document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'nearest'});
+    }catch(err){showError('Something went wrong: '+err.message);}
+
+    btn.disabled=false;btn.innerHTML='🎬 Generate Video Prompt';
+  }
+
+  function showError(msg){const el=document.getElementById('errorMsg');el.textContent=msg;el.style.display='block';}
+  function copyResult(){
+    navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{
+      document.getElementById('copyLabel').textContent='Copied!';
+      setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);
     });
   }
 </script>

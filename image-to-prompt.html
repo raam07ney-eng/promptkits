@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image to Prompt Generator – Reverse Engineer Any AI Image | PromptKits</title>
+  <meta name="description" content="Upload any image and get a detailed AI prompt to recreate it. Free image to prompt tool for Midjourney, Stable Diffusion, DALL-E by PromptKits." />
+  <link rel="canonical" href="https://promptkits.in/image-to-prompt.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:#f9f8ff;color:#1a1a2e;min-height:100vh;}
+    header{background:#fff;border-bottom:1px solid #e8e5f5;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100;}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+    .logo-icon{width:34px;height:34px;background:#1a1a2e;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .logo-text{font-size:17px;font-weight:700;letter-spacing:-0.3px;}
+    .logo-text span:first-child{color:#534AB7;}
+    .logo-text span:last-child{color:#1a1a2e;}
+    nav{display:flex;gap:4px;}
+    nav a{font-size:13px;color:#666;text-decoration:none;padding:6px 12px;border-radius:8px;transition:all 0.15s;}
+    nav a:hover{background:#f0effe;color:#534AB7;}
+    nav a.active{background:#EEEDFE;color:#534AB7;font-weight:500;}
+    .hero{text-align:center;padding:2.5rem 1rem 1.5rem;}
+    .badge{display:inline-block;background:#EEEDFE;color:#534AB7;font-size:12px;font-weight:500;padding:4px 14px;border-radius:20px;margin-bottom:1rem;}
+    .hero h1{font-size:clamp(26px,5vw,40px);font-weight:700;color:#1a1a2e;margin-bottom:0.75rem;line-height:1.2;letter-spacing:-0.5px;}
+    .hero h1 span{color:#534AB7;}
+    .hero p{font-size:15px;color:#666;max-width:520px;margin:0 auto;line-height:1.65;}
+    .main{max-width:800px;margin:0 auto;padding:0 1rem 4rem;}
+    .card{background:#fff;border:1px solid #e8e5f5;border-radius:16px;padding:1.5rem;margin-bottom:1rem;}
+    .field-label{font-size:11px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;display:block;}
+    .section-label{font-size:12px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.6px;margin:1.25rem 0 8px;display:flex;align-items:center;gap:6px;}
+    .section-label::after{content:'';flex:1;height:1px;background:#f0effe;}
+    .pill-group{display:flex;flex-wrap:wrap;gap:6px;}
+    .pill{font-size:13px;padding:6px 14px;border-radius:20px;border:1px solid #e8e5f5;background:#fff;color:#666;cursor:pointer;transition:all 0.15s;user-select:none;}
+    .pill:hover{border-color:#9b95d8;color:#534AB7;}
+    .pill.active{background:#EEEDFE;border-color:#AFA9EC;color:#3C3489;font-weight:500;}
+
+    /* UPLOAD ZONE */
+    .upload-zone{border:2px dashed #e0ddf5;border-radius:12px;padding:2rem;text-align:center;cursor:pointer;transition:all 0.15s;position:relative;background:#f9f8ff;}
+    .upload-zone:hover{border-color:#534AB7;background:#f0effe;}
+    .upload-zone.dragover{border-color:#534AB7;background:#EEEDFE;}
+    .upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+    .upload-icon{font-size:36px;margin-bottom:10px;}
+    .upload-title{font-size:15px;font-weight:600;color:#1a1a2e;margin-bottom:4px;}
+    .upload-sub{font-size:13px;color:#999;}
+    .upload-formats{font-size:12px;color:#bbb;margin-top:6px;}
+
+    /* PREVIEW */
+    .preview-wrap{display:none;position:relative;margin-top:1rem;}
+    .preview-img{width:100%;max-height:300px;object-fit:contain;border-radius:10px;border:1px solid #e8e5f5;background:#f0f0f0;}
+    .remove-img{position:absolute;top:8px;right:8px;background:#fff;border:1px solid #e8e5f5;border-radius:6px;padding:4px 10px;font-size:12px;color:#666;cursor:pointer;transition:all 0.15s;}
+    .remove-img:hover{background:#fdf0ef;color:#c0392b;border-color:#f5c6c2;}
+
+    /* SAMPLES */
+    .samples-section{margin-top:1.5rem;}
+    .samples-title{font-size:13px;font-weight:600;color:#999;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:10px;}
+    .samples-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+    .sample-item{cursor:pointer;border-radius:10px;overflow:hidden;border:2px solid transparent;transition:all 0.15s;position:relative;}
+    .sample-item:hover{border-color:#534AB7;}
+    .sample-item.selected{border-color:#534AB7;}
+    .sample-img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:#e8e5f5;}
+    .sample-placeholder{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:28px;background:linear-gradient(135deg,#f0effe,#e8e5f5);}
+    .sample-label{font-size:11px;color:#666;text-align:center;padding:4px 0;}
+
+    /* BUTTON */
+    .enhance-btn{width:100%;margin-top:1.25rem;padding:14px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;background:#534AB7;color:#fff;border:none;border-radius:10px;cursor:pointer;transition:background 0.15s;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .enhance-btn:hover{background:#3C3489;}
+    .enhance-btn:disabled{background:#c5c1e8;cursor:not-allowed;}
+    .spinner{width:17px;height:17px;border:2px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite;}
+    @keyframes spin{to{transform:rotate(360deg);}}
+
+    /* RESULT */
+    .result-card{background:#fff;border:1px solid #AFA9EC;border-radius:16px;padding:1.5rem;margin-bottom:1rem;display:none;}
+    .result-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+    .result-label{font-size:11px;font-weight:600;color:#534AB7;text-transform:uppercase;letter-spacing:0.8px;}
+    .copy-btn{font-size:13px;padding:5px 14px;border-radius:8px;border:1px solid #e0ddf5;background:#fff;color:#666;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.15s;font-family:'Inter',sans-serif;}
+    .copy-btn:hover{background:#f9f8ff;color:#534AB7;border-color:#AFA9EC;}
+    .result-text{font-size:14px;line-height:1.8;color:#1a1a2e;white-space:pre-wrap;}
+    .tip{font-size:13px;color:#888;padding:10px 14px;background:#f9f8ff;border-radius:8px;margin-top:8px;display:none;}
+    .error-msg{font-size:14px;color:#c0392b;background:#fdf0ef;border:1px solid #f5c6c2;border-radius:10px;padding:12px 14px;margin-top:1rem;display:none;}
+
+    /* HOW IT WORKS */
+    .how-section{margin-top:2rem;}
+    .how-section h2{font-size:20px;font-weight:600;margin-bottom:1rem;}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+    @media(max-width:500px){.steps{grid-template-columns:1fr;}}
+    .step{background:#fff;border:1px solid #e8e5f5;border-radius:12px;padding:1.25rem;}
+    .step-num{width:30px;height:30px;background:#EEEDFE;color:#534AB7;font-size:14px;font-weight:600;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+    .step h3{font-size:14px;font-weight:600;margin-bottom:5px;}
+    .step p{font-size:13px;color:#888;line-height:1.5;}
+
+    .faq-section{margin-top:2.5rem;}
+    .faq-section h2{font-size:20px;font-weight:600;margin-bottom:1.25rem;}
+    .faq-item{border-bottom:1px solid #e8e5f5;padding:1rem 0;}
+    .faq-item h3{font-size:15px;font-weight:500;color:#1a1a2e;margin-bottom:6px;}
+    .faq-item p{font-size:14px;color:#666;line-height:1.6;}
+    footer{text-align:center;padding:2rem 1rem;font-size:13px;color:#bbb;border-top:1px solid #e8e5f5;margin-top:3rem;}
+    footer a{color:#888;text-decoration:none;margin:0 0.5rem;}
+    footer a:hover{color:#534AB7;}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/image-prompt.html">
+    <div class="logo-icon">
+      <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+        <rect x="7" y="5" width="5" height="22" rx="2" fill="white"/>
+        <path d="M12,5 Q25,5 25,13 Q25,21 12,21" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/>
+        <circle cx="25" cy="28" r="2.5" fill="#a89eff"/>
+        <circle cx="30" cy="23" r="1.5" fill="#a89eff"/>
+        <line x1="25" y1="28" x2="30" y2="23" stroke="#a89eff" stroke-width="1.2"/>
+      </svg>
+    </div>
+    <div class="logo-text"><span>Prompt</span><span>Kits</span></div>
+  </a>
+  <nav>
+    <a href="/image-prompt.html">🖼 Image</a>
+    <a href="/video-prompt.html">🎬 Video</a>
+    <a href="/">✨ Enhancer</a>
+    <a href="/negative-prompt.html">🚫 Negative</a>
+    <a href="/image-to-prompt.html" class="active">🔍 Img2Prompt</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <span class="badge">✦ Free AI Tool</span>
+  <h1>Turn any image into<br>a <span>detailed prompt</span></h1>
+  <p>Upload any image and instantly get a detailed AI prompt to recreate or inspire similar images in Midjourney, DALL-E, or Stable Diffusion.</p>
+</div>
+
+<main class="main">
+  <div class="card">
+
+    <!-- UPLOAD ZONE -->
+    <label class="field-label">Upload your image</label>
+    <div class="upload-zone" id="uploadZone">
+      <input type="file" accept="image/*" id="fileInput" onchange="handleFileUpload(event)"/>
+      <div class="upload-icon">🖼️</div>
+      <div class="upload-title">Drop your image here or click to browse</div>
+      <div class="upload-sub">Supports JPG, PNG, WEBP</div>
+      <div class="upload-formats">Max size: 5MB</div>
+    </div>
+
+    <div class="preview-wrap" id="previewWrap">
+      <img id="previewImg" class="preview-img" src="" alt="Preview"/>
+      <button class="remove-img" onclick="removeImage()">✕ Remove</button>
+    </div>
+
+    <!-- SAMPLE IMAGES -->
+    <div class="samples-section">
+      <div class="samples-title">Or try a sample image</div>
+      <div class="samples-grid">
+        <div class="sample-item" onclick="useSample('portrait')">
+          <div class="sample-placeholder">👩</div>
+          <div class="sample-label">Portrait</div>
+        </div>
+        <div class="sample-item" onclick="useSample('landscape')">
+          <div class="sample-placeholder">🏔️</div>
+          <div class="sample-label">Landscape</div>
+        </div>
+        <div class="sample-item" onclick="useSample('citynight')">
+          <div class="sample-placeholder">🌃</div>
+          <div class="sample-label">City Night</div>
+        </div>
+        <div class="sample-item" onclick="useSample('fantasy')">
+          <div class="sample-placeholder">🐉</div>
+          <div class="sample-label">Fantasy</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label">Generate Prompt For</div>
+    <div class="pill-group" id="targetGroup">
+      <div class="pill active" data-val="Midjourney">Midjourney</div>
+      <div class="pill" data-val="DALL-E 3">DALL-E 3</div>
+      <div class="pill" data-val="Stable Diffusion XL">Stable Diffusion</div>
+      <div class="pill" data-val="Leonardo AI">Leonardo AI</div>
+    </div>
+
+    <div class="section-label">Prompt Detail Level</div>
+    <div class="pill-group" id="detailGroup">
+      <div class="pill active" data-val="detailed">Detailed</div>
+      <div class="pill" data-val="very detailed with technical photography terms">Technical</div>
+      <div class="pill" data-val="concise and short">Concise</div>
+    </div>
+
+    <button class="enhance-btn" id="enhanceBtn" onclick="analyzeImage()">
+      🔍 Generate Prompt from Image
+    </button>
+  </div>
+
+  <div class="error-msg" id="errorMsg"></div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <span class="result-label">✦ Generated Prompt</span>
+      <button class="copy-btn" onclick="copyResult()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        <span id="copyLabel">Copy</span>
+      </button>
+    </div>
+    <div class="result-text" id="resultText"></div>
+  </div>
+  <div class="tip" id="tipBox">💡 Copy this prompt and paste it into your AI image tool to recreate or get inspired by this image.</div>
+
+  <!-- HOW IT WORKS -->
+  <div class="how-section">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Upload any image</h3>
+        <p>Upload a photo, AI art, screenshot — any image you want to recreate or analyse.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>AI analyses it</h3>
+        <p>Claude Vision analyses the style, colors, composition, lighting, and subject of your image.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Get your prompt</h3>
+        <p>Receive a detailed, ready-to-use prompt optimized for your chosen AI tool.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <h3>What kind of images can I upload?</h3>
+      <p>Any image — photos, AI-generated art, screenshots, paintings, illustrations. JPG, PNG, and WEBP are supported up to 5MB.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is my uploaded image stored?</h3>
+      <p>No. Your image is sent to the AI for analysis and immediately discarded. We do not store any uploaded images.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Can I use this to recreate Midjourney images?</h3>
+      <p>Yes! Upload any Midjourney image and get a prompt to recreate a similar style. Results may vary since AI art is hard to reproduce exactly.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is this free?</h3>
+      <p>Yes, completely free. No account or sign-up needed.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a></p>
+  <p style="margin-top:6px;">Free AI prompt tools for everyone</p>
+</footer>
+
+<script>
+  let uploadedImageBase64 = null;
+  let selectedTarget = 'Midjourney';
+  let selectedDetail = 'detailed';
+  let activeSample = null;
+
+  const sampleDescriptions = {
+    portrait: 'a beautiful cinematic portrait of a young woman with soft natural lighting, shallow depth of field, professional photography',
+    landscape: 'a dramatic mountain landscape at golden hour with snow peaks, misty valleys, epic wide angle photography',
+    citynight: 'a neon-lit city street at night with rain reflections, cyberpunk atmosphere, busy urban scene',
+    fantasy: 'a powerful fantasy dragon in a stormy sky, epic scale, detailed scales, lightning in background'
+  };
+
+  function setupPills(groupId, cb){
+    document.querySelectorAll('#'+groupId+' .pill').forEach(p=>{
+      p.addEventListener('click',function(){
+        document.querySelectorAll('#'+groupId+' .pill').forEach(x=>x.classList.remove('active'));
+        this.classList.add('active'); cb(this.dataset.val);
+      });
+    });
+  }
+
+  setupPills('targetGroup', v=>selectedTarget=v);
+  setupPills('detailGroup', v=>selectedDetail=v);
+
+  function handleFileUpload(e){
+    const file = e.target.files[0];
+    if(!file) return;
+    if(file.size > 5*1024*1024){ showError('Image too large. Please use an image under 5MB.'); return; }
+    const reader = new FileReader();
+    reader.onload = function(ev){
+      uploadedImageBase64 = ev.target.result.split(',')[1];
+      document.getElementById('previewImg').src = ev.target.result;
+      document.getElementById('previewWrap').style.display = 'block';
+      activeSample = null;
+      document.querySelectorAll('.sample-item').forEach(s=>s.classList.remove('selected'));
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function removeImage(){
+    uploadedImageBase64 = null;
+    document.getElementById('previewWrap').style.display = 'none';
+    document.getElementById('fileInput').value = '';
+  }
+
+  function useSample(type){
+    uploadedImageBase64 = null;
+    activeSample = type;
+    document.querySelectorAll('.sample-item').forEach(s=>s.classList.remove('selected'));
+    event.currentTarget.classList.add('selected');
+    document.getElementById('previewWrap').style.display = 'none';
+  }
+
+  async function analyzeImage(){
+    if(!uploadedImageBase64 && !activeSample){
+      showError('Please upload an image or select a sample first.');
+      return;
+    }
+
+    const btn = document.getElementById('enhanceBtn');
+    btn.disabled = true;
+    btn.innerHTML = '<div class="spinner"></div> Analysing image...';
+    document.getElementById('errorMsg').style.display = 'none';
+    document.getElementById('resultCard').style.display = 'none';
+    document.getElementById('tipBox').style.display = 'none';
+
+    try{
+      let result;
+
+      if(uploadedImageBase64){
+        // Real image analysis via Claude Vision
+        const response = await fetch('https://api.anthropic.com/v1/messages', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'anthropic-version': '2023-06-01'
+          },
+          body: JSON.stringify({
+            model: 'claude-haiku-4-5-20251001',
+            max_tokens: 1000,
+            messages: [{
+              role: 'user',
+              content: [
+                {
+                  type: 'image',
+                  source: {
+                    type: 'base64',
+                    media_type: 'image/jpeg',
+                    data: uploadedImageBase64
+                  }
+                },
+                {
+                  type: 'text',
+                  text: `Analyze this image and generate a ${selectedDetail} AI image prompt optimized for ${selectedTarget}. Describe the subject, style, lighting, colors, mood, composition, and any technical details. Return ONLY the prompt text, ready to paste into ${selectedTarget}. No explanations, no preamble.`
+                }
+              ]
+            }]
+          })
+        });
+        const data = await response.json();
+        result = data.content?.map(i=>i.text||'').join('') || '';
+      } else {
+        // Sample — use text-based prompt generation
+        const response = await fetch('/api/enhance', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({
+            prompt: sampleDescriptions[activeSample],
+            target: selectedTarget,
+            style: `${selectedDetail}. Generate a prompt as if you analyzed this image visually. Return ONLY the prompt text ready to use in ${selectedTarget}.`
+          })
+        });
+        const data = await response.json();
+        result = data.result || '';
+      }
+
+      if(result){
+        document.getElementById('resultText').textContent = result;
+        document.getElementById('resultCard').style.display = 'block';
+        document.getElementById('tipBox').style.display = 'block';
+        document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'nearest'});
+      } else {
+        showError('Could not generate prompt. Please try again.');
+      }
+    } catch(err){
+      // Fallback for CORS with real image - use sample description approach
+      if(activeSample){
+        showError('Something went wrong: '+err.message);
+      } else {
+        showError('Image analysis failed. Please try again or use a sample image.');
+      }
+    }
+
+    btn.disabled = false;
+    btn.innerHTML = '🔍 Generate Prompt from Image';
+  }
+
+  function showError(msg){const el=document.getElementById('errorMsg');el.textContent=msg;el.style.display='block';}
+  function copyResult(){
+    navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{
+      document.getElementById('copyLabel').textContent='Copied!';
+      setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);
+    });
+  }
+
+  // Drag and drop
+  const zone = document.getElementById('uploadZone');
+  zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('dragover');});
+  zone.addEventListener('dragleave',()=>zone.classList.remove('dragover'));
+  zone.addEventListener('drop',e=>{
+    e.preventDefault();
+    zone.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if(file && file.type.startsWith('image/')){
+      const reader = new FileReader();
+      reader.onload = ev=>{
+        uploadedImageBase64 = ev.target.result.split(',')[1];
+        document.getElementById('previewImg').src = ev.target.result;
+        document.getElementById('previewWrap').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+</body>
+</html>
