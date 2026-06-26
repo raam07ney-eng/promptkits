@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Prompt Enhancer – Improve Any AI Prompt Instantly | PromptKits</title>
+  <meta name="description" content="Instantly enhance your AI prompts for ChatGPT, Claude, Midjourney, DALL-E, and Stable Diffusion. Free prompt enhancer tool by PromptKits."/>
+  <link rel="canonical" href="https://promptkits.in/enhancer.html"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/theme.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
+</head>
+<body>
+<header>
+  <a class="logo" href="/">
+    <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect x="7" y="5" width="5" height="22" rx="2" fill="white"/><path d="M12,5 Q25,5 25,13 Q25,21 12,21" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/><circle cx="25" cy="28" r="2.5" fill="#a89eff"/><circle cx="30" cy="23" r="1.5" fill="#a89eff"/><line x1="25" y1="28" x2="30" y2="23" stroke="#a89eff" stroke-width="1.2"/></svg></div>
+    <div class="logo-text"><span class="logo-p">Prompt</span><span class="logo-k">Kits</span></div>
+  </a>
+  <div class="header-right">
+    <nav>
+      <a href="/image-prompt.html">🖼 Image</a>
+      <a href="/video-prompt.html">🎬 Video</a>
+      <a href="/enhancer.html" class="active">✨ Enhancer</a>
+      <a href="/negative-prompt.html">🚫 Negative</a>
+      <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" onclick="PKTheme.toggle()">☀️ Light</button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="badge"><div class="badge-dot"></div> Free AI Prompt Tool</div>
+  <h1>Enhance any <span>AI prompt</span><br>in one click</h1>
+  <p>Paste a basic prompt and get a detailed, optimized version for ChatGPT, Claude, Midjourney, and more.</p>
+  <div class="stats-row">
+    <div><div class="stat-num">5+</div><div class="stat-label">AI Platforms</div></div>
+    <div><div class="stat-num">4</div><div class="stat-label">Style Options</div></div>
+    <div><div class="stat-num">100%</div><div class="stat-label">Free</div></div>
+  </div>
+</div>
+
+<main class="main">
+  <div class="card">
+    <label class="field-label" for="inputPrompt">Your prompt</label>
+    <textarea id="inputPrompt" placeholder="e.g. write a blog post about coffee"></textarea>
+
+    <div class="section-label">Enhance For</div>
+    <div class="pill-group" id="targetGroup">
+      <div class="pill active" data-val="ChatGPT or Claude (text AI)">ChatGPT / Claude</div>
+      <div class="pill" data-val="Midjourney (image AI)">Midjourney</div>
+      <div class="pill" data-val="DALL-E (image AI)">DALL-E</div>
+      <div class="pill" data-val="Stable Diffusion or SDXL (image AI)">Stable Diffusion</div>
+      <div class="pill" data-val="Gemini (text AI)">Gemini</div>
+    </div>
+
+    <div class="section-label">Enhancement Style</div>
+    <div class="pill-group" id="styleGroup">
+      <div class="pill active" data-val="detailed and structured">Detailed</div>
+      <div class="pill" data-val="creative and imaginative">Creative</div>
+      <div class="pill" data-val="concise and direct">Concise</div>
+      <div class="pill" data-val="professional and formal">Professional</div>
+    </div>
+
+    <button class="enhance-btn" id="enhanceBtn" onclick="enhancePrompt()">✦ Enhance my prompt</button>
+  </div>
+
+  <div class="error-msg" id="errorMsg"></div>
+  <div class="result-card" id="resultCard">
+    <div class="result-header">
+      <span class="result-label">✦ Enhanced Prompt</span>
+      <button class="copy-btn" onclick="copyResult()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span id="copyLabel">Copy</span></button>
+    </div>
+    <div class="result-text" id="resultText"></div>
+  </div>
+  <div class="tip" id="tipBox">💡 Paste this enhanced prompt directly into your AI tool. Try switching the style options above for different results.</div>
+
+  <div class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item"><h3>What is a prompt enhancer?</h3><p>A prompt enhancer takes a basic instruction and rewrites it into a detailed, well-structured prompt that gets better results from AI tools like ChatGPT, Claude, Midjourney, and others.</p></div>
+    <div class="faq-item"><h3>Is this tool free to use?</h3><p>Yes, PromptKits Prompt Enhancer is completely free. No account or sign-up required.</p></div>
+    <div class="faq-item"><h3>Which AI tools does it work with?</h3><p>It works with ChatGPT, Claude, Gemini, Midjourney, DALL-E, Stable Diffusion, and most other AI tools that accept text prompts.</p></div>
+    <div class="faq-item"><h3>How is an enhanced prompt different from my original?</h3><p>The enhanced version adds context, specificity, tone instructions, format guidance, and relevant details that help AI models understand exactly what you want.</p></div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a></p>
+  <p style="margin-top:6px;">Cinematic AI prompt tools for creators</p>
+</footer>
+
+<script>
+  window.addEventListener('load', PKTheme.init);
+  let selectedTarget='ChatGPT or Claude (text AI)',selectedStyle='detailed and structured';
+  function setupPills(id,cb){document.querySelectorAll('#'+id+' .pill').forEach(p=>{p.addEventListener('click',function(){document.querySelectorAll('#'+id+' .pill').forEach(x=>x.classList.remove('active'));this.classList.add('active');cb(this.dataset.val);});});}
+  setupPills('targetGroup',v=>selectedTarget=v);
+  setupPills('styleGroup',v=>selectedStyle=v);
+  async function enhancePrompt(){
+    const input=document.getElementById('inputPrompt').value.trim();
+    if(!input){showError('Please enter a prompt first.');return;}
+    const btn=document.getElementById('enhanceBtn');
+    btn.disabled=true;btn.innerHTML='<div class="spinner"></div> Enhancing...';
+    document.getElementById('errorMsg').style.display='none';
+    document.getElementById('resultCard').style.display='none';
+    document.getElementById('tipBox').style.display='none';
+    try{
+      const r=await fetch('/api/enhance',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:input,target:selectedTarget,style:selectedStyle})});
+      const d=await r.json();if(!r.ok)throw new Error(d.error||'Error');
+      document.getElementById('resultText').textContent=d.result;
+      document.getElementById('resultCard').style.display='block';
+      document.getElementById('tipBox').style.display='block';
+      document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'nearest'});
+    }catch(e){showError('Something went wrong: '+e.message);}
+    btn.disabled=false;btn.innerHTML='✦ Enhance my prompt';
+  }
+  function showError(m){const e=document.getElementById('errorMsg');e.textContent=m;e.style.display='block';}
+  function copyResult(){navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{document.getElementById('copyLabel').textContent='Copied!';setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);});}
+</script>
+</body>
+</html>
