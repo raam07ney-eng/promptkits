@@ -29,7 +29,6 @@
       <a href="/enhancer.html">✨ Enhancer</a>
       <a href="/negative-prompt.html">🚫 Negative</a>
       <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
-      <a href="/prompt-library.html">📚 Library</a>
       <a href="/about.html">About</a>
       
     </nav>
@@ -52,6 +51,23 @@
   <div class="card">
     <label class="field-label" for="inputPrompt">Describe your video scene</label>
     <textarea id="inputPrompt" placeholder="e.g. a drone flying over ancient Indian temples at golden hour"></textarea>
+
+    <div class="section-label">⚡ One-Click Presets</div>
+    <div style="background:rgba(83,74,183,0.12);border:1px solid rgba(139,128,255,0.25);border-radius:14px;padding:16px 18px;margin-bottom:1rem;">
+    <div class="pill-group" id="presetGroup" style="gap:8px;margin-bottom:4px;">
+      <div class="pill preset-pill" data-preset="anamorphic-epic">🎬 Anamorphic Epic</div>
+      <div class="pill preset-pill" data-preset="horror-night">👻 Horror Night</div>
+      <div class="pill preset-pill" data-preset="golden-hour-drama">🌅 Golden Hour Drama</div>
+      <div class="pill preset-pill" data-preset="scifi-trailer">🚀 Sci-Fi Trailer</div>
+      <div class="pill preset-pill" data-preset="nature-doc">🌿 Nature Doc</div>
+      <div class="pill preset-pill" data-preset="action-chase">💥 Action Chase</div>
+      <div class="pill preset-pill" data-preset="ancient-india">🏛 Ancient India</div>
+      <div class="pill preset-pill" data-preset="street-doc">📷 Street Doc</div>
+      <div class="pill preset-pill" data-preset="bollywood-drama">🎭 Bollywood Drama</div>
+      <div class="pill preset-pill" data-preset="noir-detective">🕵️ Noir Detective</div>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);margin-top:10px;">Click a preset to auto-fill all settings below</div>
+    </div>
 
     <div class="section-label">Video AI Tool</div>
     <div class="pill-group" id="targetGroup">
@@ -221,6 +237,49 @@
     }catch(e){showError('Something went wrong: '+e.message);}
     btn.disabled=false;btn.innerHTML='🎬 Generate Video Prompt';
   }
+  // ── Video Presets ──
+  const videoPresets = {
+    'anamorphic-epic':   {style:'cinematic film',camera:'slow cinematic pan',angle:'low angle',lens:'anamorphic with lens flares',lighting:'golden hour warm sunlight',speed:'',color:'teal and orange color grade',ratio:'2.39:1 anamorphic cinema'},
+    'horror-night':      {style:'noir',camera:'static wide shot',angle:'dutch tilt',lens:'wide angle 24mm',lighting:'moonlit night',speed:'',color:'cold blue desaturated',ratio:'16:9 widescreen'},
+    'golden-hour-drama': {style:'cinematic film',camera:'slow cinematic pan',angle:'eye level',lens:'telephoto 85mm',lighting:'golden hour warm sunlight',speed:'slow motion 0.5x speed',color:'warm golden vintage',ratio:'16:9 widescreen'},
+    'scifi-trailer':     {style:'cinematic film',camera:'aerial drone shot',angle:"bird's eye overhead",lens:'wide angle 24mm',lighting:'dramatic volumetric lighting',speed:'',color:'cold blue desaturated',ratio:'2.39:1 anamorphic cinema'},
+    'nature-doc':        {style:'documentary',camera:'aerial drone shot',angle:'eye level',lens:'telephoto 85mm',lighting:'golden hour warm sunlight',speed:'',color:'',ratio:'16:9 widescreen'},
+    'action-chase':      {style:'cinematic film',camera:'close-up tracking shot',angle:'low angle',lens:'wide angle 24mm',lighting:'',speed:'',color:'high contrast cinematic',ratio:'16:9 widescreen'},
+    'ancient-india':     {style:'cinematic film',camera:'aerial drone shot',angle:"bird's eye overhead",lens:'anamorphic with lens flares',lighting:'golden hour warm sunlight',speed:'',color:'warm golden vintage',ratio:'2.39:1 anamorphic cinema'},
+    'street-doc':        {style:'documentary',camera:'handheld dynamic',angle:'eye level',lens:'standard 50mm',lighting:'',speed:'',color:'',ratio:'16:9 widescreen'},
+    'bollywood-drama':   {style:'cinematic film',camera:'360 orbit around subject',angle:'low angle',lens:'telephoto 85mm',lighting:'dramatic volumetric lighting',speed:'',color:'warm golden vintage',ratio:'16:9 widescreen'},
+    'noir-detective':    {style:'noir',camera:'slow cinematic pan',angle:'low angle',lens:'standard 50mm',lighting:'moonlit night',speed:'',color:'black and white monochrome',ratio:'16:9 widescreen'},
+  };
+
+  function applyVideoPreset(name) {
+    const p = videoPresets[name];
+    if (!p) return;
+    sel.style=p.style; sel.camera=p.camera; sel.angle=p.angle;
+    sel.lens=p.lens; sel.lighting=p.lighting; sel.speed=p.speed;
+    sel.color=p.color; sel.ratio=p.ratio;
+    function setPill(groupId, val) {
+      document.querySelectorAll('#'+groupId+' .pill').forEach(x => {
+        x.classList.toggle('active', x.dataset.val === val);
+      });
+    }
+    setPill('styleGroup', p.style);
+    setPill('cameraGroup', p.camera);
+    setPill('angleGroup', p.angle);
+    setPill('lensGroup', p.lens);
+    setPill('lightingGroup', p.lighting);
+    setPill('speedGroup', p.speed);
+    setPill('colorGroup', p.color);
+    setPill('ratioGroup', p.ratio);
+    document.getElementById('advancedSection').classList.add('open');
+    document.getElementById('toggleArrow').classList.add('open');
+    document.querySelectorAll('.preset-pill').forEach(x => x.classList.remove('active'));
+    document.querySelector('[data-preset="'+name+'"]').classList.add('active');
+  }
+
+  document.querySelectorAll('.preset-pill').forEach(p => {
+    p.addEventListener('click', function() { applyVideoPreset(this.dataset.preset); });
+  });
+
   function showError(m){const e=document.getElementById('errorMsg');e.textContent=m;e.style.display='block';}
   function copyResult(){navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{document.getElementById('copyLabel').textContent='Copied!';setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);});}
 </script>
