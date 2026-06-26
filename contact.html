@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us – PromptKits</title>
+  <meta name="description" content="Contact PromptKits — send us feedback, suggestions, or questions about our free AI prompt tools."/>
+  <link rel="canonical" href="https://promptkits.in/contact.html"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/theme.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
+  <style>
+    .contact-input{width:100%;font-family:'Inter',sans-serif;font-size:15px;color:var(--text-primary);background:var(--bg-input);border:1px solid var(--border-input);border-radius:12px;padding:12px 16px;outline:none;transition:border-color 0.15s;margin-bottom:1rem;}
+    .contact-input:focus{border-color:var(--border-input-focus);}
+    .contact-input::placeholder{color:var(--text-placeholder);}
+    textarea.contact-input{min-height:140px;resize:vertical;}
+    .submit-btn{width:100%;padding:14px;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;background:linear-gradient(135deg,var(--accent-btn-from),var(--accent-btn-to));color:#fff;border:none;border-radius:12px;cursor:pointer;transition:all 0.2s;box-shadow:0 4px 20px rgba(83,74,183,0.3);}
+    .submit-btn:hover{transform:translateY(-1px);box-shadow:0 6px 25px rgba(83,74,183,0.45);}
+    .success-msg{display:none;background:rgba(29,158,117,0.15);border:1px solid rgba(29,158,117,0.3);border-radius:12px;padding:16px;font-size:15px;color:#1D9E75;text-align:center;margin-top:1rem;}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/image-prompt.html">
+    <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect x="7" y="5" width="5" height="22" rx="2" fill="white"/><path d="M12,5 Q25,5 25,13 Q25,21 12,21" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/><circle cx="25" cy="28" r="2.5" fill="#a89eff"/><circle cx="30" cy="23" r="1.5" fill="#a89eff"/><line x1="25" y1="28" x2="30" y2="23" stroke="#a89eff" stroke-width="1.2"/></svg></div>
+    <div class="logo-text"><span class="logo-p">Prompt</span><span class="logo-k">Kits</span></div>
+  </a>
+  <div class="header-right">
+    <nav>
+      <a href="/image-prompt.html">🖼 Image</a>
+      <a href="/video-prompt.html">🎬 Video</a>
+      <a href="/">✨ Enhancer</a>
+      <a href="/negative-prompt.html">🚫 Negative</a>
+      <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" onclick="PKTheme.toggle()">☀️ Light</button>
+  </div>
+</header>
+
+<main style="max-width:640px;margin:0 auto;padding:3rem 1rem 4rem;">
+
+  <div style="margin-bottom:2.5rem;">
+    <div class="badge" style="margin-bottom:1rem;"><div class="badge-dot"></div> Contact Us</div>
+    <h1 style="font-size:clamp(28px,5vw,40px);font-weight:700;color:var(--text-primary);line-height:1.2;letter-spacing:-0.5px;margin-bottom:1rem;">We'd love to hear<br>from you</h1>
+    <p style="font-size:16px;color:var(--text-secondary);line-height:1.75;">Have feedback, a bug to report, a tool suggestion, or just want to say hello? Send us a message and we'll get back to you.</p>
+  </div>
+
+  <!-- Contact options -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;">
+    <div class="card" style="text-align:center;padding:1.25rem;">
+      <div style="font-size:28px;margin-bottom:8px;">📧</div>
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Email us</div>
+      <a href="mailto:raam07ney@gmail.com" style="font-size:13px;color:var(--accent);text-decoration:none;">raam07ney@gmail.com</a>
+    </div>
+    <div class="card" style="text-align:center;padding:1.25rem;">
+      <div style="font-size:28px;margin-bottom:8px;">🌐</div>
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Visit our site</div>
+      <a href="https://promptkits.in" style="font-size:13px;color:var(--accent);text-decoration:none;">promptkits.in</a>
+    </div>
+  </div>
+
+  <!-- Contact form -->
+  <div class="card">
+    <h2 style="font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:1.25rem;">Send us a message</h2>
+
+    <label style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.9px;display:block;margin-bottom:6px;">Your Name</label>
+    <input type="text" class="contact-input" id="contactName" placeholder="e.g. Ramu"/>
+
+    <label style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.9px;display:block;margin-bottom:6px;">Email Address</label>
+    <input type="email" class="contact-input" id="contactEmail" placeholder="you@example.com"/>
+
+    <label style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.9px;display:block;margin-bottom:6px;">Subject</label>
+    <input type="text" class="contact-input" id="contactSubject" placeholder="e.g. Tool suggestion, Bug report, Feedback"/>
+
+    <label style="font-size:11px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.9px;display:block;margin-bottom:6px;">Message</label>
+    <textarea class="contact-input" id="contactMessage" placeholder="Tell us what's on your mind..."></textarea>
+
+    <button class="submit-btn" onclick="submitForm()">Send Message</button>
+    <div class="success-msg" id="successMsg">✅ Thanks for reaching out! We'll get back to you at your email address soon.</div>
+    <div class="error-msg" id="errorMsg" style="margin-top:1rem;"></div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="margin-top:2.5rem;">
+    <h2 style="font-size:20px;font-weight:600;color:var(--text-primary);margin-bottom:1.25rem;">Common questions</h2>
+    <div class="faq-item"><h3 class="faq-item" style="border:none;padding:0;margin-bottom:6px;">How long does it take to get a reply?</h3><p style="font-size:14px;color:var(--text-secondary);line-height:1.6;">We typically respond within 1–2 business days.</p></div>
+    <div class="faq-item"><h3 style="font-size:15px;font-weight:500;color:var(--faq-q);margin-bottom:6px;">Can I request a new tool?</h3><p style="font-size:14px;color:var(--text-secondary);line-height:1.6;">Absolutely! We love hearing what tools would be useful. Send us your idea and we'll consider it for a future update.</p></div>
+    <div class="faq-item"><h3 style="font-size:15px;font-weight:500;color:var(--faq-q);margin-bottom:6px;">How do I report a bug?</h3><p style="font-size:14px;color:var(--text-secondary);line-height:1.6;">Use the form above or email us directly. Please include the tool name, what happened, and what browser you're using.</p></div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a></p>
+  <p style="margin-top:6px;">Free AI prompt tools for everyone</p>
+</footer>
+
+<script>
+  window.addEventListener('load', PKTheme.init);
+  function submitForm(){
+    const name=document.getElementById('contactName').value.trim();
+    const email=document.getElementById('contactEmail').value.trim();
+    const subject=document.getElementById('contactSubject').value.trim();
+    const message=document.getElementById('contactMessage').value.trim();
+    const errorEl=document.getElementById('errorMsg');
+    errorEl.style.display='none';
+    if(!name||!email||!message){errorEl.textContent='Please fill in your name, email, and message.';errorEl.style.display='block';return;}
+    if(!email.includes('@')){errorEl.textContent='Please enter a valid email address.';errorEl.style.display='block';return;}
+    // Open mailto as fallback
+    const mailtoLink=`mailto:raam07ney@gmail.com?subject=${encodeURIComponent(subject||'PromptKits Feedback')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+    window.location.href=mailtoLink;
+    document.getElementById('successMsg').style.display='block';
+  }
+</script>
+</body>
+</html>
