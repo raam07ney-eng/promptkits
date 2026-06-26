@@ -108,7 +108,7 @@
     document.getElementById('resultCard').style.display='none';
     document.getElementById('tipBox').style.display='none';
     try{
-      const r=await fetch('/api/enhance',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:input,target:selectedTarget,style:selectedStyle})});
+      const r=await fetch('/api/enhance',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:input,target:selectedTarget,style:selectedStyle,mode:'enhancer'})});
       const d=await r.json();if(!r.ok)throw new Error(d.error||'Error');
       document.getElementById('resultText').textContent=d.result;
       document.getElementById('resultCard').style.display='block';

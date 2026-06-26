@@ -209,7 +209,7 @@
     const cin=[sel.angle&&`camera angle: ${sel.angle}`,sel.lens&&`lens: ${sel.lens}`,sel.lighting&&`lighting: ${sel.lighting}`,sel.speed&&`motion: ${sel.speed}`,sel.color&&`color grade: ${sel.color}`,sel.ratio&&`aspect ratio: ${sel.ratio}`].filter(Boolean).join(', ');
     const styleStr=[sel.style&&`${sel.style} style`,sel.camera&&`${sel.camera} camera movement`,cin].filter(Boolean).join(', ');
     try{
-      const r=await fetch('/api/enhance',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:input,target:sel.target+' video AI',style:styleStr+`. Generate a single detailed video prompt paragraph for ${sel.target}. Include scene atmosphere, subject motion, and all specified parameters. Return ONLY the prompt.`})});
+      const r=await fetch('/api/enhance',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:input,target:sel.target+' video AI',style:styleStr+`. Generate a single detailed video prompt paragraph for ${sel.target}. Include scene atmosphere, subject motion, and all specified parameters. Return ONLY the prompt.`,mode:'video'})});
       const d=await r.json();
       if(!r.ok)throw new Error(d.error||'Error');
       document.getElementById('resultText').textContent=d.result;
