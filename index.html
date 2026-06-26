@@ -31,7 +31,7 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--accent, #a89eff);
+      color: var(--accent);
       margin-bottom: 24px;
     }
     .home-eyebrow-dot {
@@ -54,12 +54,12 @@
     }
     .home-hero h1 em {
       font-style: italic;
-      color: var(--accent, #a89eff);
+      color: var(--accent);
     }
     .home-hero p {
       font-size: 17px;
       line-height: 1.65;
-      color: var(--text-secondary, #aaa);
+      color: var(--text-secondary);
       max-width: 520px;
       margin: 0 auto 40px;
     }
@@ -99,7 +99,7 @@
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--text-secondary, #888);
+      color: var(--text-secondary);
       margin-bottom: 20px;
     }
     .tools-grid {
@@ -110,18 +110,18 @@
     .tool-card {
       display: block;
       text-decoration: none;
-      border: 1px solid var(--border, rgba(255,255,255,0.1));
+      border: 1px solid var(--border-card);
       border-radius: 14px;
       padding: 28px 24px;
-      background: var(--card-bg, rgba(255,255,255,0.03));
+      background: var(--bg-card);
       transition: border-color 0.2s, transform 0.2s, background 0.2s;
       position: relative;
       overflow: hidden;
     }
     .tool-card:hover {
-      border-color: var(--accent, #a89eff);
+      border-color: var(--accent);
       transform: translateY(-2px);
-      background: var(--card-bg-hover, rgba(168,158,255,0.06));
+      background: var(--bg-card-hover);
     }
     .tool-card-glow {
       position: absolute;
@@ -142,12 +142,12 @@
       font-size: 17px;
       font-weight: 600;
       margin: 0 0 8px;
-      color: var(--text, #fff);
+      color: var(--text-primary);
     }
     .tool-card p {
       font-size: 13.5px;
       line-height: 1.6;
-      color: var(--text-secondary, #999);
+      color: var(--text-secondary);
       margin: 0 0 16px;
     }
     .tool-tag-row {
@@ -160,13 +160,14 @@
       font-weight: 500;
       padding: 3px 9px;
       border-radius: 20px;
-      background: var(--tag-bg, rgba(255,255,255,0.07));
-      color: var(--text-secondary, #aaa);
+      background: var(--pill-bg);
+      color: var(--text-secondary);
       letter-spacing: 0.02em;
+      border: 1px solid var(--pill-border);
     }
     .tool-card.featured {
-      border-color: var(--accent, #a89eff);
-      background: var(--card-bg-featured, rgba(168,158,255,0.08));
+      border-color: var(--accent);
+      background: var(--bg-result);
     }
     .featured-badge {
       position: absolute;
@@ -175,7 +176,7 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent, #a89eff);
+      color: var(--accent);
       background: rgba(168,158,255,0.15);
       padding: 3px 8px;
       border-radius: 20px;
@@ -201,7 +202,7 @@
     .why-item p {
       font-size: 13px;
       line-height: 1.6;
-      color: var(--text-secondary, #999);
+      color: var(--text-secondary);
       margin: 0;
     }
     .why-icon {
@@ -224,7 +225,7 @@
       margin: 0 0 12px;
     }
     .cta-strip p {
-      color: var(--text-secondary, #999);
+      color: var(--text-secondary);
       font-size: 15px;
       margin: 0 0 28px;
     }
@@ -241,11 +242,7 @@
     }
     .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
 
-    /* Light theme overrides */
-    [data-theme="light"] .tool-card { background: #f9f9fb; }
-    [data-theme="light"] .tool-card:hover { background: #f0eeff; }
-    [data-theme="light"] .tool-card.featured { background: #eeeaff; }
-    [data-theme="light"] .tool-tag { background: rgba(0,0,0,0.06); }
+    /* Light theme handled automatically by CSS variables */
   </style>
 </head>
 <body>
@@ -310,7 +307,7 @@
     <a href="/video-prompt.html" class="tool-card">
       <div class="tool-card-glow" style="background:radial-gradient(circle, rgba(255,180,100,0.3), transparent)"></div>
       <span class="tool-icon">🎬</span>
-      <h3>Video Scene Prompt</h3>
+      <h3>Cinematic Video Prompt</h3>
       <p>Build motion prompts with camera movement, scene pacing, and visual style for AI video tools.</p>
       <div class="tool-tag-row">
         <span class="tool-tag">Kling AI</span>
