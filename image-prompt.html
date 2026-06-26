@@ -31,7 +31,6 @@
       <a href="/enhancer.html">✨ Enhancer</a>
       <a href="/negative-prompt.html">🚫 Negative</a>
       <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
-      <a href="/prompt-library.html">📚 Library</a>
       <a href="/about.html">About</a>
       
     </nav>
@@ -54,6 +53,21 @@
   <div class="card">
     <label class="field-label" for="inputPrompt">Describe your image idea</label>
     <textarea id="inputPrompt" placeholder="e.g. a samurai standing in heavy rain at night in a neon-lit city"></textarea>
+
+    <div class="section-label">⚡ One-Click Presets</div>
+    <div class="pill-group" id="presetGroup" style="gap:8px;margin-bottom:4px;">
+      <div class="pill preset-pill" data-preset="anamorphic-epic">🎬 Anamorphic Epic</div>
+      <div class="pill preset-pill" data-preset="cinematic-portrait">🎭 Cinematic Portrait</div>
+      <div class="pill preset-pill" data-preset="cyberpunk-night">🌆 Cyberpunk Night</div>
+      <div class="pill preset-pill" data-preset="golden-hour">🌅 Golden Hour</div>
+      <div class="pill preset-pill" data-preset="horror-scene">👻 Horror Scene</div>
+      <div class="pill preset-pill" data-preset="fantasy-epic">⚔️ Fantasy Epic</div>
+      <div class="pill preset-pill" data-preset="vintage-film">📽 Vintage Film</div>
+      <div class="pill preset-pill" data-preset="product-luxury">💎 Product Luxury</div>
+      <div class="pill preset-pill" data-preset="indian-epic">🏛 Indian Epic</div>
+      <div class="pill preset-pill" data-preset="anime-style">🌸 Anime Style</div>
+    </div>
+    <div style="font-size:11px;color:var(--text-muted);margin-bottom:16px;">Click a preset to auto-fill all settings below</div>
 
     <div class="section-label">AI Tool</div>
     <div class="pill-group" id="targetGroup">
@@ -226,6 +240,53 @@
     }catch(e){showError('Something went wrong: '+e.message);}
     btn.disabled=false;btn.innerHTML='✦ Generate Image Prompt';
   }
+  // ── Image Presets ──
+  const imagePresets = {
+    'anamorphic-epic':   {style:'cinematic',mood:'epic and grand',angle:'low angle',lens:'anamorphic with lens flares',lighting:'golden hour sunlight',size:'--ar 2:3',quality:'highly detailed',dof:'shallow depth of field, bokeh'},
+    'cinematic-portrait':{style:'cinematic',mood:'dramatic',angle:'eye level',lens:'85mm portrait lens',lighting:'cinematic chiaroscuro',size:'--ar 2:3',quality:'highly detailed',dof:'shallow depth of field, bokeh'},
+    'cyberpunk-night':   {style:'cinematic',mood:'dark and moody',angle:'low angle',lens:'35mm lens',lighting:'neon lighting',size:'--ar 16:9',quality:'8K ultra HD',dof:''},
+    'golden-hour':       {style:'photorealistic',mood:'peaceful',angle:'eye level',lens:'50mm lens',lighting:'golden hour sunlight',size:'--ar 16:9',quality:'highly detailed',dof:'shallow depth of field, bokeh'},
+    'horror-scene':      {style:'cinematic',mood:'dark and moody',angle:'dutch angle',lens:'24mm wide angle',lighting:'moonlight',size:'--ar 16:9',quality:'highly detailed',dof:'deep focus, everything sharp'},
+    'fantasy-epic':      {style:'concept art',mood:'epic and grand',angle:"bird's eye view",lens:'24mm wide angle',lighting:'volumetric god rays',size:'--ar 16:9',quality:'highly detailed',dof:''},
+    'vintage-film':      {style:'cinematic',mood:'peaceful',angle:'eye level',lens:'50mm lens',lighting:'golden hour sunlight',size:'--ar 4:3',quality:'RAW photo',dof:'shallow depth of field, bokeh'},
+    'product-luxury':    {style:'photorealistic',mood:'dramatic',angle:'eye level',lens:'85mm portrait lens',lighting:'dramatic studio lighting',size:'--ar 1:1',quality:'8K ultra HD',dof:'shallow depth of field, bokeh'},
+    'indian-epic':       {style:'cinematic',mood:'epic and grand',angle:'low angle',lens:'24mm wide angle',lighting:'golden hour sunlight',size:'--ar 16:9',quality:'highly detailed',dof:''},
+    'anime-style':       {style:'anime',mood:'vibrant and colorful',angle:'eye level',lens:'35mm lens',lighting:'dramatic studio lighting',size:'--ar 2:3',quality:'highly detailed',dof:''},
+  };
+
+  function applyImagePreset(name) {
+    const p = imagePresets[name];
+    if (!p) return;
+    // Set sel values
+    sel.style=p.style; sel.mood=p.mood; sel.angle=p.angle;
+    sel.lens=p.lens; sel.lighting=p.lighting; sel.size=p.size;
+    sel.quality=p.quality; sel.dof=p.dof;
+    // Update pill UI for each group
+    function setPill(groupId, val) {
+      document.querySelectorAll('#'+groupId+' .pill').forEach(x => {
+        x.classList.toggle('active', x.dataset.val === val);
+      });
+    }
+    setPill('styleGroup', p.style);
+    setPill('moodGroup', p.mood);
+    setPill('angleGroup', p.angle);
+    setPill('lensGroup', p.lens);
+    setPill('lightingGroup', p.lighting);
+    setPill('sizeGroup', p.size);
+    setPill('qualityGroup', p.quality);
+    setPill('dofGroup', p.dof);
+    // Open advanced section
+    document.getElementById('advancedSection').classList.add('open');
+    document.getElementById('toggleArrow').classList.add('open');
+    // Highlight active preset pill
+    document.querySelectorAll('.preset-pill').forEach(x => x.classList.remove('active'));
+    document.querySelector('[data-preset="'+name+'"]').classList.add('active');
+  }
+
+  document.querySelectorAll('.preset-pill').forEach(p => {
+    p.addEventListener('click', function() { applyImagePreset(this.dataset.preset); });
+  });
+
   function showError(m){const e=document.getElementById('errorMsg');e.textContent=m;e.style.display='block';}
   function copyResult(){navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{document.getElementById('copyLabel').textContent='Copied!';setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);});}
 </script>
