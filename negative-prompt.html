@@ -1,253 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Negative Prompt Generator – Improve AI Image Quality | PromptKits</title>
-  <meta name="description" content="Generate effective negative prompts for Stable Diffusion, SDXL, and Midjourney. Remove artifacts, bad anatomy, and unwanted elements. Free tool by PromptKits." />
-  <meta name="keywords" content="negative prompt generator, stable diffusion negative prompt, SDXL negative prompt, Midjourney negative prompt, AI image quality" />
-  <link rel="canonical" href="https://promptkits.in/negative-prompt.html" />
+  <meta name="description" content="Generate effective negative prompts for Stable Diffusion, SDXL, and Midjourney. Remove artifacts and bad anatomy. Free tool by PromptKits."/>
+  <link rel="canonical" href="https://promptkits.in/negative-prompt.html"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/theme.js"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background: #f9f8ff; color: #1a1a2e; min-height: 100vh; }
-    header { background: #fff; border-bottom: 1px solid #e8e5f5; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
-    .logo { font-size: 17px; font-weight: 600; color: #534AB7; text-decoration: none; }
-    .logo span { color: #1a1a2e; }
-    nav a { font-size: 14px; color: #666; text-decoration: none; margin-left: 1.5rem; }
-    nav a:hover { color: #534AB7; }
-    .hero { text-align: center; padding: 1.5rem 1rem 1.5rem; }
-    .badge { display: inline-block; background: #EEEDFE; color: #534AB7; font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 20px; margin-bottom: 1rem; }
-    .hero h1 { font-size: clamp(26px, 5vw, 38px); font-weight: 600; color: #1a1a2e; margin-bottom: 0.75rem; line-height: 1.25; }
-    .hero h1 span { color: #534AB7; }
-    .hero p { font-size: 16px; color: #666; max-width: 520px; margin: 0 auto; line-height: 1.6; }
-    .ad-top { max-width: 760px; margin: 1rem auto; padding: 0 1rem; }
-    .main { max-width: 760px; margin: 0 auto; padding: 0 1rem 3rem; }
-    .card { background: #fff; border: 1px solid #e8e5f5; border-radius: 14px; padding: 1.5rem; margin-bottom: 1rem; }
-    .field-label { font-size: 12px; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 8px; display: block; }
-    textarea { width: 100%; min-height: 100px; resize: vertical; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6; color: #1a1a2e; background: #f9f8ff; border: 1px solid #e0ddf5; border-radius: 10px; padding: 12px 14px; outline: none; transition: border-color 0.15s; }
-    textarea:focus { border-color: #534AB7; }
-    textarea::placeholder { color: #bbb; }
-    .options-section { margin-top: 1.25rem; }
-    .section-label { font-size: 13px; font-weight: 500; color: #666; margin-bottom: 8px; }
-    .pill-group { display: flex; flex-wrap: wrap; gap: 7px; }
-    .pill { font-size: 13px; padding: 6px 14px; border-radius: 20px; border: 1px solid #e0ddf5; background: #fff; color: #666; cursor: pointer; transition: all 0.15s; user-select: none; }
-    .pill:hover { border-color: #9b95d8; color: #534AB7; }
-    .pill.active { background: #EEEDFE; border-color: #AFA9EC; color: #3C3489; font-weight: 500; }
-    .enhance-btn { width: 100%; margin-top: 1.25rem; padding: 13px; font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif; background: #534AB7; color: #fff; border: none; border-radius: 10px; cursor: pointer; transition: background 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-    .enhance-btn:hover { background: #3C3489; }
-    .enhance-btn:disabled { background: #c5c1e8; cursor: not-allowed; }
-    .spinner { width: 17px; height: 17px; border: 2px solid rgba(255,255,255,0.35); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .result-card { background: #fff; border: 1px solid #AFA9EC; border-radius: 14px; padding: 1.5rem; margin-bottom: 1rem; display: none; }
-    .result-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-    .result-label { font-size: 12px; font-weight: 600; color: #534AB7; text-transform: uppercase; letter-spacing: 0.7px; }
-    .copy-btn { font-size: 13px; padding: 5px 14px; border-radius: 8px; border: 1px solid #e0ddf5; background: #fff; color: #666; cursor: pointer; display: flex; align-items: center; gap: 5px; transition: all 0.15s; font-family: 'Inter', sans-serif; }
-    .copy-btn:hover { background: #f9f8ff; color: #534AB7; border-color: #AFA9EC; }
-    .result-text { font-size: 14px; line-height: 1.75; color: #1a1a2e; white-space: pre-wrap; font-family: monospace; background: #f9f8ff; padding: 12px; border-radius: 8px; }
-    .tip { font-size: 13px; color: #888; line-height: 1.55; padding: 10px 14px; background: #f9f8ff; border-radius: 8px; margin-top: 8px; display: none; }
-    .error-msg { font-size: 14px; color: #c0392b; background: #fdf0ef; border: 1px solid #f5c6c2; border-radius: 10px; padding: 12px 14px; margin-top: 1rem; display: none; }
-    .ad-middle { margin: 1.5rem 0; }
-    .faq-section { margin-top: 2.5rem; }
-    .faq-section h2 { font-size: 20px; font-weight: 600; margin-bottom: 1.25rem; }
-    .faq-item { border-bottom: 1px solid #e8e5f5; padding: 1rem 0; }
-    .faq-item h3 { font-size: 15px; font-weight: 500; color: #1a1a2e; margin-bottom: 6px; }
-    .faq-item p { font-size: 14px; color: #666; line-height: 1.6; }
-    footer { text-align: center; padding: 2rem 1rem; font-size: 13px; color: #bbb; border-top: 1px solid #e8e5f5; margin-top: 3rem; }
-    footer a { color: #888; text-decoration: none; margin: 0 0.5rem; }
-    footer a:hover { color: #534AB7; }
-    @media (max-width: 480px) { .hero { padding: 2rem 1rem 1rem; } .card { padding: 1.25rem; } }
-  </style>
-  <!-- Google Analytics - Replace G-XXXXXXXXXX with your real ID from analytics.google.com -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-XXXXXXXXXX");
-  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
 </head>
 <body>
 <header>
-  <a class="logo" href="/">Prompt<span>Kits</span></a>
-  <nav>
-    <a href="/">Enhancer</a>
-    <a href="/image-prompt.html">Image Prompt</a>
-    <a href="/video-prompt.html">Video Prompt</a>
-    <a href="/negative-prompt.html">Negative Prompt</a>
-  </nav>
+  <a class="logo" href="/image-prompt.html">
+    <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect x="7" y="5" width="5" height="22" rx="2" fill="white"/><path d="M12,5 Q25,5 25,13 Q25,21 12,21" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/><circle cx="25" cy="28" r="2.5" fill="#a89eff"/><circle cx="30" cy="23" r="1.5" fill="#a89eff"/><line x1="25" y1="28" x2="30" y2="23" stroke="#a89eff" stroke-width="1.2"/></svg></div>
+    <div class="logo-text"><span class="logo-p">Prompt</span><span class="logo-k">Kits</span></div>
+  </a>
+  <div class="header-right">
+    <nav>
+      <a href="/image-prompt.html">🖼 Image</a>
+      <a href="/video-prompt.html">🎬 Video</a>
+      <a href="/">✨ Enhancer</a>
+      <a href="/negative-prompt.html" class="active">🚫 Negative</a>
+      <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" onclick="PKTheme.toggle()">☀️ Light</button>
+  </div>
 </header>
 
-<div class="ad-top" style="display:none;">
-  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8337511118941734" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
-
 <div class="hero">
-  <span class="badge">✦ Free AI Image Tool</span>
+  <div class="badge"><div class="badge-dot"></div> Free AI Image Tool</div>
   <h1>Generate perfect <span>negative prompts</span><br>instantly</h1>
-  <p>Eliminate bad anatomy, artifacts, and unwanted elements from your AI images. Works with Stable Diffusion, SDXL, and Midjourney.</p>
+  <p>Eliminate bad anatomy, artifacts, and unwanted elements from your AI images. Works with Stable Diffusion, SDXL, and more.</p>
 </div>
 
 <main class="main">
-  <!-- What is a negative prompt info box -->
-  <div style="background:#EEEDFE; border:1px solid #AFA9EC; border-radius:14px; padding:1.25rem; margin-bottom:1rem;">
-    <div style="font-size:13px; font-weight:600; color:#3C3489; margin-bottom:10px;">💡 What is a Negative Prompt?</div>
-    <p style="font-size:14px; color:#444; line-height:1.65; margin-bottom:10px;">A <strong>negative prompt</strong> tells the AI what to <strong>exclude</strong> from your image — like bad hands, blurry faces, or low quality artifacts. It works alongside your main prompt to improve results.</p>
-    <div style="font-size:13px; font-weight:600; color:#3C3489; margin-bottom:8px;">🛠 Which tools support negative prompts?</div>
-    <div style="display:flex; flex-wrap:wrap; gap:8px;">
-      <span style="background:#fff; border:1px solid #AFA9EC; border-radius:8px; padding:5px 12px; font-size:13px; color:#534AB7;">✅ Stable Diffusion</span>
-      <span style="background:#fff; border:1px solid #AFA9EC; border-radius:8px; padding:5px 12px; font-size:13px; color:#534AB7;">✅ SDXL</span>
-      <span style="background:#fff; border:1px solid #AFA9EC; border-radius:8px; padding:5px 12px; font-size:13px; color:#534AB7;">✅ ComfyUI</span>
-      <span style="background:#fff; border:1px solid #AFA9EC; border-radius:8px; padding:5px 12px; font-size:13px; color:#534AB7;">✅ Automatic1111</span>
-      <span style="background:#fff; border:1px solid #d0cce8; border-radius:8px; padding:5px 12px; font-size:13px; color:#888;">⚠️ Midjourney (limited)</span>
-      <span style="background:#fff; border:1px solid #d0cce8; border-radius:8px; padding:5px 12px; font-size:13px; color:#888;">❌ DALL-E (not supported)</span>
+  <div class="info-box">
+    <div class="info-box-title">💡 What is a Negative Prompt?</div>
+    <p>A negative prompt tells the AI what to <strong>exclude</strong> from your image — like bad hands, blurry faces, or low quality artifacts. It works alongside your main prompt to dramatically improve results.</p>
+    <div class="info-box-title" style="margin-top:10px;">🛠 Which tools support negative prompts?</div>
+    <div class="tool-tags">
+      <span class="tool-tag">✅ Stable Diffusion</span>
+      <span class="tool-tag">✅ SDXL</span>
+      <span class="tool-tag">✅ ComfyUI</span>
+      <span class="tool-tag">✅ Automatic1111</span>
+      <span class="tool-tag unsupported">⚠️ Midjourney (limited)</span>
+      <span class="tool-tag unsupported">❌ DALL-E (not supported)</span>
     </div>
-    <p style="font-size:12px; color:#888; margin-top:10px;">📌 How to use: Paste the generated negative prompt into the <strong>Negative Prompt</strong> field in your image tool — usually below the main prompt box.</p>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:10px;">📌 Paste the result into the <strong>Negative Prompt</strong> field in your image tool — usually below the main prompt box.</p>
   </div>
 
   <div class="card">
     <label class="field-label" for="inputPrompt">Your main prompt (what you're generating)</label>
     <textarea id="inputPrompt" placeholder="e.g. a portrait of a woman in a garden"></textarea>
 
-    <div class="options-section">
-      <div class="section-label">Image AI tool</div>
-      <div class="pill-group" id="targetGroup">
-        <div class="pill active" data-val="Stable Diffusion XL (SDXL)">Stable Diffusion XL</div>
-        <div class="pill" data-val="Stable Diffusion 1.5">SD 1.5</div>
-        <div class="pill" data-val="Midjourney">Midjourney</div>
-        <div class="pill" data-val="DALL-E 3">DALL-E 3</div>
-      </div>
+    <div class="section-label">Image AI Tool</div>
+    <div class="pill-group" id="targetGroup">
+      <div class="pill active" data-val="Stable Diffusion XL (SDXL)">Stable Diffusion XL</div>
+      <div class="pill" data-val="Stable Diffusion 1.5">SD 1.5</div>
+      <div class="pill" data-val="Midjourney">Midjourney</div>
+      <div class="pill" data-val="DALL-E 3">DALL-E 3</div>
     </div>
 
-    <div class="options-section">
-      <div class="section-label">Focus on fixing</div>
-      <div class="pill-group" id="focusGroup">
-        <div class="pill active" data-val="anatomy and body proportions">Anatomy</div>
-        <div class="pill" data-val="face and facial features">Face & Eyes</div>
-        <div class="pill" data-val="hands and fingers">Hands</div>
-        <div class="pill" data-val="image quality and artifacts">Quality</div>
-        <div class="pill" data-val="all common issues">All Issues</div>
-      </div>
+    <div class="section-label">Focus on Fixing</div>
+    <div class="pill-group" id="focusGroup">
+      <div class="pill active" data-val="all common issues">All Issues</div>
+      <div class="pill" data-val="anatomy and body proportions">Anatomy</div>
+      <div class="pill" data-val="face and facial features">Face & Eyes</div>
+      <div class="pill" data-val="hands and fingers">Hands</div>
+      <div class="pill" data-val="image quality and artifacts">Quality</div>
     </div>
 
-    <button class="enhance-btn" id="enhanceBtn" onclick="generatePrompt()">
-      Generate negative prompt
-    </button>
+    <button class="enhance-btn" id="enhanceBtn" onclick="generatePrompt()">🚫 Generate Negative Prompt</button>
   </div>
 
   <div class="error-msg" id="errorMsg"></div>
-
   <div class="result-card" id="resultCard">
     <div class="result-header">
-      <span class="result-label">✦ Negative prompt</span>
-      <button class="copy-btn" onclick="copyResult()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        <span id="copyLabel">Copy</span>
-      </button>
+      <span class="result-label">✦ Negative Prompt</span>
+      <button class="copy-btn" onclick="copyResult()"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span id="copyLabel">Copy</span></button>
     </div>
-    <div class="result-text" id="resultText"></div>
+    <div class="result-text" id="resultText" style="font-family:monospace;font-size:13px;"></div>
   </div>
-  <div class="tip" id="tipBox">💡 Tip: Paste this into the Negative Prompt field in your image AI tool. It works alongside your main prompt to filter out unwanted results.</div>
-
-  <div class="ad-middle">
-    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8337511118941734" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-  </div>
+  <div class="tip" id="tipBox">💡 Paste this into the Negative Prompt field in your image AI tool. It works alongside your main prompt to filter out unwanted results.</div>
 
   <div class="faq-section">
     <h2>Frequently asked questions</h2>
-    <div class="faq-item">
-      <h3>What is a negative prompt?</h3>
-      <p>A negative prompt tells the AI what NOT to include in the image. It helps eliminate common problems like bad anatomy, extra fingers, blurry faces, artifacts, and low quality results.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Where do I paste the negative prompt?</h3>
-      <p>In Stable Diffusion and SDXL, there is a dedicated "Negative Prompt" input field below the main prompt box. In Midjourney, add it after your main prompt with the --no parameter.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Will this fix bad hands and fingers?</h3>
-      <p>Yes — select "Hands" focus and the tool generates specific negative prompts targeting extra fingers, fused hands, and distorted hand anatomy which are common issues in AI image generation.</p>
-    </div>
-    <div class="faq-item">
-      <h3>Is this tool free?</h3>
-      <p>Yes, completely free. No account or sign-up needed.</p>
-    </div>
+    <div class="faq-item"><h3>What is a negative prompt?</h3><p>A negative prompt tells the AI what NOT to include in the image — helping eliminate bad anatomy, extra fingers, blurry faces, artifacts, and low quality results.</p></div>
+    <div class="faq-item"><h3>Where do I paste the negative prompt?</h3><p>In Stable Diffusion and SDXL, there is a dedicated Negative Prompt input field below the main prompt box. In Midjourney, add it after your main prompt with the --no parameter.</p></div>
+    <div class="faq-item"><h3>Will this fix bad hands and fingers?</h3><p>Yes — select Hands focus and the tool generates specific negative prompts targeting extra fingers, fused hands, and distorted hand anatomy.</p></div>
+    <div class="faq-item"><h3>Is this free?</h3><p>Yes, completely free. No account or sign-up needed.</p></div>
   </div>
 </main>
 
 <footer>
   <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a></p>
-  <p style="margin-top: 6px;">Free AI prompt tools for everyone</p>
+  <p style="margin-top:6px;">Free AI prompt tools for everyone</p>
 </footer>
 
 <script>
-  let selectedTarget = 'Stable Diffusion XL (SDXL)';
-  let selectedFocus = 'anatomy and body proportions';
-
-  document.querySelectorAll('#targetGroup .pill').forEach(p => {
-    p.addEventListener('click', function() {
-      document.querySelectorAll('#targetGroup .pill').forEach(x => x.classList.remove('active'));
-      this.classList.add('active'); selectedTarget = this.dataset.val;
-    });
-  });
-  document.querySelectorAll('#focusGroup .pill').forEach(p => {
-    p.addEventListener('click', function() {
-      document.querySelectorAll('#focusGroup .pill').forEach(x => x.classList.remove('active'));
-      this.classList.add('active'); selectedFocus = this.dataset.val;
-    });
-  });
-
-  async function generatePrompt() {
-    const input = document.getElementById('inputPrompt').value.trim();
-    if (!input) { showError('Please enter your main prompt first.'); return; }
-
-    const btn = document.getElementById('enhanceBtn');
-    const errorMsg = document.getElementById('errorMsg');
-    const resultCard = document.getElementById('resultCard');
-    const tipBox = document.getElementById('tipBox');
-
-    btn.disabled = true;
-    btn.innerHTML = '<div class="spinner"></div> Generating...';
-    errorMsg.style.display = 'none';
-    resultCard.style.display = 'none';
-    tipBox.style.display = 'none';
-
-    try {
-      const response = await fetch('/api/enhance', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          prompt: `Generate a negative prompt for this image prompt: "${input}"`,
-          target: selectedTarget,
-          style: `focused on fixing ${selectedFocus}. Return ONLY a comma-separated list of negative prompt keywords and phrases optimized for ${selectedTarget}. No explanations, no preamble — just the negative prompt tags ready to paste directly into the negative prompt field.`
-        })
-      });
-
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Something went wrong');
-
-      document.getElementById('resultText').textContent = data.result;
-      resultCard.style.display = 'block';
-      tipBox.style.display = 'block';
-      resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    } catch (err) {
-      showError('Something went wrong: ' + err.message);
-    }
-
-    btn.disabled = false;
-    btn.innerHTML = 'Generate negative prompt';
+  window.addEventListener('load', PKTheme.init);
+  let selectedTarget='Stable Diffusion XL (SDXL)',selectedFocus='all common issues';
+  function setupPills(id,cb){document.querySelectorAll('#'+id+' .pill').forEach(p=>{p.addEventListener('click',function(){document.querySelectorAll('#'+id+' .pill').forEach(x=>x.classList.remove('active'));this.classList.add('active');cb(this.dataset.val);});});}
+  setupPills('targetGroup',v=>selectedTarget=v);
+  setupPills('focusGroup',v=>selectedFocus=v);
+  async function generatePrompt(){
+    const input=document.getElementById('inputPrompt').value.trim();
+    if(!input){showError('Please enter your main prompt first.');return;}
+    const btn=document.getElementById('enhanceBtn');
+    btn.disabled=true;btn.innerHTML='<div class="spinner"></div> Generating...';
+    document.getElementById('errorMsg').style.display='none';
+    document.getElementById('resultCard').style.display='none';
+    document.getElementById('tipBox').style.display='none';
+    try{
+      const r=await fetch('/api/enhance',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:`Generate a negative prompt for this image prompt: "${input}"`,target:selectedTarget,style:`focused on fixing ${selectedFocus}. Return ONLY a comma-separated list of negative prompt keywords optimized for ${selectedTarget}. No explanations, no preamble — just the negative prompt tags ready to paste.`})});
+      const d=await r.json();if(!r.ok)throw new Error(d.error||'Error');
+      document.getElementById('resultText').textContent=d.result;
+      document.getElementById('resultCard').style.display='block';
+      document.getElementById('tipBox').style.display='block';
+      document.getElementById('resultCard').scrollIntoView({behavior:'smooth',block:'nearest'});
+    }catch(e){showError('Something went wrong: '+e.message);}
+    btn.disabled=false;btn.innerHTML='🚫 Generate Negative Prompt';
   }
-
-  function showError(msg) { const el = document.getElementById('errorMsg'); el.textContent = msg; el.style.display = 'block'; }
-  function copyResult() {
-    navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(() => {
-      document.getElementById('copyLabel').textContent = 'Copied!';
-      setTimeout(() => document.getElementById('copyLabel').textContent = 'Copy', 2000);
-    });
-  }
+  function showError(m){const e=document.getElementById('errorMsg');e.textContent=m;e.style.display='block';}
+  function copyResult(){navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{document.getElementById('copyLabel').textContent='Copied!';setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);});}
 </script>
 </body>
 </html>
