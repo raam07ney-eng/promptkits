@@ -40,6 +40,9 @@
     .cta-section p{color:var(--text-secondary);font-size:15px;margin:0 0 24px;}
     .cta-link{display:inline-block;padding:13px 30px;background:#a89eff;color:#0d0d14;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:opacity 0.2s;}
     .cta-link:hover{opacity:0.85;}
+
+    .library-hero-img{width:100%;max-width:960px;height:320px;object-fit:cover;border-radius:16px;margin:0 auto 32px;display:block;border:1px solid var(--border-card);}
+    @media(max-width:600px){.library-hero-img{height:200px;border-radius:10px;}}
   </style>
 </head>
 <body>
@@ -72,6 +75,8 @@
     <div><div class="lib-stat-num">100%</div><div class="lib-stat-label">Free</div></div>
   </div>
 </div>
+
+<img class="library-hero-img" src="/images/hero-nature.jpg" alt="Sample AI generated image for prompt library" loading="lazy">
 
 <div class="filter-bar">
   <button class="filter-pill active" data-filter="all">All</button>
