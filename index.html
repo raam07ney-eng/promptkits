@@ -242,6 +242,11 @@
     }
     .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
 
+
+    .compact-card{padding:16px 18px !important;}
+    .compact-card h3{font-size:14px !important;}
+    .compact-card p{font-size:12px !important;margin-bottom:10px !important;}
+    .compact-card .tool-icon{font-size:20px !important;margin-bottom:8px !important;}
     /* Light theme handled automatically by CSS variables */
   </style>
 </head>
@@ -260,7 +265,6 @@
       <a href="/negative-prompt.html">🚫 Negative</a>
       <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
       <a href="/prompt-library.html">📚 Library</a>
-      <a href="/learn.html">🎓 Learn</a>
       <a href="/about.html">About</a>
       
     </nav>
@@ -292,7 +296,7 @@
 
 <!-- TOOLS -->
 <section class="tools-section">
-  <div class="tools-label">Choose your tool</div>
+  <div class="tools-label" style="font-size:13px;color:var(--text-primary);font-weight:700;letter-spacing:0.05em;">🛠 AI Prompt Tools</div>
   <div class="tools-grid">
 
     <a href="/image-prompt.html" class="tool-card featured">
@@ -354,19 +358,26 @@
       </div>
     </a>
 
-    <a href="/prompt-library.html" class="tool-card" style="border-color:rgba(168,158,255,0.3);background:rgba(168,158,255,0.06);">
-      <div class="tool-card-glow" style="background:radial-gradient(circle, rgba(168,158,255,0.35), transparent)"></div>
-      <span class="tool-icon">📚</span>
-      <h3>Prompt Library</h3>
-      <p>500+ free ready-to-copy cinematic prompts — video, drone, horror, food, portrait and more.</p>
-      <div class="tool-tag-row">
-        <span class="tool-tag">500+ prompts</span>
-        <span class="tool-tag">6 collections</span>
-      </div>
-    </a>
-
   </div>
 </section>
+
+<!-- QUICK LINKS -->
+<div style="max-width:900px;margin:-40px auto 64px;padding:0 24px;display:flex;gap:16px;flex-wrap:wrap;">
+  <a href="/prompt-library.html" style="display:flex;align-items:center;gap:10px;padding:14px 20px;border:1px solid var(--border-card);border-radius:10px;text-decoration:none;background:var(--bg-card);flex:1;min-width:220px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#a89eff'" onmouseout="this.style.borderColor=''">
+    <span style="font-size:22px;">📚</span>
+    <div>
+      <div style="font-size:14px;font-weight:600;color:var(--text-primary);">Free Prompt Library</div>
+      <div style="font-size:12px;color:var(--text-secondary);">700+ ready-to-copy prompts →</div>
+    </div>
+  </a>
+  <a href="/learn.html" style="display:flex;align-items:center;gap:10px;padding:14px 20px;border:1px solid var(--border-card);border-radius:10px;text-decoration:none;background:var(--bg-card);flex:1;min-width:220px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#a89eff'" onmouseout="this.style.borderColor=''">
+    <span style="font-size:22px;">🎓</span>
+    <div>
+      <div style="font-size:14px;font-weight:600;color:var(--text-primary);">Learn Prompt Writing</div>
+      <div style="font-size:12px;color:var(--text-secondary);">17 free lessons by a VFX artist →</div>
+    </div>
+  </a>
+</div>
 
 <!-- WHY -->
 <section class="why-section">
