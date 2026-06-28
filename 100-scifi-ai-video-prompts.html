@@ -76,7 +76,7 @@
   </div>
 </div>
 
-<img class="library-hero-img" src="/images/hero-scifi.jpg" alt="Sample AI generated image for prompt library" loading="lazy">
+<img class="library-hero-img" src="/images/hero-scifi.jpg" alt="Sample AI generated image" loading="lazy">
 
 <div class="filter-bar">
   <button class="filter-pill active" data-filter="all">All</button>
@@ -133,15 +133,16 @@ function copyPrompt(btn, id) {
   });
 }
 
-document.querySelectorAll('.filter-pill').forEach(pill => {
-  pill.addEventListener('click', function() {
-    document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-    this.classList.add('active');
-    renderPrompts(this.dataset.filter);
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.filter-pill').forEach(pill => {
+    pill.addEventListener('click', function() {
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+      renderPrompts(this.dataset.filter);
+    });
   });
+  renderPrompts('all');
 });
-
-renderPrompts('all');
 </script>
 </body>
 </html>
