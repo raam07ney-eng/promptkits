@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Video Prompt Guide – Learn Cinematic Prompt Writing | PromptKits</title>
+  <meta name="description" content="Complete guide to writing AI video prompts. Learn camera angles, lighting, consistency techniques, color grading language and cinematic prompt writing for Kling AI, Runway and Sora."/>
+  <link rel="canonical" href="https://promptkits.in/learn.html"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/theme.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
+  <style>
+    .learn-hero{text-align:center;padding:56px 24px 48px;max-width:700px;margin:0 auto;}
+    .learn-hero h1{font-size:clamp(28px,5vw,46px);font-weight:700;line-height:1.15;margin:0 0 16px;letter-spacing:-0.02em;}
+    .learn-hero h1 span{color:var(--accent);}
+    .learn-hero p{font-size:16px;line-height:1.65;color:var(--text-secondary);max-width:520px;margin:0 auto;}
+
+    .learn-nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:0 24px;margin-bottom:48px;}
+    .learn-nav-pill{padding:7px 18px;border-radius:20px;border:1px solid var(--border-card);background:transparent;color:var(--text-secondary);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s;text-decoration:none;}
+    .learn-nav-pill:hover,.learn-nav-pill.active{border-color:var(--accent);color:var(--accent);background:rgba(168,158,255,0.08);}
+
+    .learn-section{max-width:900px;margin:0 auto 64px;padding:0 24px;}
+    .learn-section-title{font-size:11px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+    .learn-section-title::after{content:'';flex:1;height:1px;background:var(--border-card);}
+
+    .lessons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+    .lesson-card{border:1px solid var(--border-card);border-radius:12px;padding:22px;background:var(--bg-card);cursor:pointer;transition:border-color 0.2s,transform 0.2s;position:relative;}
+    .lesson-card:hover{border-color:rgba(168,158,255,0.4);transform:translateY(-2px);}
+    .lesson-icon{font-size:28px;margin-bottom:12px;display:block;}
+    .lesson-level{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;}
+    .lesson-title{font-size:15px;font-weight:600;color:var(--text-primary);margin:0 0 8px;line-height:1.3;}
+    .lesson-desc{font-size:12.5px;line-height:1.6;color:var(--text-secondary);margin:0;}
+    .lesson-card .read-time{font-size:11px;color:var(--text-muted);margin-top:12px;}
+
+    /* Modal */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;overflow-y:auto;padding:24px;}
+    .modal-overlay.open{display:flex;align-items:flex-start;justify-content:center;}
+    .modal{background:var(--bg-card);border:1px solid var(--border-card);border-radius:16px;max-width:720px;width:100%;padding:36px;position:relative;margin:auto;}
+    .modal-close{position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--border-card);color:var(--text-secondary);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
+    .modal-close:hover{border-color:var(--accent);color:var(--accent);}
+    .modal-level{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+    .modal-title{font-size:24px;font-weight:700;color:var(--text-primary);margin:0 0 6px;line-height:1.3;}
+    .modal-read-time{font-size:12px;color:var(--text-muted);margin-bottom:24px;}
+    .modal hr{border:none;border-top:1px solid var(--border-card);margin:20px 0;}
+    .modal h3{font-size:16px;font-weight:600;color:var(--accent);margin:24px 0 10px;}
+    .modal p{font-size:14px;line-height:1.75;color:var(--text-secondary);margin:0 0 14px;}
+    .modal ul,.modal ol{padding-left:20px;margin:0 0 14px;}
+    .modal li{font-size:14px;line-height:1.75;color:var(--text-secondary);margin-bottom:6px;}
+    .modal strong{color:var(--text-primary);}
+    .code-block{background:var(--bg-adv);border:1px solid var(--border-card);border-radius:8px;padding:14px 16px;font-family:monospace;font-size:12.5px;line-height:1.7;color:var(--accent);margin:12px 0;white-space:pre-wrap;word-break:break-word;}
+    .tip-box{background:rgba(168,158,255,0.08);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:14px 16px;margin:14px 0;}
+    .tip-box p{margin:0;font-size:13px;color:var(--text-primary);}
+    .tip-box strong{color:var(--accent);}
+    .modal-footer{margin-top:28px;padding-top:20px;border-top:1px solid var(--border-card);display:flex;gap:12px;flex-wrap:wrap;}
+    .modal-cta{display:inline-block;padding:10px 20px;background:var(--accent);color:#0d0d14;font-weight:700;font-size:13px;border-radius:8px;text-decoration:none;}
+    .modal-cta-outline{display:inline-block;padding:10px 20px;border:1px solid var(--border-card);color:var(--text-secondary);font-size:13px;border-radius:8px;text-decoration:none;cursor:pointer;background:transparent;}
+    .modal-cta-outline:hover{border-color:var(--accent);color:var(--accent);}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/">
+    <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect x="7" y="5" width="5" height="22" rx="2" fill="white"/><path d="M12,5 Q25,5 25,13 Q25,21 12,21" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/><circle cx="25" cy="28" r="2.5" fill="#a89eff"/><circle cx="30" cy="23" r="1.5" fill="#a89eff"/><line x1="25" y1="28" x2="30" y2="23" stroke="#a89eff" stroke-width="1.2"/></svg></div>
+    <div class="logo-text"><span class="logo-p">Prompt</span><span class="logo-k">Kits</span></div>
+  </a>
+  <div class="header-right">
+    <nav>
+      <a href="/image-prompt.html">🖼 Image</a>
+      <a href="/video-prompt.html">🎬 Video</a>
+      <a href="/enhancer.html">✨ Enhancer</a>
+      <a href="/negative-prompt.html">🚫 Negative</a>
+      <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
+      <a href="/prompt-library.html">📚 Library</a>
+      <a href="/learn.html" class="active">🎓 Learn</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" onclick="PKTheme.toggle()">☀️ Light</button>
+  </div>
+</header>
+
+<div class="learn-hero">
+  <div class="badge"><div class="badge-dot"></div> Free Learning Hub</div>
+  <h1>Learn <span>Cinematic Prompt</span> Writing</h1>
+  <p>From basics to advanced — everything you need to write AI video prompts that actually look cinematic. Written by a VFX professional with 12 years of experience.</p>
+</div>
+
+<div class="learn-nav">
+  <a href="#beginner" class="learn-nav-pill">🌱 Beginner</a>
+  <a href="#intermediate" class="learn-nav-pill">📷 Intermediate</a>
+  <a href="#advanced" class="learn-nav-pill">🎬 Advanced</a>
+  <a href="#consistency" class="learn-nav-pill">🔗 Consistency</a>
+  <a href="#tools" class="learn-nav-pill">🛠 Tool Guides</a>
+</div>
+
+<div class="learn-section" id="beginner">
+  <div class="learn-section-title">🌱 Beginner</div>
+  <div class="lessons-grid" id="beginnerGrid"></div>
+</div>
+
+<div class="learn-section" id="intermediate">
+  <div class="learn-section-title">📷 Intermediate</div>
+  <div class="lessons-grid" id="intermediateGrid"></div>
+</div>
+
+<div class="learn-section" id="advanced">
+  <div class="learn-section-title">🎬 Advanced</div>
+  <div class="lessons-grid" id="advancedGrid"></div>
+</div>
+
+<div class="learn-section" id="consistency">
+  <div class="learn-section-title">🔗 Consistency & Scene Building</div>
+  <div class="lessons-grid" id="consistencyGrid"></div>
+</div>
+
+<div class="learn-section" id="tools">
+  <div class="learn-section-title">🛠 Tool-Specific Guides</div>
+  <div class="lessons-grid" id="toolsGrid"></div>
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="closeLesson()">✕</button>
+    <div class="modal-level" id="modalLevel"></div>
+    <div class="modal-title" id="modalTitle"></div>
+    <div class="modal-read-time" id="modalReadTime"></div>
+    <hr>
+    <div id="modalBody"></div>
+    <div class="modal-footer">
+      <a href="/video-prompt.html" class="modal-cta">🎬 Try Video Generator</a>
+      <span class="modal-cta-outline" onclick="closeLesson()">← Back to lessons</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/prompt-library.html">Prompt Library</a></p>
+  <p style="margin-top:6px;">Cinematic AI prompt tools — built by a VFX artist</p>
+</footer>
+
+<script>
+window.addEventListener('load', PKTheme.init);
+
+const lessons = {
+  beginner: [
+    {
+      icon: '🎯',
+      title: 'What is an AI Video Prompt?',
+      desc: 'Understand what prompts are, how AI reads them, and why word choice matters more than length.',
+      readTime: '3 min read',
+      content: `
+        <h3>What is an AI Video Prompt?</h3>
+        <p>An AI video prompt is a text description that tells an AI model what video to generate. Think of it as directions you give to a camera operator, director of photography, and set designer all at once.</p>
+        <p>The AI reads your text and tries to visualise exactly what you described. The more specific and cinematic your language, the better the result.</p>
+        <h3>How AI reads your prompt</h3>
+        <p>AI video models pay attention to several things in your prompt:</p>
+        <ul>
+          <li><strong>Subject</strong> — who or what is in the shot</li>
+          <li><strong>Action</strong> — what is happening</li>
+          <li><strong>Environment</strong> — where the scene takes place</li>
+          <li><strong>Camera</strong> — how the shot is framed and moves</li>
+          <li><strong>Lighting</strong> — the quality and direction of light</li>
+          <li><strong>Mood</strong> — the emotional tone of the scene</li>
+        </ul>
+        <h3>A basic prompt structure</h3>
+        <div class="code-block">[Camera move] of [subject] [action] in [environment], [lighting], [mood], [lens/style].</div>
+        <p>Example:</p>
+        <div class="code-block">Slow push-in on a detective standing in a rain-soaked alley at night, lit by a single flickering streetlamp, moody and tense, 35mm lens, film noir aesthetic.</div>
+        <div class="tip-box"><p><strong>💡 Key insight:</strong> You don't need to write long prompts. A focused 2-3 sentence prompt with clear cinematic language beats a vague 10-sentence description every time.</p></div>
+        <h3>Why word choice matters</h3>
+        <p>The AI has been trained on millions of films, photographs, and descriptions. Using real filmmaking language — the words cinematographers and directors actually use — gives you dramatically better results than everyday language.</p>
+        <p>Compare these two prompts for the same scene:</p>
+        <div class="code-block">❌ A person walking in a dark city at night with rain</div>
+        <div class="code-block">✅ Tracking shot following a lone figure through rain-soaked streets at 3am, neon reflections on wet pavement, shallow depth of field, teal and orange color grade, anamorphic lens flares</div>
+      `
+    },
+    {
+      icon: '🏗',
+      title: 'Basic Prompt Structure',
+      desc: 'The simple formula for writing prompts that consistently produce cinematic results.',
+      readTime: '4 min read',
+      content: `
+        <h3>The Core Formula</h3>
+        <p>Every great AI video prompt has the same basic structure. Master this and you can write prompts for any scene.</p>
+        <div class="code-block">[Shot type] + [Subject] + [Action] + [Environment] + [Lighting] + [Style/Mood]</div>
+        <h3>Breaking it down</h3>
+        <p><strong>Shot type</strong> — how the camera sees the scene:</p>
+        <ul>
+          <li>Wide shot, medium shot, close-up</li>
+          <li>Tracking shot, dolly, crane, aerial</li>
+          <li>Handheld, steadicam, locked off</li>
+        </ul>
+        <p><strong>Subject</strong> — who or what is the focus:</p>
+        <ul>
+          <li>Be specific — "a middle-aged woman in a red coat" not just "a woman"</li>
+          <li>Include key visual details that define the character</li>
+        </ul>
+        <p><strong>Action</strong> — what is happening:</p>
+        <ul>
+          <li>Use active, visual verbs</li>
+          <li>"striding through" not just "walking"</li>
+          <li>"clutching" not just "holding"</li>
+        </ul>
+        <p><strong>Environment</strong> — where and when:</p>
+        <ul>
+          <li>Time of day matters enormously for light</li>
+          <li>Weather adds mood and texture</li>
+          <li>Specific locations beat generic ones</li>
+        </ul>
+        <p><strong>Lighting</strong> — the single most important element:</p>
+        <ul>
+          <li>Golden hour, blue hour, overcast, harsh midday</li>
+          <li>Practical lights — neon, candle, streetlamp</li>
+          <li>Studio setups — rim light, key light, fill</li>
+        </ul>
+        <p><strong>Style/Mood</strong> — the feel of the shot:</p>
+        <ul>
+          <li>Color grades — teal and orange, desaturated, warm vintage</li>
+          <li>Film references — documentary, noir, epic, intimate</li>
+          <li>Technical — anamorphic, film grain, shallow DOF</li>
+        </ul>
+        <h3>Full example</h3>
+        <div class="code-block">Aerial crane shot [shot type] of an elderly fisherman [subject] pulling in his nets at dawn [action] on a misty lake surrounded by mountains [environment], soft diffused morning light [lighting], peaceful and meditative, slight film grain, wide anamorphic lens [style].</div>
+        <div class="tip-box"><p><strong>💡 Start simple:</strong> Begin with just shot type + subject + lighting. Add more elements as you get comfortable. You don't need all six elements in every prompt.</p></div>
+      `
+    },
+    {
+      icon: '❌',
+      title: 'Common Beginner Mistakes',
+      desc: 'The 7 mistakes that make AI video look amateur — and exactly how to fix each one.',
+      readTime: '5 min read',
+      content: `
+        <h3>Mistake 1 — Being too vague</h3>
+        <div class="code-block">❌ A beautiful sunset scene with someone walking</div>
+        <div class="code-block">✅ Slow tracking shot following a silhouetted figure along a beach at golden hour, the sun setting directly behind them, long shadow stretching toward camera, warm amber tones, wide anamorphic frame</div>
+        <p>The AI needs specifics. Vague prompts produce generic results.</p>
+        <h3>Mistake 2 — Forgetting camera movement</h3>
+        <p>Most beginners describe the scene but forget to say how the camera moves. This is one of the biggest differences between amateur and cinematic results.</p>
+        <div class="code-block">❌ A car driving through a city at night</div>
+        <div class="code-block">✅ Low angle tracking shot alongside a car driving through a rain-soaked city at night, keeping pace with the vehicle, neon reflections on the wet road, motion blur on the surroundings</div>
+        <h3>Mistake 3 — No lighting information</h3>
+        <p>Lighting is the most powerful element in any shot. Without it, the AI guesses — and rarely guesses what you wanted.</p>
+        <div class="code-block">❌ A woman sitting by a window</div>
+        <div class="code-block">✅ A woman sitting by a rain-streaked window, soft natural light from the left casting gentle shadows across her face, warm interior light providing fill from behind</div>
+        <h3>Mistake 4 — Using non-visual language</h3>
+        <p>AI can only visualise things. Emotional or conceptual descriptions without visual anchors don't work.</p>
+        <div class="code-block">❌ A sad and lonely scene about lost hope</div>
+        <div class="code-block">✅ Static wide shot of an empty park bench in winter rain, fallen leaves collecting around it, a single crow landing briefly then leaving, cold desaturated tones, overcast flat light</div>
+        <h3>Mistake 5 — Too many subjects</h3>
+        <p>AI struggles with crowds of named subjects. Focus each prompt on one main subject with others as context.</p>
+        <div class="code-block">❌ John, Sarah, Mike and Emma are all talking at a party while the DJ plays music and people dance</div>
+        <div class="code-block">✅ Close-up of a woman at a party, the crowd behind her out of focus, colored party lights, she's speaking to someone just off camera, candid and natural</div>
+        <h3>Mistake 6 — Ignoring aspect ratio and format</h3>
+        <p>Mentioning the format tells the AI what kind of content this is.</p>
+        <div class="code-block">✅ Add: "cinematic 2.39:1 anamorphic ratio" for films</div>
+        <div class="code-block">✅ Add: "16:9 documentary style" for video content</div>
+        <h3>Mistake 7 — Copying prompts without adapting</h3>
+        <p>Generic copied prompts produce generic results. Always adapt prompts to your specific scene, character, and environment.</p>
+        <div class="tip-box"><p><strong>💡 Fix them all at once:</strong> Use our <a href="/video-prompt.html" style="color:var(--accent)">Video Prompt Generator</a> — it automatically applies all these principles to your scene description.</p></div>
+      `
+    },
+    {
+      icon: '🎨',
+      title: 'Understanding Color Grades',
+      desc: 'How to use color language in your prompts to set the exact mood you want.',
+      readTime: '4 min read',
+      content: `
+        <h3>Why Color Grade Matters</h3>
+        <p>Color grade is the overall tonal treatment of an image — the combination of hues, contrast, and saturation that gives a film its look. Mentioning it in your prompt tells the AI the emotional territory of the shot.</p>
+        <h3>Essential color grades and what they mean</h3>
+        <p><strong>Teal and Orange</strong> — the most common Hollywood blockbuster look. Skin tones pushed orange, shadows pushed teal. Action films, thrillers.</p>
+        <div class="code-block">"teal and orange color grade, high contrast"</div>
+        <p><strong>Warm Vintage</strong> — lifted shadows, warm highlights, slightly desaturated. Period pieces, nostalgic content.</p>
+        <div class="code-block">"warm vintage color grade, lifted blacks, golden tones"</div>
+        <p><strong>Cold Desaturated</strong> — muted colors, pushed blue. Crime dramas, psychological thrillers, dystopian content.</p>
+        <div class="code-block">"cold desaturated color grade, muted palette, blue shadows"</div>
+        <p><strong>High Contrast Black and White</strong> — classic noir, documentary, artistic.</p>
+        <div class="code-block">"black and white, high contrast, deep shadows"</div>
+        <p><strong>Natural/Clean</strong> — minimal color correction, true to life. Documentary, slice of life.</p>
+        <div class="code-block">"natural color grade, clean and true to life"</div>
+        <p><strong>Cyberpunk Neon</strong> — high saturation, neon colors dominating, deep shadows.</p>
+        <div class="code-block">"neon cyberpunk color grade, highly saturated, deep blacks"</div>
+        <p><strong>Golden Hour</strong> — warm amber and gold, long shadows, soft contrast.</p>
+        <div class="code-block">"golden hour warmth, amber tones, soft contrast"</div>
+        <h3>Combining grade with lighting</h3>
+        <p>Color grade and lighting work together. Always mention both:</p>
+        <div class="code-block">Moonlit night exterior + cold blue desaturated grade = perfect horror or thriller look
+
+Golden hour backlight + warm vintage grade = romantic or epic feel
+
+Neon practical lights + cyberpunk grade = sci-fi or urban noir</div>
+        <div class="tip-box"><p><strong>💡 Pro tip:</strong> Pick your grade based on emotion, not aesthetics. Ask yourself — how do I want the audience to feel? Then choose the grade that creates that feeling.</p></div>
+      `
+    },
+  ],
+  intermediate: [
+    {
+      icon: '📐',
+      title: 'Camera Angles Explained',
+      desc: 'Every camera angle, what it communicates emotionally, and when to use it in your prompts.',
+      readTime: '6 min read',
+      content: `
+        <h3>Why Camera Angle Matters</h3>
+        <p>Camera angle is one of the most powerful storytelling tools in filmmaking. The same scene shot from a different angle tells a completely different story. Here's every angle you need to know.</p>
+        <h3>Eye Level</h3>
+        <p>Camera at the subject's eye height. Neutral, equal, relatable. The default angle.</p>
+        <div class="code-block">"eye level shot" — neutral, documentary, observational</div>
+        <h3>Low Angle</h3>
+        <p>Camera below the subject, looking up. Makes subjects look powerful, dominant, heroic or threatening.</p>
+        <div class="code-block">"low angle shot looking up at" — power, dominance, heroism, threat</div>
+        <h3>High Angle</h3>
+        <p>Camera above the subject, looking down. Makes subjects look vulnerable, small, observed, or overwhelmed.</p>
+        <div class="code-block">"high angle shot looking down at" — vulnerability, smallness, surveillance</div>
+        <h3>Bird's Eye / Overhead</h3>
+        <p>Camera directly above, looking straight down. Abstract, pattern-revealing, god-like perspective.</p>
+        <div class="code-block">"bird's eye overhead shot directly above" — pattern, scale, isolation</div>
+        <h3>Dutch Tilt / Canted Angle</h3>
+        <p>Camera rotated on its axis so the horizon is diagonal. Unease, psychological disturbance, disorientation.</p>
+        <div class="code-block">"dutch tilt, canted angle" — unease, horror, disorientation</div>
+        <h3>Over the Shoulder (OTS)</h3>
+        <p>Camera behind one subject looking toward another. Intimacy, conversation, the relationship between two people.</p>
+        <div class="code-block">"over the shoulder shot" — conversation, relationship, intimacy</div>
+        <h3>Point of View (POV)</h3>
+        <p>Camera represents the subject's eyes. Immersion, first person, the world through the character's perspective.</p>
+        <div class="code-block">"first person POV shot" — immersion, subjective experience</div>
+        <h3>Worm's Eye</h3>
+        <p>Extreme low angle, camera at ground level looking up. Maximum power, extreme scale, architectural grandeur.</p>
+        <div class="code-block">"worm's eye view from ground level" — extreme scale, maximum power</div>
+        <div class="tip-box"><p><strong>💡 Rule of thumb:</strong> High angles weaken subjects. Low angles strengthen them. Use this to control how the audience feels about every character in every shot.</p></div>
+      `
+    },
+    {
+      icon: '🎥',
+      title: 'Camera Movements',
+      desc: 'Dolly, pan, tilt, crane, tracking — every camera move explained with prompt examples.',
+      readTime: '6 min read',
+      content: `
+        <h3>Static vs Moving Camera</h3>
+        <p>A static (locked off) camera creates stability, tension, or observation. A moving camera creates energy, follows action, or reveals information. Choose based on what the scene needs emotionally.</p>
+        <h3>Pan</h3>
+        <p>Camera rotates horizontally on a fixed axis. Used to follow action or reveal a space.</p>
+        <div class="code-block">"slow pan left across the skyline" / "pan following the running figure"</div>
+        <h3>Tilt</h3>
+        <p>Camera rotates vertically on a fixed axis. Reveals height, shows scale from bottom to top or top to bottom.</p>
+        <div class="code-block">"slow tilt up from the ground to the tower top" / "tilt down revealing the valley below"</div>
+        <h3>Dolly / Push-in / Pull-out</h3>
+        <p>Camera physically moves toward or away from the subject on a track. Creates intimacy (push in) or reveals context (pull out).</p>
+        <div class="code-block">"slow dolly push-in on the face" / "dolly pull-back revealing the full scene"</div>
+        <h3>Tracking Shot</h3>
+        <p>Camera moves alongside a moving subject, keeping pace. Energy, movement, following the action.</p>
+        <div class="code-block">"tracking shot following the subject from behind" / "side tracking shot alongside the vehicle"</div>
+        <h3>Crane / Jib</h3>
+        <p>Camera moves vertically on a crane arm, often combined with horizontal movement. Epic reveals, grand scale, God's perspective.</p>
+        <div class="code-block">"crane shot rising above the crowd" / "crane descending into the marketplace"</div>
+        <h3>Aerial / Drone</h3>
+        <p>Camera mounted on a drone, moving freely through space. Establishes location, reveals scale, follows action from above.</p>
+        <div class="code-block">"aerial drone shot pulling back" / "drone flying low over the landscape"</div>
+        <h3>Handheld</h3>
+        <p>Camera held by operator, with natural movement and slight shake. Documentary realism, urgency, authenticity.</p>
+        <div class="code-block">"handheld camera, slight natural shake" — realism, urgency, documentary</div>
+        <h3>Steadicam</h3>
+        <p>Camera on a stabilised rig, smooth movement through space. Fluid, following, immersive without being shaky.</p>
+        <div class="code-block">"steadicam following through the space" — smooth, immersive, fluid</div>
+        <h3>Orbit / 360</h3>
+        <p>Camera circles the subject in a complete arc. Reveals all angles, dramatic emphasis, the subject as centre of attention.</p>
+        <div class="code-block">"slow 360 orbit around the subject" — drama, revelation, emphasis</div>
+        <div class="tip-box"><p><strong>💡 Match movement to emotion:</strong> Fast handheld = chaos and urgency. Slow dolly push-in = growing tension or intimacy. Crane rise = revelation and scale. Always ask why the camera is moving.</p></div>
+      `
+    },
+    {
+      icon: '💡',
+      title: 'Lighting Setups for AI Video',
+      desc: 'Natural light, studio setups, practical lights — how to describe lighting that transforms your shots.',
+      readTime: '7 min read',
+      content: `
+        <h3>Lighting is Everything</h3>
+        <p>If you could only improve one element of your prompts, it would be lighting. Light defines mood, reveals texture, creates depth, and tells the audience how to feel about what they're watching.</p>
+        <h3>Natural Light Sources</h3>
+        <p><strong>Golden Hour</strong> — 30-60 minutes after sunrise or before sunset. Warm, directional, long shadows, flattering.</p>
+        <div class="code-block">"golden hour sunlight, warm amber tones, long shadows"</div>
+        <p><strong>Blue Hour</strong> — just before sunrise or after sunset. Cool, soft, magical quality.</p>
+        <div class="code-block">"blue hour, cool ambient light, the sky still glowing"</div>
+        <p><strong>Overcast</strong> — clouds act as a giant softbox. Even, soft, no harsh shadows. Great for faces.</p>
+        <div class="code-block">"overcast sky, soft diffused light, no harsh shadows"</div>
+        <p><strong>Harsh Midday</strong> — direct overhead sun. Hard shadows, high contrast, unflattering but dramatic.</p>
+        <div class="code-block">"harsh midday sunlight, strong overhead shadows, high contrast"</div>
+        <p><strong>Moonlight</strong> — cold, low intensity, blue-tinted. Night scenes with visibility.</p>
+        <div class="code-block">"moonlit night, cold blue light, deep shadows"</div>
+        <h3>Practical Lights</h3>
+        <p>Practical lights are light sources visible in the frame — they exist in the scene itself.</p>
+        <div class="code-block">"neon sign casting colored light" — cyberpunk, urban night
+"candle light, warm flickering glow" — intimate, historical, horror
+"streetlamp, sodium vapor orange light" — noir, urban, lonely
+"fire light, dynamic warm glow" — primal, danger, warmth
+"fluorescent office light" — clinical, institutional, mundane</div>
+        <h3>Classic Lighting Patterns</h3>
+        <p><strong>Rembrandt</strong> — one light source at 45 degrees, triangle of light on shadow cheek. Dramatic, classical portraits.</p>
+        <div class="code-block">"Rembrandt lighting, single key light at 45 degrees, deep shadows"</div>
+        <p><strong>Split Lighting</strong> — light directly to the side, half face lit, half in shadow. Maximum drama.</p>
+        <div class="code-block">"split lighting, one half of the face in complete shadow"</div>
+        <p><strong>Backlighting</strong> — light source behind the subject. Silhouette, halo effect, separation from background.</p>
+        <div class="code-block">"backlit by the window, silhouette with detail, rim light on hair"</div>
+        <p><strong>Volumetric / God Rays</strong> — light made visible by particles in the air. Dramatic, spiritual, epic.</p>
+        <div class="code-block">"volumetric light, god rays, light made visible through dust and mist"</div>
+        <div class="tip-box"><p><strong>💡 VFX insight:</strong> In professional VFX, we spend more time lighting than almost anything else. A mediocre composition with beautiful lighting beats a perfect composition with flat lighting every time.</p></div>
+      `
+    },
+    {
+      icon: '🎭',
+      title: 'Mood and Atmosphere Writing',
+      desc: 'How to write the emotional tone of a scene so the AI captures exactly what you feel.',
+      readTime: '5 min read',
+      content: `
+        <h3>Mood vs Atmosphere</h3>
+        <p><strong>Mood</strong> is the emotional state — how the scene makes you feel. <strong>Atmosphere</strong> is the environmental texture — the sensory world the scene exists in. Great prompts define both.</p>
+        <h3>Mood words that work</h3>
+        <p>These words have strong visual associations the AI understands:</p>
+        <div class="code-block">Tension — tight framing, shallow focus, still camera
+Dread — wide shots, empty space, slow movement
+Joy — wide angles, bright light, dynamic movement
+Melancholy — muted color, slow pace, isolation in frame
+Epic — wide shots, low angles, scale and grandeur
+Intimate — close-ups, shallow DOF, soft light
+Urgent — handheld, fast cuts implied, tight frames
+Peaceful — still camera, wide open spaces, gentle light</div>
+        <h3>Atmosphere through environment</h3>
+        <p>Environment details create atmosphere without stating it:</p>
+        <div class="code-block">Rain — sadness, cleansing, urban, romantic or threatening
+Fog / Mist — mystery, the unknown, memory, horror
+Wind — restlessness, nature's power, change coming
+Snow — isolation, purity, silence, danger
+Heat haze — disorientation, desert, summer, the unreal
+Dust — history, decay, the old west, aftermath</div>
+        <h3>Combining mood and atmosphere</h3>
+        <div class="code-block">Dread + fog + empty streets + slow camera = horror
+
+Melancholy + rain + empty park bench + static camera = loss
+
+Epic + golden hour + low angle + crane shot = triumph
+
+Tension + tight space + single practical light + locked camera = thriller</div>
+        <h3>What to avoid</h3>
+        <p>Avoid abstract emotional statements the AI can't visualise:</p>
+        <div class="code-block">❌ "a scene full of hope and regret"
+✅ "a man standing at a crossroads at dawn, one path in sunlight, one in shadow, he looks at both"</div>
+        <div class="tip-box"><p><strong>💡 Show don't tell:</strong> This is the oldest rule in storytelling and it applies directly to AI prompts. Don't tell the AI the mood — show it through visual elements that create that mood.</p></div>
+      `
+    },
+  ],
+  advanced: [
+    {
+      icon: '🎬',
+      title: 'Cinematic Language from Real Filmmaking',
+      desc: 'The vocabulary professional cinematographers use — applied directly to AI prompt writing.',
+      readTime: '8 min read',
+      content: `
+        <h3>Speak the Language of Cinema</h3>
+        <p>AI video models have been trained on real films and cinematography descriptions. Using professional filmmaking vocabulary gives dramatically better results because the AI recognises these terms from its training data.</p>
+        <h3>Lens Language</h3>
+        <p><strong>Anamorphic</strong> — the widescreen cinema look. Oval bokeh, horizontal lens flares, 2.39:1 aspect ratio.</p>
+        <div class="code-block">"anamorphic lens, oval bokeh, horizontal lens flares, 2.39:1 ratio"</div>
+        <p><strong>Wide angle (16-24mm)</strong> — exaggerated perspective, deep depth of field, environmental context.</p>
+        <div class="code-block">"wide angle 24mm lens, deep focus, environmental wide shot"</div>
+        <p><strong>Standard (35-50mm)</strong> — closest to human eye, natural perspective, versatile.</p>
+        <div class="code-block">"standard 35mm lens, natural perspective"</div>
+        <p><strong>Telephoto (85-200mm)</strong> — compressed perspective, shallow DOF, subject isolated from background.</p>
+        <div class="code-block">"85mm portrait lens, compressed background, shallow depth of field"</div>
+        <p><strong>Macro</strong> — extreme close-up, tiny details at large scale.</p>
+        <div class="code-block">"macro lens, extreme close-up detail"</div>
+        <h3>Depth of Field</h3>
+        <p><strong>Shallow DOF</strong> — subject sharp, background blurred (bokeh). Focus and intimacy.</p>
+        <div class="code-block">"shallow depth of field, soft bokeh background"</div>
+        <p><strong>Deep focus</strong> — everything sharp from foreground to background. Scale, environment, context.</p>
+        <div class="code-block">"deep focus, everything sharp from foreground to background"</div>
+        <h3>Film Stock and Format</h3>
+        <div class="code-block">"16mm film grain" — indie, documentary, raw authenticity
+"35mm film" — classic cinema, warm, slight grain
+"IMAX" — maximum scale, extreme detail, epic
+"digital clean" — modern, sharp, commercial</div>
+        <h3>Professional terms that work</h3>
+        <div class="code-block">"rack focus from foreground to background" — shift attention
+"motivated camera movement" — camera moves for a reason
+"practical lighting" — lights visible in the scene
+"available light only" — natural, documentary
+"high key lighting" — bright, commercial, even
+"low key lighting" — dark, dramatic, noir
+"chiaroscuro" — extreme light and dark contrast</div>
+        <div class="tip-box"><p><strong>💡 VFX professional insight:</strong> In 12 years of VFX work, the shots that are hardest to fix in post are the ones with bad lighting and wrong lens choices. Get these right in your prompt and the AI does 80% of the work correctly.</p></div>
+      `
+    },
+    {
+      icon: '✂️',
+      title: 'Shot Types and Storytelling',
+      desc: 'How to choose the right shot type for each moment in your story — and why it matters.',
+      readTime: '6 min read',
+      content: `
+        <h3>Every Shot Tells Part of the Story</h3>
+        <p>Shot selection is one of the director's most powerful tools. Each shot type carries an inherent meaning that the audience reads unconsciously.</p>
+        <h3>Establishing Shot</h3>
+        <p>Wide shot that sets the location and context. Always use at the start of a new scene.</p>
+        <div class="code-block">"wide establishing shot of [location], setting the scene"</div>
+        <h3>Wide Shot (WS)</h3>
+        <p>Shows the full subject and significant environment. Scale, isolation, context.</p>
+        <div class="code-block">"wide shot showing the full figure against the landscape"</div>
+        <h3>Medium Shot (MS)</h3>
+        <p>Subject from waist up. The conversational shot. Most dialogue happens here.</p>
+        <div class="code-block">"medium shot from the waist up"</div>
+        <h3>Medium Close-Up (MCU)</h3>
+        <p>Chest to head. The interview shot. More intimate than medium.</p>
+        <div class="code-block">"medium close-up from the chest up"</div>
+        <h3>Close-Up (CU)</h3>
+        <p>Face filling the frame. Emotion, reaction, the internal state of a character.</p>
+        <div class="code-block">"close-up on the face, full frame"</div>
+        <h3>Extreme Close-Up (ECU)</h3>
+        <p>One detail — an eye, a hand, a specific object. Maximum emphasis, maximum tension.</p>
+        <div class="code-block">"extreme close-up of the eyes only" / "extreme close-up of the trigger finger"</div>
+        <h3>Insert Shot</h3>
+        <p>Close-up of a specific object relevant to the story. The gun, the letter, the watch.</p>
+        <div class="code-block">"insert shot close-up of the [object], sharp focus"</div>
+        <h3>Two Shot</h3>
+        <p>Two subjects in the same frame. The relationship between them, conversation, tension.</p>
+        <div class="code-block">"two shot with both subjects in frame, eye level"</div>
+        <h3>Cutaway</h3>
+        <p>Shot of something related to but not part of the main action. Context, time passing, reaction.</p>
+        <div class="code-block">"cutaway to [related element] while the main action continues"</div>
+        <div class="tip-box"><p><strong>💡 Storytelling rule:</strong> Wide shots establish. Medium shots explain. Close-ups feel. Use this rhythm when building a sequence of prompts for a scene.</p></div>
+      `
+    },
+  ],
+  consistency: [
+    {
+      icon: '🔗',
+      title: 'Maintaining Consistency Across Shots',
+      desc: 'The most important skill in AI filmmaking — keeping character, lighting, and environment consistent across multiple shots.',
+      readTime: '8 min read',
+      content: `
+        <h3>The Biggest Problem in AI Video</h3>
+        <p>You can generate a beautiful shot in Kling AI. Then generate the next shot of the same scene — and the character looks completely different. The lighting has changed. The environment doesn't match. This is the consistency problem, and it's the biggest challenge in AI filmmaking.</p>
+        <p>The solution is systematic prompt construction — building a consistent description framework for your scene and applying it to every shot.</p>
+        <h3>The Scene Bible Approach</h3>
+        <p>Before generating any shots, write a Scene Bible — a fixed description of every consistent element. This gets pasted into every prompt in the scene.</p>
+        <div class="code-block">CHARACTER: [Name] — [age], [build], [distinctive features], [clothing description in detail]
+ENVIRONMENT: [Specific location description], [time of day], [weather]
+LIGHTING: [Light source], [direction], [quality], [color temperature]
+COLOR GRADE: [Specific grade]
+LENS: [Specific lens]
+ASPECT RATIO: [Format]</div>
+        <h3>Example Scene Bible</h3>
+        <div class="code-block">CHARACTER: Maya — early 30s, slim build, short black hair, wearing a dark green military jacket with worn elbows, carrying a leather satchel
+ENVIRONMENT: A rain-soaked alley in a cyberpunk city, 3am, neon signs reflecting on wet pavement
+LIGHTING: Practical neon light from the left, deep shadows on the right, rain creating light scatter
+COLOR GRADE: Teal and orange, high contrast, slightly desaturated
+LENS: Anamorphic, horizontal lens flares
+ASPECT RATIO: 2.39:1 cinematic</div>
+        <h3>Applying to Individual Shots</h3>
+        <p>Each shot prompt = Scene Bible + Shot-specific action and camera:</p>
+        <div class="code-block">SHOT 1 — Wide establishing:
+Wide establishing shot of Maya [CHARACTER DESCRIPTION] standing at the alley entrance [ENVIRONMENT], [LIGHTING], [GRADE], [LENS].
+
+SHOT 2 — Medium:
+Medium shot of Maya [CHARACTER] pulling her jacket collar up against the rain [ENVIRONMENT], the neon light catching the raindrops [LIGHTING], [GRADE], [LENS].
+
+SHOT 3 — Close-up:
+Close-up on Maya's face [CHARACTER face details] as she scans the alley, rain on her face, the neon reflections in her eyes [LIGHTING], [GRADE], [LENS].</div>
+        <h3>The Character Anchor</h3>
+        <p>The most important consistency element is the character description. Be extremely specific about:</p>
+        <ul>
+          <li><strong>Clothing</strong> — exact colors, specific garments, any distinctive details</li>
+          <li><strong>Hair</strong> — color, length, style, any wet or windblown state</li>
+          <li><strong>Build and age</strong> — approximate, consistent descriptors</li>
+          <li><strong>One distinctive feature</strong> — a scar, glasses, a specific accessory</li>
+        </ul>
+        <h3>The Lighting Anchor</h3>
+        <p>Light direction must be consistent across all shots in a scene. If the key light comes from the left in shot 1, it must come from the left in every shot. Specify this explicitly:</p>
+        <div class="code-block">"key light from screen left throughout" — add this to every prompt in the scene</div>
+        <h3>Environment Anchoring</h3>
+        <p>Use the same specific location descriptors in every shot:</p>
+        <div class="code-block">❌ "a dark alley" in shot 1, "a city street" in shot 2
+✅ "the rain-soaked neon-lit alley with the red Dragon sign visible on the left wall" in every shot</div>
+        <h3>Testing Consistency</h3>
+        <p>Before committing to a full scene, test with 3 shots — wide, medium, close-up. Check:</p>
+        <ul>
+          <li>Does the character's clothing match across all three?</li>
+          <li>Is the light coming from the same direction?</li>
+          <li>Does the environment feel like the same location?</li>
+          <li>Is the color grade consistent?</li>
+        </ul>
+        <p>If yes — your Scene Bible is working. Generate the full scene.</p>
+        <div class="tip-box"><p><strong>💡 VFX insight:</strong> In professional VFX, we use continuity supervisors whose entire job is catching inconsistencies between shots. You're doing this job yourself when you build your Scene Bible. The more detailed it is, the less fixing you'll need to do later.</p></div>
+      `
+    },
+    {
+      icon: '🎬',
+      title: 'Building a Full Scene — Shot by Shot',
+      desc: 'How to plan and generate a complete multi-shot scene with consistent results in Kling AI or Runway.',
+      readTime: '7 min read',
+      content: `
+        <h3>Thinking in Sequences</h3>
+        <p>A scene is not a single shot — it's a sequence of shots that together tell a story. Professional filmmakers plan sequences before shooting a single frame. You need to do the same before generating a single prompt.</p>
+        <h3>The Standard Scene Structure</h3>
+        <p>Most scenes follow this shot progression:</p>
+        <ol>
+          <li><strong>Establishing shot</strong> — where are we? What's the scale?</li>
+          <li><strong>Medium shot</strong> — who is here? What are they doing?</li>
+          <li><strong>Close-up</strong> — how do they feel? What's the detail?</li>
+          <li><strong>Reaction shot</strong> — what's the response?</li>
+          <li><strong>Insert shot</strong> — what's the important object or detail?</li>
+          <li><strong>Wide shot</strong> — back to context, the scene resolved</li>
+        </ol>
+        <h3>Planning your scene before prompting</h3>
+        <p>Write a simple shot list first:</p>
+        <div class="code-block">Scene: Detective arrives at crime scene
+
+Shot 1 — Wide establishing: Empty warehouse, night, police lights outside
+Shot 2 — Medium: Detective enters through the door, surveying the space
+Shot 3 — POV: What the detective sees — the body, the evidence
+Shot 4 — Close-up: Detective's face, reading the scene
+Shot 5 — Insert: Key evidence detail — the murder weapon, a note
+Shot 6 — Wide: Detective calling it in on radio, the full crime scene visible</div>
+        <h3>Writing the prompts</h3>
+        <p>With your shot list done, write each prompt using your Scene Bible. The shot type changes, everything else stays consistent.</p>
+        <div class="code-block">Shot 1:
+Wide establishing shot of an abandoned warehouse interior at night, police lights strobing blue and red through the broken windows, empty and vast, cold and clinical lighting, desaturated color grade, 35mm lens, film grain.
+
+Shot 2:
+Medium shot of Detective Chen [40s, weathered face, dark coat, badge on belt] entering through a side door, his breath visible in the cold air, the police lights from outside silhouetting him briefly, cold desaturated grade, 35mm lens.
+
+Shot 3:
+POV shot from Detective Chen's perspective as he surveys the warehouse, the camera moving slowly across the scene, stopping on key elements, the investigation beginning, cold light, 35mm lens, same grade.</div>
+        <h3>The Cutaway Rule</h3>
+        <p>Always include at least one cutaway — a shot of something in the environment that isn't the main subject. It gives you editing options and makes the scene feel real.</p>
+        <div class="code-block">"cutaway close-up of [environmental detail] — water dripping from the ceiling, a rat in the corner, the clock on the wall stopped" — these make your scene feel inhabited and real</div>
+        <div class="tip-box"><p><strong>💡 Pro workflow:</strong> Generate all shots from your Scene Bible. Then review them together. The ones that don't match — identify exactly which element broke consistency (usually clothing or light direction) and fix that specific element in a new prompt.</p></div>
+      `
+    },
+    {
+      icon: '👤',
+      title: 'Character Consistency Techniques',
+      desc: 'Advanced methods for keeping your AI character looking the same across every shot in a scene.',
+      readTime: '6 min read',
+      content: `
+        <h3>The Character Consistency Challenge</h3>
+        <p>AI video models don't have memory between generations. Every time you generate a new shot, the AI starts fresh. This means your character can look completely different from shot to shot unless you anchor them with extremely specific descriptions.</p>
+        <h3>The Character Fingerprint Method</h3>
+        <p>Build a character fingerprint — a set of 4-5 very specific visual details that uniquely identify this character. Use all of them in every prompt.</p>
+        <div class="code-block">Character fingerprint for "Maya":
+1. Short asymmetric black hair with a shaved left side
+2. Dark green military jacket with a distinctive red patch on the left shoulder
+3. Round wire-frame glasses
+4. A small scar on the right cheekbone
+5. Always carrying a weathered brown leather satchel</div>
+        <p>Any one of these details in isolation might produce different results. All five together lock in the character.</p>
+        <h3>Clothing Consistency</h3>
+        <p>Clothing is the most visible consistency element. Be extremely specific:</p>
+        <div class="code-block">❌ "wearing a jacket" — too vague, AI will interpret differently each time
+✅ "wearing a dark olive green military field jacket, slightly oversized, collar turned up, two breast pockets, worn at the elbows" — specific enough to be consistent</div>
+        <h3>The Reference Anchor Technique</h3>
+        <p>Include a specific visual anchor that appears in every shot — an object the character always interacts with or that is always visible:</p>
+        <div class="code-block">"the leather satchel visible over her left shoulder in every shot"
+"his silver watch on the left wrist, always visible"
+"the red scarf wrapped around her neck throughout"</div>
+        <h3>Facial Consistency</h3>
+        <p>Be specific about facial features using descriptive but neutral language:</p>
+        <div class="code-block">"sharp angular jawline, high cheekbones, deep-set dark eyes, prominent nose bridge, thin lips"</div>
+        <h3>Shot Distance and Consistency</h3>
+        <p>Consistency is easier to maintain in wider shots. Close-ups are the hardest to keep consistent because the AI focuses on facial details where variation is most visible.</p>
+        <p>Strategy: Generate close-ups last. By the time you've generated wide and medium shots, you'll know exactly which character description elements are working and can refine the close-up prompt accordingly.</p>
+        <h3>The Wardrobe Lock</h3>
+        <p>At the end of your character description, always add:</p>
+        <div class="code-block">"maintaining consistent costume and appearance throughout the scene"</div>
+        <p>This signals to the AI that continuity matters in this prompt.</p>
+        <div class="tip-box"><p><strong>💡 Reality check:</strong> Perfect character consistency across AI-generated shots is still very difficult with current technology. The goal is maximising similarity, not achieving perfection. Even professional AI productions do extensive selection — generating 10 shots to find 3 that match well enough to cut together.</p></div>
+      `
+    },
+  ],
+  tools: [
+    {
+      icon: '🎞',
+      title: 'Writing Prompts for Kling AI',
+      desc: 'Kling AI specific tips, optimal prompt length, what works and what to avoid.',
+      readTime: '5 min read',
+      content: `
+        <h3>Kling AI Overview</h3>
+        <p>Kling AI is currently one of the best AI video generators for cinematic content. It handles camera movement particularly well and responds strongly to cinematography language. Here's how to get the best results.</p>
+        <h3>Optimal Prompt Length</h3>
+        <p>Kling AI works best with prompts of 50-150 words. Too short and you lose control. Too long and the model starts ignoring elements.</p>
+        <div class="code-block">Sweet spot: 2-4 sentences covering the key elements
+Maximum: 5-6 sentences with all details</div>
+        <h3>What Kling AI does well</h3>
+        <ul>
+          <li><strong>Camera movement</strong> — responds very well to specific camera move descriptions</li>
+          <li><strong>Lighting</strong> — golden hour, practical lights, dramatic setups all render well</li>
+          <li><strong>Landscapes and environments</strong> — excellent at wide scenic shots</li>
+          <li><strong>Slow motion</strong> — specify "slow motion" or "0.5x speed" for best results</li>
+        </ul>
+        <h3>What to watch out for</h3>
+        <ul>
+          <li><strong>Human faces in close-up</strong> — can be inconsistent, generate multiple</li>
+          <li><strong>Text in frame</strong> — avoid asking for readable text</li>
+          <li><strong>Very complex multi-subject scenes</strong> — simplify and build up</li>
+        </ul>
+        <h3>Best prompt structure for Kling AI</h3>
+        <div class="code-block">[Camera movement] of [specific subject with key details], [environment with time of day], [lighting description], [mood], [color grade], [lens type].</div>
+        <h3>Kling AI specific terms that work well</h3>
+        <div class="code-block">"cinematic 4K" — activates quality mode
+"professional cinematography" — improves overall quality
+"film production quality" — pushes toward cinematic look
+"anamorphic lens" — distinctive cinema look
+"shallow depth of field" — background blur
+"slow cinematic movement" — controlled, deliberate camera</div>
+        <div class="tip-box"><p><strong>💡 Kling tip:</strong> Generate at least 3 variations of each important shot. Kling interprets prompts differently each time. Select the best and use it. 3 variations gives you real choice.</p></div>
+      `
+    },
+    {
+      icon: '✈️',
+      title: 'Writing Prompts for Runway',
+      desc: 'Runway Gen-3 specific techniques, prompt structure, and how to use its unique features.',
+      readTime: '5 min read',
+      content: `
+        <h3>Runway Gen-3 Overview</h3>
+        <p>Runway Gen-3 Alpha excels at photorealistic human subjects and handles complex motion well. It's particularly strong for character-focused shots and has good consistency within a single generation.</p>
+        <h3>Runway's Strengths</h3>
+        <ul>
+          <li><strong>Human subjects</strong> — more consistent human faces than many competitors</li>
+          <li><strong>Fine detail</strong> — handles texture and surface detail well</li>
+          <li><strong>Motion quality</strong> — fluid, natural movement</li>
+          <li><strong>Shorter clips, higher quality</strong> — better results at 4-5 seconds than 10+</li>
+        </ul>
+        <h3>Prompt approach for Runway</h3>
+        <p>Runway responds well to descriptive, scene-setting language rather than technical camera instructions. Think more like a director's note than a technical specification.</p>
+        <div class="code-block">❌ "tracking shot at 35mm f1.8 ISO 800 in Log C"
+✅ "following closely behind as she runs through the crowd, the world blurring around her, her face determined and focused"</div>
+        <h3>Runway specific keywords</h3>
+        <div class="code-block">"photorealistic" — pushes toward real-world quality
+"cinematic lighting" — improves overall lighting quality
+"high detail" — increases texture and surface quality
+"professional color grade" — improves color treatment
+"smooth camera movement" — reduces jitter</div>
+        <h3>Character prompting in Runway</h3>
+        <p>Runway handles character descriptions particularly well. Be specific about:</p>
+        <div class="code-block">"[Age range] [ethnicity if relevant] [build] [specific facial features] [exact clothing description]"</div>
+        <div class="tip-box"><p><strong>💡 Runway tip:</strong> For human subjects, generate 5-10 seconds maximum for best quality. For environments and landscapes, longer clips work better. Match your clip length to your content type.</p></div>
+      `
+    },
+    {
+      icon: '🌐',
+      title: 'Writing Prompts for Sora',
+      desc: 'OpenAI Sora prompt techniques, what makes it unique, and how to get cinematic results.',
+      readTime: '4 min read',
+      content: `
+        <h3>Sora Overview</h3>
+        <p>Sora by OpenAI is capable of generating longer, more physically coherent video than most competitors. It understands spatial relationships and physics particularly well, making it excellent for complex scenes.</p>
+        <h3>Sora's Key Strengths</h3>
+        <ul>
+          <li><strong>Physical coherence</strong> — objects behave realistically</li>
+          <li><strong>Longer clips</strong> — maintains coherence over longer durations</li>
+          <li><strong>Complex scenes</strong> — handles multiple subjects and interactions</li>
+          <li><strong>Environment detail</strong> — rich, detailed world-building</li>
+        </ul>
+        <h3>How to prompt Sora</h3>
+        <p>Sora responds very well to narrative, descriptive language. Write as if describing a scene to someone who will film it — focus on what's happening, not just what things look like.</p>
+        <div class="code-block">"A woman walks through a crowded Tokyo street at night, the neon signs reflected in puddles on the pavement. She stops, looks up at a building, then continues walking. The camera follows her from behind at eye level, the crowd parting around her."</div>
+        <h3>Sora specific approaches</h3>
+        <div class="code-block">Describe the action sequence in narrative order
+Include cause and effect — "she pushes the door and it swings open"
+Specify duration implicitly — "slowly crosses the room" vs "quickly turns"
+Include environmental interaction — "her coat catching the wind"</div>
+        <h3>What Sora handles uniquely well</h3>
+        <ul>
+          <li>Multiple subjects interacting naturally</li>
+          <li>Objects with realistic physics — water, cloth, fire</li>
+          <li>Continuous action over 15-60 second clips</li>
+          <li>Complex environments with many moving elements</li>
+        </ul>
+        <div class="tip-box"><p><strong>💡 Sora tip:</strong> Think of Sora prompts as mini screenplays rather than technical descriptions. Narrative language works better here than camera-technical language. Save the lens and grade specifications for the end of the prompt.</p></div>
+      `
+    },
+    {
+      icon: '🖼',
+      title: 'Video Prompts vs Image Prompts',
+      desc: 'Key differences between writing for video AI and image AI — and how to adapt your prompts.',
+      readTime: '4 min read',
+      content: `
+        <h3>The Fundamental Difference</h3>
+        <p>Image prompts describe a single frozen moment. Video prompts describe a moment in time — with movement, change, and duration. This changes how you write them significantly.</p>
+        <h3>What Video Adds</h3>
+        <ul>
+          <li><strong>Camera movement</strong> — the camera itself is moving through time</li>
+          <li><strong>Subject movement</strong> — what is the subject doing over the duration?</li>
+          <li><strong>Change over time</strong> — what changes between the start and end of the clip?</li>
+          <li><strong>Sound implication</strong> — video has implied audio, image does not</li>
+        </ul>
+        <h3>Image prompt → Video prompt adaptation</h3>
+        <div class="code-block">Image prompt:
+"A lighthouse on rocky cliffs at sunset, dramatic sky, waves crashing, golden hour light, wide angle"
+
+Video prompt adaptation:
+"Slow orbital drone shot around a lighthouse on rocky cliffs at sunset, the waves crashing against the rocks below, the lighthouse beam beginning to rotate as the light fades, camera completing a 180-degree arc, golden hour transitioning to blue hour, wide anamorphic lens"</div>
+        <h3>Key additions for video</h3>
+        <div class="code-block">Add: Camera movement description
+Add: Subject action over time
+Add: Environmental change (light changing, wind moving, water flowing)
+Add: Duration implication (slow, fast, lingering)
+Remove or reduce: Static composition language
+Remove: Resolution/megapixel specifications (not relevant for video)</div>
+        <h3>When image prompts work for video</h3>
+        <p>Some video AI tools (especially Kling AI) can generate good video from image-style prompts. The AI adds movement automatically. But for controlled, intentional camera work — always write explicitly for video.</p>
+        <div class="tip-box"><p><strong>💡 Quick test:</strong> Read your prompt aloud. If it describes something static with no movement, it's an image prompt. If it describes something happening over time with implied duration, it's a video prompt. Add movement and you're there.</p></div>
+      `
+    },
+  ]
+};
+
+function renderGrid(gridId, items, level) {
+  const grid = document.getElementById(gridId);
+  grid.innerHTML = items.map((lesson, index) => `
+    <div class="lesson-card" onclick="openLesson('${level}', ${index})">
+      <span class="lesson-icon">${lesson.icon}</span>
+      <div class="lesson-level">${level.charAt(0).toUpperCase() + level.slice(1)}</div>
+      <div class="lesson-title">${lesson.title}</div>
+      <p class="lesson-desc">${lesson.desc}</p>
+      <div class="read-time">⏱ ${lesson.readTime}</div>
+    </div>
+  `).join('');
+}
+
+renderGrid('beginnerGrid', lessons.beginner, 'beginner');
+renderGrid('intermediateGrid', lessons.intermediate, 'intermediate');
+renderGrid('advancedGrid', lessons.advanced, 'advanced');
+renderGrid('consistencyGrid', lessons.consistency, 'consistency');
+renderGrid('toolsGrid', lessons.tools, 'tools');
+
+function openLesson(level, index) {
+  const lesson = lessons[level][index];
+  document.getElementById('modalLevel').textContent = level.charAt(0).toUpperCase() + level.slice(1);
+  document.getElementById('modalTitle').textContent = lesson.title;
+  document.getElementById('modalReadTime').textContent = '⏱ ' + lesson.readTime;
+  document.getElementById('modalBody').innerHTML = lesson.content;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLesson() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeLesson();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLesson(); });
+</script>
+</body>
+</html>
