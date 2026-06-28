@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PromptKits – Cinematic AI Prompt Generator for Filmmakers & Creators</title>
+  <meta name="description" content="Free cinematic AI prompt tools built by a VFX artist. Generate image and video prompts for Midjourney, Kling AI, Runway, ComfyUI and more.   No sign-up needed."/>
+
+  <link rel="canonical" href="https://promptkits.in/"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/theme.js"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
+  <style>
+    /* ── Homepage-only styles ── */
+    .home-hero {
+      text-align: center;
+      padding: 72px 24px 56px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .home-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+    .home-eyebrow-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent, #a89eff);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.4; transform:scale(0.7); }
+    }
+    .home-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 62px);
+      font-weight: 700;
+      line-height: 1.12;
+      margin: 0 0 20px;
+      letter-spacing: -0.02em;
+    }
+    .home-hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .home-hero p {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+    .filmstrip {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 56px;
+      opacity: 0.35;
+    }
+    .filmstrip-cell {
+      width: 28px; height: 18px;
+      border: 1px solid currentColor;
+      border-radius: 2px;
+      position: relative;
+    }
+    .filmstrip-cell::before,
+    .filmstrip-cell::after {
+      content:'';
+      position:absolute;
+      width:5px; height:4px;
+      background: currentColor;
+      border-radius:1px;
+      left:50%; transform:translateX(-50%);
+    }
+    .filmstrip-cell::before { top:-5px; }
+    .filmstrip-cell::after  { bottom:-5px; }
+
+    /* Tool grid */
+    .tools-section {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .tools-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .tool-card {
+      display: block;
+      text-decoration: none;
+      border: 1px solid var(--border-card);
+      border-radius: 14px;
+      padding: 28px 24px;
+      background: var(--bg-card);
+      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .tool-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      background: var(--bg-card-hover);
+    }
+    .tool-card-glow {
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .tool-card:hover .tool-card-glow { opacity: 1; }
+    .tool-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .tool-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 0 0 8px;
+      color: var(--text-primary);
+    }
+    .tool-card p {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 0 0 16px;
+    }
+    .tool-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tool-tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: var(--pill-bg);
+      color: var(--text-secondary);
+      letter-spacing: 0.02em;
+      border: 1px solid var(--pill-border);
+    }
+    .tool-card.featured {
+      border-color: var(--accent);
+      background: var(--bg-result);
+    }
+    .featured-badge {
+      position: absolute;
+      top: 16px; right: 16px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(168,158,255,0.15);
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+
+    /* Why section */
+    .why-section {
+      max-width: 900px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      margin-top: 24px;
+    }
+    .why-item h4 {
+      font-size: 15px;
+      font-weight: 600;
+      margin: 0 0 6px;
+    }
+    .why-item p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin: 0;
+    }
+    .why-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    /* CTA strip */
+    .cta-strip {
+      text-align: center;
+      padding: 56px 24px;
+      border-top: 1px solid var(--border, rgba(255,255,255,0.08));
+      max-width: 600px;
+      margin: 0 auto 0;
+    }
+    .cta-strip h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(24px, 4vw, 36px);
+      font-style: italic;
+      margin: 0 0 12px;
+    }
+    .cta-strip p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      margin: 0 0 28px;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--accent, #a89eff);
+      color: #0d0d14;
+      font-weight: 700;
+      font-size: 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+
+
+    .compact-card{padding:16px 18px !important;}
+    .compact-card h3{font-size:14px !important;}
+    .compact-card p{font-size:12px !important;margin-bottom:10px !important;}
+    .compact-card .tool-icon{font-size:20px !important;margin-bottom:8px !important;}
+    /* Light theme handled automatically by CSS variables */
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">
+    <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect x="7" y="5" width="5" height="22" rx="2" fill="white"/><path d="M12,5 Q25,5 25,13 Q25,21 12,21" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/><circle cx="25" cy="28" r="2.5" fill="#a89eff"/><circle cx="30" cy="23" r="1.5" fill="#a89eff"/><line x1="25" y1="28" x2="30" y2="23" stroke="#a89eff" stroke-width="1.2"/></svg></div>
+    <div class="logo-text"><span class="logo-p">Prompt</span><span class="logo-k">Kits</span></div>
+  </a>
+  <div class="header-right">
+    <nav>
+      <a href="/image-prompt.html">🖼 Image</a>
+      <a href="/video-prompt.html">🎬 Video</a>
+      <a href="/enhancer.html">✨ Enhancer</a>
+      <a href="/negative-prompt.html">🚫 Negative</a>
+      <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
+      <a href="/prompt-library.html">📚 Library</a>
+      <a href="/about.html">About</a>
+      
+    </nav>
+    <button class="theme-btn" id="themeBtn" onclick="PKTheme.toggle()">☀️ Light</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="home-hero">
+  <div class="home-eyebrow">
+    <div class="home-eyebrow-dot"></div>
+    Cinematic AI Prompt Tools
+  </div>
+  <h1>Craft prompts that<br><em>look like cinema</em></h1>
+  <p>Built by a VFX artist. Every tool is tuned for filmmakers, AI video creators, and visual storytellers — not generic chatbot users.</p>
+
+  <div class="filmstrip">
+    <div class="filmstrip-cell"></div>
+    <div class="filmstrip-cell"></div>
+    <div class="filmstrip-cell"></div>
+    <div class="filmstrip-cell"></div>
+    <div class="filmstrip-cell"></div>
+    <div class="filmstrip-cell"></div>
+    <div class="filmstrip-cell"></div>
+    <div class="filmstrip-cell"></div>
+    <div class="filmstrip-cell"></div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools-section">
+  <div class="tools-label" style="font-size:13px;color:var(--text-primary);font-weight:700;letter-spacing:0.05em;">🛠 AI Prompt Tools</div>
+  <div class="tools-grid">
+
+    <a href="/image-prompt.html" class="tool-card featured">
+      <div class="featured-badge">Popular</div>
+      <div class="tool-card-glow" style="background:radial-gradient(circle, rgba(168,158,255,0.4), transparent)"></div>
+      <span class="tool-icon">🖼</span>
+      <h3>Cinematic Image Prompt</h3>
+      <p>Generate detailed image prompts with shot type, lighting, lens, and mood — ready for Midjourney, DALL-E, or ComfyUI.</p>
+      <div class="tool-tag-row">
+        <span class="tool-tag">Midjourney</span>
+        <span class="tool-tag">DALL-E</span>
+        <span class="tool-tag">ComfyUI</span>
+      </div>
+    </a>
+
+    <a href="/video-prompt.html" class="tool-card">
+      <div class="tool-card-glow" style="background:radial-gradient(circle, rgba(255,180,100,0.3), transparent)"></div>
+      <span class="tool-icon">🎬</span>
+      <h3>Cinematic Video Prompt</h3>
+      <p>Build motion prompts with camera movement, scene pacing, and visual style for AI video tools.</p>
+      <div class="tool-tag-row">
+        <span class="tool-tag">Kling AI</span>
+        <span class="tool-tag">Runway</span>
+        <span class="tool-tag">Pika</span>
+      </div>
+    </a>
+
+    <a href="/enhancer.html" class="tool-card">
+      <div class="tool-card-glow" style="background:radial-gradient(circle, rgba(100,220,180,0.3), transparent)"></div>
+      <span class="tool-icon">✨</span>
+      <h3>Prompt Enhancer</h3>
+      <p>Paste any rough idea and get a polished, structured prompt tuned for your target AI platform.</p>
+      <div class="tool-tag-row">
+        <span class="tool-tag">ChatGPT</span>
+        <span class="tool-tag">Claude</span>
+        <span class="tool-tag">Gemini</span>
+      </div>
+    </a>
+
+    <a href="/negative-prompt.html" class="tool-card">
+      <div class="tool-card-glow" style="background:radial-gradient(circle, rgba(255,100,100,0.25), transparent)"></div>
+      <span class="tool-icon">🚫</span>
+      <h3>Negative Prompt Builder</h3>
+      <p>Eliminate unwanted elements — blurriness, bad anatomy, artifacts — before they ruin your render.</p>
+      <div class="tool-tag-row">
+        <span class="tool-tag">Stable Diffusion</span>
+        <span class="tool-tag">SDXL</span>
+      </div>
+    </a>
+
+    <a href="/image-to-prompt.html" class="tool-card">
+      <div class="tool-card-glow" style="background:radial-gradient(circle, rgba(100,180,255,0.3), transparent)"></div>
+      <span class="tool-icon">🔍</span>
+      <h3>Image → Prompt</h3>
+      <p>Upload any reference image and reverse-engineer a prompt you can feed straight into your AI tool.</p>
+      <div class="tool-tag-row">
+        <span class="tool-tag">Any image</span>
+        <span class="tool-tag">Style match</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- QUICK LINKS -->
+<div style="max-width:900px;margin:-40px auto 64px;padding:0 24px;display:flex;gap:16px;flex-wrap:wrap;">
+  <a href="/prompt-library.html" style="display:flex;align-items:center;gap:10px;padding:14px 20px;border:1px solid var(--border-card);border-radius:10px;text-decoration:none;background:var(--bg-card);flex:1;min-width:220px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#a89eff'" onmouseout="this.style.borderColor=''">
+    <span style="font-size:22px;">📚</span>
+    <div>
+      <div style="font-size:14px;font-weight:600;color:var(--text-primary);">Free Prompt Library</div>
+      <div style="font-size:12px;color:var(--text-secondary);">700+ ready-to-copy prompts →</div>
+    </div>
+  </a>
+  <a href="/learn.html" style="display:flex;align-items:center;gap:10px;padding:14px 20px;border:1px solid var(--border-card);border-radius:10px;text-decoration:none;background:var(--bg-card);flex:1;min-width:220px;transition:border-color 0.2s;" onmouseover="this.style.borderColor='#a89eff'" onmouseout="this.style.borderColor=''">
+    <span style="font-size:22px;">🎓</span>
+    <div>
+      <div style="font-size:14px;font-weight:600;color:var(--text-primary);">Learn Prompt Writing</div>
+      <div style="font-size:12px;color:var(--text-secondary);">17 free lessons by a VFX artist →</div>
+    </div>
+  </a>
+</div>
+
+<!-- WHY -->
+<section class="why-section">
+  <div class="tools-label">Why PromptKits</div>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-icon">🎥</div>
+      <h4>VFX-grade thinking</h4>
+      <p>Every tool is built with real production knowledge — shot language, lighting logic, lens behaviour.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">⚡</div>
+      <h4>One click, usable output</h4>
+      <p>No copying between tabs. Generate, copy, paste into your AI tool. Done.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🆓</div>
+      <h4>Completely free</h4>
+      <p>No account, no paywall, no hidden limits. All tools are free to use.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-icon">🎯</div>
+      <h4>Built for creators</h4>
+      <p>Targeted for filmmakers, VFX artists, YouTubers, and AI video creators — not generic chatbot users.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-strip">
+  <h2>Start with your first scene</h2>
+  <p>Pick a tool above, or jump straight into the cinematic image prompt builder.</p>
+  <a href="/image-prompt.html" class="cta-btn">→ Build a cinematic prompt</a>
+</div>
+
+<footer>
+  <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a></p>
+  <p style="margin-top:6px;">Cinematic AI prompt tools for creators</p>
+</footer>
+
+<script>
+  window.addEventListener('load', PKTheme.init);
+</script>
+</body>
+</html>
