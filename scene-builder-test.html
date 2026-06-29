@@ -1,475 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Scene Builder — Consistent Shot List Generator (Test) | PromptKits</title>
+<title>Scene Builder Test | PromptKits</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --bg: #0d0d14;
-    --bg-card: #13131f;
-    --bg-input: #1a1a2e;
-    --border: rgba(255,255,255,0.08);
-    --border-accent: rgba(168,158,255,0.4);
-    --accent: #a89eff;
-    --accent-dark: #7c6fff;
-    --text: #f0eeff;
-    --text-secondary: #8888aa;
-    --text-muted: #55556a;
-    --success: #4caf80;
-    --red: #ff6b6b;
-    --radius: 10px;
-  }
-
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 32px 16px 64px;
-  }
-
-  .container { max-width: 800px; margin: 0 auto; }
-
-  /* Header */
-  .header { text-align: center; margin-bottom: 40px; }
-  .header-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 16px;
-  }
-  .header-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:0.4;transform:scale(0.7);} }
-  .header h1 { font-size: 32px; font-weight: 700; line-height: 1.2; margin-bottom: 10px; letter-spacing: -0.02em; }
-  .header h1 span { color: var(--accent); }
-  .header p { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
-
-  /* API Key box */
-  .api-box {
-    background: rgba(168,158,255,0.06);
-    border: 1px solid var(--border-accent);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    margin-bottom: 28px;
-    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-  }
-  .api-box label { font-size: 13px; font-weight: 500; color: var(--accent); white-space: nowrap; }
-  .api-box input {
-    flex: 1; min-width: 200px;
-    background: var(--bg-input); border: 1px solid var(--border);
-    border-radius: 6px; padding: 8px 12px;
-    color: var(--text); font-size: 13px; font-family: monospace;
-  }
-  .api-box input:focus { outline: none; border-color: var(--border-accent); }
-  .api-note { font-size: 11px; color: var(--text-muted); width: 100%; }
-
-  /* Section */
-  .section {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 24px;
-    margin-bottom: 16px;
-  }
-  .section-title {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
-  }
-  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-  /* Form fields */
-  .field { margin-bottom: 16px; }
-  .field:last-child { margin-bottom: 0; }
-  .field label { display: block; font-size: 12px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
-  .field input, .field textarea, .field select {
-    width: 100%;
-    background: var(--bg-input);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 14px;
-    color: var(--text);
-    font-size: 13px;
-    font-family: 'Inter', sans-serif;
-    transition: border-color 0.15s;
-  }
-  .field input:focus, .field textarea:focus, .field select:focus {
-    outline: none; border-color: var(--border-accent);
-  }
-  .field textarea { resize: vertical; min-height: 72px; line-height: 1.5; }
-  .field select { cursor: pointer; }
-  .field select option { background: var(--bg-input); }
-
-  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  @media(max-width: 500px) { .field-row { grid-template-columns: 1fr; } }
-
-  /* Pill selectors */
-  .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
-  .pill {
-    padding: 5px 12px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-secondary);
-    font-size: 12px; font-weight: 500;
-    cursor: pointer; transition: all 0.15s;
-    font-family: 'Inter', sans-serif;
-  }
-  .pill:hover { border-color: var(--accent); color: var(--accent); }
-  .pill.active { border-color: var(--accent); color: var(--accent); background: rgba(168,158,255,0.1); }
-
-  /* Shot checkboxes */
-  .shots-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  @media(max-width:500px) { .shots-grid { grid-template-columns: 1fr; } }
-  .shot-item {
-    display: flex; align-items: flex-start; gap: 10px;
-    padding: 12px 14px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .shot-item:hover { border-color: rgba(168,158,255,0.3); }
-  .shot-item.selected { border-color: var(--accent); background: rgba(168,158,255,0.06); }
-  .shot-item input[type=checkbox] { margin-top: 2px; accent-color: var(--accent); cursor: pointer; }
-  .shot-label { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
-  .shot-desc { font-size: 11px; color: var(--text-muted); line-height: 1.4; }
-
-  /* Characters section */
-  .char-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  @media(max-width:500px) { .char-grid { grid-template-columns: 1fr; } }
-  .char-card {
-    background: var(--bg-input);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
-  }
-  .char-card-title {
-    font-size: 12px; font-weight: 600; color: var(--accent);
-    margin-bottom: 12px; letter-spacing: 0.05em;
-  }
-
-  /* Generate button */
-  .generate-btn {
-    width: 100%;
-    padding: 16px;
-    background: var(--accent);
-    color: #0d0d14;
-    font-size: 15px; font-weight: 700;
-    border: none; border-radius: 10px;
-    cursor: pointer; transition: opacity 0.2s;
-    margin-top: 20px;
-    font-family: 'Inter', sans-serif;
-  }
-  .generate-btn:hover { opacity: 0.88; }
-  .generate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-
-  /* Spinner */
-  .spinner {
-    display: inline-block; width: 16px; height: 16px;
-    border: 2px solid rgba(13,13,20,0.3);
-    border-top-color: #0d0d14;
-    border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    vertical-align: middle; margin-right: 8px;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
-  /* Results */
-  .results { margin-top: 24px; display: none; }
-  .result-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 16px;
-  }
-  .result-title { font-size: 14px; font-weight: 600; color: var(--text); }
-  .copy-all-btn {
-    padding: 8px 16px;
-    background: transparent;
-    border: 1px solid var(--border-accent);
-    border-radius: 6px;
-    color: var(--accent);
-    font-size: 12px; font-weight: 600;
-    cursor: pointer; transition: all 0.15s;
-    font-family: 'Inter', sans-serif;
-  }
-  .copy-all-btn:hover { background: rgba(168,158,255,0.1); }
-
-  .shot-result {
-    background: var(--bg-input);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px;
-    margin-bottom: 12px;
-  }
-  .shot-result-header {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 12px;
-  }
-  .shot-result-name {
-    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--accent);
-  }
-  .copy-shot-btn {
-    padding: 4px 10px;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    color: var(--text-secondary);
-    font-size: 11px; cursor: pointer;
-    transition: all 0.15s;
-    font-family: 'Inter', sans-serif;
-  }
-  .copy-shot-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .copy-shot-btn.copied { border-color: var(--success); color: var(--success); }
-  .shot-prompt-text {
-    font-size: 13px; line-height: 1.7;
-    color: var(--text); white-space: pre-wrap;
-  }
-
-  .error-msg {
-    background: rgba(255,107,107,0.1);
-    border: 1px solid rgba(255,107,107,0.3);
-    border-radius: 8px;
-    padding: 12px 16px;
-    font-size: 13px; color: var(--red);
-    margin-top: 12px; display: none;
-  }
-
-  .divider { height: 1px; background: var(--border); margin: 8px 0 24px; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#0d0d14;--card:#13131f;--input:#1a1a2e;--border:rgba(255,255,255,0.08);--accent:#a89eff;--text:#f0eeff;--muted:#8888aa;--dim:#55556a;--green:#4caf80;--red:#ff6b6b;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:32px 16px 64px;}
+.wrap{max-width:800px;margin:0 auto;}
+.header{text-align:center;margin-bottom:36px;}
+.badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+h1{font-size:30px;font-weight:700;line-height:1.2;margin-bottom:8px;}
+h1 span{color:var(--accent);}
+.sub{font-size:14px;color:var(--muted);line-height:1.6;}
+.api-box{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.3);border-radius:10px;padding:14px 18px;margin-bottom:24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.api-box label{font-size:13px;font-weight:500;color:var(--accent);white-space:nowrap;}
+.api-box input{flex:1;min-width:200px;background:var(--input);border:1px solid var(--border);border-radius:6px;padding:8px 12px;color:var(--text);font-size:13px;font-family:monospace;}
+.api-box input:focus{outline:none;border-color:var(--accent);}
+.note{font-size:11px;color:var(--dim);width:100%;}
+.section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:14px;}
+.stitle{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.stitle::after{content:'';flex:1;height:1px;background:var(--border);}
+.field{margin-bottom:14px;}
+.field:last-child{margin-bottom:0;}
+.field label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:5px;}
+.field input,.field textarea,.field select{width:100%;background:var(--input);border:1px solid var(--border);border-radius:8px;padding:9px 13px;color:var(--text);font-size:13px;font-family:'Inter',sans-serif;transition:border-color 0.15s;}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);}
+.field textarea{resize:vertical;min-height:68px;line-height:1.5;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:500px){.row2{grid-template-columns:1fr;}}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+.pill{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:12px;font-weight:500;cursor:pointer;transition:all 0.15s;font-family:'Inter',sans-serif;}
+.pill:hover{border-color:var(--accent);color:var(--accent);}
+.pill.active{border-color:var(--accent);color:var(--accent);background:rgba(168,158,255,0.1);}
+.chars{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:500px){.chars{grid-template-columns:1fr;}}
+.char-card{background:var(--input);border:1px solid var(--border);border-radius:10px;padding:14px;}
+.char-title{font-size:11px;font-weight:600;color:var(--accent);margin-bottom:10px;letter-spacing:0.05em;}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:500px){.shots{grid-template-columns:1fr;}}
+.shot{display:flex;align-items:flex-start;gap:9px;padding:11px 13px;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.15s;}
+.shot:hover{border-color:rgba(168,158,255,0.3);}
+.shot.selected{border-color:var(--accent);background:rgba(168,158,255,0.06);}
+.shot input{margin-top:2px;accent-color:var(--accent);cursor:pointer;}
+.shot-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.shot-desc{font-size:11px;color:var(--dim);line-height:1.4;}
+.gen-btn{width:100%;padding:15px;background:var(--accent);color:#0d0d14;font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;margin-top:18px;font-family:'Inter',sans-serif;transition:opacity 0.2s;}
+.gen-btn:hover{opacity:0.88;}
+.gen-btn:disabled{opacity:0.5;cursor:not-allowed;}
+.spinner{display:inline-block;width:15px;height:15px;border:2px solid rgba(13,13,20,0.3);border-top-color:#0d0d14;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.err{background:rgba(255,107,107,0.1);border:1px solid rgba(255,107,107,0.3);border-radius:8px;padding:12px 16px;font-size:13px;color:var(--red);margin-top:12px;display:none;}
+.results{margin-top:22px;display:none;}
+.res-section{background:rgba(168,158,255,0.04);border:1px solid rgba(168,158,255,0.2);border-radius:12px;padding:20px;margin-bottom:14px;}
+.res-title{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.workflow-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:12px;color:var(--muted);line-height:1.6;}
+.workflow-tip strong{color:var(--accent);}
+.shot-result{background:var(--input);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:10px;}
+.shot-result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+.shot-label{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);}
+.shot-sub{font-size:10px;color:var(--dim);margin-top:2px;}
+.copy-btn{padding:4px 10px;background:transparent;border:1px solid var(--border);border-radius:5px;color:var(--muted);font-size:11px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent);}
+.copy-btn.ok{border-color:var(--green);color:var(--green);}
+.prompt-text{font-size:13px;line-height:1.7;color:var(--text);}
+.copy-all-btn{padding:8px 16px;background:transparent;border:1px solid rgba(168,158,255,0.3);border-radius:6px;color:var(--accent);font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;}
+.copy-all-btn:hover{background:rgba(168,158,255,0.1);}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
 
-  <div class="header">
-    <div class="header-badge"><div class="header-dot"></div> PromptKits — Local Test</div>
-    <h1>🎬 <span>Scene Builder</span></h1>
-    <p>Fill your scene bible once. Get consistent reference images + shot prompts for every angle — ready for Kling AI, Runway and Midjourney.</p>
+<div class="header">
+  <div class="badge"><div class="dot"></div> PromptKits — Test Build</div>
+  <h1>🎬 <span>Scene Builder</span></h1>
+  <p class="sub">Fill your scene bible once. Get consistent reference images + shot prompts for every angle.</p>
+</div>
+
+<div class="api-box">
+  <label>🔑 API Key</label>
+  <input type="password" id="apiKey" placeholder="sk-ant-api03-...">
+  <div class="note">⚠️ For testing only. The live site uses a secure server-side key.</div>
+</div>
+
+<div class="section">
+  <div class="stitle">Scene Bible</div>
+  <div class="field">
+    <label>Scene description</label>
+    <textarea id="sceneDesc" placeholder="e.g. A tense interrogation. A detective questions a nervous suspect about a murder."></textarea>
   </div>
-
-  <!-- API Key -->
-  <div class="api-box">
-    <label>🔑 Anthropic API Key</label>
-    <input type="password" id="apiKey" placeholder="sk-ant-api03-..." />
-    <div class="api-note">⚠️ For local testing only. Never share or deploy with your API key visible.</div>
-  </div>
-
-  <!-- SCENE BIBLE -->
-  <div class="section">
-    <div class="section-title">Scene Bible</div>
-
+  <div class="row2">
     <div class="field">
-      <label>Scene description (what is this scene about?)</label>
-      <textarea id="sceneDesc" placeholder="e.g. A tense confrontation between a detective and a suspect in a rain-soaked alley at night. The detective is pushing for a confession, the suspect is deflecting."></textarea>
+      <label>Location</label>
+      <input type="text" id="location" placeholder="e.g. Small police interrogation room, grey walls, metal table">
     </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label>Location</label>
-        <input type="text" id="location" placeholder="e.g. Rain-soaked alley between brick buildings, red neon sign on left wall"/>
-      </div>
-      <div class="field">
-        <label>Time of day</label>
-        <div class="pill-row" id="timeGroup" style="margin-top:2px;">
-          <div class="pill" data-val="dawn">Dawn</div>
-          <div class="pill" data-val="day">Day</div>
-          <div class="pill" data-val="golden hour">Golden Hour</div>
-          <div class="pill" data-val="dusk">Dusk</div>
-          <div class="pill active" data-val="night">Night</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label>Lighting</label>
-        <input type="text" id="lighting" placeholder="e.g. Red neon from screen left, deep shadows on right, rain scatter"/>
-      </div>
-      <div class="field">
-        <label>Color grade</label>
-        <div class="pill-row" id="gradeGroup" style="margin-top:2px;">
-          <div class="pill" data-val="teal and orange">Teal & Orange</div>
-          <div class="pill active" data-val="cold desaturated">Cold Desaturated</div>
-          <div class="pill" data-val="warm vintage">Warm Vintage</div>
-          <div class="pill" data-val="high contrast black and white">B&W</div>
-          <div class="pill" data-val="natural">Natural</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label>Lens</label>
-        <div class="pill-row" id="lensGroup" style="margin-top:2px;">
-          <div class="pill" data-val="24mm wide angle">24mm Wide</div>
-          <div class="pill active" data-val="35mm standard">35mm</div>
-          <div class="pill" data-val="anamorphic with lens flares">Anamorphic</div>
-          <div class="pill" data-val="85mm telephoto">85mm</div>
-        </div>
-      </div>
-      <div class="field">
-        <label>Atmosphere / Weather</label>
-        <input type="text" id="atmosphere" placeholder="e.g. Heavy rain, steam rising from manholes, wet pavement"/>
+    <div class="field">
+      <label>Time of day</label>
+      <div class="pills" id="timeGroup">
+        <button class="pill" data-val="dawn">Dawn</button>
+        <button class="pill" data-val="day">Day</button>
+        <button class="pill" data-val="golden hour">Golden Hour</button>
+        <button class="pill" data-val="dusk">Dusk</button>
+        <button class="pill active" data-val="night">Night</button>
       </div>
     </div>
   </div>
-
-  <!-- CHARACTERS -->
-  <div class="section">
-    <div class="section-title">Characters</div>
-    <div class="char-grid">
-      <div class="char-card">
-        <div class="char-card-title">Character 1</div>
-        <div class="field">
-          <label>Name</label>
-          <input type="text" id="char1name" placeholder="e.g. Detective Maya"/>
-        </div>
-        <div class="field">
-          <label>Appearance</label>
-          <textarea id="char1desc" placeholder="e.g. Late 30s, sharp features, short black hair slicked back by rain, dark green military jacket collar up, small scar on right cheek" style="min-height:90px;"></textarea>
-        </div>
-        <div class="field">
-          <label>Role in this scene</label>
-          <input type="text" id="char1role" placeholder="e.g. Interrogating, pushing for confession"/>
-        </div>
+  <div class="row2">
+    <div class="field">
+      <label>Lighting</label>
+      <input type="text" id="lighting" placeholder="e.g. Single overhead fluorescent, cold white, downward shadows">
+    </div>
+    <div class="field">
+      <label>Atmosphere</label>
+      <input type="text" id="atmosphere" placeholder="e.g. Tense, confined, oppressive">
+    </div>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label>Color grade</label>
+      <div class="pills" id="gradeGroup">
+        <button class="pill" data-val="teal and orange">Teal & Orange</button>
+        <button class="pill active" data-val="cold desaturated">Cold Desaturated</button>
+        <button class="pill" data-val="warm vintage">Warm Vintage</button>
+        <button class="pill" data-val="black and white">B&W</button>
+        <button class="pill" data-val="natural">Natural</button>
       </div>
-      <div class="char-card">
-        <div class="char-card-title">Character 2 <span style="color:var(--text-muted);font-weight:400;">(optional)</span></div>
-        <div class="field">
-          <label>Name</label>
-          <input type="text" id="char2name" placeholder="e.g. Suspect Ravi"/>
-        </div>
-        <div class="field">
-          <label>Appearance</label>
-          <textarea id="char2desc" placeholder="e.g. Early 40s, stocky build, grey stubble, worn brown leather jacket, wire-frame glasses, nervous energy" style="min-height:90px;"></textarea>
-        </div>
-        <div class="field">
-          <label>Role in this scene</label>
-          <input type="text" id="char2role" placeholder="e.g. Deflecting, avoiding eye contact"/>
-        </div>
+    </div>
+    <div class="field">
+      <label>Lens</label>
+      <div class="pills" id="lensGroup">
+        <button class="pill" data-val="24mm wide angle">24mm Wide</button>
+        <button class="pill active" data-val="35mm standard">35mm</button>
+        <button class="pill" data-val="anamorphic">Anamorphic</button>
+        <button class="pill" data-val="85mm telephoto">85mm</button>
       </div>
     </div>
   </div>
+</div>
 
-  <!-- SHOT SELECTOR -->
-  <div class="section">
-    <div class="section-title">Select Your Shots</div>
-    <div class="shots-grid" id="shotsGrid">
-      <div class="shot-item" data-shot="wide-establishing">
-        <input type="checkbox" id="s1" checked/>
-        <div>
-          <div class="shot-label">Wide Establishing</div>
-          <div class="shot-desc">Sets location, shows both characters, context</div>
-        </div>
-      </div>
-      <div class="shot-item selected" data-shot="medium-both">
-        <input type="checkbox" id="s2" checked/>
-        <div>
-          <div class="shot-label">Medium — Both Characters</div>
-          <div class="shot-desc">Waist-up, both in frame, conversation begins</div>
-        </div>
-      </div>
-      <div class="shot-item" data-shot="ots-char1">
-        <input type="checkbox" id="s3"/>
-        <div>
-          <div class="shot-label">OTS — Char 1 Speaking</div>
-          <div class="shot-desc">Over shoulder of Char 2, Char 1 in focus</div>
-        </div>
-      </div>
-      <div class="shot-item" data-shot="ots-char2">
-        <input type="checkbox" id="s4"/>
-        <div>
-          <div class="shot-label">OTS — Char 2 Responding</div>
-          <div class="shot-desc">Over shoulder of Char 1, Char 2 in focus</div>
-        </div>
-      </div>
-      <div class="shot-item" data-shot="closeup-char1">
-        <input type="checkbox" id="s5"/>
-        <div>
-          <div class="shot-label">Close-Up — Char 1</div>
-          <div class="shot-desc">Face fills frame, emotion and reaction</div>
-        </div>
-      </div>
-      <div class="shot-item" data-shot="closeup-char2">
-        <input type="checkbox" id="s6"/>
-        <div>
-          <div class="shot-label">Close-Up — Char 2</div>
-          <div class="shot-desc">Face fills frame, emotion and reaction</div>
-        </div>
-      </div>
-      <div class="shot-item" data-shot="insert">
-        <input type="checkbox" id="s7"/>
-        <div>
-          <div class="shot-label">Insert Shot</div>
-          <div class="shot-desc">Key object or detail — specify below</div>
-        </div>
-      </div>
-      <div class="shot-item" data-shot="wide-final">
-        <input type="checkbox" id="s8"/>
-        <div>
-          <div class="shot-label">Wide — Scene Resolved</div>
-          <div class="shot-desc">Back to wide, scene conclusion</div>
-        </div>
-      </div>
+<div class="section">
+  <div class="stitle">Characters</div>
+  <div class="chars">
+    <div class="char-card">
+      <div class="char-title">Character 1</div>
+      <div class="field"><label>Name</label><input type="text" id="c1name" placeholder="e.g. Detective Maya"></div>
+      <div class="field"><label>Appearance</label><textarea id="c1desc" placeholder="e.g. Late 30s, dark hair pulled back, navy blazer, badge on belt" style="min-height:80px;"></textarea></div>
+      <div class="field"><label>Role in scene</label><input type="text" id="c1role" placeholder="e.g. Interrogating, calm and intense"></div>
     </div>
-
-    <!-- Insert shot detail -->
-    <div id="insertField" class="field" style="margin-top:14px;display:none;">
-      <label>What is the insert shot of?</label>
-      <input type="text" id="insertDetail" placeholder="e.g. A gun on the table, her hand gripping his arm, a worn photograph"/>
+    <div class="char-card">
+      <div class="char-title">Character 2 <span style="color:var(--dim);font-weight:400;">(optional)</span></div>
+      <div class="field"><label>Name</label><input type="text" id="c2name" placeholder="e.g. Suspect Ravi"></div>
+      <div class="field"><label>Appearance</label><textarea id="c2desc" placeholder="e.g. Early 40s, stocky, grey stubble, brown jacket, wire-frame glasses" style="min-height:80px;"></textarea></div>
+      <div class="field"><label>Role in scene</label><input type="text" id="c2role" placeholder="e.g. Defensive, nervous, avoiding eye contact"></div>
     </div>
   </div>
+</div>
 
-  <button class="generate-btn" id="generateBtn" onclick="generateAll()">🎬 Generate Scene Builder Output</button>
-  <div class="error-msg" id="errorMsg"></div>
-
-  <!-- RESULTS -->
-  <div class="results" id="results">
-
-    <!-- Step 1 — Reference Images -->
-    <div class="section" style="border-color:rgba(168,158,255,0.3);background:rgba(168,158,255,0.04);margin-bottom:16px;">
-      <div class="section-title">Step 1 — Generate Reference Images in Midjourney</div>
-      <div style="background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:12px 14px;margin-bottom:16px;font-size:12px;color:var(--text-secondary);line-height:1.6;">
-          <strong style="color:#a89eff;">Recommended workflow:</strong> Generate reference images first in Midjourney → Save them → Use as image reference in Kling AI alongside each shot prompt → This gives maximum consistency across all shots.
-        </div>
-        <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">
-        Generate these in <strong style="color:var(--text);">Midjourney or ChatGPT</strong> first. 
-        Then use the generated images as <strong style="color:var(--text);">image references</strong> in Kling AI when generating each shot. 
-        This locks the visual appearance across all shots.
-      </p>
-      <div id="refResults"></div>
-    </div>
-
-    <!-- Step 2 — Shot List -->
-    <div class="section" style="border-color:rgba(168,158,255,0.3);">
-      <div class="section-title">Step 2 — Shot Prompts for Kling AI / Runway</div>
-      <p style="font-size:12px;color:var(--text-secondary);line-height:1.6;margin-bottom:16px;">
-        Paste each prompt into Kling AI <strong style="color:var(--text);">with the reference images above</strong>. 
-        Use location reference + character reference together for best consistency.
-      </p>
-      <div class="result-header" style="margin-bottom:12px;">
-        <div class="result-title" style="font-size:13px;">📋 All Shots</div>
-        <button class="copy-all-btn" onclick="copyAll()">Copy All Prompts</button>
-      </div>
-      <div id="shotResults"></div>
-    </div>
-
+<div class="section">
+  <div class="stitle">Select Shots</div>
+  <div class="shots" id="shotsGrid">
+    <div class="shot selected" data-shot="wide-establishing"><input type="checkbox" checked><div><div class="shot-name">Wide Establishing</div><div class="shot-desc">Full location, both characters, sets scale</div></div></div>
+    <div class="shot selected" data-shot="medium-both"><input type="checkbox" checked><div><div class="shot-name">Medium — Both Characters</div><div class="shot-desc">Waist-up, conversation in progress</div></div></div>
+    <div class="shot" data-shot="ots-char1"><input type="checkbox"><div><div class="shot-name">OTS — Char 1 Speaking</div><div class="shot-desc">Over shoulder of Char 2, Char 1 in focus</div></div></div>
+    <div class="shot" data-shot="ots-char2"><input type="checkbox"><div><div class="shot-name">OTS — Char 2 Responding</div><div class="shot-desc">Over shoulder of Char 1, Char 2 in focus</div></div></div>
+    <div class="shot" data-shot="closeup-char1"><input type="checkbox"><div><div class="shot-name">Close-Up — Char 1</div><div class="shot-desc">Face fills frame, emotion and reaction</div></div></div>
+    <div class="shot" data-shot="closeup-char2"><input type="checkbox"><div><div class="shot-name">Close-Up — Char 2</div><div class="shot-desc">Face fills frame, emotion and reaction</div></div></div>
+    <div class="shot" data-shot="insert"><input type="checkbox"><div><div class="shot-name">Insert Shot</div><div class="shot-desc">Key object or detail</div></div></div>
+    <div class="shot" data-shot="wide-final"><input type="checkbox"><div><div class="shot-name">Wide — Scene Resolved</div><div class="shot-desc">Back to wide, scene conclusion</div></div></div>
   </div>
+  <div class="field" id="insertField" style="display:none;margin-top:12px;">
+    <label>Insert shot — what object?</label>
+    <input type="text" id="insertDetail" placeholder="e.g. A manila folder with crime scene photos spilling out">
+  </div>
+</div>
+
+<button class="gen-btn" id="genBtn">🎬 Generate Scene Builder Output</button>
+<div class="err" id="errMsg"></div>
+
+<div class="results" id="results">
+  <div class="res-section">
+    <div class="res-title">Step 1 — Reference Images for Midjourney</div>
+    <div class="workflow-tip"><strong>Workflow:</strong> Generate these in Midjourney first → Save the images → Upload as image references in Kling AI alongside each shot prompt below for maximum consistency.</div>
+    <div id="refResults"></div>
+  </div>
+  <div class="res-section">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+      <div class="res-title" style="margin-bottom:0;">Step 2 — Shot Prompts for Kling AI / Runway</div>
+      <button class="copy-all-btn" onclick="copyAll()">Copy All</button>
+    </div>
+    <div id="shotResults"></div>
+  </div>
+</div>
 
 </div>
 
 <script>
-// Pill selectors
-const selVals = { time: 'night', grade: 'teal and orange', lens: 'anamorphic with lens flares' };
+var selVals = { time: 'night', grade: 'cold desaturated', lens: '35mm standard' };
 
 function setupPills(groupId, key) {
-  document.querySelectorAll('#' + groupId + ' .pill').forEach(p => {
+  document.querySelectorAll('#' + groupId + ' .pill').forEach(function(p) {
     p.addEventListener('click', function() {
-      document.querySelectorAll('#' + groupId + ' .pill').forEach(x => x.classList.remove('active'));
+      document.querySelectorAll('#' + groupId + ' .pill').forEach(function(x) { x.classList.remove('active'); });
       this.classList.add('active');
       selVals[key] = this.dataset.val;
     });
@@ -479,11 +215,10 @@ setupPills('timeGroup', 'time');
 setupPills('gradeGroup', 'grade');
 setupPills('lensGroup', 'lens');
 
-// Shot checkboxes
-document.querySelectorAll('.shot-item').forEach(item => {
+document.querySelectorAll('.shot').forEach(function(item) {
   item.addEventListener('click', function(e) {
     if (e.target.type === 'checkbox') return;
-    const cb = this.querySelector('input[type=checkbox]');
+    var cb = this.querySelector('input[type=checkbox]');
     cb.checked = !cb.checked;
     this.classList.toggle('selected', cb.checked);
     checkInsert();
@@ -492,246 +227,180 @@ document.querySelectorAll('.shot-item').forEach(item => {
     item.classList.toggle('selected', this.checked);
     checkInsert();
   });
-  if (item.querySelector('input').checked) item.classList.add('selected');
 });
 
 function checkInsert() {
-  const insertCb = document.querySelector('[data-shot="insert"] input');
+  var insertCb = document.querySelector('[data-shot="insert"] input');
   document.getElementById('insertField').style.display = insertCb.checked ? 'block' : 'none';
 }
 
-// Get selected shots
 function getSelectedShots() {
-  return Array.from(document.querySelectorAll('.shot-item')).filter(item => {
-    return item.querySelector('input[type=checkbox]').checked;
-  }).map(item => item.dataset.shot);
+  return Array.from(document.querySelectorAll('.shot')).filter(function(s) {
+    return s.querySelector('input').checked;
+  }).map(function(s) { return s.dataset.shot; });
 }
 
-// Shot name labels
-// shotLabels moved inside generateAll
+async function callClaude(apiKey, system, user, maxTokens) {
+  var r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+      'anthropic-dangerous-direct-browser-access': 'true'
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: maxTokens || 400,
+      system: system,
+      messages: [{ role: 'user', content: user }]
+    })
+  });
+  var d = await r.json();
+  if (!r.ok) throw new Error(d.error ? d.error.message : 'API error ' + r.status);
+  return d.content[0].text.trim();
+}
 
-window.generateAll = async function() {
-  const apiKey = document.getElementById('apiKey').value.trim();
-  if (!apiKey) { showError('Please enter your Anthropic API key above.'); return; }
+function showErr(msg) {
+  var el = document.getElementById('errMsg');
+  el.textContent = msg;
+  el.style.display = 'block';
+  var btn = document.getElementById('genBtn');
+  btn.disabled = false;
+  btn.textContent = '🎬 Generate Scene Builder Output';
+}
 
-  const selectedShots = getSelectedShots();
-  if (selectedShots.length === 0) { showError('Please select at least one shot type.'); return; }
+function copyText(btn, text) {
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = 'Copied!';
+    btn.classList.add('ok');
+    setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
+  });
+}
 
-  const char1name = document.getElementById('char1name').value.trim() || 'Character 1';
-  const char1desc = document.getElementById('char1desc').value.trim();
-  const char1role = document.getElementById('char1role').value.trim();
-  const char2name = document.getElementById('char2name').value.trim() || 'Character 2';
-  const char2desc = document.getElementById('char2desc').value.trim();
-  const char2role = document.getElementById('char2role').value.trim();
-  const sceneDesc = document.getElementById('sceneDesc').value.trim();
-  const location = document.getElementById('location').value.trim();
-  const lighting = document.getElementById('lighting').value.trim();
-  const atmosphere = document.getElementById('atmosphere').value.trim();
-  const insertDetail = document.getElementById('insertDetail').value.trim();
+function copyAll() {
+  var all = [];
+  document.querySelectorAll('.prompt-text').forEach(function(el, i) {
+    all.push('SHOT ' + (i+1) + '\n' + el.textContent);
+  });
+  navigator.clipboard.writeText(all.join('\n\n---\n\n'));
+}
 
-  const shotLabels = {
-    'wide-establishing': 'Wide Establishing Shot',
-    'medium-both': 'Medium Shot — Both Characters',
-    'ots-char1': 'OTS — ' + char1name + ' Speaking',
-    'ots-char2': 'OTS — ' + char2name + ' Responding',
-    'closeup-char1': 'Close-Up — ' + char1name,
-    'closeup-char2': 'Close-Up — ' + char2name,
-    'insert': 'Insert Shot',
-    'wide-final': 'Wide Shot — Scene Resolved',
-  };
+document.getElementById('genBtn').addEventListener('click', async function() {
+  var apiKey = document.getElementById('apiKey').value.trim();
+  if (!apiKey) { showErr('Please enter your Anthropic API key.'); return; }
 
-  if (!sceneDesc) { showError('Please describe the scene.'); return; }
-  if (!location) { showError('Please enter a location.'); return; }
-  if (!char1desc) { showError('Please describe Character 1.'); return; }
+  var shots = getSelectedShots();
+  if (shots.length === 0) { showErr('Please select at least one shot.'); return; }
 
-  const btn = document.getElementById('generateBtn');
+  var c1name = document.getElementById('c1name').value.trim() || 'Character 1';
+  var c1desc = document.getElementById('c1desc').value.trim();
+  var c1role = document.getElementById('c1role').value.trim();
+  var c2name = document.getElementById('c2name').value.trim() || 'Character 2';
+  var c2desc = document.getElementById('c2desc').value.trim();
+  var c2role = document.getElementById('c2role').value.trim();
+  var scene  = document.getElementById('sceneDesc').value.trim();
+  var loc    = document.getElementById('location').value.trim();
+  var light  = document.getElementById('lighting').value.trim();
+  var atmos  = document.getElementById('atmosphere').value.trim();
+  var insert = document.getElementById('insertDetail').value.trim();
+
+  if (!scene) { showErr('Please describe the scene.'); return; }
+  if (!loc)   { showErr('Please enter a location.'); return; }
+  if (!c1desc){ showErr('Please describe Character 1.'); return; }
+
+  var btn = document.getElementById('genBtn');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Generating reference image prompts...';
-  document.getElementById('errorMsg').style.display = 'none';
+  btn.innerHTML = '<span class="spinner"></span> Generating...';
+  document.getElementById('errMsg').style.display = 'none';
   document.getElementById('results').style.display = 'none';
-  console.log('Generate clicked. API key length:', apiKey.length);
-  console.log('Selected shots:', selectedShots);
-  console.log('Char1:', char1desc.substring(0,50));
 
-  const sceneBible = `
-SCENE: ${sceneDesc}
-LOCATION: ${location}
-TIME: ${selVals.time}
-LIGHTING: ${lighting || 'cinematic lighting'}
-ATMOSPHERE: ${atmosphere || ''}
-COLOR GRADE: ${selVals.grade}
-LENS: ${selVals.lens}
-CHARACTER 1 — ${char1name}: ${char1desc}. Role: ${char1role || 'main character'}
-${char2desc ? 'CHARACTER 2 — ' + char2name + ': ' + char2desc + '. Role: ' + (char2role || 'secondary character') : ''}
-  `.trim();
+  var bible = 'SCENE: ' + scene +
+    '\nLOCATION: ' + loc +
+    '\nTIME: ' + selVals.time +
+    '\nLIGHTING: ' + (light || 'cinematic') +
+    '\nATMOSPHERE: ' + (atmos || '') +
+    '\nCOLOR GRADE: ' + selVals.grade +
+    '\nLENS: ' + selVals.lens +
+    '\nCHARACTER 1 — ' + c1name + ': ' + c1desc + '. Role: ' + (c1role || 'main character') +
+    (c2desc ? '\nCHARACTER 2 — ' + c2name + ': ' + c2desc + '. Role: ' + (c2role || 'secondary') : '');
 
-  async function callClaude(system, user, maxTokens) {
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': apiKey,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true'
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: maxTokens || 400,
-        system: system,
-        messages: [{ role: 'user', content: user }]
-      })
-    });
-    const d = await r.json();
-    if (!r.ok) throw new Error(d.error?.message || 'API error');
-    return d.content[0].text.trim();
-  }
-
-  const refSys = 'You are a professional cinematographer writing Midjourney image prompts. Write ONLY the prompt — no explanation, no preamble. End every prompt with the aspect ratio flag.';
-
-  // Generate reference image prompts
-  const refDefs = [
-    {
-      label: 'Location Reference',
-      icon: 'LOCATION',
-      desc: 'Generate in Midjourney first. Use as environment reference in Kling AI for ALL shots.',
-      instruction: 'Write a Midjourney prompt to generate a photorealistic reference image of this location: ' + location + '. Time of day: ' + selVals.time + '. Lighting: ' + (lighting || 'cinematic') + '. Atmosphere: ' + (atmosphere || '') + '. Photorealistic, cinematic, no people. End with --ar 16:9 --style raw'
-    },
-    {
-      label: char1name + ' — Character Reference',
-      icon: 'CHARACTER 1',
-      desc: 'Generate in Midjourney first. Use as character reference in Kling AI for all shots with ' + char1name + '.',
-      instruction: 'Write a Midjourney prompt for a character reference portrait of: ' + char1desc + '. Neutral expression, looking slightly off camera, plain dark studio background, cinematic portrait lighting, photorealistic. End with --ar 1:1 --style raw'
-    },
-    ...(char2desc ? [{
-      label: char2name + ' — Character Reference',
-      icon: 'CHARACTER 2',
-      desc: 'Generate in Midjourney first. Use as character reference in Kling AI for all shots with ' + char2name + '.',
-      instruction: 'Write a Midjourney prompt for a character reference portrait of: ' + char2desc + '. Neutral expression, looking slightly off camera, plain dark studio background, cinematic portrait lighting, photorealistic. End with --ar 1:1 --style raw'
-    }] : [])
-  ];
-
-  const refResults = [];
-  for (const ref of refDefs) {
-    try {
-      const prompt = await callClaude(refSys, ref.instruction, 250);
-      refResults.push({ ...ref, prompt });
-    } catch(e) {
-      console.error('API error:', e);
-      refResults.push({ ...ref, prompt: 'Error: ' + e.message });
-    }
-  }
-
-  // Generate shot prompts
-  btn.innerHTML = '<span class="spinner"></span> Generating shot list...';
-
-  const shotSys = 'You are a professional cinematographer writing AI video prompts for Kling AI and Runway. Write ONLY the prompt in a single paragraph of 3-5 sentences. No title, no numbering, no preamble. Use professional cinematography language. Keep all character descriptions and location details exactly consistent with the scene bible.';
-
-  const shotDefs = {
-    'wide-establishing': 'WIDE ESTABLISHING SHOT: Show full location, both characters visible at a distance, sets scale and atmosphere.',
-    'medium-both': 'MEDIUM SHOT: Both characters from waist up, facing each other, conversation in progress.',
-    'ots-char1': 'OVER THE SHOULDER shot. Camera BEHIND ' + char2name + ', focused on ' + char1name + ' who is speaking. ' + char2name + ' shoulder blurred in foreground. ' + char1name + ' face sharp. Lighting axis has flipped — adjust key light direction accordingly.',
-    'ots-char2': 'OVER THE SHOULDER shot. Camera BEHIND ' + char1name + ', focused on ' + char2name + ' who is responding. ' + char1name + ' shoulder blurred in foreground. ' + char2name + ' face sharp. Lighting axis has flipped — adjust key light direction accordingly.',
-    'closeup-char1': 'CLOSE-UP of ' + char1name + '. Face fills the frame. Emotion and reaction to the scene tension. Eyes sharp, catchlight visible.',
-    'closeup-char2': 'CLOSE-UP of ' + char2name + '. Face fills the frame. Emotion and reaction to the scene tension. Eyes sharp, catchlight visible.',
-    'insert': 'INSERT SHOT: Extreme close-up of: ' + (insertDetail || 'a key object in the scene') + '. Sharp focus, everything else blurred.',
-    'wide-final': 'WIDE SHOT — scene resolution: Both characters visible, tension resolved or escalated, sense of conclusion.'
+  var shotDefs = {
+    'wide-establishing': 'WIDE ESTABLISHING: Full location, both characters visible, sets scale and atmosphere.',
+    'medium-both': 'MEDIUM SHOT: Both characters waist-up, facing each other, conversation in progress.',
+    'ots-char1': 'OVER THE SHOULDER: Camera behind ' + c2name + ', focused on ' + c1name + ' speaking. ' + c2name + ' shoulder blurred in foreground. Lighting axis flipped — adjust key light direction.',
+    'ots-char2': 'OVER THE SHOULDER: Camera behind ' + c1name + ', focused on ' + c2name + ' responding. ' + c1name + ' shoulder blurred in foreground. Lighting axis flipped — adjust key light direction.',
+    'closeup-char1': 'CLOSE-UP of ' + c1name + ': Face fills frame. Show emotion and reaction. Eyes sharp with catchlight.',
+    'closeup-char2': 'CLOSE-UP of ' + c2name + ': Face fills frame. Show emotion and reaction. Eyes sharp with catchlight.',
+    'insert': 'INSERT SHOT: Extreme close-up of: ' + (insert || 'a key object in the scene') + '. Sharp focus, everything else blurred.',
+    'wide-final': 'WIDE SHOT — resolution: Both characters, tension resolved or escalated, sense of conclusion.'
   };
 
-  const shotLabels = {
+  var shotLabels = {
     'wide-establishing': 'Wide Establishing Shot',
     'medium-both': 'Medium Shot — Both Characters',
-    'ots-char1': 'OTS — ' + char1name + ' Speaking',
-    'ots-char2': 'OTS — ' + char2name + ' Responding',
-    'closeup-char1': 'Close-Up — ' + char1name,
-    'closeup-char2': 'Close-Up — ' + char2name,
+    'ots-char1': 'OTS — ' + c1name + ' Speaking',
+    'ots-char2': 'OTS — ' + c2name + ' Responding',
+    'closeup-char1': 'Close-Up — ' + c1name,
+    'closeup-char2': 'Close-Up — ' + c2name,
     'insert': 'Insert Shot',
     'wide-final': 'Wide Shot — Resolved'
   };
 
-  const shotResults = [];
-  for (const shotType of selectedShots) {
-    try {
-      const user = 'SCENE BIBLE:
-' + sceneBible + '
+  var refSys = 'You write Midjourney image prompts. Write ONLY the prompt — no explanation. End with aspect ratio flag.';
+  var shotSys = 'You write AI video prompts for Kling AI and Runway. Single paragraph, 3-5 sentences. Professional cinematography language. Keep all character and location details exactly consistent with the scene bible. No title, no numbering, just the prompt.';
 
-SHOT:
-' + shotDefs[shotType] + '
+  var refDefs = [
+    { label:'LOCATION', name:'Location Reference', desc:'Use as environment reference in Kling AI for ALL shots', instr:'Write a Midjourney prompt for a photorealistic reference image of this location: ' + loc + '. Time: ' + selVals.time + '. Lighting: ' + (light||'cinematic') + '. No people. Photorealistic, cinematic. End with --ar 16:9 --style raw' },
+    { label:'CHARACTER 1', name:c1name + ' Reference', desc:'Use as character reference for all shots with ' + c1name, instr:'Write a Midjourney prompt for a character reference portrait of: ' + c1desc + '. Neutral expression, looking slightly off camera, plain dark background, cinematic portrait lighting, photorealistic. End with --ar 1:1 --style raw' }
+  ];
+  if (c2desc) {
+    refDefs.push({ label:'CHARACTER 2', name:c2name + ' Reference', desc:'Use as character reference for all shots with ' + c2name, instr:'Write a Midjourney prompt for a character reference portrait of: ' + c2desc + '. Neutral expression, looking slightly off camera, plain dark background, cinematic portrait lighting, photorealistic. End with --ar 1:1 --style raw' });
+  }
+  refDefs.push({ label:'BOTH IN SCENE', name:'Scene Reference', desc:'Generate this AFTER getting individual references. Use for wide and medium shots', instr:'Write a Midjourney prompt for a reference image showing both characters in the scene: ' + c1name + ' (' + c1desc + ') and ' + c2name + ' (' + c2desc + ') in location: ' + loc + '. Time: ' + selVals.time + '. Lighting: ' + (light||'cinematic') + '. Photorealistic, cinematic. End with --ar 16:9 --style raw' });
 
-Write ONLY the video prompt.';
-      const prompt = await callClaude(shotSys, user, 400);
-      shotResults.push({ shot: shotType, prompt });
-    } catch(e) {
-      shotResults.push({ shot: shotType, prompt: 'Error: ' + e.message });
+  try {
+    var refResults = [];
+    for (var i = 0; i < refDefs.length; i++) {
+      try {
+        var p = await callClaude(apiKey, refSys, refDefs[i].instr, 200);
+        refResults.push({ def: refDefs[i], prompt: p });
+      } catch(e) {
+        refResults.push({ def: refDefs[i], prompt: 'Error: ' + e.message });
+      }
     }
+
+    btn.innerHTML = '<span class="spinner"></span> Generating shot list...';
+
+    var shotResults = [];
+    for (var j = 0; j < shots.length; j++) {
+      try {
+        var sp = await callClaude(apiKey, shotSys, 'SCENE BIBLE:\n' + bible + '\n\nSHOT:\n' + shotDefs[shots[j]] + '\n\nWrite ONLY the video prompt.', 400);
+        shotResults.push({ shot: shots[j], prompt: sp });
+      } catch(e) {
+        shotResults.push({ shot: shots[j], prompt: 'Error: ' + e.message });
+      }
+    }
+
+    document.getElementById('refResults').innerHTML = refResults.map(function(r, idx) {
+      return '<div class="shot-result"><div class="shot-result-header"><div><div class="shot-label">' + r.def.label + ' — ' + r.def.name + '</div><div class="shot-sub">' + r.def.desc + '</div></div><button class="copy-btn" id="rb' + idx + '" onclick="copyText(this, document.getElementById(\'rp' + idx + '\').textContent)">Copy</button></div><div class="prompt-text" id="rp' + idx + '">' + r.prompt + '</div></div>';
+    }).join('');
+
+    document.getElementById('shotResults').innerHTML = shotResults.map(function(r, idx) {
+      return '<div class="shot-result"><div class="shot-result-header"><div class="shot-label">Shot ' + (idx+1) + ' — ' + shotLabels[r.shot] + '</div><button class="copy-btn" id="sb' + idx + '" onclick="copyText(this, document.getElementById(\'sp' + idx + '\').textContent)">Copy</button></div><div class="prompt-text" id="sp' + idx + '">' + r.prompt + '</div></div>';
+    }).join('');
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  } catch(e) {
+    showErr('Error: ' + e.message);
+    return;
   }
 
-  // Render reference results
-  document.getElementById('refResults').innerHTML = refResults.map((r, i) => `
-    <div class="shot-result" style="margin-bottom:12px;">
-      <div class="shot-result-header">
-        <div>
-          <div class="shot-result-name">${r.icon} — ${r.label}</div>
-          <div style="font-size:11px;color:var(--text-muted);margin-top:3px;">${r.desc}</div>
-        </div>
-        <button class="copy-shot-btn" onclick="copyRef(this,'ref-${i}')">Copy</button>
-      </div>
-      <div class="shot-prompt-text" id="ref-${i}">${r.prompt}</div>
-    </div>
-  `).join('');
-
-  // Render shot results
-  document.getElementById('shotResults').innerHTML = shotResults.map((r, i) => `
-    <div class="shot-result" style="margin-bottom:10px;">
-      <div class="shot-result-header">
-        <div class="shot-result-name">Shot ${i+1} — ${shotLabels[r.shot]}</div>
-        <button class="copy-shot-btn" onclick="copyRef(this,'shot-${i}')">Copy</button>
-      </div>
-      <div class="shot-prompt-text" id="shot-${i}">${r.prompt}</div>
-    </div>
-  `).join('');
-
-  window._allPrompts = shotResults.map((r, i) =>
-    'SHOT ' + (i+1) + ' — ' + shotLabels[r.shot] + '
-' + r.prompt
-  ).join('
-
----
-
-');
-
-  document.getElementById('results').style.display = 'block';
-  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
   btn.disabled = false;
-  btn.innerHTML = 'Regenerate';
-}
-
-
-window.copyRef = function(btn, id) {
-  const text = document.getElementById(id).textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-  });
-}
-
-window.copyAll = function() {
-  navigator.clipboard.writeText(window._allPrompts || '').then(() => {
-    const btn = document.querySelector('.copy-all-btn');
-    btn.textContent = 'Copied!';
-    setTimeout(() => { btn.textContent = 'Copy All Prompts'; }, 2000);
-  });
-}
-
-window.showError = function(msg) {
-  console.error('Error:', msg);
-  const el = document.getElementById('errorMsg');
-  el.textContent = msg;
-  el.style.display = 'block';
-  const btn = document.getElementById('generateBtn');
-  btn.disabled = false;
-  btn.innerHTML = '🎬 Generate Scene Builder Output';
-}
+  btn.textContent = '🎬 Regenerate';
+});
 </script>
 </body>
 </html>
