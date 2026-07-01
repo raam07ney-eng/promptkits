@@ -41,6 +41,27 @@
     .cta-section p{color:var(--text-secondary);font-size:15px;margin:0 0 24px;}
     .cta-link{display:inline-block;padding:13px 28px;background:var(--accent);color:#0d0d14;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:opacity 0.2s;}
     .cta-link:hover{opacity:0.85;}
+
+    .lib-layout{display:flex;min-height:100vh;}
+    .lib-sidebar{width:220px;min-width:220px;border-right:1px solid var(--border-card);background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;}
+    .lib-main{flex:1;min-width:0;}
+    .sb-header{padding:14px 16px 8px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-card);margin-bottom:4px;}
+    .sb-section{padding:4px 0;}
+    .sb-group{padding:8px 16px 4px;font-size:11px;font-weight:600;color:#a89eff;letter-spacing:0.05em;}
+    .sb-btn{display:flex;align-items:center;justify-content:space-between;padding:8px 16px;width:100%;background:transparent;border:none;cursor:pointer;font-family:"Inter",sans-serif;transition:background 0.15s;}
+    .sb-btn:hover{background:var(--bg-adv);}
+    .sb-btn-left{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--text-primary);}
+    .sb-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;}
+    .sb-chev.open{transform:rotate(180deg);}
+    .sb-drop{overflow:hidden;max-height:0;transition:max-height 0.25s ease;}
+    .sb-drop.open{max-height:600px;}
+    .sb-item{display:flex;align-items:center;justify-content:space-between;padding:6px 16px 6px 28px;font-size:12px;color:var(--text-secondary);text-decoration:none;transition:background 0.1s;border:none;background:transparent;width:100%;text-align:left;font-family:"Inter",sans-serif;cursor:pointer;}
+    .sb-item:hover{background:var(--bg-adv);color:var(--text-primary);}
+    .sb-item.active{background:rgba(168,158,255,0.1);color:#a89eff;font-weight:500;}
+    .sb-count{font-size:10px;color:var(--text-muted);background:var(--bg-adv);padding:1px 7px;border-radius:10px;flex-shrink:0;}
+    .sb-item.active .sb-count{color:#a89eff;}
+    .sb-divider{height:1px;background:var(--border-card);margin:6px 0;}
+    @media(max-width:768px){.lib-sidebar{display:none;}.lib-layout{display:block;}}
   </style>
 </head>
 <body>
@@ -63,6 +84,44 @@
   </div>
 </header>
 
+<div class="lib-layout">
+<div class="lib-sidebar">
+  <div class="sb-header">Browse Library</div>
+
+  <div class="sb-section">
+    <div class="sb-group">🎬 Video Prompts</div>
+    <a class="sb-item" href="/100-cinematic-ai-video-prompts.html">Cinematic video <span class="sb-count">100</span></a>
+    <a class="sb-item" href="/50-horror-ai-video-prompts.html">Horror scenes <span class="sb-count">50</span></a>
+    <a class="sb-item" href="/100-drone-shot-prompts.html">Drone shots <span class="sb-count">100</span></a>
+    <a class="sb-item" href="/100-scifi-ai-video-prompts.html">Sci-fi video <span class="sb-count">100</span></a>
+    <a class="sb-item" href="/100-nature-wildlife-ai-prompts.html">Nature & wildlife <span class="sb-count">100</span></a>
+    <a class="sb-item" href="/100-kling-ai-prompts.html">Kling AI 3.0 <span class="sb-count">100</span></a>
+    <a class="sb-item" href="/100-action-sports-ai-prompts.html">Action & sports <span class="sb-count">100</span></a>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <div class="sb-group">🖼 Image Prompts</div>
+    <a class="sb-item" href="/100-midjourney-portrait-prompts.html">Portrait prompts <span class="sb-count">100</span></a>
+    <a class="sb-item" href="/100-food-photography-ai-prompts.html">Food photography <span class="sb-count">100</span></a>
+    <a class="sb-item" href="/50-wedding-cinematic-ai-prompts.html">Wedding cinematic <span class="sb-count">50</span></a>
+    <a class="sb-item" href="/100-portrait-lighting-ai-prompts.html">Portrait lighting <span class="sb-count">100</span></a>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <div class="sb-group">🎓 Learn</div>
+    <a class="sb-item" href="/learn.html#beginner">Beginner guide <span class="sb-count">4</span></a>
+    <a class="sb-item" href="/learn.html#intermediate">Camera & lighting <span class="sb-count">4</span></a>
+    <a class="sb-item" href="/learn.html#advanced">Advanced <span class="sb-count">2</span></a>
+    <a class="sb-item" href="/learn.html#consistency">Consistency <span class="sb-count">3</span></a>
+    <a class="sb-item" href="/learn.html#tools">Tool guides <span class="sb-count">4</span></a>
+  </div>
+
+</div>
+<div class="lib-main">
 <div class="lib-hero">
   <div class="badge"><div class="badge-dot"></div> Free Prompt Library</div>
   <h1>Ready-to-copy <span>AI prompts</span><br>for every scene</h1>
@@ -200,11 +259,24 @@
   <a href="/video-prompt.html" class="cta-link">🎬 Open Video Prompt Generator</a>
 </div>
 
+</div>
+</div>
+
 <footer>
   <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/about.html">About</a></p>
   <p style="margin-top:6px;">Cinematic AI prompt tools for creators</p>
 </footer>
 
 <script>window.addEventListener('load', PKTheme.init);</script>
+
+<script>
+// Mark active sidebar item
+var path = window.location.pathname;
+document.querySelectorAll('.sb-item').forEach(function(el) {
+  if (el.getAttribute('href') && path.includes(el.getAttribute('href').split('#')[0].replace('/',''))) {
+    el.classList.add('active');
+  }
+});
+</script>
 </body>
 </html>
