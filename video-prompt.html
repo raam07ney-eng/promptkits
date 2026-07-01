@@ -16,28 +16,29 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
 <style>
-.page-layout{display:flex;gap:0;align-items:flex-start;max-width:100%;margin:0;}
-.tool-column{flex:1;min-width:0;max-width:calc(100% - 280px);}
-.edu-sidebar{width:280px;min-width:280px;flex-shrink:0;border-left:1px solid var(--border-card);padding:16px 14px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
-.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-card);}
-.guide-section{margin-bottom:4px;}
-.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:7px 8px;border-radius:6px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;text-align:left;}
-.guide-toggle:hover{background:var(--bg-adv);}
-.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;margin-left:4px;}
-.guide-chev.open{transform:rotate(180deg);}
-.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;}
-.guide-body.open{max-height:800px;}
-.guide-item{padding:6px 4px;border-bottom:1px solid var(--border-card);}
-.guide-item:last-child{border-bottom:none;}
-.guide-term{font-size:11px;font-weight:600;color:var(--text-primary);margin-bottom:2px;}
-.guide-def{font-size:11px;line-height:1.5;color:var(--text-secondary);}
-.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:10px;margin-top:10px;font-size:11px;line-height:1.55;color:var(--text-secondary);}
-.guide-tip-title{font-size:11px;font-weight:600;color:#a89eff;margin-bottom:4px;}
-@media(max-width:900px){
-  .page-layout{flex-direction:column;}
-  .tool-column{max-width:100%;}
-  .edu-sidebar{width:100%;height:auto;position:static;border-left:none;border-top:1px solid var(--border-card);}
-}
+.gen-layout{display:flex;gap:0;}
+.gen-left{width:280px;min-width:280px;flex-shrink:0;border-right:1px solid var(--border-card);padding:24px 20px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;}
+.gen-main{flex:1;min-width:0;}
+.gen-right{width:280px;min-width:280px;flex-shrink:0;border-left:1px solid var(--border-card);padding:24px 20px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;}
+.gs-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-card);}
+.gs-title{font-size:16px;font-weight:700;color:var(--text-primary);margin:0 0 12px;line-height:1.4;}
+.gs-para{font-size:13px;line-height:1.75;color:var(--text-primary);margin:0 0 14px;}
+.gs-item{padding:9px 0;border-bottom:1px solid var(--border-card);}
+.gs-item:last-child{border-bottom:none;}
+.gs-term{font-size:13px;font-weight:700;color:#a89eff;margin-bottom:3px;}
+.gs-def{font-size:12px;line-height:1.6;color:var(--text-primary);}
+.gs-step{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border-card);}
+.gs-step:last-child{border-bottom:none;}
+.gs-step-num{width:24px;height:24px;border-radius:50%;background:rgba(168,158,255,0.1);border:1px solid rgba(168,158,255,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#a89eff;flex-shrink:0;}
+.gs-step-title{font-size:12px;font-weight:700;color:var(--text-primary);margin-bottom:2px;}
+.gs-step-desc{font-size:11px;line-height:1.55;color:var(--text-primary);}
+.gs-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:12px;margin-top:14px;}
+.gs-tip-title{font-size:12px;font-weight:700;color:#a89eff;margin-bottom:5px;}
+.gs-tip-text{font-size:12px;line-height:1.65;color:var(--text-primary);}
+.gs-link{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:600;color:var(--text-secondary);transition:background 0.15s;border:1px solid var(--border-card);margin-bottom:6px;background:var(--bg-adv);}
+.gs-link:hover{border-color:#a89eff;color:#a89eff;}
+@media(max-width:1300px){.gen-right{display:none;}}
+@media(max-width:1000px){.gen-left{display:none;}.gen-layout{display:block;}}
 </style>
 </head>
 <body>
@@ -73,7 +74,25 @@
   </div>
 </div>
 
-<div class="page-layout"><div class="tool-column"><main class="main">
+<div class="gen-layout"><div class="gen-left">
+  <div class="gs-label">About this tool</div>
+  <div class="gs-title">Cinematic Video Prompt Generator</div>
+  <p class="gs-para">Generate professional AI video prompts with camera movement, scene pacing, lens choice, lighting, and colour grade — all structured for Kling AI, Runway, Sora, and Pika.</p>
+  <p class="gs-para">Video prompts differ from image prompts — they describe movement over time, not just a frozen moment.</p>
+
+  <div class="gs-label" style="margin-top:8px;">Camera movements</div>
+  <div class="gs-item"><div class="gs-term">Dolly / Push-in</div><div class="gs-def">Camera moves toward subject. Creates intimacy and growing tension.</div></div>
+  <div class="gs-item"><div class="gs-term">Pull-out / Reveal</div><div class="gs-def">Camera moves away. Reveals context, creates distance or realisation.</div></div>
+  <div class="gs-item"><div class="gs-term">Tracking shot</div><div class="gs-def">Camera moves alongside subject. Creates a sense of following.</div></div>
+  <div class="gs-item"><div class="gs-term">Crane / Rising</div><div class="gs-def">Camera moves vertically. Rising = revelation and epic scale.</div></div>
+  <div class="gs-item"><div class="gs-term">Orbital / 360</div><div class="gs-def">Camera circles the subject. Adds drama and emphasis.</div></div>
+  <div class="gs-item"><div class="gs-term">Handheld</div><div class="gs-def">Natural organic shake. Documentary realism and urgency.</div></div>
+
+  <div class="gs-tip">
+    <div class="gs-tip-title">💡 Key difference</div>
+    <div class="gs-tip-text">Always include camera movement. "Slow dolly push-in" produces far better results than describing only the subject.</div>
+  </div>
+</div><div class="gen-main"><main class="main">
   <div class="card">
     <label class="field-label" for="inputPrompt">Describe your video scene</label>
     <textarea id="inputPrompt" placeholder="e.g. a drone flying over ancient Indian temples at golden hour"></textarea>
@@ -318,48 +337,25 @@
     <div class="faq-item"><h3>Which tools work best with these prompts?</h3><p>Kling AI and Runway Gen-3 respond best to detailed prompts. Sora and Pika also support rich descriptions.</p></div>
     <div class="faq-item"><h3>Is this free?</h3><p>Yes, completely free. No account or sign-up needed.</p></div>
   </div>
-</main></div><div class="edu-sidebar">
-  <div class="sidebar-guide-label">📖 Quick Reference</div>
-  <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🎥 Camera Movements</span><span class="guide-chev open">▼</span></button>
-    <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">Dolly / Push-in</div><div class="guide-def">Camera moves toward subject. Creates intimacy and tension.</div></div>
-      <div class="guide-item"><div class="guide-term">Pull-out / Reveal</div><div class="guide-def">Camera moves away. Reveals context and creates distance.</div></div>
-      <div class="guide-item"><div class="guide-term">Tracking shot</div><div class="guide-def">Camera moves alongside subject. Creates a sense of following.</div></div>
-      <div class="guide-item"><div class="guide-term">Crane / Rising</div><div class="guide-def">Camera moves vertically. Rising = revelation and epic scale.</div></div>
-      <div class="guide-item"><div class="guide-term">Orbital / 360</div><div class="guide-def">Camera circles subject. Adds drama and emphasis.</div></div>
-      <div class="guide-item"><div class="guide-term">Handheld</div><div class="guide-def">Natural organic shake. Documentary realism and urgency.</div></div>
-      <div class="guide-item"><div class="guide-term">Aerial / Drone</div><div class="guide-def">Bird's eye perspective. Establishes scale and location.</div></div>
-    </div>
+</main></div><div class="gen-right">
+  <div class="gs-label">How to use</div>
+  <div class="gs-step"><div class="gs-step-num">1</div><div><div class="gs-step-title">Describe your scene</div><div class="gs-step-desc">Enter what happens in the video — the subject, action, setting, and any specific visual details.</div></div></div>
+  <div class="gs-step"><div class="gs-step-num">2</div><div><div class="gs-step-title">Select your AI tool</div><div class="gs-step-desc">Choose Kling AI, Runway, Sora, or Pika. The prompt language adapts to each tool's requirements.</div></div></div>
+  <div class="gs-step"><div class="gs-step-num">3</div><div><div class="gs-step-title">Choose camera movement</div><div class="gs-step-desc">Select how the camera moves through the scene. This is the most important choice for video prompts.</div></div></div>
+  <div class="gs-step"><div class="gs-step-num">4</div><div><div class="gs-step-title">Set lens & lighting</div><div class="gs-step-desc">Choose lens focal length and lighting setup for the look and feel of your shot.</div></div></div>
+  <div class="gs-step"><div class="gs-step-num">5</div><div><div class="gs-step-title">Pick colour grade & mood</div><div class="gs-step-desc">Set the colour grade and atmosphere. These define the emotional tone and genre of the video.</div></div></div>
+  <div class="gs-step"><div class="gs-step-num">6</div><div><div class="gs-step-title">Generate & copy</div><div class="gs-step-desc">Click Generate, copy the prompt, and paste into your AI video tool. Generate multiple versions and pick the best.</div></div></div>
+
+  <div class="gs-label" style="margin-top:16px;">Consistency tip</div>
+  <div class="gs-tip" style="margin-top:0;">
+    <div class="gs-tip-title">🔗 Multi-shot scenes</div>
+    <div class="gs-tip-text">For a consistent scene across multiple shots, keep the same character description, lighting, and colour grade in every prompt. This is the key to professional-looking AI video sequences.</div>
   </div>
-  <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🎬 Lens Guide</span><span class="guide-chev open">▼</span></button>
-    <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">24mm wide</div><div class="guide-def">Exaggerates depth. Good for environments.</div></div>
-      <div class="guide-item"><div class="guide-term">35mm standard</div><div class="guide-def">Natural, closest to human eye. Versatile.</div></div>
-      <div class="guide-item"><div class="guide-term">85mm portrait</div><div class="guide-def">Flattering compression, beautiful bokeh.</div></div>
-      <div class="guide-item"><div class="guide-term">Anamorphic</div><div class="guide-def">Cinematic oval bokeh and lens flares.</div></div>
-    </div>
-  </div>
-  <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🎨 Color Grades</span><span class="guide-chev">▼</span></button>
-    <div class="guide-body">
-      <div class="guide-item"><div class="guide-term">Teal &amp; Orange</div><div class="guide-def">Hollywood blockbuster. Warm skin, cool shadows.</div></div>
-      <div class="guide-item"><div class="guide-term">Cold Desaturated</div><div class="guide-def">Psychological tension. Thriller aesthetic.</div></div>
-      <div class="guide-item"><div class="guide-term">Warm Vintage</div><div class="guide-def">Nostalgia and period drama.</div></div>
-      <div class="guide-item"><div class="guide-term">Natural</div><div class="guide-def">Clean, true-to-life. Documentary style.</div></div>
-    </div>
-  </div>
-  <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🛠 Best Tool per Shot</span><span class="guide-chev">▼</span></button>
-    <div class="guide-body">
-      <div class="guide-item"><div class="guide-term">Kling AI 3.0</div><div class="guide-def">Cinematic shots, character close-ups, landscape reveals.</div></div>
-      <div class="guide-item"><div class="guide-term">Runway Gen-3</div><div class="guide-def">Human subjects, realistic movement.</div></div>
-      <div class="guide-item"><div class="guide-term">Sora</div><div class="guide-def">Complex scenes, longer clips.</div></div>
-      <div class="guide-item"><div class="guide-term">Pika</div><div class="guide-def">Image-to-video, short clips.</div></div>
-    </div>
-  </div>
-  <div class="guide-tip"><div class="guide-tip-title">💡 Consistency tip</div>Include same character description, lighting, and color grade in every shot prompt.</div>
+
+  <div class="gs-label" style="margin-top:14px;">Related tools</div>
+  <a href="/image-prompt.html" class="gs-link">🖼 Image Prompt Generator</a>
+  <a href="/prompt-library.html" class="gs-link">📚 Browse Prompt Library</a>
+  <a href="/learn.html" class="gs-link">🎓 Learning Hub</a>
 </div></div>
 
 <footer>
@@ -443,13 +439,7 @@
   function copyResult(){navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{document.getElementById('copyLabel').textContent='Copied!';setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);});}
 </script>
 <script>
-function toggleGuide(btn) {
-  var body = btn.nextElementSibling;
-  var chev = btn.querySelector('.guide-chev');
-  var isOpen = body.classList.contains('open');
-  body.classList.toggle('open', !isOpen);
-  chev.classList.toggle('open', !isOpen);
-}
+function toggleGuide(btn){var b=btn.nextElementSibling;var c=btn.querySelector('.guide-chev');var o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.classList.toggle('open',!o);}
 </script>
 </body>
 </html>

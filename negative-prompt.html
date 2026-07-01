@@ -15,28 +15,29 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
 <style>
-.page-layout{display:flex;gap:0;align-items:flex-start;max-width:100%;margin:0;}
-.tool-column{flex:1;min-width:0;max-width:calc(100% - 280px);}
-.edu-sidebar{width:280px;min-width:280px;flex-shrink:0;border-left:1px solid var(--border-card);padding:16px 14px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
-.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-card);}
-.guide-section{margin-bottom:4px;}
-.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:7px 8px;border-radius:6px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;text-align:left;}
-.guide-toggle:hover{background:var(--bg-adv);}
-.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;margin-left:4px;}
-.guide-chev.open{transform:rotate(180deg);}
-.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;}
-.guide-body.open{max-height:800px;}
-.guide-item{padding:6px 4px;border-bottom:1px solid var(--border-card);}
-.guide-item:last-child{border-bottom:none;}
-.guide-term{font-size:11px;font-weight:600;color:var(--text-primary);margin-bottom:2px;}
-.guide-def{font-size:11px;line-height:1.5;color:var(--text-secondary);}
-.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:10px;margin-top:10px;font-size:11px;line-height:1.55;color:var(--text-secondary);}
-.guide-tip-title{font-size:11px;font-weight:600;color:#a89eff;margin-bottom:4px;}
-@media(max-width:900px){
-  .page-layout{flex-direction:column;}
-  .tool-column{max-width:100%;}
-  .edu-sidebar{width:100%;height:auto;position:static;border-left:none;border-top:1px solid var(--border-card);}
-}
+.gen-layout{display:flex;gap:0;}
+.gen-left{width:280px;min-width:280px;flex-shrink:0;border-right:1px solid var(--border-card);padding:24px 20px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;}
+.gen-main{flex:1;min-width:0;}
+.gen-right{width:280px;min-width:280px;flex-shrink:0;border-left:1px solid var(--border-card);padding:24px 20px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;}
+.gs-label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-card);}
+.gs-title{font-size:16px;font-weight:700;color:var(--text-primary);margin:0 0 12px;line-height:1.4;}
+.gs-para{font-size:13px;line-height:1.75;color:var(--text-primary);margin:0 0 14px;}
+.gs-item{padding:9px 0;border-bottom:1px solid var(--border-card);}
+.gs-item:last-child{border-bottom:none;}
+.gs-term{font-size:13px;font-weight:700;color:#a89eff;margin-bottom:3px;}
+.gs-def{font-size:12px;line-height:1.6;color:var(--text-primary);}
+.gs-step{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border-card);}
+.gs-step:last-child{border-bottom:none;}
+.gs-step-num{width:24px;height:24px;border-radius:50%;background:rgba(168,158,255,0.1);border:1px solid rgba(168,158,255,0.3);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#a89eff;flex-shrink:0;}
+.gs-step-title{font-size:12px;font-weight:700;color:var(--text-primary);margin-bottom:2px;}
+.gs-step-desc{font-size:11px;line-height:1.55;color:var(--text-primary);}
+.gs-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:12px;margin-top:14px;}
+.gs-tip-title{font-size:12px;font-weight:700;color:#a89eff;margin-bottom:5px;}
+.gs-tip-text{font-size:12px;line-height:1.65;color:var(--text-primary);}
+.gs-link{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:600;color:var(--text-secondary);transition:background 0.15s;border:1px solid var(--border-card);margin-bottom:6px;background:var(--bg-adv);}
+.gs-link:hover{border-color:#a89eff;color:#a89eff;}
+@media(max-width:1300px){.gen-right{display:none;}}
+@media(max-width:1000px){.gen-left{display:none;}.gen-layout{display:block;}}
 </style>
 </head>
 <body>
@@ -67,7 +68,23 @@
   <p>Eliminate bad anatomy, artifacts, and unwanted elements from your AI images. Works with Stable Diffusion, SDXL, and more.</p>
 </div>
 
-<div class="page-layout"><div class="tool-column"><main class="main">
+<div class="gen-layout"><div class="gen-left">
+  <div class="gs-label">About this tool</div>
+  <div class="gs-title">Negative Prompt Generator</div>
+  <p class="gs-para">Generates a negative prompt that tells the AI what to exclude from your image — eliminating bad anatomy, artifacts, blurry faces, and quality issues before they appear.</p>
+  <p class="gs-para">Works with Stable Diffusion, SDXL, ComfyUI, and Automatic1111. Limited support in Midjourney via --no.</p>
+
+  <div class="gs-label" style="margin-top:8px;">Common problem terms</div>
+  <div class="gs-item"><div class="gs-term">Quality issues</div><div class="gs-def" style="font-family:monospace;font-size:11px;">low quality, worst quality, lowres, jpeg artifacts, blurry, watermark</div></div>
+  <div class="gs-item"><div class="gs-term">Anatomy problems</div><div class="gs-def" style="font-family:monospace;font-size:11px;">deformed, distorted, bad anatomy, extra limb, missing limb, mutation</div></div>
+  <div class="gs-item"><div class="gs-term">Hand issues</div><div class="gs-def" style="font-family:monospace;font-size:11px;">extra fingers, fused fingers, too many fingers, bad hands</div></div>
+  <div class="gs-item"><div class="gs-term">Face problems</div><div class="gs-def" style="font-family:monospace;font-size:11px;">blurry face, bad eyes, cross-eyed, asymmetric eyes</div></div>
+
+  <div class="gs-tip">
+    <div class="gs-tip-title">💡 Always include quality terms</div>
+    <div class="gs-tip-text">Add "low quality, worst quality, lowres" to every negative prompt as a baseline. This single addition improves output quality across all generations.</div>
+  </div>
+</div><div class="gen-main"><main class="main">
   <div class="info-box">
     <div class="info-box-title">💡 What is a Negative Prompt?</div>
     <p>A negative prompt tells the AI what to <strong>exclude</strong> from your image — like bad hands, blurry faces, or low quality artifacts. It works alongside your main prompt to dramatically improve results.</p>
@@ -212,36 +229,23 @@
     <div class="faq-item"><h3>Will this fix bad hands and fingers?</h3><p>Yes — select Hands focus and the tool generates specific negative prompts targeting extra fingers, fused hands, and distorted hand anatomy.</p></div>
     <div class="faq-item"><h3>Is this free?</h3><p>Yes, completely free. No account or sign-up needed.</p></div>
   </div>
-</main></div><div class="edu-sidebar">
-  <div class="sidebar-guide-label">📖 Quick Reference</div>
-  <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🚫 Common Problem Terms</span><span class="guide-chev open">▼</span></button>
-    <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">Quality issues</div><div class="guide-def" style="font-family:monospace;font-size:10px;">low quality, worst quality, lowres, jpeg artifacts, blurry, watermark</div></div>
-      <div class="guide-item"><div class="guide-term">Anatomy problems</div><div class="guide-def" style="font-family:monospace;font-size:10px;">deformed, distorted, bad anatomy, extra limb, missing limb</div></div>
-      <div class="guide-item"><div class="guide-term">Hand issues</div><div class="guide-def" style="font-family:monospace;font-size:10px;">extra fingers, fused fingers, too many fingers, bad hands</div></div>
-      <div class="guide-item"><div class="guide-term">Face problems</div><div class="guide-def" style="font-family:monospace;font-size:10px;">blurry face, bad eyes, cross-eyed, asymmetric eyes</div></div>
-    </div>
-  </div>
-  <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🛠 Where to Paste</span><span class="guide-chev open">▼</span></button>
-    <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">Stable Diffusion / SDXL</div><div class="guide-def">Paste into the "Negative Prompt" field below the main prompt box.</div></div>
-      <div class="guide-item"><div class="guide-term">ComfyUI / A1111</div><div class="guide-def">Dedicated negative prompt node. Supports weighted terms.</div></div>
-      <div class="guide-item"><div class="guide-term">Midjourney</div><div class="guide-def">Add --no at end: --no hands, text, watermark</div></div>
-      <div class="guide-item"><div class="guide-term">DALL-E 3</div><div class="guide-def">No dedicated field. Include exclusions in main prompt.</div></div>
-    </div>
-  </div>
-  <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)"><span>⚙️ CFG Scale Guide</span><span class="guide-chev">▼</span></button>
-    <div class="guide-body">
-      <div class="guide-item"><div class="guide-term">CFG 4–6</div><div class="guide-def">Loose — AI has more creative freedom.</div></div>
-      <div class="guide-item"><div class="guide-term">CFG 7–9</div><div class="guide-def">Balanced — Best range. Recommended starting point.</div></div>
-      <div class="guide-item"><div class="guide-term">CFG 10–12</div><div class="guide-def">Strict — Can cause oversaturation at high values.</div></div>
-      <div class="guide-item"><div class="guide-term">CFG 13+</div><div class="guide-def">Too strict — Often produces distorted results.</div></div>
-    </div>
-  </div>
-  <div class="guide-tip"><div class="guide-tip-title">💡 Always start with quality terms</div>Add "low quality, worst quality, lowres" to every negative prompt as a baseline.</div>
+</main></div><div class="gen-right">
+  <div class="gs-label">How to use</div>
+  <div class="gs-step"><div class="gs-step-num">1</div><div><div class="gs-step-title">Enter your main prompt</div><div class="gs-step-desc">Type what you are generating — the negative prompt is tailored based on your subject and content type.</div></div></div>
+  <div class="gs-step"><div class="gs-step-num">2</div><div><div class="gs-step-title">Select your AI tool</div><div class="gs-step-desc">Choose Stable Diffusion XL, SD 1.5, Midjourney, or DALL-E 3. Each tool uses negative prompts differently.</div></div></div>
+  <div class="gs-step"><div class="gs-step-num">3</div><div><div class="gs-step-title">Choose what to fix</div><div class="gs-step-desc">Select All Issues, or focus on Anatomy, Face & Eyes, Hands, or Quality depending on your specific problem.</div></div></div>
+  <div class="gs-step"><div class="gs-step-num">4</div><div><div class="gs-step-title">Generate & copy</div><div class="gs-step-desc">Copy the negative prompt and paste it into the Negative Prompt field in your image tool — not the main prompt field.</div></div></div>
+  <div class="gs-step"><div class="gs-step-num">5</div><div><div class="gs-step-title">Adjust CFG scale</div><div class="gs-step-desc">Set CFG between 7-9 for the best balance of prompt adherence and image quality.</div></div></div>
+
+  <div class="gs-label" style="margin-top:16px;">Where to paste</div>
+  <div class="gs-item"><div class="gs-term">Stable Diffusion / SDXL</div><div class="gs-def">Paste into the "Negative Prompt" field below the main prompt box.</div></div>
+  <div class="gs-item"><div class="gs-term">ComfyUI / A1111</div><div class="gs-def">Dedicated negative prompt node. Supports weighted terms (term:1.5).</div></div>
+  <div class="gs-item"><div class="gs-term">Midjourney</div><div class="gs-def">Add --no at the end: --no hands, text, watermark</div></div>
+  <div class="gs-item"><div class="gs-term">DALL-E 3</div><div class="gs-def">No dedicated field. Include exclusions in main prompt text instead.</div></div>
+
+  <div class="gs-label" style="margin-top:14px;">Related tools</div>
+  <a href="/image-prompt.html" class="gs-link">🖼 Image Prompt Generator</a>
+  <a href="/enhancer.html" class="gs-link">✨ Prompt Enhancer</a>
 </div></div>
 
 <footer>
@@ -277,13 +281,7 @@
   function copyResult(){navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{document.getElementById('copyLabel').textContent='Copied!';setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);});}
 </script>
 <script>
-function toggleGuide(btn) {
-  var body = btn.nextElementSibling;
-  var chev = btn.querySelector('.guide-chev');
-  var isOpen = body.classList.contains('open');
-  body.classList.toggle('open', !isOpen);
-  chev.classList.toggle('open', !isOpen);
-}
+function toggleGuide(btn){var b=btn.nextElementSibling;var c=btn.querySelector('.guide-chev');var o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.classList.toggle('open',!o);}
 </script>
 </body>
 </html>
