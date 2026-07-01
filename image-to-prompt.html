@@ -43,7 +43,7 @@
   <p>Upload any image and instantly get a detailed AI prompt to recreate it in Midjourney, DALL-E, or Stable Diffusion.</p>
 </div>
 
-<main class="main">
+<div class="page-layout"><div class="tool-column"><main class="main">
   <div class="card">
     <label class="field-label">Upload your image</label>
     <div class="upload-zone" id="uploadZone">
@@ -116,6 +116,90 @@
     </div>
   </div>
 
+  
+<div class="edu-section" style="max-width:760px;margin:48px auto 0;padding:0 24px;">
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">What is Image-to-Prompt Reverse Engineering?</h2>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 14px;">Image-to-prompt reverse engineering is the process of analysing an existing image and generating the text prompt that would recreate it — or produce something with a similar visual style, composition, and aesthetic. It is an essential skill for AI creators who want to understand why certain images look the way they do and how to reproduce that quality deliberately.</p>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 14px;">The PromptKits Image to Prompt tool uses AI vision technology to analyse uploaded images across multiple dimensions — composition, lighting, colour palette, style, texture, mood, and technical qualities — and converts that analysis into actionable prompts for Midjourney, DALL-E, Stable Diffusion, and other image generation tools.</p>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 32px;">This is particularly valuable when you encounter an AI-generated image whose style you want to replicate, when you have a reference photo that captures the visual mood you want, or when you want to understand what specific prompt language produces particular visual effects.</p>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">What the AI Analyses in Your Image</h2>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px 16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:#a89eff;margin-bottom:4px;">Composition & Framing</div>
+      <p style="font-size:13px;line-height:1.65;color:var(--text-secondary);margin:0;">The rule of thirds placement, the relationship between foreground and background, depth of field, the angle and height of the viewpoint, and the overall geometric structure of the image.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px 16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:#a89eff;margin-bottom:4px;">Lighting Quality & Direction</div>
+      <p style="font-size:13px;line-height:1.65;color:var(--text-secondary);margin:0;">The apparent light source direction, the hardness or softness of the light, the colour temperature, the presence of shadows and highlights, and whether the light is natural or artificial.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px 16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:#a89eff;margin-bottom:4px;">Colour Palette & Grade</div>
+      <p style="font-size:13px;line-height:1.65;color:var(--text-secondary);margin:0;">The dominant and accent colours, the overall warmth or coolness of the colour grade, saturation levels, contrast, and any distinctive colour grading styles like teal and orange or desaturated cool tones.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px 16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:#a89eff;margin-bottom:4px;">Style & Medium</div>
+      <p style="font-size:13px;line-height:1.65;color:var(--text-secondary);margin:0;">Whether the image appears photographic or illustrative, the specific artistic style if present, the rendering quality, whether it appears to be AI-generated and in what style, and references to real-world artists or movements.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px 16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:#a89eff;margin-bottom:4px;">Mood & Atmosphere</div>
+      <p style="font-size:13px;line-height:1.65;color:var(--text-secondary);margin:0;">The emotional register of the image, the implied narrative or story, the time of day and weather conditions, and the overall feeling that the visual elements create together.</p>
+    </div>
+  </div>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Use Cases for Image-to-Prompt</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;">
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">🎨 Style Matching</div>
+      <p style="font-size:12px;line-height:1.6;color:var(--text-secondary);margin:0;">Find an AI image with a style you love and reverse-engineer the prompt to generate similar images with your own subjects and compositions.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📸 Photography Reference</div>
+      <p style="font-size:12px;line-height:1.6;color:var(--text-secondary);margin:0;">Upload a reference photograph to extract its lighting, mood, and composition language for use in AI generation.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">🎬 Mood Board Creation</div>
+      <p style="font-size:12px;line-height:1.6;color:var(--text-secondary);margin:0;">Extract prompts from multiple reference images to build a consistent visual language for a project or brand.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">📚 Learning Tool</div>
+      <p style="font-size:12px;line-height:1.6;color:var(--text-secondary);margin:0;">Understand why certain images look the way they do by seeing the technical language that describes their visual qualities.</p>
+    </div>
+  </div>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Getting the Best Results</h2>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
+      <span style="color:#a89eff;font-size:16px;flex-shrink:0;">✦</span>
+      <div style="font-size:13px;line-height:1.65;color:var(--text-secondary);">Upload high-resolution images for the most accurate analysis. Low-resolution thumbnails may produce less precise prompts.</div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
+      <span style="color:#a89eff;font-size:16px;flex-shrink:0;">✦</span>
+      <div style="font-size:13px;line-height:1.65;color:var(--text-secondary);">Choose the right target tool — selecting Midjourney produces prompts with Midjourney-specific syntax and parameters, while Stable Diffusion produces keyword-weighted prompts in SD format.</div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
+      <span style="color:#a89eff;font-size:16px;flex-shrink:0;">✦</span>
+      <div style="font-size:13px;line-height:1.65;color:var(--text-secondary);">Use the Technical detail level when you want to extract specific photography and cinematography terminology from the image for use in cinematic AI generation.</div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
+      <span style="color:#a89eff;font-size:16px;flex-shrink:0;">✦</span>
+      <div style="font-size:13px;line-height:1.65;color:var(--text-secondary);">The generated prompt is a starting point, not a perfect recreation. Expect to refine and adapt the prompt for your specific creative needs.</div>
+    </div>
+  </div>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Related Tools</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+    <a href="/image-prompt.html" style="display:flex;align-items:center;gap:10px;padding:14px;border:1px solid var(--border-card);border-radius:10px;text-decoration:none;background:var(--bg-card);" onmouseover="this.style.borderColor='#a89eff'" onmouseout="this.style.borderColor=''">
+      <span style="font-size:20px;">🖼</span><div><div style="font-size:13px;font-weight:600;color:var(--text-primary);">Image Prompt Generator</div><div style="font-size:11px;color:var(--text-secondary);">Generate from scratch</div></div>
+    </a>
+    <a href="/enhancer.html" style="display:flex;align-items:center;gap:10px;padding:14px;border:1px solid var(--border-card);border-radius:10px;text-decoration:none;background:var(--bg-card);" onmouseover="this.style.borderColor='#a89eff'" onmouseout="this.style.borderColor=''">
+      <span style="font-size:20px;">✨</span><div><div style="font-size:13px;font-weight:600;color:var(--text-primary);">Prompt Enhancer</div><div style="font-size:11px;color:var(--text-secondary);">Improve existing prompts</div></div>
+    </a>
+  </div>
+
+</div>
+
   <div class="faq-section">
     <h2>Frequently asked questions</h2>
     <div class="faq-item"><h3>What images can I upload?</h3><p>Any image — photos, AI-generated art, screenshots, paintings. JPG, PNG, and WEBP up to 20MB.</p></div>
@@ -123,7 +207,38 @@
     <div class="faq-item"><h3>Can I use this to recreate Midjourney images?</h3><p>Yes! Upload any Midjourney image and get a prompt to recreate a similar style.</p></div>
     <div class="faq-item"><h3>Is this free?</h3><p>Yes, completely free. No account or sign-up needed.</p></div>
   </div>
-</main>
+</main></div><div class="edu-sidebar">
+  <div class="sidebar-guide-label">📖 Quick Reference Guide</div>
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🔍 What AI Analyses</span><span class="guide-chev open">▼</span></button>
+    <div class="guide-body open">
+      <div class="guide-item"><div class="guide-term">Composition</div><div class="guide-def">Rule of thirds, framing, foreground/background relationship, camera angle.</div></div>
+      <div class="guide-item"><div class="guide-term">Lighting</div><div class="guide-def">Light source direction, quality (hard/soft), colour temperature, shadows.</div></div>
+      <div class="guide-item"><div class="guide-term">Colour palette</div><div class="guide-def">Dominant colours, warmth/coolness, saturation, contrast, grade style.</div></div>
+      <div class="guide-item"><div class="guide-term">Style &amp; medium</div><div class="guide-def">Photographic or illustrative, artistic style, rendering quality.</div></div>
+      <div class="guide-item"><div class="guide-term">Mood &amp; atmosphere</div><div class="guide-def">Emotional register, time of day, weather, overall feeling.</div></div>
+    </div>
+  </div>
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🎯 Best Use Cases</span><span class="guide-chev open">▼</span></button>
+    <div class="guide-body open">
+      <div class="guide-item"><div class="guide-term">Style matching</div><div class="guide-def">Found an AI image you love? Reverse-engineer the prompt to generate similar images.</div></div>
+      <div class="guide-item"><div class="guide-term">Photo reference</div><div class="guide-def">Extract lighting and mood language from a reference photo.</div></div>
+      <div class="guide-item"><div class="guide-term">Mood boards</div><div class="guide-def">Extract prompts from multiple images to build a consistent visual language.</div></div>
+      <div class="guide-item"><div class="guide-term">Learning tool</div><div class="guide-def">Understand why images look the way they do by seeing their technical description.</div></div>
+    </div>
+  </div>
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>📋 Output by Tool</span><span class="guide-chev">▼</span></button>
+    <div class="guide-body">
+      <div class="guide-item"><div class="guide-term">Midjourney</div><div class="guide-def">Descriptive terms with --ar ratio and --style raw parameters.</div></div>
+      <div class="guide-item"><div class="guide-term">DALL-E 3</div><div class="guide-def">Natural language formatted for DALL-E's conversational style.</div></div>
+      <div class="guide-item"><div class="guide-term">Stable Diffusion</div><div class="guide-def">Keyword-weighted format with technical photography terms.</div></div>
+      <div class="guide-item"><div class="guide-term">Leonardo AI</div><div class="guide-def">Leonardo-optimised prompt with style and model suggestions.</div></div>
+    </div>
+  </div>
+  <div class="guide-tip"><div class="guide-tip-title">💡 Pro tip</div>Upload high-resolution images for the most accurate analysis. The generated prompt is a starting point — adapt it for your specific creative needs.</div>
+</div></div>
 
 <footer>
   <p>© 2024 PromptKits · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a></p>
@@ -174,6 +289,15 @@
   zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('dragover');});
   zone.addEventListener('dragleave',()=>zone.classList.remove('dragover'));
   zone.addEventListener('drop',e=>{e.preventDefault();zone.classList.remove('dragover');const file=e.dataTransfer.files[0];if(file&&file.type.startsWith('image/')){const reader=new FileReader();reader.onload=ev=>{uploadedImageBase64=ev.target.result.split(',')[1];uploadedImageMediaType=file.type||'image/jpeg';document.getElementById('previewImg').src=ev.target.result;document.getElementById('previewWrap').style.display='block';};reader.readAsDataURL(file);}});
+</script>
+<script>
+function toggleGuide(btn) {
+  var body = btn.nextElementSibling;
+  var chev = btn.querySelector('.guide-chev');
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
+}
 </script>
 </body>
 </html>
