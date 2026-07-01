@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<main class="main">
+<div class="page-layout"><div class="tool-column"><main class="main">
   <div class="card">
     <label class="field-label" for="inputPrompt">Describe your image idea</label>
     <textarea id="inputPrompt" placeholder="e.g. a samurai standing in heavy rain at night in a neon-lit city"></textarea>
@@ -308,7 +308,66 @@
     <div class="faq-item"><h3>What do the Advanced Settings do?</h3><p>They let you control camera angle, lens type, lighting style, aspect ratio, and quality — giving you professional-level control over the final image.</p></div>
     <div class="faq-item"><h3>Is this free?</h3><p>Yes, completely free. No account or sign-up needed.</p></div>
   </div>
-</main>
+</main></div>
+<div class="edu-sidebar">
+  <div class="sidebar-guide-label">📖 Quick Reference Guide</div>
+
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)">
+      <span>🔭 Lens Types</span><span class="guide-chev">▼</span>
+    </button>
+    <div class="guide-body open">
+      <div class="guide-item"><div class="guide-term">24mm wide angle</div><div class="guide-def">Exaggerates perspective and depth. Great for environments and architecture.</div></div>
+      <div class="guide-item"><div class="guide-term">35mm standard</div><div class="guide-def">Natural, closest to the human eye. Versatile for any subject.</div></div>
+      <div class="guide-item"><div class="guide-term">85mm portrait</div><div class="guide-def">Flattering compression, beautiful bokeh. The portrait photographer's lens.</div></div>
+      <div class="guide-item"><div class="guide-term">100mm macro</div><div class="guide-def">Extreme close-up detail. Reveals texture invisible to the naked eye.</div></div>
+      <div class="guide-item"><div class="guide-term">Anamorphic</div><div class="guide-def">Cinematic oval bokeh and lens flares. The movie look.</div></div>
+    </div>
+  </div>
+
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)">
+      <span>💡 Lighting Setups</span><span class="guide-chev">▼</span>
+    </button>
+    <div class="guide-body open">
+      <div class="guide-item"><div class="guide-term">Rembrandt</div><div class="guide-def">Key light at 45° above. Creates a triangle of light on the shadow cheek. Classic and dramatic.</div></div>
+      <div class="guide-item"><div class="guide-term">Golden hour</div><div class="guide-def">Warm backlight from low sun. Hair and shoulders glow amber. The most flattering outdoor light.</div></div>
+      <div class="guide-item"><div class="guide-term">Split lighting</div><div class="guide-def">Light directly to the side. Half lit, half shadow. Bold and graphic.</div></div>
+      <div class="guide-item"><div class="guide-term">Soft window light</div><div class="guide-def">Natural, diffused, flattering. The most versatile portrait light available.</div></div>
+      <div class="guide-item"><div class="guide-term">Neon practical</div><div class="guide-def">Coloured light from neon signs or LEDs. Urban, editorial, cyberpunk aesthetic.</div></div>
+    </div>
+  </div>
+
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)">
+      <span>🎨 Color Grades</span><span class="guide-chev">▼</span>
+    </button>
+    <div class="guide-body open">
+      <div class="guide-item"><div class="guide-term">Teal & Orange</div><div class="guide-def">Hollywood blockbuster. Warm skin tones, cool shadows. Most commercial look.</div></div>
+      <div class="guide-item"><div class="guide-term">Cold Desaturated</div><div class="guide-def">Tension and psychological drama. Muted, clinical, unsettling.</div></div>
+      <div class="guide-item"><div class="guide-term">Warm Vintage</div><div class="guide-def">Nostalgia, film, period aesthetic. Lifted blacks and warm highlights.</div></div>
+      <div class="guide-item"><div class="guide-term">Black & White</div><div class="guide-def">Timeless, graphic, emotional. Removes colour distraction, reveals form.</div></div>
+    </div>
+  </div>
+
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)">
+      <span>📐 Shot Types</span><span class="guide-chev">▼</span>
+    </button>
+    <div class="guide-body">
+      <div class="guide-item"><div class="guide-term">Wide establishing</div><div class="guide-def">Shows environment and scale. Context before intimacy.</div></div>
+      <div class="guide-item"><div class="guide-term">Medium shot</div><div class="guide-def">Waist up. The most common shot for people — natural and conversational.</div></div>
+      <div class="guide-item"><div class="guide-term">Close-up</div><div class="guide-def">Face fills frame. Emotion and detail. The most intimate shot.</div></div>
+      <div class="guide-item"><div class="guide-term">Extreme close-up</div><div class="guide-def">Eyes, hands, a single detail. Texture and intensity.</div></div>
+    </div>
+  </div>
+
+  <div class="guide-tip">
+    <div class="guide-tip-title">💡 VFX pro tip</div>
+    Always specify lighting direction before anything else. Light from the side creates depth and dimension. Light from the front creates flat, commercial images. The direction of light is the most important decision in any portrait.
+  </div>
+
+</div></div>
 
 <footer>
   <p>© 2024 PromptKits · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a></p>
