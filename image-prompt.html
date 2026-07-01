@@ -16,25 +16,26 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
 <style>
-.page-layout{display:flex;gap:0;align-items:flex-start;}
-.tool-column{flex:1;min-width:0;}
-.edu-sidebar{width:300px;min-width:260px;flex-shrink:0;border-left:1px solid var(--border-card);padding:20px 16px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
-.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border-card);}
-.guide-section{margin-bottom:6px;}
-.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;}
+.page-layout{display:flex;gap:0;align-items:flex-start;max-width:100%;margin:0;}
+.tool-column{flex:1;min-width:0;max-width:calc(100% - 280px);}
+.edu-sidebar{width:280px;min-width:280px;flex-shrink:0;border-left:1px solid var(--border-card);padding:16px 14px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
+.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-card);}
+.guide-section{margin-bottom:4px;}
+.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:7px 8px;border-radius:6px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;text-align:left;}
 .guide-toggle:hover{background:var(--bg-adv);}
-.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;}
+.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;margin-left:4px;}
 .guide-chev.open{transform:rotate(180deg);}
-.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;padding:0 4px;}
+.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;}
 .guide-body.open{max-height:800px;}
-.guide-item{padding:7px 6px;border-bottom:1px solid var(--border-card);}
+.guide-item{padding:6px 4px;border-bottom:1px solid var(--border-card);}
 .guide-item:last-child{border-bottom:none;}
-.guide-term{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px;}
-.guide-def{font-size:11px;line-height:1.55;color:var(--text-secondary);}
-.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:12px;margin-top:12px;font-size:11px;line-height:1.6;color:var(--text-secondary);}
-.guide-tip-title{font-size:12px;font-weight:600;color:#a89eff;margin-bottom:6px;}
+.guide-term{font-size:11px;font-weight:600;color:var(--text-primary);margin-bottom:2px;}
+.guide-def{font-size:11px;line-height:1.5;color:var(--text-secondary);}
+.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:10px;margin-top:10px;font-size:11px;line-height:1.55;color:var(--text-secondary);}
+.guide-tip-title{font-size:11px;font-weight:600;color:#a89eff;margin-bottom:4px;}
 @media(max-width:900px){
   .page-layout{flex-direction:column;}
+  .tool-column{max-width:100%;}
   .edu-sidebar{width:100%;height:auto;position:static;border-left:none;border-top:1px solid var(--border-card);}
 }
 </style>
@@ -332,46 +333,46 @@
     <div class="faq-item"><h3>Is this free?</h3><p>Yes, completely free. No account or sign-up needed.</p></div>
   </div>
 </main></div><div class="edu-sidebar">
-  <div class="sidebar-guide-label">📖 Quick Reference Guide</div>
+  <div class="sidebar-guide-label">📖 Quick Reference</div>
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>🔭 Lens Types</span><span class="guide-chev open">▼</span></button>
     <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">24mm wide angle</div><div class="guide-def">Exaggerates perspective and depth. Great for environments and architecture.</div></div>
-      <div class="guide-item"><div class="guide-term">35mm standard</div><div class="guide-def">Natural, closest to the human eye. Versatile for any subject.</div></div>
-      <div class="guide-item"><div class="guide-term">85mm portrait</div><div class="guide-def">Flattering compression, beautiful bokeh. The portrait photographer's lens.</div></div>
-      <div class="guide-item"><div class="guide-term">100mm macro</div><div class="guide-def">Extreme close-up detail. Reveals texture invisible to the naked eye.</div></div>
-      <div class="guide-item"><div class="guide-term">Anamorphic</div><div class="guide-def">Cinematic oval bokeh and lens flares. The movie look.</div></div>
+      <div class="guide-item"><div class="guide-term">24mm wide angle</div><div class="guide-def">Exaggerates perspective. Great for environments.</div></div>
+      <div class="guide-item"><div class="guide-term">35mm standard</div><div class="guide-def">Natural, closest to human eye. Versatile.</div></div>
+      <div class="guide-item"><div class="guide-term">85mm portrait</div><div class="guide-def">Flattering compression, beautiful bokeh.</div></div>
+      <div class="guide-item"><div class="guide-term">100mm macro</div><div class="guide-def">Extreme close-up. Reveals invisible texture.</div></div>
+      <div class="guide-item"><div class="guide-term">Anamorphic</div><div class="guide-def">Cinematic oval bokeh and lens flares.</div></div>
     </div>
   </div>
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>💡 Lighting Setups</span><span class="guide-chev open">▼</span></button>
     <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">Rembrandt</div><div class="guide-def">Key light at 45° above. Triangle of light on shadow cheek. Classic and dramatic.</div></div>
-      <div class="guide-item"><div class="guide-term">Golden hour</div><div class="guide-def">Warm backlight from low sun. Hair glows amber. Most flattering outdoor light.</div></div>
-      <div class="guide-item"><div class="guide-term">Split lighting</div><div class="guide-def">Light directly to the side. Half lit, half shadow. Bold and graphic.</div></div>
-      <div class="guide-item"><div class="guide-term">Soft window light</div><div class="guide-def">Natural, diffused, flattering. The most versatile portrait light.</div></div>
-      <div class="guide-item"><div class="guide-term">Neon practical</div><div class="guide-def">Coloured light from signs or LEDs. Urban, editorial, cyberpunk.</div></div>
+      <div class="guide-item"><div class="guide-term">Rembrandt</div><div class="guide-def">Key light at 45°. Triangle of light on shadow cheek.</div></div>
+      <div class="guide-item"><div class="guide-term">Golden hour</div><div class="guide-def">Warm backlight from low sun. Hair glows amber.</div></div>
+      <div class="guide-item"><div class="guide-term">Split lighting</div><div class="guide-def">Light directly to the side. Half lit, half shadow.</div></div>
+      <div class="guide-item"><div class="guide-term">Soft window light</div><div class="guide-def">Natural, diffused, flattering. Most versatile.</div></div>
+      <div class="guide-item"><div class="guide-term">Neon practical</div><div class="guide-def">Coloured light from signs. Urban, cyberpunk.</div></div>
     </div>
   </div>
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>🎨 Color Grades</span><span class="guide-chev">▼</span></button>
     <div class="guide-body">
-      <div class="guide-item"><div class="guide-term">Teal &amp; Orange</div><div class="guide-def">Hollywood blockbuster. Warm skin tones, cool shadows.</div></div>
-      <div class="guide-item"><div class="guide-term">Cold Desaturated</div><div class="guide-def">Tension and psychological drama. Muted and clinical.</div></div>
-      <div class="guide-item"><div class="guide-term">Warm Vintage</div><div class="guide-def">Nostalgia, film, period aesthetic. Lifted blacks and warm highlights.</div></div>
-      <div class="guide-item"><div class="guide-term">Black &amp; White</div><div class="guide-def">Timeless, graphic, emotional. Reveals form without colour distraction.</div></div>
+      <div class="guide-item"><div class="guide-term">Teal &amp; Orange</div><div class="guide-def">Hollywood blockbuster. Warm skin, cool shadows.</div></div>
+      <div class="guide-item"><div class="guide-term">Cold Desaturated</div><div class="guide-def">Tension and psychological drama.</div></div>
+      <div class="guide-item"><div class="guide-term">Warm Vintage</div><div class="guide-def">Nostalgia, film, period aesthetic.</div></div>
+      <div class="guide-item"><div class="guide-term">Black &amp; White</div><div class="guide-def">Timeless, graphic, emotional.</div></div>
     </div>
   </div>
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>📐 Shot Types</span><span class="guide-chev">▼</span></button>
     <div class="guide-body">
-      <div class="guide-item"><div class="guide-term">Wide establishing</div><div class="guide-def">Shows environment and scale. Context before intimacy.</div></div>
-      <div class="guide-item"><div class="guide-term">Medium shot</div><div class="guide-def">Waist up. Natural and conversational. Most common shot for people.</div></div>
-      <div class="guide-item"><div class="guide-term">Close-up</div><div class="guide-def">Face fills frame. Emotion and detail. The most intimate shot.</div></div>
-      <div class="guide-item"><div class="guide-term">Extreme close-up</div><div class="guide-def">Eyes, hands, a single detail. Texture and intensity.</div></div>
+      <div class="guide-item"><div class="guide-term">Wide establishing</div><div class="guide-def">Shows environment and scale.</div></div>
+      <div class="guide-item"><div class="guide-term">Medium shot</div><div class="guide-def">Waist up. Natural and conversational.</div></div>
+      <div class="guide-item"><div class="guide-term">Close-up</div><div class="guide-def">Face fills frame. Emotion and detail.</div></div>
+      <div class="guide-item"><div class="guide-term">Extreme close-up</div><div class="guide-def">Eyes, hands, a single detail.</div></div>
     </div>
   </div>
-  <div class="guide-tip"><div class="guide-tip-title">💡 VFX pro tip</div>Always specify lighting direction first. Light from the side creates depth and dimension. Light from the front creates flat, commercial images.</div>
+  <div class="guide-tip"><div class="guide-tip-title">💡 VFX pro tip</div>Always specify lighting direction first. Light from the side creates depth. Light from front creates flat images.</div>
 </div></div>
 
 <footer>
