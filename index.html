@@ -249,6 +249,24 @@
     .compact-card .tool-icon{font-size:20px !important;margin-bottom:8px !important;}
     /* Light theme handled automatically by CSS variables */
   </style>
+<style>
+.home-wrap{display:flex;gap:0;max-width:100%;margin:0;}
+.home-left{width:220px;min-width:220px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border-card);padding:24px 16px;background:var(--bg-card);display:flex;flex-direction:column;gap:16px;}
+.home-main{flex:1;min-width:0;}
+.home-right{width:220px;min-width:220px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;border-left:1px solid var(--border-card);padding:24px 16px;background:var(--bg-card);display:flex;flex-direction:column;gap:14px;}
+.side-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border-card);}
+.side-stat{text-align:center;padding:12px;background:var(--bg-adv);border-radius:8px;}
+.side-stat-num{font-size:22px;font-weight:700;color:#a89eff;}
+.side-stat-label{font-size:11px;color:var(--text-secondary);margin-top:2px;}
+.side-link{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;text-decoration:none;font-size:12px;font-weight:500;color:var(--text-secondary);transition:background 0.15s;}
+.side-link:hover{background:var(--bg-adv);color:var(--text-primary);}
+.side-tool-link{display:block;padding:8px 10px;border-radius:8px;text-decoration:none;font-size:12px;color:var(--text-secondary);transition:background 0.15s;border:1px solid var(--border-card);margin-bottom:4px;background:var(--bg-adv);}
+.side-tool-link:hover{border-color:#a89eff;color:#a89eff;}
+.side-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:10px;font-size:11px;line-height:1.6;color:var(--text-secondary);}
+.side-tip-title{font-size:11px;font-weight:600;color:#a89eff;margin-bottom:4px;}
+@media(max-width:1100px){.home-right{display:none;}}
+@media(max-width:768px){.home-left{display:none;}.home-wrap{display:block;}}
+</style>
 </head>
 <body>
 
@@ -272,6 +290,31 @@
   </div>
 </header>
 
+<div class="home-wrap"><div class="home-left">
+  <div>
+    <div class="side-label">Library stats</div>
+    <div class="side-stat"><div class="side-stat-num">950+</div><div class="side-stat-label">Free prompts</div></div>
+    <div style="height:8px;"></div>
+    <div class="side-stat"><div class="side-stat-num">11</div><div class="side-stat-label">Collections</div></div>
+    <div style="height:8px;"></div>
+    <div class="side-stat"><div class="side-stat-num">17</div><div class="side-stat-label">Free lessons</div></div>
+  </div>
+  <div>
+    <div class="side-label">Quick links</div>
+    <a href="/prompt-library.html" class="side-link">📚 Prompt Library</a>
+    <a href="/learn.html" class="side-link">🎓 Learning Hub</a>
+    <a href="/about.html" class="side-link">👤 About</a>
+  </div>
+  <div>
+    <div class="side-label">Collections</div>
+    <a href="/100-cinematic-ai-video-prompts.html" class="side-link">🎬 Cinematic Video</a>
+    <a href="/50-horror-ai-video-prompts.html" class="side-link">👻 Horror Scenes</a>
+    <a href="/100-drone-shot-prompts.html" class="side-link">🚁 Drone Shots</a>
+    <a href="/100-kling-ai-prompts.html" class="side-link">⚡ Kling AI 3.0</a>
+    <a href="/100-midjourney-portrait-prompts.html" class="side-link">🖼 Portraits</a>
+    <a href="/100-action-sports-ai-prompts.html" class="side-link">⚽ Action & Sports</a>
+  </div>
+</div><div class="home-main">
 <!-- HERO -->
 <section class="home-hero">
   <div class="home-eyebrow">
@@ -407,99 +450,48 @@
 </section>
 
 <!-- CTA -->
-
-<section style="max-width:900px;margin:0 auto 80px;padding:0 24px;">
-
-  <div style="font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:20px;">What is PromptKits?</div>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;">
-    <div>
-      <h2 style="font-size:20px;font-weight:700;color:var(--text-primary);margin:0 0 12px;letter-spacing:-0.01em;">AI prompts that think like a filmmaker</h2>
-      <p style="font-size:14px;line-height:1.8;color:var(--text-secondary);margin:0 0 12px;">Most AI prompt tools ask you what you want to create. PromptKits asks how you want it to look — the lens, the lighting direction, the camera movement, the colour grade. The difference between a generic AI image and one that looks like a film production still comes down to these specific technical decisions.</p>
-      <p style="font-size:14px;line-height:1.8;color:var(--text-secondary);margin:0;">Every tool on PromptKits has been built around real cinematography and photography principles — the same language that directors use when briefing a director of photography, that cinematographers use to describe a shot, and that VFX artists use when planning a sequence.</p>
-    </div>
-    <div>
-      <h2 style="font-size:20px;font-weight:700;color:var(--text-primary);margin:0 0 12px;letter-spacing:-0.01em;">Who is PromptKits for?</h2>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="display:flex;gap:10px;align-items:flex-start;">
-          <span style="color:#a89eff;font-size:16px;flex-shrink:0;">🎬</span>
-          <div><div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:2px;">AI video creators</div><div style="font-size:12px;color:var(--text-secondary);">Making content with Kling AI, Runway, Sora, or Pika and wanting cinematic results.</div></div>
-        </div>
-        <div style="display:flex;gap:10px;align-items:flex-start;">
-          <span style="color:#a89eff;font-size:16px;flex-shrink:0;">🖼</span>
-          <div><div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:2px;">Image creators</div><div style="font-size:12px;color:var(--text-secondary);">Generating in Midjourney, DALL-E, or Stable Diffusion and wanting professional-quality results.</div></div>
-        </div>
-        <div style="display:flex;gap:10px;align-items:flex-start;">
-          <span style="color:#a89eff;font-size:16px;flex-shrink:0;">🎥</span>
-          <div><div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:2px;">Filmmakers & directors</div><div style="font-size:12px;color:var(--text-secondary);">Using AI tools to prototype shots, visualise scenes, and communicate creative vision.</div></div>
-        </div>
-        <div style="display:flex;gap:10px;align-items:flex-start;">
-          <span style="color:#a89eff;font-size:16px;flex-shrink:0;">📱</span>
-          <div><div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:2px;">Content creators</div><div style="font-size:12px;color:var(--text-secondary);">YouTubers and social media creators needing high-quality visual content at scale.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div style="background:var(--bg-card);border:1px solid var(--border-card);border-radius:14px;padding:28px;margin-bottom:40px;">
-    <h2 style="font-size:18px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">What makes a prompt cinematic?</h2>
-    <p style="font-size:14px;line-height:1.8;color:var(--text-secondary);margin:0 0 16px;">A cinematic prompt does more than describe what is in the scene. It describes how the scene is captured — and this distinction is everything. When you tell an AI image or video tool "a woman standing in a forest", you are describing the subject. When you tell it "a close-up of a woman's face in dappled forest light, 85mm anamorphic lens, golden hour backlight creating rim separation, shallow depth of field, teal and orange colour grade, film grain", you are describing the cinematography.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
-      <div style="background:var(--bg-adv);border-radius:8px;padding:12px;">
-        <div style="font-size:12px;font-weight:600;color:#a89eff;margin-bottom:4px;">Shot type</div>
-        <div style="font-size:12px;color:var(--text-secondary);">Wide, medium, close-up, extreme close-up, bird's eye, low angle</div>
-      </div>
-      <div style="background:var(--bg-adv);border-radius:8px;padding:12px;">
-        <div style="font-size:12px;font-weight:600;color:#a89eff;margin-bottom:4px;">Lens choice</div>
-        <div style="font-size:12px;color:var(--text-secondary);">24mm wide, 35mm standard, 85mm portrait, anamorphic</div>
-      </div>
-      <div style="background:var(--bg-adv);border-radius:8px;padding:12px;">
-        <div style="font-size:12px;font-weight:600;color:#a89eff;margin-bottom:4px;">Lighting</div>
-        <div style="font-size:12px;color:var(--text-secondary);">Golden hour, Rembrandt, split, soft window, neon practical</div>
-      </div>
-      <div style="background:var(--bg-adv);border-radius:8px;padding:12px;">
-        <div style="font-size:12px;font-weight:600;color:#a89eff;margin-bottom:4px;">Colour grade</div>
-        <div style="font-size:12px;color:var(--text-secondary);">Teal and orange, cold desaturated, warm vintage, natural</div>
-      </div>
-      <div style="background:var(--bg-adv);border-radius:8px;padding:12px;">
-        <div style="font-size:12px;font-weight:600;color:#a89eff;margin-bottom:4px;">Camera movement</div>
-        <div style="font-size:12px;color:var(--text-secondary);">Dolly push-in, tracking, crane rising, orbital, handheld</div>
-      </div>
-      <div style="background:var(--bg-adv);border-radius:8px;padding:12px;">
-        <div style="font-size:12px;font-weight:600;color:#a89eff;margin-bottom:4px;">Atmosphere</div>
-        <div style="font-size:12px;color:var(--text-secondary);">Morning mist, rain, dust in light, smoke, golden hour glow</div>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-bottom:16px;">
-    <h2 style="font-size:18px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Frequently asked questions</h2>
-    <div style="display:flex;flex-direction:column;gap:10px;">
-      <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
-        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">Do I need to know filmmaking to use PromptKits?</div>
-        <div style="font-size:13px;line-height:1.7;color:var(--text-secondary);">No. The tools guide you through every choice with clear labels and descriptions. You select the look you want and the tool builds the technical prompt behind it. The Learning Hub also has 17 free lessons that explain each concept in plain language.</div>
-      </div>
-      <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
-        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">Which AI tools work with PromptKits prompts?</div>
-        <div style="font-size:13px;line-height:1.7;color:var(--text-secondary);">The image prompt generator works with Midjourney, DALL-E 3, Stable Diffusion, SDXL, Leonardo AI, and ComfyUI. The video prompt generator works with Kling AI, Runway Gen-3, Sora, Pika, and LumaLabs. The prompt enhancer works with ChatGPT, Claude, and Gemini.</div>
-      </div>
-      <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
-        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">Is PromptKits really free?</div>
-        <div style="font-size:13px;line-height:1.7;color:var(--text-secondary);">Yes — all five tools, the full prompt library with 950+ prompts, and the complete learning hub are completely free. No account required, no usage limits, no paywall.</div>
-      </div>
-      <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
-        <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:6px;">How is PromptKits different from other prompt tools?</div>
-        <div style="font-size:13px;line-height:1.7;color:var(--text-secondary);">Most prompt tools are generic — they work for any subject and any style. PromptKits is specifically built for cinematic and visual storytelling use cases, with tools and a prompt library designed around real filmmaking and photography principles. The specificity is the point.</div>
-      </div>
-    </div>
-  </div>
-
-</section>
 <div class="cta-strip">
   <h2>Start with your first scene</h2>
   <p>Pick a tool above, or jump straight into the cinematic image prompt builder.</p>
   <a href="/image-prompt.html" class="cta-btn">→ Build a cinematic prompt</a>
 </div>
+
+</div><div class="home-right">
+  <div>
+    <div class="side-label">All tools</div>
+    <a href="/image-prompt.html" class="side-tool-link">🖼 Image Prompt Generator</a>
+    <a href="/video-prompt.html" class="side-tool-link">🎬 Video Prompt Generator</a>
+    <a href="/enhancer.html" class="side-tool-link">✨ Prompt Enhancer</a>
+    <a href="/negative-prompt.html" class="side-tool-link">🚫 Negative Prompt</a>
+    <a href="/image-to-prompt.html" class="side-tool-link">🔍 Image to Prompt</a>
+  </div>
+  <div>
+    <div class="side-label">Supported tools</div>
+    <div style="display:flex;flex-wrap:wrap;gap:4px;">
+      <span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg-adv);color:var(--text-secondary);">Midjourney</span>
+      <span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg-adv);color:var(--text-secondary);">Kling AI</span>
+      <span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg-adv);color:var(--text-secondary);">Runway</span>
+      <span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg-adv);color:var(--text-secondary);">Sora</span>
+      <span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg-adv);color:var(--text-secondary);">DALL-E</span>
+      <span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg-adv);color:var(--text-secondary);">Stable Diffusion</span>
+      <span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg-adv);color:var(--text-secondary);">ComfyUI</span>
+      <span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg-adv);color:var(--text-secondary);">Leonardo AI</span>
+      <span style="font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg-adv);color:var(--text-secondary);">Pika</span>
+    </div>
+  </div>
+  <div class="side-tip">
+    <div class="side-tip-title">💡 Did you know?</div>
+    Specifying lighting direction is the single most impactful change you can make to any AI image prompt. Light from the side creates depth. Light from the front creates flat results.
+  </div>
+  <div class="side-tip">
+    <div class="side-tip-title">🎬 Video tip</div>
+    Always include camera movement in video prompts. "Slow dolly push-in" produces far better results than describing only the subject.
+  </div>
+  <div class="side-tip">
+    <div class="side-tip-title">🖼 Image tip</div>
+    Add "--style raw" to any Midjourney prompt for more photorealistic results with less artistic stylisation.
+  </div>
+</div></div>
 
 <footer>
   <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a></p>
