@@ -1,4 +1,4 @@
-{
+{ 
   "redirects": [
     { "source": "/library.html", "destination": "/prompt-library.html", "permanent": true },
     { "source": "/library", "destination": "/prompt-library.html", "permanent": true }
