@@ -15,25 +15,26 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
 <style>
-.page-layout{display:flex;gap:0;align-items:flex-start;}
-.tool-column{flex:1;min-width:0;}
-.edu-sidebar{width:300px;min-width:260px;flex-shrink:0;border-left:1px solid var(--border-card);padding:20px 16px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
-.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border-card);}
-.guide-section{margin-bottom:6px;}
-.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;}
+.page-layout{display:flex;gap:0;align-items:flex-start;max-width:100%;margin:0;}
+.tool-column{flex:1;min-width:0;max-width:calc(100% - 280px);}
+.edu-sidebar{width:280px;min-width:280px;flex-shrink:0;border-left:1px solid var(--border-card);padding:16px 14px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
+.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-card);}
+.guide-section{margin-bottom:4px;}
+.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:7px 8px;border-radius:6px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;text-align:left;}
 .guide-toggle:hover{background:var(--bg-adv);}
-.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;}
+.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;margin-left:4px;}
 .guide-chev.open{transform:rotate(180deg);}
-.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;padding:0 4px;}
+.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;}
 .guide-body.open{max-height:800px;}
-.guide-item{padding:7px 6px;border-bottom:1px solid var(--border-card);}
+.guide-item{padding:6px 4px;border-bottom:1px solid var(--border-card);}
 .guide-item:last-child{border-bottom:none;}
-.guide-term{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px;}
-.guide-def{font-size:11px;line-height:1.55;color:var(--text-secondary);}
-.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:12px;margin-top:12px;font-size:11px;line-height:1.6;color:var(--text-secondary);}
-.guide-tip-title{font-size:12px;font-weight:600;color:#a89eff;margin-bottom:6px;}
+.guide-term{font-size:11px;font-weight:600;color:var(--text-primary);margin-bottom:2px;}
+.guide-def{font-size:11px;line-height:1.5;color:var(--text-secondary);}
+.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:10px;margin-top:10px;font-size:11px;line-height:1.55;color:var(--text-secondary);}
+.guide-tip-title{font-size:11px;font-weight:600;color:#a89eff;margin-bottom:4px;}
 @media(max-width:900px){
   .page-layout{flex-direction:column;}
+  .tool-column{max-width:100%;}
   .edu-sidebar{width:100%;height:auto;position:static;border-left:none;border-top:1px solid var(--border-card);}
 }
 </style>
@@ -212,35 +213,35 @@
     <div class="faq-item"><h3>Is this free?</h3><p>Yes, completely free. No account or sign-up needed.</p></div>
   </div>
 </main></div><div class="edu-sidebar">
-  <div class="sidebar-guide-label">📖 Quick Reference Guide</div>
+  <div class="sidebar-guide-label">📖 Quick Reference</div>
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>🚫 Common Problem Terms</span><span class="guide-chev open">▼</span></button>
     <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">Quality issues</div><div class="guide-def" style="font-family:monospace;font-size:10px;line-height:1.5;">low quality, worst quality, lowres, jpeg artifacts, blurry, watermark, text</div></div>
-      <div class="guide-item"><div class="guide-term">Anatomy problems</div><div class="guide-def" style="font-family:monospace;font-size:10px;line-height:1.5;">deformed, distorted, bad anatomy, extra limb, missing limb, mutation</div></div>
-      <div class="guide-item"><div class="guide-term">Hand issues</div><div class="guide-def" style="font-family:monospace;font-size:10px;line-height:1.5;">extra fingers, fused fingers, too many fingers, bad hands, malformed hands</div></div>
-      <div class="guide-item"><div class="guide-term">Face problems</div><div class="guide-def" style="font-family:monospace;font-size:10px;line-height:1.5;">blurry face, bad eyes, cross-eyed, asymmetric eyes, extra face</div></div>
+      <div class="guide-item"><div class="guide-term">Quality issues</div><div class="guide-def" style="font-family:monospace;font-size:10px;">low quality, worst quality, lowres, jpeg artifacts, blurry, watermark</div></div>
+      <div class="guide-item"><div class="guide-term">Anatomy problems</div><div class="guide-def" style="font-family:monospace;font-size:10px;">deformed, distorted, bad anatomy, extra limb, missing limb</div></div>
+      <div class="guide-item"><div class="guide-term">Hand issues</div><div class="guide-def" style="font-family:monospace;font-size:10px;">extra fingers, fused fingers, too many fingers, bad hands</div></div>
+      <div class="guide-item"><div class="guide-term">Face problems</div><div class="guide-def" style="font-family:monospace;font-size:10px;">blurry face, bad eyes, cross-eyed, asymmetric eyes</div></div>
     </div>
   </div>
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>🛠 Where to Paste</span><span class="guide-chev open">▼</span></button>
     <div class="guide-body open">
       <div class="guide-item"><div class="guide-term">Stable Diffusion / SDXL</div><div class="guide-def">Paste into the "Negative Prompt" field below the main prompt box.</div></div>
-      <div class="guide-item"><div class="guide-term">ComfyUI / A1111</div><div class="guide-def">Dedicated negative prompt node. Supports weighted terms (term:1.5).</div></div>
+      <div class="guide-item"><div class="guide-term">ComfyUI / A1111</div><div class="guide-def">Dedicated negative prompt node. Supports weighted terms.</div></div>
       <div class="guide-item"><div class="guide-term">Midjourney</div><div class="guide-def">Add --no at end: --no hands, text, watermark</div></div>
-      <div class="guide-item"><div class="guide-term">DALL-E 3</div><div class="guide-def">No dedicated field. Include exclusions in main prompt text.</div></div>
+      <div class="guide-item"><div class="guide-term">DALL-E 3</div><div class="guide-def">No dedicated field. Include exclusions in main prompt.</div></div>
     </div>
   </div>
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>⚙️ CFG Scale Guide</span><span class="guide-chev">▼</span></button>
     <div class="guide-body">
-      <div class="guide-item"><div class="guide-term">CFG 4–6</div><div class="guide-def">Loose — AI has more creative freedom. Negative prompt has less effect.</div></div>
-      <div class="guide-item"><div class="guide-term">CFG 7–9</div><div class="guide-def">Balanced — Best range for most generations. Recommended starting point.</div></div>
-      <div class="guide-item"><div class="guide-term">CFG 10–12</div><div class="guide-def">Strict — Strong adherence to prompts. Can cause oversaturation.</div></div>
-      <div class="guide-item"><div class="guide-term">CFG 13+</div><div class="guide-def">Too strict — Often produces distorted results. Avoid.</div></div>
+      <div class="guide-item"><div class="guide-term">CFG 4–6</div><div class="guide-def">Loose — AI has more creative freedom.</div></div>
+      <div class="guide-item"><div class="guide-term">CFG 7–9</div><div class="guide-def">Balanced — Best range. Recommended starting point.</div></div>
+      <div class="guide-item"><div class="guide-term">CFG 10–12</div><div class="guide-def">Strict — Can cause oversaturation at high values.</div></div>
+      <div class="guide-item"><div class="guide-term">CFG 13+</div><div class="guide-def">Too strict — Often produces distorted results.</div></div>
     </div>
   </div>
-  <div class="guide-tip"><div class="guide-tip-title">💡 Always start with quality terms</div>Add "low quality, worst quality, lowres" to every negative prompt as a baseline. This single addition improves output quality across all generations.</div>
+  <div class="guide-tip"><div class="guide-tip-title">💡 Always start with quality terms</div>Add "low quality, worst quality, lowres" to every negative prompt as a baseline.</div>
 </div></div>
 
 <footer>

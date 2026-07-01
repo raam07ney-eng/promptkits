@@ -16,25 +16,26 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
 <style>
-.page-layout{display:flex;gap:0;align-items:flex-start;}
-.tool-column{flex:1;min-width:0;}
-.edu-sidebar{width:300px;min-width:260px;flex-shrink:0;border-left:1px solid var(--border-card);padding:20px 16px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
-.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border-card);}
-.guide-section{margin-bottom:6px;}
-.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;}
+.page-layout{display:flex;gap:0;align-items:flex-start;max-width:100%;margin:0;}
+.tool-column{flex:1;min-width:0;max-width:calc(100% - 280px);}
+.edu-sidebar{width:280px;min-width:280px;flex-shrink:0;border-left:1px solid var(--border-card);padding:16px 14px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
+.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border-card);}
+.guide-section{margin-bottom:4px;}
+.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:7px 8px;border-radius:6px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;text-align:left;}
 .guide-toggle:hover{background:var(--bg-adv);}
-.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;}
+.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;margin-left:4px;}
 .guide-chev.open{transform:rotate(180deg);}
-.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;padding:0 4px;}
+.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;}
 .guide-body.open{max-height:800px;}
-.guide-item{padding:7px 6px;border-bottom:1px solid var(--border-card);}
+.guide-item{padding:6px 4px;border-bottom:1px solid var(--border-card);}
 .guide-item:last-child{border-bottom:none;}
-.guide-term{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px;}
-.guide-def{font-size:11px;line-height:1.55;color:var(--text-secondary);}
-.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:12px;margin-top:12px;font-size:11px;line-height:1.6;color:var(--text-secondary);}
-.guide-tip-title{font-size:12px;font-weight:600;color:#a89eff;margin-bottom:6px;}
+.guide-term{font-size:11px;font-weight:600;color:var(--text-primary);margin-bottom:2px;}
+.guide-def{font-size:11px;line-height:1.5;color:var(--text-secondary);}
+.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:10px;margin-top:10px;font-size:11px;line-height:1.55;color:var(--text-secondary);}
+.guide-tip-title{font-size:11px;font-weight:600;color:#a89eff;margin-bottom:4px;}
 @media(max-width:900px){
   .page-layout{flex-direction:column;}
+  .tool-column{max-width:100%;}
   .edu-sidebar{width:100%;height:auto;position:static;border-left:none;border-top:1px solid var(--border-card);}
 }
 </style>
@@ -318,11 +319,11 @@
     <div class="faq-item"><h3>Is this free?</h3><p>Yes, completely free. No account or sign-up needed.</p></div>
   </div>
 </main></div><div class="edu-sidebar">
-  <div class="sidebar-guide-label">📖 Quick Reference Guide</div>
+  <div class="sidebar-guide-label">📖 Quick Reference</div>
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>🎥 Camera Movements</span><span class="guide-chev open">▼</span></button>
     <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">Dolly / Push-in</div><div class="guide-def">Camera moves toward subject. Creates intimacy and growing tension.</div></div>
+      <div class="guide-item"><div class="guide-term">Dolly / Push-in</div><div class="guide-def">Camera moves toward subject. Creates intimacy and tension.</div></div>
       <div class="guide-item"><div class="guide-term">Pull-out / Reveal</div><div class="guide-def">Camera moves away. Reveals context and creates distance.</div></div>
       <div class="guide-item"><div class="guide-term">Tracking shot</div><div class="guide-def">Camera moves alongside subject. Creates a sense of following.</div></div>
       <div class="guide-item"><div class="guide-term">Crane / Rising</div><div class="guide-def">Camera moves vertically. Rising = revelation and epic scale.</div></div>
@@ -334,31 +335,31 @@
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>🎬 Lens Guide</span><span class="guide-chev open">▼</span></button>
     <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">24mm wide</div><div class="guide-def">Exaggerates depth. Good for environments and establishing shots.</div></div>
-      <div class="guide-item"><div class="guide-term">35mm standard</div><div class="guide-def">Closest to human eye. Natural and versatile.</div></div>
-      <div class="guide-item"><div class="guide-term">85mm portrait</div><div class="guide-def">Flattering compression, beautiful bokeh. Perfect for characters.</div></div>
-      <div class="guide-item"><div class="guide-term">Anamorphic</div><div class="guide-def">Cinematic oval bokeh and horizontal lens flares. The film look.</div></div>
+      <div class="guide-item"><div class="guide-term">24mm wide</div><div class="guide-def">Exaggerates depth. Good for environments.</div></div>
+      <div class="guide-item"><div class="guide-term">35mm standard</div><div class="guide-def">Natural, closest to human eye. Versatile.</div></div>
+      <div class="guide-item"><div class="guide-term">85mm portrait</div><div class="guide-def">Flattering compression, beautiful bokeh.</div></div>
+      <div class="guide-item"><div class="guide-term">Anamorphic</div><div class="guide-def">Cinematic oval bokeh and lens flares.</div></div>
     </div>
   </div>
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>🎨 Color Grades</span><span class="guide-chev">▼</span></button>
     <div class="guide-body">
-      <div class="guide-item"><div class="guide-term">Teal &amp; Orange</div><div class="guide-def">Hollywood blockbuster look. Warm skin tones, cool shadows.</div></div>
-      <div class="guide-item"><div class="guide-term">Cold Desaturated</div><div class="guide-def">Psychological tension. Thriller and crime drama aesthetic.</div></div>
-      <div class="guide-item"><div class="guide-term">Warm Vintage</div><div class="guide-def">Nostalgia and period drama. Lifted shadows, warm highlights.</div></div>
-      <div class="guide-item"><div class="guide-term">Natural</div><div class="guide-def">Clean, true-to-life. Documentary and lifestyle content.</div></div>
+      <div class="guide-item"><div class="guide-term">Teal &amp; Orange</div><div class="guide-def">Hollywood blockbuster. Warm skin, cool shadows.</div></div>
+      <div class="guide-item"><div class="guide-term">Cold Desaturated</div><div class="guide-def">Psychological tension. Thriller aesthetic.</div></div>
+      <div class="guide-item"><div class="guide-term">Warm Vintage</div><div class="guide-def">Nostalgia and period drama.</div></div>
+      <div class="guide-item"><div class="guide-term">Natural</div><div class="guide-def">Clean, true-to-life. Documentary style.</div></div>
     </div>
   </div>
   <div class="guide-section">
     <button class="guide-toggle" onclick="toggleGuide(this)"><span>🛠 Best Tool per Shot</span><span class="guide-chev">▼</span></button>
     <div class="guide-body">
       <div class="guide-item"><div class="guide-term">Kling AI 3.0</div><div class="guide-def">Cinematic shots, character close-ups, landscape reveals.</div></div>
-      <div class="guide-item"><div class="guide-term">Runway Gen-3</div><div class="guide-def">Human subjects, realistic movement, fine detail work.</div></div>
-      <div class="guide-item"><div class="guide-term">Sora</div><div class="guide-def">Complex scenes, longer clips, physics-heavy content.</div></div>
-      <div class="guide-item"><div class="guide-term">Pika</div><div class="guide-def">Image-to-video, short clips, style consistency.</div></div>
+      <div class="guide-item"><div class="guide-term">Runway Gen-3</div><div class="guide-def">Human subjects, realistic movement.</div></div>
+      <div class="guide-item"><div class="guide-term">Sora</div><div class="guide-def">Complex scenes, longer clips.</div></div>
+      <div class="guide-item"><div class="guide-term">Pika</div><div class="guide-def">Image-to-video, short clips.</div></div>
     </div>
   </div>
-  <div class="guide-tip"><div class="guide-tip-title">💡 Consistency tip</div>Include the same character description, lighting, and color grade in every shot prompt to keep scenes consistent across multiple clips.</div>
+  <div class="guide-tip"><div class="guide-tip-title">💡 Consistency tip</div>Include same character description, lighting, and color grade in every shot prompt.</div>
 </div></div>
 
 <footer>
