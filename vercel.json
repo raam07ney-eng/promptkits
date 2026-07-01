@@ -5,6 +5,6 @@
   ],
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api/$1" },
-    { "source": "/((?!.*\\.html$).*)", "destination": "/index.html" }
+    { "source": "/((?!.*\\.(html|png|jpg|jpeg|svg|webp|gif|ico|css|js|xml)$).*)", "destination": "/index.html" }
   ]
 }
