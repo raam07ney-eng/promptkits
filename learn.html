@@ -37,16 +37,51 @@
     .lesson-desc{font-size:12.5px;line-height:1.6;color:var(--text-secondary);margin:0;}
     .lesson-card .read-time{font-size:11px;color:var(--text-muted);margin-top:12px;}
 
-    
-    /* Accordion lessons */
+    /* Modal */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;overflow-y:auto;padding:24px;}
+    .modal-overlay.open{display:flex;align-items:flex-start;justify-content:center;}
+    .modal{background:var(--bg-card);border:1px solid var(--border-card);border-radius:16px;max-width:720px;width:100%;padding:36px;position:relative;margin:auto;}
+    .modal-close{position:absolute;top:16px;right:16px;background:transparent;border:1px solid var(--border-card);color:var(--text-secondary);width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;}
+    .modal-close:hover{border-color:var(--accent);color:var(--accent);}
+    .modal-level{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+    .modal-title{font-size:24px;font-weight:700;color:var(--text-primary);margin:0 0 6px;line-height:1.3;}
+    .modal-read-time{font-size:12px;color:var(--text-muted);margin-bottom:24px;}
+    .modal hr{border:none;border-top:1px solid var(--border-card);margin:20px 0;}
+    .modal h3{font-size:16px;font-weight:600;color:var(--accent);margin:24px 0 10px;}
+    .modal p{font-size:14px;line-height:1.75;color:var(--text-secondary);margin:0 0 14px;}
+    .modal ul,.modal ol{padding-left:20px;margin:0 0 14px;}
+    .modal li{font-size:14px;line-height:1.75;color:var(--text-secondary);margin-bottom:6px;}
+    .modal strong{color:var(--text-primary);}
+    .code-block{background:var(--bg-adv);border:1px solid var(--border-card);border-radius:8px;padding:14px 16px;font-family:monospace;font-size:12.5px;line-height:1.7;color:var(--accent);margin:12px 0;white-space:pre-wrap;word-break:break-word;}
+    .tip-box{background:rgba(168,158,255,0.08);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:14px 16px;margin:14px 0;}
+    .tip-box p{margin:0;font-size:13px;color:var(--text-primary);}
+    .tip-box strong{color:var(--accent);}
+    .modal-footer{margin-top:28px;padding-top:20px;border-top:1px solid var(--border-card);display:flex;gap:12px;flex-wrap:wrap;}
+    .modal-cta{display:inline-block;padding:10px 20px;background:var(--accent);color:#0d0d14;font-weight:700;font-size:13px;border-radius:8px;text-decoration:none;}
+    .modal-cta-outline{display:inline-block;padding:10px 20px;border:1px solid var(--border-card);color:var(--text-secondary);font-size:13px;border-radius:8px;text-decoration:none;cursor:pointer;background:transparent;}
+    .modal-cta-outline:hover{border-color:var(--accent);color:var(--accent);}
+
+    .learn-layout{display:flex;min-height:100vh;}
+    .learn-sidebar{width:220px;min-width:220px;border-right:1px solid var(--border-card);background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;}
+    .learn-main{flex:1;min-width:0;}
+    .lsb-header{padding:16px 16px 8px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);}
+    .lsb-section{padding:4px 0;}
+    .lsb-group{padding:8px 16px 4px;font-size:11px;font-weight:600;color:var(--accent);letter-spacing:0.05em;}
+    .lsb-item{display:flex;align-items:center;justify-content:space-between;padding:6px 16px 6px 24px;font-size:12px;color:var(--text-secondary);text-decoration:none;transition:background 0.1s;cursor:pointer;}
+    .lsb-item:hover{background:var(--bg-adv);color:var(--text-primary);}
+    .lsb-item.active{background:rgba(168,158,255,0.1);color:#a89eff;font-weight:500;}
+    .lsb-count{font-size:10px;color:var(--text-muted);background:var(--bg-adv);padding:1px 7px;border-radius:10px;}
+    .lsb-divider{height:1px;background:var(--border-card);margin:6px 0;}
+    @media(max-width:768px){.learn-sidebar{display:none;}.learn-layout{display:block;}}
+
     .lesson-card{border:1px solid var(--border-card);border-radius:12px;margin-bottom:10px;background:var(--bg-card);overflow:hidden;transition:border-color 0.2s;}
     .lesson-card:hover{border-color:rgba(168,158,255,0.4);}
     .lesson-card.open{border-color:#a89eff;}
     .lesson-card-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;gap:12px;}
     .lesson-card-left{display:flex;align-items:center;gap:12px;}
-    .lesson-icon{font-size:22px;flex-shrink:0;}
-    .lesson-title{font-size:14px;font-weight:600;color:var(--text-primary);margin:0;}
-    .lesson-meta{font-size:11px;color:var(--text-muted);margin-top:3px;}
+    .lesson-card .lesson-icon{font-size:22px;flex-shrink:0;}
+    .lesson-card .lesson-title{font-size:14px;font-weight:600;color:var(--text-primary);margin:0;}
+    .lesson-card .lesson-meta{font-size:11px;color:var(--text-muted);margin-top:3px;}
     .lesson-arrow{font-size:12px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;}
     .lesson-card.open .lesson-arrow{transform:rotate(180deg);}
     .lesson-body{display:none;padding:0 20px 20px;border-top:1px solid var(--border-card);}
@@ -59,6 +94,10 @@
     .code-block{background:var(--bg-adv);border:1px solid var(--border-card);border-radius:8px;padding:12px 14px;font-family:monospace;font-size:12px;line-height:1.7;color:#a89eff;margin:10px 0;white-space:pre-wrap;word-break:break-word;}
     .tip-box{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:12px 14px;margin:12px 0;}
     .tip-box p{margin:0;font-size:12px;color:var(--text-primary);}
+    .learn-layout{display:flex !important;min-height:100vh;}
+    .learn-sidebar{width:220px;min-width:220px;border-right:1px solid var(--border-card);background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;}
+    .learn-main{flex:1;min-width:0;}
+    @media(max-width:768px){.learn-sidebar{display:none !important;}.learn-layout{display:block !important;}}
   </style>
 </head>
 <body>
@@ -178,15 +217,6 @@
 </div>
 
 
-    <div style="display:none" id="modalReadTime"></div>
-    <hr>
-    <div id="modalBody"></div>
-    <div class="lesson-nav" style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border-card);">
-      <a href="/video-prompt.html" class="cta-link" style="font-size:12px;padding:8px 16px;">🎬 Try Video Generator</a>
-      <span style="font-size:12px;padding:8px 16px;border:1px solid var(--border-card);border-radius:8px;color:var(--text-secondary);cursor:pointer;background:transparent;font-family:inherit;" >← Back to lessons</span>
-    </div>
-  </div>
-</div>
 
 </div>
 
@@ -870,6 +900,7 @@ Remove: Resolution/megapixel specifications (not relevant for video)</div>
 
 function renderGrid(gridId, items, level) {
   var grid = document.getElementById(gridId);
+  if (!grid) return;
   grid.innerHTML = items.map(function(lesson, index) {
     return '<div class="lesson-card" id="card-' + level + '-' + index + '">' +
       '<div class="lesson-card-header" onclick="toggleLesson('' + level + '', ' + index + ')">' +
@@ -877,15 +908,28 @@ function renderGrid(gridId, items, level) {
           '<span class="lesson-icon">' + lesson.icon + '</span>' +
           '<div>' +
             '<div class="lesson-title">' + lesson.title + '</div>' +
-            '<div class="lesson-meta">⏱ ' + lesson.readTime + ' &nbsp;·&nbsp; ' + level.charAt(0).toUpperCase() + level.slice(1) + '</div>' +
+            '<div class="lesson-meta">&#9201; ' + lesson.readTime + ' &nbsp;&middot;&nbsp; ' + level.charAt(0).toUpperCase() + level.slice(1) + '</div>' +
           '</div>' +
         '</div>' +
-        '<span class="lesson-arrow">▼</span>' +
+        '<span class="lesson-arrow">&#9660;</span>' +
       '</div>' +
       '<div class="lesson-body" id="body-' + level + '-' + index + '">' + lesson.content + '</div>' +
     '</div>';
   }).join('');
 }
+
+function toggleLesson(level, index) {
+  var card = document.getElementById('card-' + level + '-' + index);
+  if (!card) return;
+  var isOpen = card.classList.contains('open');
+  card.classList.toggle('open', !isOpen);
+  if (!isOpen) {
+    setTimeout(function() {
+      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 50);
+  }
+}
+
 
 renderGrid('beginnerGrid', lessons.beginner, 'beginner');
 renderGrid('intermediateGrid', lessons.intermediate, 'intermediate');
@@ -893,19 +937,13 @@ renderGrid('advancedGrid', lessons.advanced, 'advanced');
 renderGrid('consistencyGrid', lessons.consistency, 'consistency');
 renderGrid('toolsGrid', lessons.tools, 'tools');
 
-function toggleLesson(level, index) {
-  var card = document.getElementById('card-' + level + '-' + index);
-  var body = document.getElementById('body-' + level + '-' + index);
-  if (!card || !body) return;
-  var isOpen = card.classList.contains('open');
-  card.classList.toggle('open', !isOpen);
-  // Scroll into view if opening
-  if (!isOpen) {
-    setTimeout(function() {
-      card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 50);
-  }
-}
+
+
+
+
+
+
+
 </script>
 </body>
 </html>
