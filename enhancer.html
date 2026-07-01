@@ -15,6 +15,29 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
+<style>
+.page-layout{display:flex;gap:0;align-items:flex-start;}
+.tool-column{flex:1;min-width:0;}
+.edu-sidebar{width:300px;min-width:260px;flex-shrink:0;border-left:1px solid var(--border-card);padding:20px 16px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
+.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border-card);}
+.guide-section{margin-bottom:6px;}
+.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;}
+.guide-toggle:hover{background:var(--bg-adv);}
+.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;}
+.guide-chev.open{transform:rotate(180deg);}
+.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;padding:0 4px;}
+.guide-body.open{max-height:800px;}
+.guide-item{padding:7px 6px;border-bottom:1px solid var(--border-card);}
+.guide-item:last-child{border-bottom:none;}
+.guide-term{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px;}
+.guide-def{font-size:11px;line-height:1.55;color:var(--text-secondary);}
+.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:12px;margin-top:12px;font-size:11px;line-height:1.6;color:var(--text-secondary);}
+.guide-tip-title{font-size:12px;font-weight:600;color:#a89eff;margin-bottom:6px;}
+@media(max-width:900px){
+  .page-layout{flex-direction:column;}
+  .edu-sidebar{width:100%;height:auto;position:static;border-left:none;border-top:1px solid var(--border-card);}
+}
+</style>
 </head>
 <body>
 <header>
@@ -48,7 +71,7 @@
   </div>
 </div>
 
-<main class="main">
+<div class="page-layout"><div class="tool-column"><main class="main">
   <div class="card">
     <label class="field-label" for="inputPrompt">Your prompt</label>
     <textarea id="inputPrompt" placeholder="e.g. write a blog post about coffee"></textarea>
@@ -83,6 +106,115 @@
   </div>
   <div class="tip" id="tipBox">💡 Paste this enhanced prompt directly into your AI tool. Try switching the style options above for different results.</div>
 
+  
+<div class="edu-section" style="max-width:760px;margin:48px auto 0;padding:0 24px;">
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">What is AI Prompt Engineering?</h2>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 14px;">Prompt engineering is the practice of crafting text instructions that reliably produce the output you want from an AI model. The difference between a vague prompt and a well-engineered prompt can be the difference between a generic, disappointing result and something that genuinely meets your creative or professional needs.</p>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 14px;">Every AI model — whether a language model like ChatGPT or Claude, or an image model like Midjourney — has been trained to respond to language in specific ways. Understanding how these models interpret your instructions is the foundation of effective prompt engineering.</p>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 32px;">The PromptKits Prompt Enhancer takes your basic idea and applies prompt engineering principles automatically — adding the structure, context, and specificity that transforms a rough instruction into a high-performance prompt.</p>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">The Anatomy of a Well-Engineered Prompt</h2>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 14px;">A well-structured prompt has several key components that work together to guide the AI toward your intended output:</p>
+
+  <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
+      <div style="font-size:14px;font-weight:600;color:#a89eff;margin-bottom:6px;">1. Role or Persona</div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin:0;">Telling the AI who it is or what perspective to adopt. "You are an experienced copywriter" produces very different results from no role definition at all. Role definitions activate relevant knowledge and set the tone for the entire response.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
+      <div style="font-size:14px;font-weight:600;color:#a89eff;margin-bottom:6px;">2. Task Specification</div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin:0;">The core instruction — what you want the AI to do. The more specific the task description, the more targeted the output. "Write a product description" is weak. "Write a 150-word product description for a premium mechanical keyboard targeting professional developers" is precise and actionable.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
+      <div style="font-size:14px;font-weight:600;color:#a89eff;margin-bottom:6px;">3. Context and Background</div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin:0;">Information the AI needs to produce a relevant response. The target audience, the purpose of the output, the brand voice, the channel where the content will appear — all of this context shapes what a good response looks like.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
+      <div style="font-size:14px;font-weight:600;color:#a89eff;margin-bottom:6px;">4. Format Instructions</div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin:0;">How you want the output structured — length, format, tone, style. Should the response be bullet points or flowing prose? Formal or conversational? 100 words or 500? Without format instructions, the AI makes its own choices, which may not match your needs.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
+      <div style="font-size:14px;font-weight:600;color:#a89eff;margin-bottom:6px;">5. Constraints and Exclusions</div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin:0;">What the AI should avoid or exclude. Sometimes it is as important to tell an AI what not to do as it is to tell it what to do. "Do not use jargon", "Avoid clichés", "Do not mention competitors" — these constraints shape the output as much as the positive instructions.</p>
+    </div>
+  </div>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">How Different AI Tools Interpret Prompts</h2>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 14px;">Different AI tools have been trained differently and respond to different prompt styles. Understanding these differences is crucial for effective prompt engineering:</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;">
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">ChatGPT & Claude</div>
+      <p style="font-size:12px;line-height:1.65;color:var(--text-secondary);margin:0;">Respond well to natural language instructions. Benefit from clear role definitions, step-by-step instructions, and explicit format requirements. Can handle complex multi-part prompts effectively.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">Midjourney</div>
+      <p style="font-size:12px;line-height:1.65;color:var(--text-secondary);margin:0;">Responds to descriptive, visual language. Works best with comma-separated style descriptors, specific visual references, and technical parameters like --ar for aspect ratio.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">Stable Diffusion</div>
+      <p style="font-size:12px;line-height:1.65;color:var(--text-secondary);margin:0;">Uses weighted keyword systems. Positive prompts describe what you want, negative prompts exclude unwanted elements. Technical photography and art style terms produce strong results.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">DALL-E & Gemini</div>
+      <p style="font-size:12px;line-height:1.65;color:var(--text-secondary);margin:0;">Prefer natural language descriptions. Safety filters are more conservative, so prompts should be clear about artistic intent. Respond well to style references and mood descriptions.</p>
+    </div>
+  </div>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Common Prompt Engineering Mistakes</h2>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
+    <div style="display:flex;gap:10px;padding:12px 14px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.15);border-radius:8px;">
+      <span style="color:#ff6b6b;font-size:16px;flex-shrink:0;">✕</span>
+      <div><strong style="color:var(--text-primary);font-size:13px;">Being too vague</strong> — "Write something about coffee" gives the AI too much freedom. Specify the format, tone, length, audience, and purpose.</div>
+    </div>
+    <div style="display:flex;gap:10px;padding:12px 14px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.15);border-radius:8px;">
+      <span style="color:#ff6b6b;font-size:16px;flex-shrink:0;">✕</span>
+      <div><strong style="color:var(--text-primary);font-size:13px;">Assuming shared context</strong> — The AI does not know your industry, your brand, or your previous conversations. Every prompt needs to include all relevant context.</div>
+    </div>
+    <div style="display:flex;gap:10px;padding:12px 14px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.15);border-radius:8px;">
+      <span style="color:#ff6b6b;font-size:16px;flex-shrink:0;">✕</span>
+      <div><strong style="color:var(--text-primary);font-size:13px;">Not specifying the audience</strong> — "Explain machine learning" produces very different results depending on whether the audience is a ten-year-old, a business executive, or a computer science student.</div>
+    </div>
+    <div style="display:flex;gap:10px;padding:12px 14px;background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.15);border-radius:8px;">
+      <span style="color:#ff6b6b;font-size:16px;flex-shrink:0;">✕</span>
+      <div><strong style="color:var(--text-primary);font-size:13px;">Ignoring format instructions</strong> — Without format guidance, AI tools default to their own preferred output structure, which may not match your needs at all.</div>
+    </div>
+  </div>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Prompt Enhancement Styles Explained</h2>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 14px;">The PromptKits Enhancer offers four enhancement styles, each suited to different use cases:</p>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px 16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:#a89eff;margin-bottom:4px;">Detailed</div>
+      <p style="font-size:13px;line-height:1.65;color:var(--text-secondary);margin:0;">Adds comprehensive context, specific requirements, and thorough format instructions. Best for complex creative or professional tasks where precision matters.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px 16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:#a89eff;margin-bottom:4px;">Creative</div>
+      <p style="font-size:13px;line-height:1.65;color:var(--text-secondary);margin:0;">Emphasises imaginative latitude and artistic freedom. Best for creative writing, brainstorming, and projects where unexpected interpretations are welcome.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px 16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:#a89eff;margin-bottom:4px;">Concise</div>
+      <p style="font-size:13px;line-height:1.65;color:var(--text-secondary);margin:0;">Strips to essentials and adds efficiency. Best for quick tasks, bullet-point summaries, and when you need a fast, focused response without extended elaboration.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:14px 16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:#a89eff;margin-bottom:4px;">Professional</div>
+      <p style="font-size:13px;line-height:1.65;color:var(--text-secondary);margin:0;">Adds formal tone, structured format, and business-appropriate language. Best for reports, business communications, and professional documentation.</p>
+    </div>
+  </div>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Related Tools</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+    <a href="/image-prompt.html" style="display:flex;align-items:center;gap:10px;padding:14px;border:1px solid var(--border-card);border-radius:10px;text-decoration:none;background:var(--bg-card);transition:border-color 0.2s;" onmouseover="this.style.borderColor='#a89eff'" onmouseout="this.style.borderColor=''">
+      <span style="font-size:20px;">🖼</span><div><div style="font-size:13px;font-weight:600;color:var(--text-primary);">Image Prompt Generator</div><div style="font-size:11px;color:var(--text-secondary);">Cinematic image prompts</div></div>
+    </a>
+    <a href="/video-prompt.html" style="display:flex;align-items:center;gap:10px;padding:14px;border:1px solid var(--border-card);border-radius:10px;text-decoration:none;background:var(--bg-card);transition:border-color 0.2s;" onmouseover="this.style.borderColor='#a89eff'" onmouseout="this.style.borderColor=''">
+      <span style="font-size:20px;">🎬</span><div><div style="font-size:13px;font-weight:600;color:var(--text-primary);">Video Prompt Generator</div><div style="font-size:11px;color:var(--text-secondary);">Cinematic video prompts</div></div>
+    </a>
+  </div>
+
+</div>
+
   <div class="faq-section">
     <h2>Frequently asked questions</h2>
     <div class="faq-item"><h3>What is a prompt enhancer?</h3><p>A prompt enhancer takes a basic instruction and rewrites it into a detailed, well-structured prompt that gets better results from AI tools like ChatGPT, Claude, Midjourney, and others.</p></div>
@@ -90,7 +222,38 @@
     <div class="faq-item"><h3>Which AI tools does it work with?</h3><p>It works with ChatGPT, Claude, Gemini, Midjourney, DALL-E, Stable Diffusion, and most other AI tools that accept text prompts.</p></div>
     <div class="faq-item"><h3>How is an enhanced prompt different from my original?</h3><p>The enhanced version adds context, specificity, tone instructions, format guidance, and relevant details that help AI models understand exactly what you want.</p></div>
   </div>
-</main>
+</main></div><div class="edu-sidebar">
+  <div class="sidebar-guide-label">📖 Quick Reference Guide</div>
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>✨ Enhancement Styles</span><span class="guide-chev open">▼</span></button>
+    <div class="guide-body open">
+      <div class="guide-item"><div class="guide-term">Detailed</div><div class="guide-def">Adds full context, role definition, format instructions, and constraints. Best for complex tasks.</div></div>
+      <div class="guide-item"><div class="guide-term">Creative</div><div class="guide-def">Emphasises imaginative latitude and artistic freedom. Best for creative writing.</div></div>
+      <div class="guide-item"><div class="guide-term">Concise</div><div class="guide-def">Strips to essentials. Best for quick, focused responses.</div></div>
+      <div class="guide-item"><div class="guide-term">Professional</div><div class="guide-def">Formal tone, structured format. Best for business communications.</div></div>
+    </div>
+  </div>
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🧱 Anatomy of a Good Prompt</span><span class="guide-chev open">▼</span></button>
+    <div class="guide-body open">
+      <div class="guide-item"><div class="guide-term">Role / Persona</div><div class="guide-def">"You are an experienced copywriter..." — activates relevant knowledge.</div></div>
+      <div class="guide-item"><div class="guide-term">Task</div><div class="guide-def">Specific, actionable instruction with exact requirements.</div></div>
+      <div class="guide-item"><div class="guide-term">Context</div><div class="guide-def">Audience, purpose, channel, brand voice. Shapes the whole response.</div></div>
+      <div class="guide-item"><div class="guide-term">Format</div><div class="guide-def">Length, structure, tone. Without this AI makes its own choices.</div></div>
+      <div class="guide-item"><div class="guide-term">Constraints</div><div class="guide-def">"Do not use jargon" — what not to do shapes output as much as what to do.</div></div>
+    </div>
+  </div>
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🤖 Platform Differences</span><span class="guide-chev">▼</span></button>
+    <div class="guide-body">
+      <div class="guide-item"><div class="guide-term">ChatGPT / Claude</div><div class="guide-def">Natural language. Benefits from role definitions and format requirements.</div></div>
+      <div class="guide-item"><div class="guide-term">Midjourney</div><div class="guide-def">Comma-separated descriptive terms. Add --ar for ratio, --style raw for realism.</div></div>
+      <div class="guide-item"><div class="guide-term">Stable Diffusion</div><div class="guide-def">Positive + negative prompts together. Technical photography terms work well.</div></div>
+      <div class="guide-item"><div class="guide-term">Gemini / DALL-E</div><div class="guide-def">Natural language. Conversational style. Specify artistic intent clearly.</div></div>
+    </div>
+  </div>
+  <div class="guide-tip"><div class="guide-tip-title">💡 Quick tip</div>The most common mistake is being too vague. Always specify format, tone, length, audience, and purpose for dramatically better results.</div>
+</div></div>
 
 <footer>
   <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a></p>
@@ -123,6 +286,15 @@
   }
   function showError(m){const e=document.getElementById('errorMsg');e.textContent=m;e.style.display='block';}
   function copyResult(){navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{document.getElementById('copyLabel').textContent='Copied!';setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);});}
+</script>
+<script>
+function toggleGuide(btn) {
+  var body = btn.nextElementSibling;
+  var chev = btn.querySelector('.guide-chev');
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
+}
 </script>
 </body>
 </html>

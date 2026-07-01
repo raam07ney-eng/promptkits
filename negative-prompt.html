@@ -14,6 +14,29 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
+<style>
+.page-layout{display:flex;gap:0;align-items:flex-start;}
+.tool-column{flex:1;min-width:0;}
+.edu-sidebar{width:300px;min-width:260px;flex-shrink:0;border-left:1px solid var(--border-card);padding:20px 16px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
+.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border-card);}
+.guide-section{margin-bottom:6px;}
+.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;}
+.guide-toggle:hover{background:var(--bg-adv);}
+.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;}
+.guide-chev.open{transform:rotate(180deg);}
+.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;padding:0 4px;}
+.guide-body.open{max-height:800px;}
+.guide-item{padding:7px 6px;border-bottom:1px solid var(--border-card);}
+.guide-item:last-child{border-bottom:none;}
+.guide-term{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px;}
+.guide-def{font-size:11px;line-height:1.55;color:var(--text-secondary);}
+.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:12px;margin-top:12px;font-size:11px;line-height:1.6;color:var(--text-secondary);}
+.guide-tip-title{font-size:12px;font-weight:600;color:#a89eff;margin-bottom:6px;}
+@media(max-width:900px){
+  .page-layout{flex-direction:column;}
+  .edu-sidebar{width:100%;height:auto;position:static;border-left:none;border-top:1px solid var(--border-card);}
+}
+</style>
 </head>
 <body>
 <header>
@@ -43,7 +66,7 @@
   <p>Eliminate bad anatomy, artifacts, and unwanted elements from your AI images. Works with Stable Diffusion, SDXL, and more.</p>
 </div>
 
-<main class="main">
+<div class="page-layout"><div class="tool-column"><main class="main">
   <div class="info-box">
     <div class="info-box-title">💡 What is a Negative Prompt?</div>
     <p>A negative prompt tells the AI what to <strong>exclude</strong> from your image — like bad hands, blurry faces, or low quality artifacts. It works alongside your main prompt to dramatically improve results.</p>
@@ -93,6 +116,94 @@
   </div>
   <div class="tip" id="tipBox">💡 Paste this into the Negative Prompt field in your image AI tool. It works alongside your main prompt to filter out unwanted results.</div>
 
+  
+<div class="edu-section" style="max-width:760px;margin:48px auto 0;padding:0 24px;">
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Understanding Negative Prompts in AI Image Generation</h2>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 14px;">Negative prompts are one of the most powerful and underused tools in AI image generation. While your main prompt tells the AI what to create, the negative prompt tells it what to avoid — and this dual instruction system gives you dramatically more control over the final output.</p>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 14px;">AI image models like Stable Diffusion work by sampling from a vast space of possible images. Your positive prompt guides the model toward a region of that space. Your negative prompt pushes it away from specific undesirable regions — bad anatomy, low quality artifacts, unwanted styles, and compositional problems.</p>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 32px;">The result is a tighter, more controlled generation that consistently produces higher quality output with fewer failed attempts.</p>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">How Negative Prompts Work Technically</h2>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 14px;">In diffusion-based image models like Stable Diffusion and SDXL, the generation process uses a technique called classifier-free guidance (CFG). During each denoising step, the model generates two predictions — one conditioned on your positive prompt and one conditioned on your negative prompt. The final step moves away from the negative prediction and toward the positive prediction.</p>
+  <p style="font-size:14px;line-height:1.85;color:var(--text-secondary);margin:0 0 32px;">The CFG scale setting controls how strongly the model follows this guidance. Higher CFG values mean stronger adherence to both your positive and negative prompts — though very high values can produce oversaturated, distorted results. A CFG scale between 7 and 12 is typically the most effective range for most generation tasks.</p>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">The Most Common Negative Prompt Problems</h2>
+  <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;">
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
+      <div style="font-size:14px;font-weight:600;color:#ff6b6b;margin-bottom:8px;">Bad Anatomy & Proportions</div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin:0 0 8px;">AI models frequently produce distorted body proportions, extra limbs, merged body parts, and incorrect anatomical relationships. This is one of the most common quality issues in AI image generation.</p>
+      <p style="font-size:12px;color:var(--text-muted);margin:0;font-family:monospace;">Negative prompt terms: deformed, distorted, disfigured, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, blurry, amputation</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
+      <div style="font-size:14px;font-weight:600;color:#ff6b6b;margin-bottom:8px;">Hand and Finger Problems</div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin:0 0 8px;">Hands are notoriously difficult for AI image models. Extra fingers, fused fingers, impossible hand positions, and distorted proportions are extremely common problems, particularly with human subjects.</p>
+      <p style="font-size:12px;color:var(--text-muted);margin:0;font-family:monospace;">Negative prompt terms: extra fingers, fused fingers, too many fingers, bad hands, poorly drawn hands, malformed hands, mutated hands</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
+      <div style="font-size:14px;font-weight:600;color:#ff6b6b;margin-bottom:8px;">Face and Eye Issues</div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin:0 0 8px;">Asymmetric eyes, blurry faces, distorted facial features, and unnatural expressions are common problems, particularly in portrait generation. The face is where quality issues are most immediately visible to viewers.</p>
+      <p style="font-size:12px;color:var(--text-muted);margin:0;font-family:monospace;">Negative prompt terms: blurry face, poorly drawn face, extra face, cloned face, cross-eyed, asymmetric eyes, bad eyes, ugly eyes</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px 18px;background:var(--bg-card);">
+      <div style="font-size:14px;font-weight:600;color:#ff6b6b;margin-bottom:8px;">Image Quality Artifacts</div>
+      <p style="font-size:13px;line-height:1.7;color:var(--text-secondary);margin:0 0 8px;">Low resolution patches, JPEG compression artifacts, watermarks, text intrusions, and overexposed or underexposed areas are quality issues that can appear in AI generated images, particularly at lower guidance scales.</p>
+      <p style="font-size:12px;color:var(--text-muted);margin:0;font-family:monospace;">Negative prompt terms: low quality, worst quality, lowres, jpeg artifacts, watermark, text, signature, error, out of frame, cropped</p>
+    </div>
+  </div>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Negative Prompts by AI Tool</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:32px;">
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">Stable Diffusion & SDXL</div>
+      <p style="font-size:12px;line-height:1.65;color:var(--text-secondary);margin:0;">Full negative prompt support. Paste directly into the Negative Prompt field. SDXL responds particularly well to quality-focused negative prompts. Supports weighted terms using parentheses.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">ComfyUI & Automatic1111</div>
+      <p style="font-size:12px;line-height:1.65;color:var(--text-secondary);margin:0;">Dedicated negative prompt input field. Supports attention weighting — (term:1.5) increases weight, (term:0.5) decreases it. Highly customisable for advanced users.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">Midjourney</div>
+      <p style="font-size:12px;line-height:1.65;color:var(--text-secondary);margin:0;">Limited negative prompt support via the --no parameter. Add "--no hands, text, watermark" at the end of your prompt. Less precise than dedicated negative prompt systems.</p>
+    </div>
+    <div style="border:1px solid var(--border-card);border-radius:10px;padding:16px;background:var(--bg-card);">
+      <div style="font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:8px;">DALL-E 3</div>
+      <p style="font-size:12px;line-height:1.65;color:var(--text-secondary);margin:0;">Does not support traditional negative prompts. Instead, include exclusions in your main prompt: "...without any text, watermarks, or distorted anatomy."</p>
+    </div>
+  </div>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Best Practices for Effective Negative Prompts</h2>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
+      <span style="color:#a89eff;font-size:16px;flex-shrink:0;">✦</span>
+      <div style="font-size:13px;line-height:1.65;color:var(--text-secondary);">Always start with quality terms — "low quality, worst quality, lowres" — as a baseline negative prompt regardless of what you are generating.</div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
+      <span style="color:#a89eff;font-size:16px;flex-shrink:0;">✦</span>
+      <div style="font-size:13px;line-height:1.65;color:var(--text-secondary);">For portraits and human subjects, always include hand and anatomy terms — these are the most common failure points in human figure generation.</div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
+      <span style="color:#a89eff;font-size:16px;flex-shrink:0;">✦</span>
+      <div style="font-size:13px;line-height:1.65;color:var(--text-secondary);">Tailor your negative prompt to the specific subject. A landscape prompt needs different negative terms than a portrait — focus on what is most likely to go wrong for your specific content type.</div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:flex-start;padding:12px 14px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
+      <span style="color:#a89eff;font-size:16px;flex-shrink:0;">✦</span>
+      <div style="font-size:13px;line-height:1.65;color:var(--text-secondary);">Do not include words in the negative prompt that you want to appear in the image. If you say "no blur" in the negative prompt, you might affect intentional depth of field blur on your subject.</div>
+    </div>
+  </div>
+
+  <h2 style="font-size:22px;font-weight:700;color:var(--text-primary);margin:0 0 16px;letter-spacing:-0.01em;">Related Tools</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;">
+    <a href="/image-prompt.html" style="display:flex;align-items:center;gap:10px;padding:14px;border:1px solid var(--border-card);border-radius:10px;text-decoration:none;background:var(--bg-card);" onmouseover="this.style.borderColor='#a89eff'" onmouseout="this.style.borderColor=''">
+      <span style="font-size:20px;">🖼</span><div><div style="font-size:13px;font-weight:600;color:var(--text-primary);">Image Prompt Generator</div><div style="font-size:11px;color:var(--text-secondary);">Build the positive prompt first</div></div>
+    </a>
+    <a href="/learn.html" style="display:flex;align-items:center;gap:10px;padding:14px;border:1px solid var(--border-card);border-radius:10px;text-decoration:none;background:var(--bg-card);" onmouseover="this.style.borderColor='#a89eff'" onmouseout="this.style.borderColor=''">
+      <span style="font-size:20px;">🎓</span><div><div style="font-size:13px;font-weight:600;color:var(--text-primary);">Learn Prompt Writing</div><div style="font-size:11px;color:var(--text-secondary);">17 free lessons</div></div>
+    </a>
+  </div>
+
+</div>
+
   <div class="faq-section">
     <h2>Frequently asked questions</h2>
     <div class="faq-item"><h3>What is a negative prompt?</h3><p>A negative prompt tells the AI what NOT to include in the image — helping eliminate bad anatomy, extra fingers, blurry faces, artifacts, and low quality results.</p></div>
@@ -100,7 +211,37 @@
     <div class="faq-item"><h3>Will this fix bad hands and fingers?</h3><p>Yes — select Hands focus and the tool generates specific negative prompts targeting extra fingers, fused hands, and distorted hand anatomy.</p></div>
     <div class="faq-item"><h3>Is this free?</h3><p>Yes, completely free. No account or sign-up needed.</p></div>
   </div>
-</main>
+</main></div><div class="edu-sidebar">
+  <div class="sidebar-guide-label">📖 Quick Reference Guide</div>
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🚫 Common Problem Terms</span><span class="guide-chev open">▼</span></button>
+    <div class="guide-body open">
+      <div class="guide-item"><div class="guide-term">Quality issues</div><div class="guide-def" style="font-family:monospace;font-size:10px;line-height:1.5;">low quality, worst quality, lowres, jpeg artifacts, blurry, watermark, text</div></div>
+      <div class="guide-item"><div class="guide-term">Anatomy problems</div><div class="guide-def" style="font-family:monospace;font-size:10px;line-height:1.5;">deformed, distorted, bad anatomy, extra limb, missing limb, mutation</div></div>
+      <div class="guide-item"><div class="guide-term">Hand issues</div><div class="guide-def" style="font-family:monospace;font-size:10px;line-height:1.5;">extra fingers, fused fingers, too many fingers, bad hands, malformed hands</div></div>
+      <div class="guide-item"><div class="guide-term">Face problems</div><div class="guide-def" style="font-family:monospace;font-size:10px;line-height:1.5;">blurry face, bad eyes, cross-eyed, asymmetric eyes, extra face</div></div>
+    </div>
+  </div>
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🛠 Where to Paste</span><span class="guide-chev open">▼</span></button>
+    <div class="guide-body open">
+      <div class="guide-item"><div class="guide-term">Stable Diffusion / SDXL</div><div class="guide-def">Paste into the "Negative Prompt" field below the main prompt box.</div></div>
+      <div class="guide-item"><div class="guide-term">ComfyUI / A1111</div><div class="guide-def">Dedicated negative prompt node. Supports weighted terms (term:1.5).</div></div>
+      <div class="guide-item"><div class="guide-term">Midjourney</div><div class="guide-def">Add --no at end: --no hands, text, watermark</div></div>
+      <div class="guide-item"><div class="guide-term">DALL-E 3</div><div class="guide-def">No dedicated field. Include exclusions in main prompt text.</div></div>
+    </div>
+  </div>
+  <div class="guide-section">
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>⚙️ CFG Scale Guide</span><span class="guide-chev">▼</span></button>
+    <div class="guide-body">
+      <div class="guide-item"><div class="guide-term">CFG 4–6</div><div class="guide-def">Loose — AI has more creative freedom. Negative prompt has less effect.</div></div>
+      <div class="guide-item"><div class="guide-term">CFG 7–9</div><div class="guide-def">Balanced — Best range for most generations. Recommended starting point.</div></div>
+      <div class="guide-item"><div class="guide-term">CFG 10–12</div><div class="guide-def">Strict — Strong adherence to prompts. Can cause oversaturation.</div></div>
+      <div class="guide-item"><div class="guide-term">CFG 13+</div><div class="guide-def">Too strict — Often produces distorted results. Avoid.</div></div>
+    </div>
+  </div>
+  <div class="guide-tip"><div class="guide-tip-title">💡 Always start with quality terms</div>Add "low quality, worst quality, lowres" to every negative prompt as a baseline. This single addition improves output quality across all generations.</div>
+</div></div>
 
 <footer>
   <p>© 2024 PromptKits · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a> · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a></p>
@@ -133,6 +274,15 @@
   }
   function showError(m){const e=document.getElementById('errorMsg');e.textContent=m;e.style.display='block';}
   function copyResult(){navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{document.getElementById('copyLabel').textContent='Copied!';setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);});}
+</script>
+<script>
+function toggleGuide(btn) {
+  var body = btn.nextElementSibling;
+  var chev = btn.querySelector('.guide-chev');
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
+}
 </script>
 </body>
 </html>

@@ -15,6 +15,29 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
+<style>
+.page-layout{display:flex;gap:0;align-items:flex-start;}
+.tool-column{flex:1;min-width:0;}
+.edu-sidebar{width:300px;min-width:260px;flex-shrink:0;border-left:1px solid var(--border-card);padding:20px 16px;background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;box-sizing:border-box;}
+.sidebar-guide-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border-card);}
+.guide-section{margin-bottom:6px;}
+.guide-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;background:transparent;border:none;padding:8px 10px;border-radius:8px;cursor:pointer;font-family:"Inter",sans-serif;font-size:12px;font-weight:600;color:var(--text-primary);transition:background 0.15s;}
+.guide-toggle:hover{background:var(--bg-adv);}
+.guide-chev{font-size:10px;color:var(--text-muted);transition:transform 0.2s;flex-shrink:0;}
+.guide-chev.open{transform:rotate(180deg);}
+.guide-body{overflow:hidden;max-height:0;transition:max-height 0.3s ease;padding:0 4px;}
+.guide-body.open{max-height:800px;}
+.guide-item{padding:7px 6px;border-bottom:1px solid var(--border-card);}
+.guide-item:last-child{border-bottom:none;}
+.guide-term{font-size:12px;font-weight:600;color:var(--text-primary);margin-bottom:3px;}
+.guide-def{font-size:11px;line-height:1.55;color:var(--text-secondary);}
+.guide-tip{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:8px;padding:12px;margin-top:12px;font-size:11px;line-height:1.6;color:var(--text-secondary);}
+.guide-tip-title{font-size:12px;font-weight:600;color:#a89eff;margin-bottom:6px;}
+@media(max-width:900px){
+  .page-layout{flex-direction:column;}
+  .edu-sidebar{width:100%;height:auto;position:static;border-left:none;border-top:1px solid var(--border-card);}
+}
+</style>
 </head>
 <body>
 <header>
@@ -308,14 +331,10 @@
     <div class="faq-item"><h3>What do the Advanced Settings do?</h3><p>They let you control camera angle, lens type, lighting style, aspect ratio, and quality — giving you professional-level control over the final image.</p></div>
     <div class="faq-item"><h3>Is this free?</h3><p>Yes, completely free. No account or sign-up needed.</p></div>
   </div>
-</main></div>
-<div class="edu-sidebar">
+</main></div><div class="edu-sidebar">
   <div class="sidebar-guide-label">📖 Quick Reference Guide</div>
-
   <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)">
-      <span>🔭 Lens Types</span><span class="guide-chev">▼</span>
-    </button>
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🔭 Lens Types</span><span class="guide-chev open">▼</span></button>
     <div class="guide-body open">
       <div class="guide-item"><div class="guide-term">24mm wide angle</div><div class="guide-def">Exaggerates perspective and depth. Great for environments and architecture.</div></div>
       <div class="guide-item"><div class="guide-term">35mm standard</div><div class="guide-def">Natural, closest to the human eye. Versatile for any subject.</div></div>
@@ -324,49 +343,35 @@
       <div class="guide-item"><div class="guide-term">Anamorphic</div><div class="guide-def">Cinematic oval bokeh and lens flares. The movie look.</div></div>
     </div>
   </div>
-
   <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)">
-      <span>💡 Lighting Setups</span><span class="guide-chev">▼</span>
-    </button>
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>💡 Lighting Setups</span><span class="guide-chev open">▼</span></button>
     <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">Rembrandt</div><div class="guide-def">Key light at 45° above. Creates a triangle of light on the shadow cheek. Classic and dramatic.</div></div>
-      <div class="guide-item"><div class="guide-term">Golden hour</div><div class="guide-def">Warm backlight from low sun. Hair and shoulders glow amber. The most flattering outdoor light.</div></div>
+      <div class="guide-item"><div class="guide-term">Rembrandt</div><div class="guide-def">Key light at 45° above. Triangle of light on shadow cheek. Classic and dramatic.</div></div>
+      <div class="guide-item"><div class="guide-term">Golden hour</div><div class="guide-def">Warm backlight from low sun. Hair glows amber. Most flattering outdoor light.</div></div>
       <div class="guide-item"><div class="guide-term">Split lighting</div><div class="guide-def">Light directly to the side. Half lit, half shadow. Bold and graphic.</div></div>
-      <div class="guide-item"><div class="guide-term">Soft window light</div><div class="guide-def">Natural, diffused, flattering. The most versatile portrait light available.</div></div>
-      <div class="guide-item"><div class="guide-term">Neon practical</div><div class="guide-def">Coloured light from neon signs or LEDs. Urban, editorial, cyberpunk aesthetic.</div></div>
+      <div class="guide-item"><div class="guide-term">Soft window light</div><div class="guide-def">Natural, diffused, flattering. The most versatile portrait light.</div></div>
+      <div class="guide-item"><div class="guide-term">Neon practical</div><div class="guide-def">Coloured light from signs or LEDs. Urban, editorial, cyberpunk.</div></div>
     </div>
   </div>
-
   <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)">
-      <span>🎨 Color Grades</span><span class="guide-chev">▼</span>
-    </button>
-    <div class="guide-body open">
-      <div class="guide-item"><div class="guide-term">Teal & Orange</div><div class="guide-def">Hollywood blockbuster. Warm skin tones, cool shadows. Most commercial look.</div></div>
-      <div class="guide-item"><div class="guide-term">Cold Desaturated</div><div class="guide-def">Tension and psychological drama. Muted, clinical, unsettling.</div></div>
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>🎨 Color Grades</span><span class="guide-chev">▼</span></button>
+    <div class="guide-body">
+      <div class="guide-item"><div class="guide-term">Teal &amp; Orange</div><div class="guide-def">Hollywood blockbuster. Warm skin tones, cool shadows.</div></div>
+      <div class="guide-item"><div class="guide-term">Cold Desaturated</div><div class="guide-def">Tension and psychological drama. Muted and clinical.</div></div>
       <div class="guide-item"><div class="guide-term">Warm Vintage</div><div class="guide-def">Nostalgia, film, period aesthetic. Lifted blacks and warm highlights.</div></div>
-      <div class="guide-item"><div class="guide-term">Black & White</div><div class="guide-def">Timeless, graphic, emotional. Removes colour distraction, reveals form.</div></div>
+      <div class="guide-item"><div class="guide-term">Black &amp; White</div><div class="guide-def">Timeless, graphic, emotional. Reveals form without colour distraction.</div></div>
     </div>
   </div>
-
   <div class="guide-section">
-    <button class="guide-toggle" onclick="toggleGuide(this)">
-      <span>📐 Shot Types</span><span class="guide-chev">▼</span>
-    </button>
+    <button class="guide-toggle" onclick="toggleGuide(this)"><span>📐 Shot Types</span><span class="guide-chev">▼</span></button>
     <div class="guide-body">
       <div class="guide-item"><div class="guide-term">Wide establishing</div><div class="guide-def">Shows environment and scale. Context before intimacy.</div></div>
-      <div class="guide-item"><div class="guide-term">Medium shot</div><div class="guide-def">Waist up. The most common shot for people — natural and conversational.</div></div>
+      <div class="guide-item"><div class="guide-term">Medium shot</div><div class="guide-def">Waist up. Natural and conversational. Most common shot for people.</div></div>
       <div class="guide-item"><div class="guide-term">Close-up</div><div class="guide-def">Face fills frame. Emotion and detail. The most intimate shot.</div></div>
       <div class="guide-item"><div class="guide-term">Extreme close-up</div><div class="guide-def">Eyes, hands, a single detail. Texture and intensity.</div></div>
     </div>
   </div>
-
-  <div class="guide-tip">
-    <div class="guide-tip-title">💡 VFX pro tip</div>
-    Always specify lighting direction before anything else. Light from the side creates depth and dimension. Light from the front creates flat, commercial images. The direction of light is the most important decision in any portrait.
-  </div>
-
+  <div class="guide-tip"><div class="guide-tip-title">💡 VFX pro tip</div>Always specify lighting direction first. Light from the side creates depth and dimension. Light from the front creates flat, commercial images.</div>
 </div></div>
 
 <footer>
@@ -452,6 +457,15 @@
 
   function showError(m){const e=document.getElementById('errorMsg');e.textContent=m;e.style.display='block';}
   function copyResult(){navigator.clipboard.writeText(document.getElementById('resultText').textContent).then(()=>{document.getElementById('copyLabel').textContent='Copied!';setTimeout(()=>document.getElementById('copyLabel').textContent='Copy',2000);});}
+</script>
+<script>
+function toggleGuide(btn) {
+  var body = btn.nextElementSibling;
+  var chev = btn.querySelector('.guide-chev');
+  var isOpen = body.classList.contains('open');
+  body.classList.toggle('open', !isOpen);
+  chev.classList.toggle('open', !isOpen);
+}
 </script>
 </body>
 </html>
