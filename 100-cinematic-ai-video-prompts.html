@@ -374,16 +374,38 @@ const prompts = [
 function renderPrompts(filter) {
   const grid = document.getElementById('promptsGrid');
   const filtered = filter === 'all' ? prompts : prompts.filter(p => p.cat === filter);
-  grid.innerHTML = filtered.map(p => `
-    <div class="prompt-card">
-      <div class="prompt-num">#${String(p.id).padStart(3,'0')}</div>
-      <div class="prompt-text">${p.text}</div>
-      <div class="prompt-footer">
-        <span class="tool-badge">${p.tool}</span>
-        <button class="copy-prompt-btn" onclick="copyPrompt(this,'${p.id}')">Copy</button>
-      </div>
-    </div>
-  `).join('');
+  var bestData = {
+    "epic": ["Opening establishing shots in epic or historical narratives","Scene transitions from ground level to aerial perspective","Fantasy, war, or period drama — castles, armies, ancient worlds"],
+    "nature": ["Nature documentary sequences","Landscape and environment establishing shots","Wildlife observation and behaviour scenes"],
+    "urban": ["Character introduction scenes in city environments","Thriller or noir — pursuit, isolation, introspection","Emotional walking scenes where city mirrors inner state"],
+    "portrait": ["Character introduction and close-up scenes","Emotional dialogue scenes requiring intimacy","Documentary-style subject and character studies"],
+    "scifi": ["Science fiction world-building sequences","Futuristic city and technology establishing shots","Technology and humanity contrast scenes"],
+    "action": ["Chase sequences and pursuit scenes","Fight choreography and combat sequences","Sports highlights and athletic achievement moments"],
+    "documentary": ["Real-world subject documentation","Behind-the-scenes and process sequences","Human interest and social documentary scenes"]
+  };
+  grid.innerHTML = filtered.map(function(p) {
+    var whyItems = p.why ? p.why.split('. ').filter(function(s){return s.trim();}).map(function(s){return '<li>' + s.trim().replace(/\.$/,'') + '</li>';}).join('') : '<li>Professional cinematography language for consistent results</li><li>Specific technical parameters that AI models interpret accurately</li>';
+    var bestArr = bestData[p.cat] || ["Cinematic storytelling sequences","Character and environment establishing shots","Creative video content production"];
+    var bestItems = bestArr.map(function(s){return '<li>' + s + '</li>';}).join('');
+    return '<div class="prompt-card">' +
+      '<div class="prompt-left">' +
+        '<div class="prompt-num">#' + String(p.id).padStart(3,'0') + ' · ' + (p.cat ? p.cat.charAt(0).toUpperCase() + p.cat.slice(1) : '') + '</div>' +
+        '<div class="prompt-text">' + p.text + '</div>' +
+        '<div class="prompt-footer">' +
+          '<span class="tool-badge">' + p.tool + '</span>' +
+          '<div class="prompt-actions">' +
+            '<span class="copy-count" id="cnt-' + p.id + '">📋 ' + (copies[p.id]||0) + '</span>' +
+            '<button class="copy-prompt-btn" onclick="copyPrompt(this,' + p.id + ')">Copy</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div class="prompt-right">' +
+        '<div><div class="section-label why-label">✦ Why this works</div><ul class="info-list">' + whyItems + '</ul></div>' +
+        '<div class="info-divider"></div>' +
+        '<div><div class="section-label best-label">▶ Best for</div><ul class="info-list best-list">' + bestItems + '</ul></div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
 }
 
 function copyPrompt(btn, id) {
