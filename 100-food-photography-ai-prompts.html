@@ -363,18 +363,19 @@ var bulletData = {
   99: {why:["Close-up creates the frame where microexpression becomes macro-meaning — the face as the entire landscape", "The light quality and direction encode the emotional register of this scene before a single narrative element is read", "The specific combination of technique, light and subject in this prompt creates conditions that communicate without requiring any additional context"],best:["Professional culinary photography establishing the chef's knife technique as craft and discipline", "A cooking documentary sequence establishing knife skills as the foundation of professional cooking", "Food education photography where the hand position and the blade angle communicate training and precision"]},
   100: {why:["Camera position and movement create the specific emotional geometry — the angle is the argument", "The light quality and direction encode the emotional register of this scene before a single narrative element is read", "The specific combination of technique, light and subject in this prompt creates conditions that communicate without requiring any additional context"],best:["Italian restaurant or artisan pasta brand photography establishing the handmade quality signal", "A food technique documentary on the specific craft and patience of fresh pasta production", "Any horror or thriller where 'extruded' is the specific setting or subject that makes this scene uniquely unsettling"]},
 };
-function renderPrompts(filter) {
+function filterAndRender(filter) {
+  var activeFilter = filter !== undefined ? filter : currentFilter;
   const grid = document.getElementById('promptsGrid');
-  const filtered = filter === 'all' ? prompts : prompts.filter(p => p.cat === filter);
+  const filtered = activeFilter === 'all' ? prompts : prompts.filter(p => p.cat === activeFilter);
   grid.innerHTML = filtered.map(function(p) {
     var bd = bulletData[p.id] || {};
-    var whyArr = bd.why || ["Professional cinematography language for consistent results","Specific technical parameters that AI models interpret accurately","Real filmmaking technique translated for AI generation"];
-    var bestArr = bd.best || ["Cinematic storytelling sequences","Character and environment establishing shots","Creative video content production"];
-    var whyItems = whyArr.map(function(s){return '<li>' + s + '</li>';}).join('');
-    var bestItems = bestArr.map(function(s){return '<li>' + s + '</li>';}).join('');
+    var bestArr = bd.best || ["Professional photography prompt for commercial use","Creative image generation for editorial and portfolio work"];
+    var bestArr2 = bestArr.slice(0, 2);
+    var bestItems = bestArr2.map(function(s){return '<li>' + s + '</li>';}).join('');
+    var catLabel = p.cat ? p.cat.charAt(0).toUpperCase() + p.cat.slice(1) : '';
     return '<div class="prompt-card">' +
       '<div class="prompt-left">' +
-        '<div class="prompt-num">#' + String(p.id).padStart(3,'0') + ' · ' + (p.cat ? p.cat.charAt(0).toUpperCase() + p.cat.slice(1) : '') + '</div>' +
+        '<div class="prompt-num">#' + String(p.id).padStart(3,'0') + ' · ' + catLabel + '</div>' +
         '<div class="prompt-text">' + p.text + '</div>' +
         '<div class="prompt-footer">' +
           '<span class="tool-badge">' + p.tool + '</span>' +
@@ -384,8 +385,6 @@ function renderPrompts(filter) {
         '</div>' +
       '</div>' +
       '<div class="prompt-right">' +
-        '<div><div class="section-label why-label">✦ Why this works</div><ul class="info-list">' + whyItems + '</ul></div>' +
-        '<div class="info-divider"></div>' +
         '<div><div class="section-label best-label">▶ Best for</div><ul class="info-list best-list">' + bestItems + '</ul></div>' +
       '</div>' +
     '</div>';
