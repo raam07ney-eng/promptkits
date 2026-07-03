@@ -401,17 +401,19 @@ var bulletData = {
   100: {why:["Close-up creates the frame where microexpression becomes macro-meaning — the face as the entire landscape", "The light quality and direction encode the emotional register of this scene before a single narrative element is read", "Hands carry biography — in close-up they reveal work, age, care and skill with a specificity that faces sometimes conceal"],best:["A cinematic sequence requiring precise atmospheric control and professional visual technique", "An establishing shot communicating the specific world or environment of this story", "Any horror or thriller where 'visible' is the specific setting or subject that makes this scene uniquely unsettling"]},
 };
 function filterAndRender(filter) {
+  var activeFilter = filter !== undefined ? filter : currentFilter;
   const grid = document.getElementById('promptsGrid');
-  const filtered = filter === 'all' ? prompts : prompts.filter(p => p.cat === filter);
+  const filtered = activeFilter === 'all' ? prompts : prompts.filter(p => p.cat === activeFilter);
   grid.innerHTML = filtered.map(function(p) {
     var bd = bulletData[p.id] || {};
     var whyArr = bd.why || ["Professional cinematography language for consistent results","Specific technical parameters that AI models interpret accurately","Real filmmaking technique translated for AI generation"];
     var bestArr = bd.best || ["Cinematic storytelling sequences","Character and environment establishing shots","Creative video content production"];
     var whyItems = whyArr.map(function(s){return '<li>' + s + '</li>';}).join('');
     var bestItems = bestArr.map(function(s){return '<li>' + s + '</li>';}).join('');
+    var catLabel = p.cat ? p.cat.charAt(0).toUpperCase() + p.cat.slice(1) : '';
     return '<div class="prompt-card">' +
       '<div class="prompt-left">' +
-        '<div class="prompt-num">#' + String(p.id).padStart(3,'0') + ' · ' + (p.cat ? p.cat.charAt(0).toUpperCase() + p.cat.slice(1) : '') + '</div>' +
+        '<div class="prompt-num">#' + String(p.id).padStart(3,'0') + ' · ' + catLabel + '</div>' +
         '<div class="prompt-text">' + p.text + '</div>' +
         '<div class="prompt-footer">' +
           '<span class="tool-badge">' + p.tool + '</span>' +
