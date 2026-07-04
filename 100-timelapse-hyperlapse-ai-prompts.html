@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>100 Time-lapse &amp; Hyperlapse AI Video Prompts | PromptKits</title>
-  <meta name="description" content="100 professional time-lapse and hyperlapse AI video prompts covering city, weather, nature, crowds, construction, seasons, sky, water, light trails and interiors."/>
+  <title>100 Time-lapse and Hyperlapse AI Video Prompts covering city, weather, nature, crowds, construction, seasons, sky, water, light trails and interiors. | PromptKits</title>
+  <meta name="description" content="100 Time-lapse and Hyperlapse AI Video Prompts covering city, weather, nature, crowds, construction, seasons, sky, water, light trails and interiors.">/>
   <link rel="canonical" href="https://promptkits.in/100-action-sports-ai-prompts.html"/>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -71,7 +71,7 @@
     @media(max-width:768px){.lib-sidebar{width:280px;min-width:280px;border-right:1px solid var(--border-card);background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;padding-top:20px;}.lib-layout{display:block;}}
   </style>
 <style>
-    .prompts-grid{display:flex;flex-direction:column;gap:14px;}
+    .prompts-grid{display:flex;flex-direction:column;gap:14px;max-width:1100px;margin:0 auto;padding:0 24px 60px;}
     .prompt-card{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border-card);border-radius:12px;overflow:hidden;background:var(--bg-card);transition:border-color 0.2s;}
     .prompt-card:hover{border-color:rgba(168,158,255,0.4);}
     .prompt-left{padding:16px;border-right:1px solid var(--border-card);display:flex;flex-direction:column;}
@@ -149,7 +149,7 @@
 
 <div class="library-hero">
   <div class="badge"><div class="badge-dot"></div> Free Prompt Library</div>
-  <h1>100 <span>Action & Sports</span> AI Video Prompts</h1>
+  <h1 style="font-size:26px;font-weight:700;margin:0 0 4px;">100 Time-lapse &amp; Hyperlapse AI Video Prompts</h1>
   <p>100 free action and sports AI video prompts for Kling AI and Runway. Chase scenes, combat, athletics, extreme sports, team sports, victory and defeat — all written cinematically.</p>
   <div class="lib-stats">
     <div><div class="lib-stat-num">100</div><div class="lib-stat-label">Prompts</div></div>
@@ -394,6 +394,7 @@ var bulletData = {
   100: {why:["The fixed camera makes time the moving subject \u2014 what changes is measured against what doesn't", "The light changes within the time-lapse create a secondary narrative \u2014 the shifting quality of light measuring the passage of time", "Cyclical time-lapse reveals the rhythm underlying apparent stability \u2014 the pattern that repeats becomes visible only when compressed"],best:["A corporate documentary's most temporally complete and most rhythmically revealing working week sequence", "A film establishing the office building as a social environment with its own weekly as well as daily cycle", "A workplace documentary's most scale-communicating and most behaviourally specific single building sequence"]},
 };
 
+var currentFilter = "all";
 var copies = {};
 function filterAndRender(filter) {
   const grid = document.getElementById('promptsGrid');
