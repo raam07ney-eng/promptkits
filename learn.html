@@ -74,35 +74,12 @@
     .lsb-divider{height:1px;background:var(--border-card);margin:6px 0;}
     @media(max-width:768px){.learn-sidebar{display:none;}.learn-layout{display:block;}}
   
-    .learn-layout{display:flex;min-height:100vh;}
-    .learn-sidebar-new{width:260px;min-width:260px;border-right:1px solid var(--border-card);background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;padding-top:20px;}
-    .learn-main{flex:1;min-width:0;overflow-x:hidden;}
     .sb-header{padding:14px 16px 10px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-card);margin-bottom:4px;}
     .sb-section{padding:4px 0;}
     .sb-group{padding:10px 16px 5px;font-size:12px;font-weight:700;color:#a89eff;letter-spacing:0.05em;}
     .sb-item{display:flex;align-items:center;justify-content:space-between;padding:7px 16px 7px 28px;font-size:13px;color:var(--text-secondary);text-decoration:none;transition:background 0.1s;}
-    .sb-item:hover{background:var(--bg-adv);color:var(--text-primary);}
-    .sb-item.active{background:rgba(168,158,255,0.1);color:#a89eff;font-weight:500;}
     .sb-count{font-size:11px;color:var(--text-muted);background:var(--bg-adv);padding:1px 7px;border-radius:10px;flex-shrink:0;}
     .sb-divider{height:1px;background:var(--border-card);margin:8px 0;}
-    .guide-section{padding:40px 24px 32px;border-bottom:1px solid var(--border-card);scroll-margin-top:16px;}
-    .guide-section-head{margin-bottom:24px;}
-    .guide-section-head h2{font-size:20px;font-weight:700;margin:0 0 4px;}
-    .guide-section-head p{font-size:13px;color:var(--text-secondary);margin:0;}
-    .guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
-    .guide-card{border:1px solid var(--border-card);border-radius:12px;overflow:hidden;background:var(--bg-card);transition:border-color 0.2s;}
-    .guide-card:hover{border-color:rgba(168,158,255,0.35);}
-    .guide-img{width:100%;height:160px;object-fit:cover;display:block;}
-    .guide-card-top{padding:14px 16px 10px;}
-    .guide-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 9px;border-radius:20px;margin-bottom:7px;}
-    .guide-card-title{font-size:14px;font-weight:700;margin:0 0 3px;color:var(--text-primary);}
-    .gmood{font-size:11px;color:var(--text-muted);letter-spacing:0.03em;margin-top:2px;}
-    .guide-card-body{padding:4px 16px 14px;}
-    .glabel{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-muted);margin:12px 0 3px;}
-    .gtext{font-size:12.5px;line-height:1.6;color:var(--text-secondary);margin:0;}
-    .gavoid{color:#ff7070 !important;}
-    .gprompt{font-size:11.5px;line-height:1.65;color:#a89eff;background:rgba(168,158,255,0.06);border-left:2px solid rgba(168,158,255,0.4);border-radius:0 6px 6px 0;padding:9px 11px;font-style:italic;margin-top:4px;}
-    @media(max-width:768px){.learn-sidebar-new{display:none;}.guide-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -127,32 +104,60 @@
 
 <div class="learn-layout">
 
-<div class="learn-sidebar-new">
+<div class="learn-sidebar">
   <div class="sb-header">Learning Hub</div>
+
   <div class="sb-section">
-    <div class="sb-group">📚 Lessons</div>
-    <a class="sb-item" href="#beginner">🌱 Beginner guide <span class="sb-count">4</span></a>
-    <a class="sb-item" href="#intermediate">📷 Camera &amp; lighting <span class="sb-count">4</span></a>
-    <a class="sb-item" href="#advanced">🎬 Advanced <span class="sb-count">2</span></a>
-    <a class="sb-item" href="#consistency">🔗 Consistency <span class="sb-count">3</span></a>
-    <a class="sb-item" href="#tools">🛠 Tool guides <span class="sb-count">4</span></a>
+    <div class="sb-group">🌱 Beginner</div>
+    <a class="sb-item" href="#beginner">What is a prompt? <span class="sb-count">1</span></a>
+    <a class="sb-item" href="#beginner">Basic structure <span class="sb-count">2</span></a>
+    <a class="sb-item" href="#beginner">Common mistakes <span class="sb-count">3</span></a>
+    <a class="sb-item" href="#beginner">Color grades <span class="sb-count">4</span></a>
   </div>
+
   <div class="sb-divider"></div>
+
   <div class="sb-section">
-    <div class="sb-group">📖 Visual Guides</div>
-    <a class="sb-item" href="#lens">🔭 Lens guide <span class="sb-count">6</span></a>
-    <a class="sb-item" href="#color">🎨 Color &amp; tone <span class="sb-count">8</span></a>
-    <a class="sb-item" href="#angles">📐 Camera angles <span class="sb-count">8</span></a>
-    <a class="sb-item" href="#lighting">💡 Lighting guide <span class="sb-count">8</span></a>
+    <div class="sb-group">📷 Intermediate</div>
+    <a class="sb-item" href="#intermediate">Camera angles <span class="sb-count">5</span></a>
+    <a class="sb-item" href="#intermediate">Camera movements <span class="sb-count">6</span></a>
+    <a class="sb-item" href="#intermediate">Lighting setups <span class="sb-count">7</span></a>
+    <a class="sb-item" href="#intermediate">Mood writing <span class="sb-count">8</span></a>
   </div>
+
   <div class="sb-divider"></div>
+
   <div class="sb-section">
-    <div class="sb-group">🔗 Quick Links</div>
-    <a class="sb-item" href="/prompt-library.html">← Prompt Library</a>
-    <a class="sb-item" href="/100-cinematic-ai-video-prompts.html">Cinematic prompts</a>
-    <a class="sb-item" href="/video-prompt.html">Video generator</a>
+    <div class="sb-group">🎬 Advanced</div>
+    <a class="sb-item" href="#advanced">Cinematic language <span class="sb-count">9</span></a>
+    <a class="sb-item" href="#advanced">Shot types <span class="sb-count">10</span></a>
   </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <div class="sb-group">🔗 Consistency</div>
+    <a class="sb-item" href="#consistency">Cross-shot consistency <span class="sb-count">11</span></a>
+    <a class="sb-item" href="#consistency">Scene building <span class="sb-count">12</span></a>
+    <a class="sb-item" href="#consistency">Character consistency <span class="sb-count">13</span></a>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <div class="sb-section">
+    <div class="sb-group">🛠 Tool Guides</div>
+    <a class="sb-item" href="#tools">Kling AI guide <span class="sb-count">14</span></a>
+    <a class="sb-item" href="#tools">Runway guide <span class="sb-count">15</span></a>
+    <a class="sb-item" href="#tools">Sora guide <span class="sb-count">16</span></a>
+    <a class="sb-item" href="#tools">Video vs image <span class="sb-count">17</span></a>
+  </div>
+
+  <div class="sb-divider"></div>
+
+  <a class="sb-item" href="/prompt-library.html" style="color:#a89eff;">📚 Browse Prompt Library</a>
+
 </div>
+
 <div class="learn-main">
 <div class="learn-hero">
   <div class="badge"><div class="badge-dot"></div> Free Learning Hub</div>
@@ -207,435 +212,11 @@
       <span class="modal-cta-outline" onclick="closeLesson()">← Back to lessons</span>
     </div>
   </div>
-
-
-</div><!-- close modal-overlay -->
-
-<div class="guide-section" id="lens">
-  <div class="guide-section-head">
-    <h2>🔭 Lens Guide</h2>
-    <p>How focal length changes your AI video — perspective, compression, and depth of field explained</p>
-  </div>
-  <div class="guide-grid">
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&fit=crop" alt="14–20mm Ultra-Wide" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #7c6fff">
-    <span class="guide-badge" style="background:#7c6fff22;color:#7c6fff;border:1px solid #7c6fff44">Ultra-Wide</span>
-    <h3 class="guide-card-title">14–20mm Ultra-Wide</h3>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it does</div><p class="gtext">Extreme field of view that bends straight lines and exaggerates spatial depth. Objects close to the lens appear massive while the background recedes dramatically.</p>
-    <div class="glabel">Best for</div><p class="gtext">Establishing shots, interior environments, landscape scale, dramatic architecture, first-person perspective scenes.</p>
-    <div class="glabel">Avoid</div><p class="gtext gavoid">Portraits — facial distortion at the edges makes subjects look unnatural.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Ultra-wide 14mm establishing shot, massive foreground rock formation dwarfing the canyon below, extreme depth of field, morning mist in the valley, cinematic anamorphic quality"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&fit=crop" alt="24–35mm Wide" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #6b9fff">
-    <span class="guide-badge" style="background:#6b9fff22;color:#6b9fff;border:1px solid #6b9fff44">Wide</span>
-    <h3 class="guide-card-title">24–35mm Wide</h3>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it does</div><p class="gtext">Slightly wider than human vision. Shows the subject within their environment without extreme distortion. The standard lens for photojournalism and documentary work.</p>
-    <div class="glabel">Best for</div><p class="gtext">Environmental portraits, street scenes, interior shots, handheld documentary sequences, travel filmmaking.</p>
-    <div class="glabel">Avoid</div><p class="gtext gavoid">Close-up portraits — slight barrel distortion at close range widens facial features.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"35mm wide lens, street market at dusk, subject in foreground buying fruit, the busy market life continuing behind, warm practical light from stalls, natural depth"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&fit=crop" alt="50mm Standard" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #4fffb0">
-    <span class="guide-badge" style="background:#4fffb022;color:#4fffb0;border:1px solid #4fffb044">Standard</span>
-    <h3 class="guide-card-title">50mm Standard</h3>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it does</div><p class="gtext">Closest to the natural field of human vision. Renders scenes with no distortion, no compression — exactly as the eye sees them. The most honest lens.</p>
-    <div class="glabel">Best for</div><p class="gtext">Conversational dialogue scenes, candid portraits, food photography, neutral establishing shots, everyday realism.</p>
-    <div class="glabel">Avoid</div><p class="gtext gavoid">Dramatic impact shots — the neutral perspective gives no visual exaggeration.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"50mm standard lens, two people at a cafe table, natural window light, the conversation feeling intimate but observed, no distortion, warm ambient light"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&fit=crop" alt="85mm Portrait" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #ffb347">
-    <span class="guide-badge" style="background:#ffb34722;color:#ffb347;border:1px solid #ffb34744">Portrait</span>
-    <h3 class="guide-card-title">85mm Portrait</h3>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it does</div><p class="gtext">The classic portrait focal length. Renders faces with natural proportions while creating beautiful background separation. The most flattering lens for human subjects.</p>
-    <div class="glabel">Best for</div><p class="gtext">Portrait close-ups, interview shots, character moments, beauty shots, any scene requiring subject isolation.</p>
-    <div class="glabel">Avoid</div><p class="gtext gavoid">Wide scenes — the longer focal length compresses space and excludes environmental context.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"85mm portrait lens, subject lit by soft window light, f1.8 shallow depth of field, creamy bokeh background, face rendered with perfect proportions, cinematic close-up"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&fit=crop" alt="135–200mm Telephoto" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #ff7070">
-    <span class="guide-badge" style="background:#ff707022;color:#ff7070;border:1px solid #ff707044">Telephoto</span>
-    <h3 class="guide-card-title">135–200mm Telephoto</h3>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it does</div><p class="gtext">Compresses distance between foreground and background, stacking the scene into a flattened plane. Creates the illusion that everything is close together.</p>
-    <div class="glabel">Best for</div><p class="gtext">Wildlife, sports, candid street photography, subjects in crowds, compression storytelling, paparazzi-style observational shots.</p>
-    <div class="glabel">Avoid</div><p class="gtext gavoid">Interior scenes — too much compression in confined spaces flattens depth completely.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"200mm telephoto lens, lone figure walking through a crowded city street, the crowd compressed tightly behind, faces stacked, the subject isolated within the mass"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1550159930-40066082a4fc?w=400&fit=crop" alt="Macro" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #c084fc">
-    <span class="guide-badge" style="background:#c084fc22;color:#c084fc;border:1px solid #c084fc44">Macro</span>
-    <h3 class="guide-card-title">Macro</h3>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it does</div><p class="gtext">Achieves 1:1 or greater magnification, revealing details invisible to the naked eye. The world at macro scale is alien, textural, and geometrically extraordinary.</p>
-    <div class="glabel">Best for</div><p class="gtext">Product detail, insect and nature close-ups, food texture, mechanical detail, science and biology content.</p>
-    <div class="glabel">Avoid</div><p class="gtext gavoid">Any moving subject — depth of field at macro scale is measured in millimetres.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Macro lens extreme close-up, dewdrop on a spider web strand, perfect sphere reflection of the forest inside the drop, shallow depth of field, morning light"</div>
-  </div>
-</div>
-  </div>
-</div>
-<div class="guide-section" id="color">
-  <div class="guide-section-head">
-    <h2>🎨 Color &amp; Tone Guide</h2>
-    <p>The colour grades that define cinematic genres — and the exact prompt language to achieve each one</p>
-  </div>
-  <div class="guide-grid">
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&fit=crop" alt="Teal & Orange" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #e07b39">
-    <span class="guide-badge" style="background:#e07b3922;color:#e07b39;border:1px solid #e07b3944">Cinematic</span>
-    <h3 class="guide-card-title">Teal & Orange</h3>
-    <div class="gmood">Epic · Heroic · High-energy</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">The most used colour grade in Hollywood. Warm skin tones (orange) pop against cooled shadows and backgrounds (teal). Complementary colours that make faces glow.</p>
-    <div class="glabel">Best for</div><p class="gtext">Action films, blockbusters, hero shots, any scene needing high-energy visual impact.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Teal and orange colour grade, warm skin tones glowing in afternoon light, cooled blue-green shadows in the background, cinematic blockbuster look"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=400&fit=crop" alt="Golden Hour Warm" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #f4a261">
-    <span class="guide-badge" style="background:#f4a26122;color:#f4a261;border:1px solid #f4a26144">Warm</span>
-    <h3 class="guide-card-title">Golden Hour Warm</h3>
-    <div class="gmood">Nostalgic · Romantic · Beautiful</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Pushes the entire palette toward amber and gold. Shadows lift to warm brown, highlights bloom to cream. The light of nostalgia, safety, and beauty.</p>
-    <div class="glabel">Best for</div><p class="gtext">Romance, nostalgia, summer scenes, beauty content, lifestyle brands.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Golden hour colour grade, amber highlights, warm brown shadows, the entire frame bathed in honey-toned light, film grain, soft bloom on highlights"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1501426026826-31c667bdf23d?w=400&fit=crop" alt="Desaturated Muted" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #9aa5b4">
-    <span class="guide-badge" style="background:#9aa5b422;color:#9aa5b4;border:1px solid #9aa5b444">Muted</span>
-    <h3 class="guide-card-title">Desaturated Muted</h3>
-    <div class="gmood">Realistic · Gritty · Serious</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Pulls the saturation out of the entire image, leaving colours present but drained. The visual language of realism, exhaustion, and moral complexity.</p>
-    <div class="glabel">Best for</div><p class="gtext">Drama, war films, documentary realism, character studies, grief narratives.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Desaturated colour grade, muted palette, colours present but drained of vibrancy, cold grey-green tones, harsh overhead light, documentary realism"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&fit=crop" alt="Cold Blue Steel" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #4a9eff">
-    <span class="guide-badge" style="background:#4a9eff22;color:#4a9eff;border:1px solid #4a9eff44">Cold</span>
-    <h3 class="guide-card-title">Cold Blue Steel</h3>
-    <div class="gmood">Cold · Tense · Technological</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Pushes shadows and midtones into blue-grey steel. Clinical, cold, detached. The colour of technology, danger, and psychological distance.</p>
-    <div class="glabel">Best for</div><p class="gtext">Sci-fi, thriller, corporate dystopia, night scenes, anything requiring emotional coldness.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Cold blue-steel colour grade, deep blue shadows, clinical midtones, the scene stripped of warmth, night interior with fluorescent practical lights, thriller atmosphere"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&fit=crop" alt="High Contrast Black & White" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #e0e0e0">
-    <span class="guide-badge" style="background:#e0e0e022;color:#e0e0e0;border:1px solid #e0e0e044">B&W</span>
-    <h3 class="guide-card-title">High Contrast Black & White</h3>
-    <div class="gmood">Timeless · Dramatic · Artistic</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Pure luminance storytelling. Removes colour entirely, forcing the viewer to read light, shadow, texture, and form. The most timeless and most graphic look.</p>
-    <div class="glabel">Best for</div><p class="gtext">Classic drama, historical content, fine art, high-contrast character studies, noir.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"High contrast black and white, deep blacks, bright whites, dramatic shadow play, the texture of skin and fabric fully rendered, no colour, pure form"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400&fit=crop" alt="Bleach Bypass" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #c5a882">
-    <span class="guide-badge" style="background:#c5a88222;color:#c5a882;border:1px solid #c5a88244">Bleach</span>
-    <h3 class="guide-card-title">Bleach Bypass</h3>
-    <div class="gmood">Dread · Harsh · Visceral</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Silver retention look — high contrast, reduced saturation, crushed blacks with retained grain. Feels expensive and harsh simultaneously. The look of war films and horror.</p>
-    <div class="glabel">Best for</div><p class="gtext">Horror, war, survival narratives, psychological thriller, any scene needing dread.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Bleach bypass colour grade, silver retention look, high contrast, muted colours, crushed blacks, aggressive grain, the dread of the look itself"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1563089145-599997674d42?w=400&fit=crop" alt="Neon Cyberpunk" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #ff2d9b">
-    <span class="guide-badge" style="background:#ff2d9b22;color:#ff2d9b;border:1px solid #ff2d9b44">Neon</span>
-    <h3 class="guide-card-title">Neon Cyberpunk</h3>
-    <div class="gmood">Futuristic · Alienated · Vivid</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Deep crushed blacks with saturated practical light sources in magenta, cyan, and green. The visual grammar of technological alienation and nocturnal urban life.</p>
-    <div class="glabel">Best for</div><p class="gtext">Sci-fi, cyberpunk, night club scenes, futuristic environments, music videos.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Cyberpunk neon colour grade, deep black environment, saturated magenta and cyan practical lights, the darkness as canvas for the neon to paint on, urban night"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&fit=crop" alt="Vintage Film" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #d4956a">
-    <span class="guide-badge" style="background:#d4956a22;color:#d4956a;border:1px solid #d4956a44">Vintage</span>
-    <h3 class="guide-card-title">Vintage Film</h3>
-    <div class="gmood">Nostalgic · Warm · Imperfect</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Lifted blacks that never go pure black, faded highlights, colour shifts toward yellow-green in the shadows. The specific imperfection of photochemical film emulsion.</p>
-    <div class="glabel">Best for</div><p class="gtext">Period pieces, nostalgia, retro content, music videos with vintage aesthetic.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Vintage film emulsion colour grade, lifted black point, slightly faded highlights, shadow colour shift toward yellow-green, 1970s film look, grain"</div>
-  </div>
-</div>
-  </div>
-</div>
-<div class="guide-section" id="angles">
-  <div class="guide-section-head">
-    <h2>📐 Camera Angle Guide</h2>
-    <p>Every angle communicates a specific emotional relationship between viewer and subject</p>
-  </div>
-  <div class="guide-grid">
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=400&fit=crop" alt="Bird's Eye / Top Down" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #4fffb0">
-    <span class="guide-badge" style="background:#4fffb022;color:#4fffb0;border:1px solid #4fffb044">Top-Down</span>
-    <h3 class="guide-card-title">Bird's Eye / Top Down</h3>
-    <div class="gmood">Reveals system · Creates abstraction · Shows pattern</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it communicates</div><p class="gtext">Directly overhead, looking straight down. Reveals geometry, pattern and system invisible from ground level. The most abstract and design-conscious camera angle.</p>
-    <div class="glabel">Best for</div><p class="gtext">Establishing urban scale, revealing crowd patterns, food photography, map-like spatial context.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Bird's eye overhead shot looking straight down, the city grid as pure geometry, pedestrians as moving dots, the urban system revealed as designed pattern"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=400&fit=crop" alt="Worm's Eye / Low Angle" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #ff7070">
-    <span class="guide-badge" style="background:#ff707022;color:#ff7070;border:1px solid #ff707044">Worm's Eye</span>
-    <h3 class="guide-card-title">Worm's Eye / Low Angle</h3>
-    <div class="gmood">Dominance · Power · Imposing scale</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it communicates</div><p class="gtext">Camera at or below ground level, shooting upward. Makes subjects tower above the viewer. Communicates power, dominance, and imposing scale.</p>
-    <div class="glabel">Best for</div><p class="gtext">Establishing villain power, architectural grandeur, heroic moments, intimidating characters.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Worm's eye low angle looking up, the skyscraper towers into the sky, the human figure at the base dwarfed by the architecture, dramatic foreshortening"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&fit=crop" alt="Eye Level" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #6b9fff">
-    <span class="guide-badge" style="background:#6b9fff22;color:#6b9fff;border:1px solid #6b9fff44">Eye Level</span>
-    <h3 class="guide-card-title">Eye Level</h3>
-    <div class="gmood">Equality · Neutrality · Direct connection</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it communicates</div><p class="gtext">The camera at the subject's eye height. Creates equality between viewer and subject — neither dominant nor submissive. The most natural and neutral angle.</p>
-    <div class="glabel">Best for</div><p class="gtext">Dialogue scenes, character introduction, documentary interviews, balanced emotional scenes.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Eye level camera, face to face with the subject, neither looking up nor down, the most direct and honest relationship between viewer and character"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?w=400&fit=crop" alt="Dutch Angle / Tilt" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #ffb347">
-    <span class="guide-badge" style="background:#ffb34722;color:#ffb347;border:1px solid #ffb34744">Dutch Angle</span>
-    <h3 class="guide-card-title">Dutch Angle / Tilt</h3>
-    <div class="gmood">Unease · Disorientation · Psychological disturbance</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it communicates</div><p class="gtext">Camera tilted on the roll axis so the horizon is not level. Communicates psychological instability, unease, and disorientation. Used sparingly for maximum effect.</p>
-    <div class="glabel">Best for</div><p class="gtext">Psychological horror, villain scenes, drug sequences, moral disorientation, unreliable narrator.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Dutch angle tilted frame, the room at 20 degrees, the character's world literally tilted, psychological unease visible in the camera itself"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=400&fit=crop" alt="High Angle" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #c084fc">
-    <span class="guide-badge" style="background:#c084fc22;color:#c084fc;border:1px solid #c084fc44">High Angle</span>
-    <h3 class="guide-card-title">High Angle</h3>
-    <div class="gmood">Vulnerability · Observation · Smallness</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it communicates</div><p class="gtext">Camera above eye level, looking down on the subject. Makes subjects appear smaller, more vulnerable, or more observed. The surveillance angle.</p>
-    <div class="glabel">Best for</div><p class="gtext">Showing character vulnerability, surveillance POV, crowd scenes, establishing geography.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"High angle looking down on the character in the empty plaza, their smallness within the vast space communicating isolation and vulnerability"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b6?w=400&fit=crop" alt="POV / First Person" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #ff2d9b">
-    <span class="guide-badge" style="background:#ff2d9b22;color:#ff2d9b;border:1px solid #ff2d9b44">POV</span>
-    <h3 class="guide-card-title">POV / First Person</h3>
-    <div class="gmood">Immersion · Identity merger · Maximum tension</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it communicates</div><p class="gtext">Camera placed exactly where a character's eyes would be. The viewer becomes the character. Maximum immersion, zero observer distance.</p>
-    <div class="glabel">Best for</div><p class="gtext">Action sequences, horror first-person horror, immersive storytelling, video game aesthetics.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"First person POV, the hands reaching through the crowd, the camera at eye height, the world experienced rather than observed, handheld urgency"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1521566652839-697aa473761a?w=400&fit=crop" alt="Over the Shoulder" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #7c6fff">
-    <span class="guide-badge" style="background:#7c6fff22;color:#7c6fff;border:1px solid #7c6fff44">OTS</span>
-    <h3 class="guide-card-title">Over the Shoulder</h3>
-    <div class="gmood">Relationship · Context · Conversational dynamic</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it communicates</div><p class="gtext">Camera positioned behind and slightly to one side of a character's shoulder, looking past them at another character. The standard dialogue coverage setup.</p>
-    <div class="glabel">Best for</div><p class="gtext">Dialogue scenes, confrontations, interview scenarios, establishing character relationships.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Over the shoulder shot, the character in the foreground blurred, the other person in full focus beyond them, the space between them charged with the conversation"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1473081556163-2a17de81fc97?w=400&fit=crop" alt="Aerial / Drone" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #4a9eff">
-    <span class="guide-badge" style="background:#4a9eff22;color:#4a9eff;border:1px solid #4a9eff44">Aerial</span>
-    <h3 class="guide-card-title">Aerial / Drone</h3>
-    <div class="gmood">Scale · Context · Discovery</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it communicates</div><p class="gtext">Camera elevated above the scene, typically by drone or crane. Reveals landscape scale, environmental context, and spatial relationships impossible from ground level.</p>
-    <div class="glabel">Best for</div><p class="gtext">Location establishing shots, travel content, scale communication, landscape cinematography.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Aerial drone shot ascending from the village to reveal the mountain range beyond, the human settlement suddenly tiny against geological scale"</div>
-  </div>
-</div>
-  </div>
-</div>
-<div class="guide-section" id="lighting">
-  <div class="guide-section-head">
-    <h2>💡 Lighting Guide</h2>
-    <p>Light is the primary language of cinema — understand each setup before writing it into your prompt</p>
-  </div>
-  <div class="guide-grid">
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=400&fit=crop" alt="Golden Hour" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #f4a261">
-    <span class="guide-badge" style="background:#f4a26122;color:#f4a261;border:1px solid #f4a26144">Natural</span>
-    <h3 class="guide-card-title">Golden Hour</h3>
-    <div class="gmood">2000–3500K · Warm gold</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">The hour after sunrise and before sunset when the sun is low, light is warm (2000-3500K), and shadows are long. The most sought-after natural light in photography and film.</p>
-    <div class="glabel">Best for</div><p class="gtext">Outdoor portraits, landscape cinematography, romantic scenes, product lifestyle shots.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Golden hour, sun low on the horizon behind the subject, warm rim light separating them from the background, long shadows stretching forward, the world glowing amber"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=400&fit=crop" alt="Overcast / Soft Box" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #9aa5b4">
-    <span class="guide-badge" style="background:#9aa5b422;color:#9aa5b4;border:1px solid #9aa5b444">Soft</span>
-    <h3 class="guide-card-title">Overcast / Soft Box</h3>
-    <div class="gmood">6000–7000K · Cool white</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Clouds act as a giant natural diffuser, wrapping light around subjects from all directions. Shadows are soft with no hard edges. The most flattering light for faces.</p>
-    <div class="glabel">Best for</div><p class="gtext">Portrait photography, beauty shots, product photography requiring no harsh shadows.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Overcast soft light, no directional shadow, the subject fully wrapped in diffused illumination, skin textures visible without harsh shadow, gentle and honest light"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?w=400&fit=crop" alt="Rembrandt Lighting" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #7c6fff">
-    <span class="guide-badge" style="background:#7c6fff22;color:#7c6fff;border:1px solid #7c6fff44">Studio</span>
-    <h3 class="guide-card-title">Rembrandt Lighting</h3>
-    <div class="gmood">3200–5600K · Tungsten to daylight</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Key light at 45° above and 45° to the side, creating a triangle of light on the shadow cheek. Named after the Dutch master who made it the definitive portrait lighting technique.</p>
-    <div class="glabel">Best for</div><p class="gtext">Dramatic portraits, character study, classical fine art photography, cinematic close-ups.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Rembrandt lighting, the triangle of light on the shadow side cheek, deep shadow on the far side of the face, single warm key light from above-left, classical portrait"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1497290756760-23ac55edf36f?w=400&fit=crop" alt="Backlight / Rim Light" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #ffb347">
-    <span class="guide-badge" style="background:#ffb34722;color:#ffb347;border:1px solid #ffb34744">Backlight</span>
-    <h3 class="guide-card-title">Backlight / Rim Light</h3>
-    <div class="gmood">Any temperature · Effect over warmth</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Light source placed behind the subject, creating a glowing edge that separates them from the background. Creates visual depth and a halo effect that communicates significance.</p>
-    <div class="glabel">Best for</div><p class="gtext">Hero shots, product photography, dramatic reveals, spiritual or powerful character moments.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Backlit rim light, the subject glowing at their edges, the background darker, a separation between figure and environment that reads as significance"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1510127034890-ba27508e9f1c?w=400&fit=crop" alt="Practical Lighting" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #4fffb0">
-    <span class="guide-badge" style="background:#4fffb022;color:#4fffb0;border:1px solid #4fffb044">Practical</span>
-    <h3 class="guide-card-title">Practical Lighting</h3>
-    <div class="gmood">1800–4000K · Warm to neutral</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Using the actual lights visible in the scene — lamps, candles, neon signs, monitors — as the primary or only light source. Creates authentic atmosphere and motivated light.</p>
-    <div class="glabel">Best for</div><p class="gtext">Interior scenes, moody atmospheres, night scenes, period drama, documentary realism.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Practical lighting only, the scene lit by the lamp on the desk and the glow of the computer screen, no added light, the warmth and shadow of real interior life"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&fit=crop" alt="Hard Light / Single Source" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #ff7070">
-    <span class="guide-badge" style="background:#ff707022;color:#ff7070;border:1px solid #ff707044">Hard</span>
-    <h3 class="guide-card-title">Hard Light / Single Source</h3>
-    <div class="gmood">5600K · Daylight balanced</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">A small, undiffused light source creating hard-edged shadows with maximum contrast. Unforgiving and dramatic — every texture is exaggerated, every surface exposed.</p>
-    <div class="glabel">Best for</div><p class="gtext">Villain scenes, interrogation rooms, horror, war photography, intense character moments.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Single hard light source from above-left, harsh shadows with clean edges, maximum contrast on the face, the light as an interrogator not a flatterer"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400&fit=crop" alt="Blue Hour / Dusk" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #4a9eff">
-    <span class="guide-badge" style="background:#4a9eff22;color:#4a9eff;border:1px solid #4a9eff44">Dusk</span>
-    <h3 class="guide-card-title">Blue Hour / Dusk</h3>
-    <div class="gmood">10000K sky vs 2700K windows · Contrast</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">The 20-minute window after sunset when the sky is deep blue and artificial lights begin to compete. The specific quality where cold ambient and warm practical exist simultaneously.</p>
-    <div class="glabel">Best for</div><p class="gtext">Urban cinematography, transition scenes, romantic evening atmosphere, city establishing shots.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Blue hour, the sky deep blue behind the city skyline, warm yellow windows glowing in the buildings, the specific light where the day ends and the night begins"</div>
-  </div>
-</div>
-<div class="guide-card">
-  <img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=400&fit=crop" alt="Low Key / Shadow" class="guide-img" loading="lazy" onerror="this.style.display='none'">
-  <div class="guide-card-top" style="border-top:3px solid #2d2d4e">
-    <span class="guide-badge" style="background:#2d2d4e22;color:#2d2d4e;border:1px solid #2d2d4e44">Low Key</span>
-    <h3 class="guide-card-title">Low Key / Shadow</h3>
-    <div class="gmood">Any · Quantity controlled, not temperature</div>
-  </div>
-  <div class="guide-card-body">
-    <div class="glabel">What it looks like</div><p class="gtext">Predominantly dark image with the subject partially or mostly in shadow. Light is sculpted rather than flooded — revealing only what the photographer chooses to show.</p>
-    <div class="glabel">Best for</div><p class="gtext">Mystery, thriller, horror, villains, psychological depth, film noir aesthetics.</p>
-    <div class="glabel">Sample prompt</div><div class="gprompt">"Low key lighting, deep shadows dominating the frame, the subject partially revealed in a single pool of light, the darkness as active as the light"</div>
-  </div>
-</div>
-  </div>
 </div>
 
-</div><!--learn-main-->
-</div><!--learn-layout-->
+</div>
+
+</div><!-- /learn-layout -->
 
 <footer>
   <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/prompt-library.html">Prompt Library</a></p>
