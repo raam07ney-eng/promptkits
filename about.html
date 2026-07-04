@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About Us – PromptKits | Free AI Prompt Tools</title>
-  <meta name="description" content="Learn about PromptKits — a free collection of AI prompt tools for Midjourney, DALL-E, Stable Diffusion, Kling AI, ChatGPT and more."/>
+  <title>About – PromptKits | Built by a VFX Professional</title>
+  <meta name="description" content="PromptKits is built by a VFX compositor with 12 years of industry experience — bringing real cinematography knowledge to every AI prompt."/>
   <link rel="canonical" href="https://promptkits.in/about.html"/>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,58 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
+  <style>
+    .about-wrap{max-width:780px;margin:0 auto;padding:60px 24px 80px;}
+
+    .about-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#a89eff;margin-bottom:16px;}
+
+    .about-hero-title{font-size:clamp(28px,5vw,44px);font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin:0 0 20px;color:var(--text-primary);}
+    .about-hero-title span{color:#a89eff;}
+
+    .about-lead{font-size:17px;line-height:1.75;color:var(--text-secondary);margin:0 0 48px;border-left:3px solid #a89eff;padding-left:20px;}
+
+    .about-divider{height:1px;background:var(--border-card);margin:40px 0;}
+
+    .about-section-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;}
+
+    .about-section-title{font-size:20px;font-weight:700;margin:0 0 12px;color:var(--text-primary);}
+
+    .about-body{font-size:15px;line-height:1.8;color:var(--text-secondary);margin:0 0 24px;}
+
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:24px 0 40px;}
+    .skill-chip{background:var(--bg-card);border:1px solid var(--border-card);border-radius:10px;padding:14px 16px;transition:border-color 0.2s;}
+    .skill-chip:hover{border-color:rgba(168,158,255,0.4);}
+    .skill-chip-icon{font-size:20px;margin-bottom:6px;}
+    .skill-chip-name{font-size:13px;font-weight:600;color:var(--text-primary);margin-bottom:2px;}
+    .skill-chip-sub{font-size:11px;color:var(--text-muted);}
+
+    .stat-row{display:flex;gap:32px;flex-wrap:wrap;margin:32px 0;}
+    .stat-item{text-align:left;}
+    .stat-num{font-size:32px;font-weight:700;color:#a89eff;line-height:1;}
+    .stat-label{font-size:12px;color:var(--text-muted);margin-top:4px;}
+
+    .about-quote{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:12px;padding:24px 28px;margin:32px 0;}
+    .about-quote p{font-size:15px;line-height:1.75;color:var(--text-secondary);margin:0;font-style:italic;}
+    .about-quote-source{font-size:12px;color:var(--text-muted);margin-top:10px;}
+
+    .promptkits-mission{background:var(--bg-card);border:1px solid var(--border-card);border-radius:14px;padding:32px;margin:40px 0;}
+    .promptkits-mission h3{font-size:18px;font-weight:700;margin:0 0 12px;color:var(--text-primary);}
+    .promptkits-mission p{font-size:14px;line-height:1.75;color:var(--text-secondary);margin:0;}
+
+    .tools-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;}
+    .tool-pill{font-size:12px;font-weight:600;padding:5px 12px;border-radius:20px;background:rgba(168,158,255,0.08);border:1px solid rgba(168,158,255,0.2);color:#a89eff;}
+
+    .cta-strip{text-align:center;padding:48px 0 0;}
+    .cta-strip h2{font-size:22px;font-weight:700;margin:0 0 8px;}
+    .cta-strip p{font-size:14px;color:var(--text-secondary);margin:0 0 24px;}
+    .cta-btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .cta-btn{display:inline-block;padding:12px 28px;background:#a89eff;color:#0d0d14;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:opacity 0.2s;}
+    .cta-btn:hover{opacity:0.85;}
+    .cta-btn-outline{display:inline-block;padding:12px 28px;border:1px solid rgba(168,158,255,0.4);color:#a89eff;font-weight:600;font-size:14px;border-radius:8px;text-decoration:none;transition:all 0.2s;}
+    .cta-btn-outline:hover{background:rgba(168,158,255,0.08);}
+
+    @media(max-width:600px){.stat-row{gap:20px;}.skills-grid{grid-template-columns:1fr 1fr;}}
+  </style>
 </head>
 <body>
 <header>
@@ -28,69 +80,129 @@
       <a href="/enhancer.html">✨ Enhancer</a>
       <a href="/negative-prompt.html">🚫 Negative</a>
       <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
-      <a href="/about.html">About</a>
+      <a href="/prompt-library.html">📚 Library</a>
       <a href="/learn.html">🎓 Learn</a>
     </nav>
-    <button class="theme-btn" id="themeBtn" onclick="PKTheme.toggle()">☀️ Light</button>
+    <button class="theme-btn" id="themeBtn" onclick="PKTheme.toggle()">Dark</button>
   </div>
 </header>
 
-<main style="max-width:760px;margin:0 auto;padding:3rem 1rem 4rem;">
+<div class="about-wrap">
 
-  <div style="margin-bottom:2.5rem;">
-    <div class="badge" style="margin-bottom:1rem;"><div class="badge-dot"></div> About PromptKits</div>
-    <h1 style="font-size:clamp(28px,5vw,40px);font-weight:700;color:var(--text-primary);line-height:1.2;letter-spacing:-0.5px;margin-bottom:1rem;">Free AI prompt tools<br>built for everyone</h1>
-    <p style="font-size:16px;color:var(--text-secondary);line-height:1.75;">PromptKits is a free collection of AI prompt generation tools designed to help creators, artists, filmmakers, writers, and everyday users get better results from AI tools like Midjourney, DALL-E, Stable Diffusion, Kling AI, Runway, ChatGPT, and Claude.</p>
-  </div>
+  <!-- Hero -->
+  <div class="about-eyebrow">About PromptKits</div>
+  <h1 class="about-hero-title">Built by someone who<br><span>works with cameras for a living</span></h1>
+  <p class="about-lead">PromptKits exists because AI video prompt writing is a craft — and most prompt guides treat it like a keyword lottery. Every prompt in this library is written using the same technical language that professional film crews use on set. That's not an accident.</p>
 
-  <div class="card" style="margin-bottom:1rem;">
-    <h2 style="font-size:20px;font-weight:600;color:var(--text-primary);margin-bottom:1rem;">Our mission</h2>
-    <p style="font-size:15px;color:var(--text-secondary);line-height:1.75;margin-bottom:1rem;">AI tools are powerful — but getting good results depends entirely on how well you can describe what you want. Most people struggle with writing effective prompts, which leads to frustrating, mediocre outputs.</p>
-    <p style="font-size:15px;color:var(--text-secondary);line-height:1.75;">PromptKits bridges that gap. Our tools take your basic ideas and transform them into detailed, optimized prompts — giving everyone access to professional-quality AI results, regardless of experience level.</p>
-  </div>
-
-  <div class="card" style="margin-bottom:1rem;">
-    <h2 style="font-size:20px;font-weight:600;color:var(--text-primary);margin-bottom:1.25rem;">Our tools</h2>
-    <div style="display:flex;flex-direction:column;gap:1rem;">
-      <div style="display:flex;gap:14px;align-items:flex-start;">
-        <div style="font-size:24px;flex-shrink:0;">🖼️</div>
-        <div><div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:3px;">Image Prompt Generator</div><div style="font-size:14px;color:var(--text-secondary);line-height:1.6;">Generate detailed image prompts for Midjourney, DALL-E, Stable Diffusion, Adobe Firefly, and Leonardo AI — with professional controls for camera angle, lens, lighting, and more.</div></div>
-      </div>
-      <div style="display:flex;gap:14px;align-items:flex-start;">
-        <div style="font-size:24px;flex-shrink:0;">🎬</div>
-        <div><div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:3px;">Video Prompt Generator</div><div style="font-size:14px;color:var(--text-secondary);line-height:1.6;">Create cinematic video prompts for Kling AI, Runway, Sora, and Pika with full control over camera movement, color grade, motion speed, and lens type.</div></div>
-      </div>
-      <div style="display:flex;gap:14px;align-items:flex-start;">
-        <div style="font-size:24px;flex-shrink:0;">🔍</div>
-        <div><div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:3px;">Image to Prompt</div><div style="font-size:14px;color:var(--text-secondary);line-height:1.6;">Upload any image and get a detailed AI prompt to recreate or get inspired by it. Perfect for reverse-engineering AI art styles.</div></div>
-      </div>
-      <div style="display:flex;gap:14px;align-items:flex-start;">
-        <div style="font-size:24px;flex-shrink:0;">🚫</div>
-        <div><div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:3px;">Negative Prompt Generator</div><div style="font-size:14px;color:var(--text-secondary);line-height:1.6;">Generate effective negative prompts to eliminate bad anatomy, artifacts, and unwanted elements from Stable Diffusion and SDXL images.</div></div>
-      </div>
-      <div style="display:flex;gap:14px;align-items:flex-start;">
-        <div style="font-size:24px;flex-shrink:0;">✨</div>
-        <div><div style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:3px;">Prompt Enhancer</div><div style="font-size:14px;color:var(--text-secondary);line-height:1.6;">Transform any basic prompt into a detailed, optimized version for ChatGPT, Claude, Gemini, Midjourney, and more.</div></div>
-      </div>
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num">12</div>
+      <div class="stat-label">Years in VFX</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1150+</div>
+      <div class="stat-label">Prompts in the library</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">13</div>
+      <div class="stat-label">Prompt collections</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Free to use</div>
     </div>
   </div>
 
-  <div class="card" style="margin-bottom:1rem;">
-    <h2 style="font-size:20px;font-weight:600;color:var(--text-primary);margin-bottom:1rem;">Always free</h2>
-    <p style="font-size:15px;color:var(--text-secondary);line-height:1.75;">All PromptKits tools are completely free to use. No account required, no sign-up, no hidden fees. We are supported by Google AdSense advertising, which allows us to keep the tools free for everyone.</p>
+  <div class="about-divider"></div>
+
+  <!-- Who built this -->
+  <div class="about-section-label">Who built this</div>
+  <h2 class="about-section-title">A VFX compositor with a decade in professional production</h2>
+  <p class="about-body">PromptKits is built and maintained by a VFX compositor with 12 years of industry experience. The work spans feature films, visual effects pipelines, and digital content production — with deep hands-on expertise in compositing, paint and prep work, wire and rig removal, and clean plate generation.</p>
+  <p class="about-body">Working inside professional VFX pipelines means understanding exactly how cinematographers, DPs, and directors communicate on set — the specific language of camera angles, lens choices, lighting setups, and colour grades. That language is what separates a generic AI video prompt from one that actually produces cinematic results.</p>
+
+  <div class="about-quote">
+    <p>"AI video prompt writing is really just cinematography direction — the same decisions a DP makes on set, translated into text. Once you understand that, the results change completely."</p>
+    <div class="about-quote-source">— PromptKits creator</div>
   </div>
 
-  <div class="card">
-    <h2 style="font-size:20px;font-weight:600;color:var(--text-primary);margin-bottom:1rem;">Get in touch</h2>
-    <p style="font-size:15px;color:var(--text-secondary);line-height:1.75;">Have feedback, suggestions, or questions? We would love to hear from you. Visit our <a href="/contact.html" style="color:var(--accent);text-decoration:none;">Contact page</a> or email us directly at <a href="mailto:raam07ney@gmail.com" style="color:var(--accent);text-decoration:none;">raam07ney@gmail.com</a></p>
+  <div class="about-divider"></div>
+
+  <!-- Skills -->
+  <div class="about-section-label">Professional background</div>
+  <h2 class="about-section-title">Expertise that informs every prompt</h2>
+  <p class="about-body">The technical depth in PromptKits' prompt library comes directly from professional VFX experience. These aren't theoretical descriptions — they're the techniques, tools, and pipeline knowledge used in daily production work.</p>
+
+  <div class="skills-grid">
+    <div class="skill-chip">
+      <div class="skill-chip-icon">🎬</div>
+      <div class="skill-chip-name">Compositing</div>
+      <div class="skill-chip-sub">Nuke · 12 years</div>
+    </div>
+    <div class="skill-chip">
+      <div class="skill-chip-icon">🖌</div>
+      <div class="skill-chip-name">Paint & Prep</div>
+      <div class="skill-chip-sub">Wire/rig removal · Clean plates</div>
+    </div>
+    <div class="skill-chip">
+      <div class="skill-chip-icon">🤖</div>
+      <div class="skill-chip-name">AI Video Tools</div>
+      <div class="skill-chip-sub">Kling AI · Runway · Sora</div>
+    </div>
+    <div class="skill-chip">
+      <div class="skill-chip-icon">⚙️</div>
+      <div class="skill-chip-name">Nuke Python</div>
+      <div class="skill-chip-sub">Workflow automation</div>
+    </div>
+    <div class="skill-chip">
+      <div class="skill-chip-icon">🎨</div>
+      <div class="skill-chip-name">ComfyUI</div>
+      <div class="skill-chip-sub">AI image generation</div>
+    </div>
+    <div class="skill-chip">
+      <div class="skill-chip-icon">🏭</div>
+      <div class="skill-chip-name">VFX Pipeline</div>
+      <div class="skill-chip-sub">Production workflow</div>
+    </div>
   </div>
 
-</main>
+  <div class="about-divider"></div>
+
+  <!-- What is PromptKits -->
+  <div class="about-section-label">What PromptKits is</div>
+  <h2 class="about-section-title">Professional cinematography language, made accessible</h2>
+  <p class="about-body">PromptKits is a free collection of AI prompt tools and a curated library of over 1150 ready-to-use prompts — written with real filmmaking principles. Every prompt specifies the camera movement, lens type, lighting setup, colour grade, and mood using the exact vocabulary that AI video models respond to best.</p>
+  <p class="about-body">The library covers video prompts (cinematic, horror, drone shots, sci-fi, nature, action sports, time-lapse, character study, Kling AI) and image prompts (Midjourney portraits, food photography, wedding cinematics, portrait lighting) — all written from a VFX professional's understanding of what makes a shot work.</p>
+
+  <div class="promptkits-mission">
+    <h3>The tools available</h3>
+    <p>A full suite of AI prompt tools — all free, all built with the same professional approach to prompt writing.</p>
+    <div class="tools-row">
+      <span class="tool-pill">🎬 Video Prompt Generator</span>
+      <span class="tool-pill">🖼 Image Prompt Generator</span>
+      <span class="tool-pill">✨ Prompt Enhancer</span>
+      <span class="tool-pill">🚫 Negative Prompt Generator</span>
+      <span class="tool-pill">🔍 Image to Prompt</span>
+      <span class="tool-pill">📚 Prompt Library</span>
+      <span class="tool-pill">🎓 Learn Cinematography</span>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-strip">
+    <h2>Start creating better AI prompts</h2>
+    <p>Browse the library or try the prompt tools — all free, no account required.</p>
+    <div class="cta-btn-row">
+      <a href="/prompt-library.html" class="cta-btn">Browse Prompt Library</a>
+      <a href="/video-prompt.html" class="cta-btn-outline">Try Video Generator</a>
+    </div>
+  </div>
+
+</div>
 
 <footer>
-  <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/about.html">About</a> · <a href="/contact.html">Contact</a></p>
-  <p style="margin-top:6px;">Free AI prompt tools for everyone</p>
+  <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/prompt-library.html">Prompt Library</a></p>
+  <p style="margin-top:6px;">Cinema-grade AI prompts, free forever.</p>
 </footer>
-<script>window.addEventListener('load', PKTheme.init);</script>
 </body>
 </html>
