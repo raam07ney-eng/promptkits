@@ -72,7 +72,7 @@
     .prompts-grid{display:flex;flex-direction:column;gap:14px;max-width:1100px;margin:0 auto;padding:0 24px 60px;}
     .prompt-card{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border-card);border-radius:12px;overflow:hidden;background:var(--bg-card);transition:border-color 0.2s;}
     .prompt-card:hover{border-color:rgba(168,158,255,0.4);}
-    .prompt-left{padding:16px;border-right:1px solid var(--border-card);display:flex;flex-direction:column;}
+    
     .prompt-right{padding:16px;background:var(--bg-adv);display:flex;flex-direction:column;gap:12px;}
     .prompt-num{font-size:10px;font-weight:600;color:var(--text-muted);margin-bottom:6px;letter-spacing:0.05em;}
     .prompt-text{font-size:13px;line-height:1.7;color:var(--text-primary);margin-bottom:12px;flex:1;}
@@ -91,7 +91,7 @@
     .info-list li::before{content:"•";position:absolute;left:0;color:#a89eff;}
     .best-list li::before{color:#4caf80;}
     .info-divider{height:1px;background:var(--border-card);}
-    @media(max-width:700px){.prompt-card{grid-template-columns:1fr;}.prompt-left{border-right:none;border-bottom:1px solid var(--border-card);}}</style>
+    @media(max-width:700px){.prompt-left{border-right:none;border-bottom:1px solid var(--border-card);}}</style>
 </head>
 <body>
 <header>
@@ -365,6 +365,7 @@ var bulletData = {
   99: {why:["Close-up creates the frame where microexpression becomes macro-meaning — the face as the entire landscape", "The light quality and direction encode the emotional register of this scene before a single narrative element is read", "The specific combination of technique, light and subject in this prompt creates conditions that communicate without requiring any additional context"],best:["Professional culinary photography establishing the chef's knife technique as craft and discipline", "A cooking documentary sequence establishing knife skills as the foundation of professional cooking", "Food education photography where the hand position and the blade angle communicate training and precision"]},
   100: {why:["Camera position and movement create the specific emotional geometry — the angle is the argument", "The light quality and direction encode the emotional register of this scene before a single narrative element is read", "The specific combination of technique, light and subject in this prompt creates conditions that communicate without requiring any additional context"],best:["Italian restaurant or artisan pasta brand photography establishing the handmade quality signal", "A food technique documentary on the specific craft and patience of fresh pasta production", "Any horror or thriller where 'extruded' is the specific setting or subject that makes this scene uniquely unsettling"]},
 };
+var currentFilter = 'all';
 function filterAndRender(filter) {
   var activeFilter = filter !== undefined ? filter : currentFilter;
   const grid = document.getElementById('promptsGrid');
@@ -405,11 +406,11 @@ document.querySelectorAll('.filter-pill').forEach(pill => {
   pill.addEventListener('click', function() {
     document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
     this.classList.add('active');
-    renderPrompts(this.dataset.filter);
+    filterAndRender(this.dataset.filter);
   });
 });
 
-renderPrompts('all');
+filterAndRender();
 </script>
 <script>
 var path = window.location.pathname;

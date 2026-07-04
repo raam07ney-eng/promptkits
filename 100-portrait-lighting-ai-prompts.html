@@ -91,7 +91,7 @@
     .info-list li::before{content:"•";position:absolute;left:0;color:#a89eff;}
     .best-list li::before{color:#4caf80;}
     .info-divider{height:1px;background:var(--border-card);}
-    @media(max-width:700px){.prompt-card{grid-template-columns:1fr;}.prompt-left{border-right:none;border-bottom:1px solid var(--border-card);}}</style>
+    @media(max-width:700px){.prompt-left{border-right:none;border-bottom:1px solid var(--border-card);}}</style>
 </head>
 <body>
 <header>
@@ -351,11 +351,11 @@ document.querySelectorAll('.filter-pill').forEach(pill => {
   pill.addEventListener('click', function() {
     document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
     this.classList.add('active');
-    renderPrompts(this.dataset.filter);
+    filterAndRender(this.dataset.filter);
   });
 });
 
-renderPrompts('all');
+filterAndRender();
 </script>
 <script>
 var path = window.location.pathname;
