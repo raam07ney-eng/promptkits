@@ -151,7 +151,7 @@
 
 <div class="library-hero">
   <div class="badge"><div class="badge-dot"></div> Free Prompt Library</div>
-  <h1>100 <span>Action & Sports</span> AI Video Prompts</h1>
+  <h1>100 <span>Cinematic Character Study</span> AI Video Prompts</h1>
   <p>100 free action and sports AI video prompts for Kling AI and Runway. Chase scenes, combat, athletics, extreme sports, team sports, victory and defeat — all written cinematically.</p>
   <div class="lib-stats">
     <div><div class="lib-stat-num">100</div><div class="lib-stat-label">Prompts</div></div>
@@ -163,7 +163,7 @@
 <img class="library-hero-img" src="/images/hero-drone.jpg" alt="100 Action & Sports AI Video Prompts" loading="lazy">
 
 <div class="search-bar">
-  <input type="text" id="searchInput" placeholder="Search 100 character study prompts..." oninput="filterAndRender()">
+  <input type="text" id="searchInput" placeholder="Search 100 character study prompts..." oninput="if(typeof filterAndRender==='function') filterAndRender()">
 </div>
 
 <div class="filter-bar">
@@ -397,6 +397,7 @@ var bulletData = {
 };
 
 var copies = {};
+var currentFilter = 'all';
 function filterAndRender(filter) {
   const grid = document.getElementById('promptsGrid');
   var activeFilter = filter !== undefined ? filter : currentFilter;
