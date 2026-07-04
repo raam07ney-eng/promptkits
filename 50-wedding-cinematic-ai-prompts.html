@@ -311,6 +311,7 @@ var bulletData = {
   49: {why:["Camera position and movement create the specific emotional geometry — the angle is the argument", "The light quality and direction encode the emotional register of this scene before a single narrative element is read", "The moment selected is both universal and specific — recognisable to every viewer but unmistakably this couple's day"],best:["A photography-based supernatural horror's signature reveal sequence", "A ghost story establishing the haunting has been present far longer than the character realised", "A mystery horror where photographic evidence is what confirms something is wrong"]},
   50: {why:["Camera position and movement create the specific emotional geometry — the angle is the argument", "Silhouette strips the subject to pure form — identity removed, the figure becomes an archetype, not an individual", "Silhouette reduces identity to pure form — the specific individual becomes a universal archetype, readable without features"],best:["A cinematic sequence requiring precise atmospheric control and professional visual technique", "An establishing shot communicating the specific world or environment of this story", "Any horror or thriller where 'wedding' is the specific setting or subject that makes this scene uniquely unsettling"]},
 };
+var currentFilter = 'all';
 function filterAndRender(filter) {
   var activeFilter = filter !== undefined ? filter : currentFilter;
   const grid = document.getElementById('promptsGrid');
@@ -351,11 +352,11 @@ document.querySelectorAll('.filter-pill').forEach(pill => {
   pill.addEventListener('click', function() {
     document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
     this.classList.add('active');
-    renderPrompts(this.dataset.filter);
+    filterAndRender(this.dataset.filter);
   });
 });
 
-renderPrompts('all');
+filterAndRender();
 </script>
 <script>
 var path = window.location.pathname;
