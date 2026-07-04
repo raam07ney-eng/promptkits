@@ -74,9 +74,8 @@
     .lsb-divider{height:1px;background:var(--border-card);margin:6px 0;}
     @media(max-width:768px){.learn-sidebar{display:none;}.learn-layout{display:block;}}
   
-    /* Library sidebar */
     .learn-layout{display:flex;min-height:100vh;}
-    .lib-sidebar{width:280px;min-width:280px;border-right:1px solid var(--border-card);background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;padding-top:20px;}
+    .learn-sidebar-new{width:260px;min-width:260px;border-right:1px solid var(--border-card);background:var(--bg-card);position:sticky;top:0;height:100vh;overflow-y:auto;flex-shrink:0;padding-top:20px;}
     .learn-main{flex:1;min-width:0;overflow-x:hidden;}
     .sb-header{padding:14px 16px 10px;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-card);margin-bottom:4px;}
     .sb-section{padding:4px 0;}
@@ -86,24 +85,24 @@
     .sb-item.active{background:rgba(168,158,255,0.1);color:#a89eff;font-weight:500;}
     .sb-count{font-size:11px;color:var(--text-muted);background:var(--bg-adv);padding:1px 7px;border-radius:10px;flex-shrink:0;}
     .sb-divider{height:1px;background:var(--border-card);margin:8px 0;}
-    /* Guide sections */
     .guide-section{padding:40px 24px 32px;border-bottom:1px solid var(--border-card);scroll-margin-top:16px;}
     .guide-section-head{margin-bottom:24px;}
     .guide-section-head h2{font-size:20px;font-weight:700;margin:0 0 4px;}
     .guide-section-head p{font-size:13px;color:var(--text-secondary);margin:0;}
-    .guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;}
+    .guide-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
     .guide-card{border:1px solid var(--border-card);border-radius:12px;overflow:hidden;background:var(--bg-card);transition:border-color 0.2s;}
     .guide-card:hover{border-color:rgba(168,158,255,0.35);}
+    .guide-img{width:100%;height:160px;object-fit:cover;display:block;}
     .guide-card-top{padding:14px 16px 10px;}
     .guide-badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 9px;border-radius:20px;margin-bottom:7px;}
     .guide-card-title{font-size:14px;font-weight:700;margin:0 0 3px;color:var(--text-primary);}
-    .gmood{font-size:11px;color:var(--text-muted);letter-spacing:0.03em;}
+    .gmood{font-size:11px;color:var(--text-muted);letter-spacing:0.03em;margin-top:2px;}
     .guide-card-body{padding:4px 16px 14px;}
     .glabel{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-muted);margin:12px 0 3px;}
     .gtext{font-size:12.5px;line-height:1.6;color:var(--text-secondary);margin:0;}
     .gavoid{color:#ff7070 !important;}
-    .gprompt{font-size:11.5px;line-height:1.65;color:#a89eff;background:rgba(168,158,255,0.06);border-left:2px solid rgba(168,158,255,0.4);border-radius:0 6px 6px 0;padding:9px 11px;font-style:italic;}
-    @media(max-width:768px){.lib-sidebar{display:none;}.guide-grid{grid-template-columns:1fr;}}
+    .gprompt{font-size:11.5px;line-height:1.65;color:#a89eff;background:rgba(168,158,255,0.06);border-left:2px solid rgba(168,158,255,0.4);border-radius:0 6px 6px 0;padding:9px 11px;font-style:italic;margin-top:4px;}
+    @media(max-width:768px){.learn-sidebar-new{display:none;}.guide-grid{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
@@ -128,40 +127,30 @@
 
 <div class="learn-layout">
 
-<div class="lib-sidebar">
-  <div class="sb-header">Browse Library</div>
+<div class="learn-sidebar-new">
+  <div class="sb-header">Learning Hub</div>
   <div class="sb-section">
-    <div class="sb-group">🎬 Video Prompts</div>
-    <a class="sb-item" href="/100-cinematic-ai-video-prompts.html">Cinematic video <span class="sb-count">100</span></a>
-    <a class="sb-item" href="/50-horror-ai-video-prompts.html">Horror scenes <span class="sb-count">50</span></a>
-    <a class="sb-item" href="/100-drone-shot-prompts.html">Drone shots <span class="sb-count">100</span></a>
-    <a class="sb-item" href="/100-scifi-ai-video-prompts.html">Sci-fi video <span class="sb-count">100</span></a>
-    <a class="sb-item" href="/100-nature-wildlife-ai-prompts.html">Nature &amp; wildlife <span class="sb-count">100</span></a>
-    <a class="sb-item" href="/100-kling-ai-prompts.html">Kling AI 3.0 <span class="sb-count">100</span></a>
-    <a class="sb-item" href="/100-action-sports-ai-prompts.html">Action &amp; sports <span class="sb-count">100</span></a>
-    <a class="sb-item" href="/100-timelapse-hyperlapse-ai-prompts.html">Time-lapse &amp; hyperlapse <span class="sb-count">100</span></a>
-    <a class="sb-item" href="/100-character-study-ai-prompts.html">Character study <span class="sb-count">100</span></a>
+    <div class="sb-group">📚 Lessons</div>
+    <a class="sb-item" href="#beginner">🌱 Beginner guide <span class="sb-count">4</span></a>
+    <a class="sb-item" href="#intermediate">📷 Camera &amp; lighting <span class="sb-count">4</span></a>
+    <a class="sb-item" href="#advanced">🎬 Advanced <span class="sb-count">2</span></a>
+    <a class="sb-item" href="#consistency">🔗 Consistency <span class="sb-count">3</span></a>
+    <a class="sb-item" href="#tools">🛠 Tool guides <span class="sb-count">4</span></a>
   </div>
   <div class="sb-divider"></div>
   <div class="sb-section">
-    <div class="sb-group">🖼 Image Prompts</div>
-    <a class="sb-item" href="/100-midjourney-portrait-prompts.html">Portrait prompts <span class="sb-count">100</span></a>
-    <a class="sb-item" href="/100-food-photography-ai-prompts.html">Food photography <span class="sb-count">100</span></a>
-    <a class="sb-item" href="/50-wedding-cinematic-ai-prompts.html">Wedding cinematic <span class="sb-count">50</span></a>
-    <a class="sb-item" href="/100-portrait-lighting-ai-prompts.html">Portrait lighting <span class="sb-count">50</span></a>
+    <div class="sb-group">📖 Visual Guides</div>
+    <a class="sb-item" href="#lens">🔭 Lens guide <span class="sb-count">6</span></a>
+    <a class="sb-item" href="#color">🎨 Color &amp; tone <span class="sb-count">8</span></a>
+    <a class="sb-item" href="#angles">📐 Camera angles <span class="sb-count">8</span></a>
+    <a class="sb-item" href="#lighting">💡 Lighting guide <span class="sb-count">8</span></a>
   </div>
   <div class="sb-divider"></div>
   <div class="sb-section">
-    <div class="sb-group">🎓 Learn</div>
-    <a class="sb-item" href="#beginner">Beginner guide <span class="sb-count">4</span></a>
-    <a class="sb-item" href="#intermediate">Camera &amp; lighting <span class="sb-count">4</span></a>
-    <a class="sb-item" href="#advanced">Advanced <span class="sb-count">2</span></a>
-    <a class="sb-item" href="#consistency">Consistency <span class="sb-count">3</span></a>
-    <a class="sb-item" href="#tools">Tool guides <span class="sb-count">4</span></a>
-    <a class="sb-item" href="#lens">Lens guide <span class="sb-count">6</span></a>
-    <a class="sb-item" href="#color">Color &amp; tone <span class="sb-count">8</span></a>
-    <a class="sb-item" href="#angles">Camera angles <span class="sb-count">8</span></a>
-    <a class="sb-item" href="#lighting">Lighting guide <span class="sb-count">8</span></a>
+    <div class="sb-group">🔗 Quick Links</div>
+    <a class="sb-item" href="/prompt-library.html">← Prompt Library</a>
+    <a class="sb-item" href="/100-cinematic-ai-video-prompts.html">Cinematic prompts</a>
+    <a class="sb-item" href="/video-prompt.html">Video generator</a>
   </div>
 </div>
 <div class="learn-main">
@@ -218,17 +207,15 @@
       <span class="modal-cta-outline" onclick="closeLesson()">← Back to lessons</span>
     </div>
   </div>
-</div>
-
-
 
 <div class="guide-section" id="lens">
   <div class="guide-section-head">
     <h2>🔭 Lens Guide</h2>
-    <p>How focal length changes what your AI video looks like — perspective, compression, and depth of field explained</p>
+    <p>How focal length changes your AI video — perspective, compression, and depth of field explained</p>
   </div>
   <div class="guide-grid">
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1983037/pexels-photo-1983037.jpeg?w=400" alt="14–20mm Ultra-Wide" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #7c6fff">
     <span class="guide-badge" style="background:#7c6fff22;color:#7c6fff;border:1px solid #7c6fff44">Ultra-Wide</span>
     <h3 class="guide-card-title">14–20mm Ultra-Wide</h3>
@@ -241,6 +228,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/2869215/pexels-photo-2869215.jpeg?w=400" alt="24–35mm Wide" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #6b9fff">
     <span class="guide-badge" style="background:#6b9fff22;color:#6b9fff;border:1px solid #6b9fff44">Wide</span>
     <h3 class="guide-card-title">24–35mm Wide</h3>
@@ -253,6 +241,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1035680/pexels-photo-1035680.jpeg?w=400" alt="50mm Standard" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #4fffb0">
     <span class="guide-badge" style="background:#4fffb022;color:#4fffb0;border:1px solid #4fffb044">Standard</span>
     <h3 class="guide-card-title">50mm Standard</h3>
@@ -265,6 +254,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?w=400" alt="85mm Portrait" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #ffb347">
     <span class="guide-badge" style="background:#ffb34722;color:#ffb347;border:1px solid #ffb34744">Portrait</span>
     <h3 class="guide-card-title">85mm Portrait</h3>
@@ -277,6 +267,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/17899088/pexels-photo-17899088.jpeg?w=400" alt="135–200mm Telephoto" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #ff7070">
     <span class="guide-badge" style="background:#ff707022;color:#ff7070;border:1px solid #ff707044">Telephoto</span>
     <h3 class="guide-card-title">135–200mm Telephoto</h3>
@@ -289,6 +280,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/593655/pexels-photo-593655.jpeg?w=400" alt="Macro" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #c084fc">
     <span class="guide-badge" style="background:#c084fc22;color:#c084fc;border:1px solid #c084fc44">Macro</span>
     <h3 class="guide-card-title">Macro</h3>
@@ -302,7 +294,6 @@
 </div>
   </div>
 </div>
-
 <div class="guide-section" id="color">
   <div class="guide-section-head">
     <h2>🎨 Color &amp; Tone Guide</h2>
@@ -310,6 +301,7 @@
   </div>
   <div class="guide-grid">
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?w=400" alt="Teal & Orange" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #e07b39">
     <span class="guide-badge" style="background:#e07b3922;color:#e07b39;border:1px solid #e07b3944">Cinematic</span>
     <h3 class="guide-card-title">Teal & Orange</h3>
@@ -322,6 +314,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1287460/pexels-photo-1287460.jpeg?w=400" alt="Golden Hour Warm" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #f4a261">
     <span class="guide-badge" style="background:#f4a26122;color:#f4a261;border:1px solid #f4a26144">Warm</span>
     <h3 class="guide-card-title">Golden Hour Warm</h3>
@@ -334,6 +327,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg?w=400" alt="Desaturated Muted" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #9aa5b4">
     <span class="guide-badge" style="background:#9aa5b422;color:#9aa5b4;border:1px solid #9aa5b444">Muted</span>
     <h3 class="guide-card-title">Desaturated Muted</h3>
@@ -346,6 +340,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1755683/pexels-photo-1755683.jpeg?w=400" alt="Cold Blue Steel" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #4a9eff">
     <span class="guide-badge" style="background:#4a9eff22;color:#4a9eff;border:1px solid #4a9eff44">Cold</span>
     <h3 class="guide-card-title">Cold Blue Steel</h3>
@@ -358,6 +353,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1906658/pexels-photo-1906658.jpeg?w=400" alt="High Contrast Black & White" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #e0e0e0">
     <span class="guide-badge" style="background:#e0e0e022;color:#e0e0e0;border:1px solid #e0e0e044">B&W</span>
     <h3 class="guide-card-title">High Contrast Black & White</h3>
@@ -370,6 +366,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/2387873/pexels-photo-2387873.jpeg?w=400" alt="Bleach Bypass" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #c5a882">
     <span class="guide-badge" style="background:#c5a88222;color:#c5a882;border:1px solid #c5a88244">Bleach</span>
     <h3 class="guide-card-title">Bleach Bypass</h3>
@@ -382,6 +379,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1684187/pexels-photo-1684187.jpeg?w=400" alt="Neon Cyberpunk" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #ff2d9b">
     <span class="guide-badge" style="background:#ff2d9b22;color:#ff2d9b;border:1px solid #ff2d9b44">Neon</span>
     <h3 class="guide-card-title">Neon Cyberpunk</h3>
@@ -394,6 +392,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1563256/pexels-photo-1563256.jpeg?w=400" alt="Vintage Film" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #d4956a">
     <span class="guide-badge" style="background:#d4956a22;color:#d4956a;border:1px solid #d4956a44">Vintage</span>
     <h3 class="guide-card-title">Vintage Film</h3>
@@ -407,14 +406,14 @@
 </div>
   </div>
 </div>
-
 <div class="guide-section" id="angles">
   <div class="guide-section-head">
     <h2>📐 Camera Angle Guide</h2>
-    <p>Every camera angle communicates a specific emotional relationship between viewer and subject</p>
+    <p>Every angle communicates a specific emotional relationship between viewer and subject</p>
   </div>
   <div class="guide-grid">
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1105666/pexels-photo-1105666.jpeg?w=400" alt="Bird's Eye / Top Down" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #4fffb0">
     <span class="guide-badge" style="background:#4fffb022;color:#4fffb0;border:1px solid #4fffb044">Top-Down</span>
     <h3 class="guide-card-title">Bird's Eye / Top Down</h3>
@@ -427,6 +426,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/325521/pexels-photo-325521.jpeg?w=400" alt="Worm's Eye / Low Angle" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #ff7070">
     <span class="guide-badge" style="background:#ff707022;color:#ff7070;border:1px solid #ff707044">Worm's Eye</span>
     <h3 class="guide-card-title">Worm's Eye / Low Angle</h3>
@@ -439,6 +439,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?w=400" alt="Eye Level" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #6b9fff">
     <span class="guide-badge" style="background:#6b9fff22;color:#6b9fff;border:1px solid #6b9fff44">Eye Level</span>
     <h3 class="guide-card-title">Eye Level</h3>
@@ -451,6 +452,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/3692750/pexels-photo-3692750.jpeg?w=400" alt="Dutch Angle / Tilt" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #ffb347">
     <span class="guide-badge" style="background:#ffb34722;color:#ffb347;border:1px solid #ffb34744">Dutch Angle</span>
     <h3 class="guide-card-title">Dutch Angle / Tilt</h3>
@@ -463,6 +465,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/3184405/pexels-photo-3184405.jpeg?w=400" alt="High Angle" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #c084fc">
     <span class="guide-badge" style="background:#c084fc22;color:#c084fc;border:1px solid #c084fc44">High Angle</span>
     <h3 class="guide-card-title">High Angle</h3>
@@ -475,6 +478,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?w=400" alt="POV / First Person" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #ff2d9b">
     <span class="guide-badge" style="background:#ff2d9b22;color:#ff2d9b;border:1px solid #ff2d9b44">POV</span>
     <h3 class="guide-card-title">POV / First Person</h3>
@@ -487,6 +491,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1647962/pexels-photo-1647962.jpeg?w=400" alt="Over the Shoulder" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #7c6fff">
     <span class="guide-badge" style="background:#7c6fff22;color:#7c6fff;border:1px solid #7c6fff44">OTS</span>
     <h3 class="guide-card-title">Over the Shoulder</h3>
@@ -499,6 +504,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1036808/pexels-photo-1036808.jpeg?w=400" alt="Aerial / Drone" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #4a9eff">
     <span class="guide-badge" style="background:#4a9eff22;color:#4a9eff;border:1px solid #4a9eff44">Aerial</span>
     <h3 class="guide-card-title">Aerial / Drone</h3>
@@ -512,7 +518,6 @@
 </div>
   </div>
 </div>
-
 <div class="guide-section" id="lighting">
   <div class="guide-section-head">
     <h2>💡 Lighting Guide</h2>
@@ -520,6 +525,7 @@
   </div>
   <div class="guide-grid">
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1146242/pexels-photo-1146242.jpeg?w=400" alt="Golden Hour" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #f4a261">
     <span class="guide-badge" style="background:#f4a26122;color:#f4a261;border:1px solid #f4a26144">Natural</span>
     <h3 class="guide-card-title">Golden Hour</h3>
@@ -532,6 +538,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1974927/pexels-photo-1974927.jpeg?w=400" alt="Overcast / Soft Box" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #9aa5b4">
     <span class="guide-badge" style="background:#9aa5b422;color:#9aa5b4;border:1px solid #9aa5b444">Soft</span>
     <h3 class="guide-card-title">Overcast / Soft Box</h3>
@@ -544,6 +551,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg?w=400" alt="Rembrandt Lighting" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #7c6fff">
     <span class="guide-badge" style="background:#7c6fff22;color:#7c6fff;border:1px solid #7c6fff44">Studio</span>
     <h3 class="guide-card-title">Rembrandt Lighting</h3>
@@ -556,6 +564,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/2128817/pexels-photo-2128817.jpeg?w=400" alt="Backlight / Rim Light" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #ffb347">
     <span class="guide-badge" style="background:#ffb34722;color:#ffb347;border:1px solid #ffb34744">Backlight</span>
     <h3 class="guide-card-title">Backlight / Rim Light</h3>
@@ -568,6 +577,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1090638/pexels-photo-1090638.jpeg?w=400" alt="Practical Lighting" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #4fffb0">
     <span class="guide-badge" style="background:#4fffb022;color:#4fffb0;border:1px solid #4fffb044">Practical</span>
     <h3 class="guide-card-title">Practical Lighting</h3>
@@ -580,6 +590,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/3062541/pexels-photo-3062541.jpeg?w=400" alt="Hard Light / Single Source" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #ff7070">
     <span class="guide-badge" style="background:#ff707022;color:#ff7070;border:1px solid #ff707044">Hard</span>
     <h3 class="guide-card-title">Hard Light / Single Source</h3>
@@ -592,6 +603,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/1081685/pexels-photo-1081685.jpeg?w=400" alt="Blue Hour / Dusk" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #4a9eff">
     <span class="guide-badge" style="background:#4a9eff22;color:#4a9eff;border:1px solid #4a9eff44">Dusk</span>
     <h3 class="guide-card-title">Blue Hour / Dusk</h3>
@@ -604,6 +616,7 @@
   </div>
 </div>
 <div class="guide-card">
+  <img src="https://images.pexels.com/photos/2773673/pexels-photo-2773673.jpeg?w=400" alt="Low Key / Shadow" class="guide-img" loading="lazy" onerror="this.style.display='none'">
   <div class="guide-card-top" style="border-top:3px solid #2d2d4e">
     <span class="guide-badge" style="background:#2d2d4e22;color:#2d2d4e;border:1px solid #2d2d4e44">Low Key</span>
     <h3 class="guide-card-title">Low Key / Shadow</h3>
@@ -617,8 +630,8 @@
 </div>
   </div>
 </div>
-
-</div>
+</div><!--learn-main-->
+</div><!--learn-layout-->
 
 <footer>
   <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/prompt-library.html">Prompt Library</a></p>
