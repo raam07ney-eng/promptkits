@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{--bg:#0d0d14;--card:#13131f;--input:#1a1a2e;--border:rgba(255,255,255,0.08);--accent:#a89eff;--text:#f0eeff;--muted:#8888aa;--dim:#55556a;--green:#4caf80;--red:#ff6b6b;}
+:root{--bg:#f5f5fa;--card:#ffffff;--input:#f0f0f8;--border:rgba(0,0,0,0.1);--accent:#6c5ce7;--text:#1a1a2e;--muted:#5a5a7a;--dim:#9a9ab0;--green:#2d9e6b;--red:#d94f4f;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:32px 16px 64px;}
 .wrap{max-width:800px;margin:0 auto;}
 .header{text-align:center;margin-bottom:36px;}
@@ -23,12 +23,12 @@ h1 span{color:var(--accent);}
 .api-box input{flex:1;min-width:200px;background:var(--input);border:1px solid var(--border);border-radius:6px;padding:8px 12px;color:var(--text);font-size:13px;font-family:monospace;}
 .api-box input:focus{outline:none;border-color:var(--accent);}
 .note{font-size:11px;color:var(--dim);width:100%;}
-.section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:14px;}
+.section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
 .stitle{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
 .stitle::after{content:'';flex:1;height:1px;background:var(--border);}
 .field{margin-bottom:14px;}
 .field:last-child{margin-bottom:0;}
-.field label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:5px;}
+.field label{display:block;font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;letter-spacing:0.01em;}
 .field input,.field textarea,.field select{width:100%;background:var(--input);border:1px solid var(--border);border-radius:8px;padding:9px 13px;color:var(--text);font-size:13px;font-family:'Inter',sans-serif;transition:border-color 0.15s;}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);}
 .field textarea{resize:vertical;min-height:68px;line-height:1.5;}
@@ -48,9 +48,9 @@ h1 span{color:var(--accent);}
 .shot:hover{border-color:rgba(168,158,255,0.3);}
 .shot.selected{border-color:var(--accent);background:rgba(168,158,255,0.06);}
 .shot input{margin-top:2px;accent-color:var(--accent);cursor:pointer;}
-.shot-name{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px;}
+.shot-name{font-size:14px;font-weight:700;color:var(--text);margin-bottom:2px;}
 .shot-desc{font-size:11px;color:var(--dim);line-height:1.4;}
-.gen-btn{width:100%;padding:15px;background:var(--accent);color:#0d0d14;font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;margin-top:18px;font-family:'Inter',sans-serif;transition:opacity 0.2s;}
+.gen-btn{width:100%;padding:15px;background:var(--accent);color:#ffffff;font-size:15px;font-weight:700;border:none;border-radius:10px;cursor:pointer;margin-top:18px;font-family:'Inter',sans-serif;transition:opacity 0.2s;}
 .gen-btn:hover{opacity:0.88;}
 .gen-btn:disabled{opacity:0.5;cursor:not-allowed;}
 .spinner{display:inline-block;width:15px;height:15px;border:2px solid rgba(13,13,20,0.3);border-top-color:#0d0d14;border-radius:50%;animation:spin 0.7s linear infinite;vertical-align:middle;margin-right:6px;}
@@ -71,9 +71,102 @@ h1 span{color:var(--accent);}
 .prompt-text{font-size:13px;line-height:1.7;color:var(--text);}
 .copy-all-btn{padding:8px 16px;background:transparent;border:1px solid rgba(168,158,255,0.3);border-radius:6px;color:var(--accent);font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;}
 .copy-all-btn:hover{background:rgba(168,158,255,0.1);}
+
+.add-char-btn{background:rgba(108,92,231,0.08);border:1px solid rgba(108,92,231,0.25);color:var(--accent);padding:5px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;}
+.add-char-btn:hover{background:rgba(108,92,231,0.15);}
+.add-char-btn:disabled{opacity:0.35;cursor:not-allowed;}
+.char-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.char-controls{display:flex;align-items:center;gap:10px;}
+.toggle-label{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--muted);cursor:pointer;}
+.toggle-label input{cursor:pointer;accent-color:var(--accent);}
+.remove-char{background:none;border:1px solid rgba(255,107,107,0.3);color:#ff6b6b;padding:3px 10px;border-radius:5px;font-size:11px;cursor:pointer;transition:all 0.15s;}
+.remove-char:hover{background:rgba(255,107,107,0.1);}
+.char-optional.enabled{opacity:1;pointer-events:auto;}
+.char-optional.disabled{opacity:0.35;pointer-events:none;}
+
+
+.shots-list{display:flex;flex-direction:column;gap:8px;}
+.shot-row{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--input);transition:border-color 0.15s;}
+.shot-row.selected{border-color:rgba(108,92,231,0.4);background:rgba(108,92,231,0.03);}
+.shot-row-top{padding:12px 14px;}
+.shot-check-label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;}
+.shot-check-label input[type=checkbox]{margin-top:3px;accent-color:var(--accent);cursor:pointer;width:15px;height:15px;flex-shrink:0;}
+.shot-controls{padding:0 14px 12px;display:none;}
+.shot-row.selected .shot-controls{display:block;}
+.shot-ctrl-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;}
+.ctrl-label{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);width:74px;flex-shrink:0;padding-top:5px;}
+.mini-pills{display:flex;flex-wrap:wrap;gap:4px;}
+.mini-pill{padding:3px 9px;border-radius:4px;font-size:11px;font-weight:500;background:var(--bg);border:1px solid var(--border);color:var(--muted);cursor:pointer;transition:all 0.1s;}
+.mini-pill.active{background:rgba(108,92,231,0.12);border-color:rgba(108,92,231,0.4);color:var(--accent);}
+.insert-detail{margin-top:8px;}
+
+
+.shot-desc-field{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.shot-desc-field label{font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;display:block;}
+.shot-desc-field textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:13px;font-family:'Inter',sans-serif;resize:vertical;min-height:64px;line-height:1.5;}
+.shot-desc-field textarea:focus{outline:none;border-color:var(--accent);}
+.shot-desc-field textarea::placeholder{color:var(--dim);}
+
+
+
+.shot-gen-btn{background:rgba(108,92,231,0.08);border:1px solid rgba(108,92,231,0.3);color:var(--accent);padding:7px 18px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;}
+.shot-gen-btn:hover{background:rgba(108,92,231,0.15);}
+.shot-gen-btn:disabled{opacity:0.45;cursor:not-allowed;}
+.shot-gen-result{margin-top:10px;}
+.shot-result-text{background:#fafafa;border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.7;color:var(--text);white-space:pre-wrap;word-break:break-word;}
+.shot-result-actions{margin-top:6px;display:flex;gap:8px;}
+.copy-shot-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:4px 14px;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;}
+.copy-shot-btn:hover{border-color:var(--accent);color:var(--accent);}
+.copy-shot-btn.copied{color:var(--green);border-color:var(--green);}
+
+
+.shot-tabs{display:flex;gap:0;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);}
+.shot-tab-btn{flex:1;padding:7px 0;font-size:12px;font-weight:600;border:1px solid var(--border);background:var(--bg);color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;}
+.shot-tab-btn:first-child{border-radius:7px 0 0 7px;}
+.shot-tab-btn:last-child{border-radius:0 7px 7px 0;border-left:none;}
+.shot-tab-btn.active{background:rgba(108,92,231,0.1);color:var(--accent);border-color:rgba(108,92,231,0.35);}
+.shot-tab-btn.active:last-child{border-left:none;}
+.shot-tab-panel{display:none;margin-top:10px;}
+.shot-tab-panel.active{display:block;}
+.shot-gen-btn{background:rgba(108,92,231,0.08);border:1px solid rgba(108,92,231,0.3);color:var(--accent);padding:7px 18px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;margin-bottom:8px;}
+.shot-gen-btn:hover{background:rgba(108,92,231,0.15);}
+.shot-gen-btn:disabled{opacity:0.45;cursor:not-allowed;}
+.mj-gen-btn{background:rgba(45,158,107,0.08);border:1px solid rgba(45,158,107,0.3);color:var(--green);padding:7px 18px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;margin-bottom:8px;}
+.mj-gen-btn:hover{background:rgba(45,158,107,0.15);}
+.mj-gen-btn:disabled{opacity:0.45;cursor:not-allowed;}
+.shot-result-text{background:#fafafa;border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.7;color:var(--text);white-space:pre-wrap;word-break:break-word;}
+.mj-result-text{background:#fafafa;border:1px solid rgba(45,158,107,0.25);border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.7;color:var(--text);white-space:pre-wrap;word-break:break-word;}
+.shot-result-actions{margin-top:6px;display:flex;gap:8px;}
+.copy-shot-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:4px 14px;border-radius:6px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.15s;}
+.copy-shot-btn:hover{border-color:var(--accent);color:var(--accent);}
+.copy-shot-btn.copied{color:var(--green);border-color:var(--green);}
+.tab-hint{font-size:11px;color:var(--dim);margin-bottom:8px;line-height:1.5;}
+
+
+.char-ref-upload{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);}
+.char-ref-label{font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px;display:block;}
+.char-ref-note{font-size:11px;color:var(--dim);line-height:1.5;margin-bottom:8px;}
+.char-ref-note strong{color:var(--muted);}
+.ref-upload-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.ref-upload-btn{display:inline-block;padding:6px 14px;background:var(--input);border:1px dashed rgba(108,92,231,0.35);border-radius:7px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;transition:all 0.15s;font-family:"Inter",sans-serif;}
+.ref-upload-btn:hover{background:rgba(168,158,255,0.08);border-style:solid;}
+.ref-img-preview{width:52px;height:52px;border-radius:7px;object-fit:cover;border:1px solid var(--border);display:none;}
+.ref-img-filename{font-size:11px;color:var(--muted);display:none;}
+.extract-btn{padding:6px 14px;background:rgba(168,158,255,0.12);border:1px solid rgba(168,158,255,0.35);border-radius:7px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;font-family:"Inter",sans-serif;transition:all 0.15s;display:none;}
+.extract-btn:hover{background:rgba(168,158,255,0.22);}
+.extract-btn:disabled{opacity:0.45;cursor:not-allowed;}
+.extract-status{font-size:11px;color:var(--green);display:none;margin-top:4px;}
+
+
+.shot-tabs{display:none;}
+.shot-tab-panel{display:none !important;}
+.shot-row.selected .shot-tabs{display:flex;}
+.shot-row.selected .shot-tab-panel.active{display:block !important;}
+
 </style>
 </head>
 <body>
+
 <div class="wrap">
 
 <div class="header">
@@ -94,20 +187,19 @@ h1 span{color:var(--accent);}
     <label>Scene description</label>
     <textarea id="sceneDesc" placeholder="e.g. A tense interrogation. A detective questions a nervous suspect about a murder."></textarea>
   </div>
-  <div class="row2">
-    <div class="field">
-      <label>Location</label>
-      <input type="text" id="location" placeholder="e.g. Small police interrogation room, grey walls, metal table">
-    </div>
-    <div class="field">
-      <label>Time of day</label>
-      <div class="pills" id="timeGroup">
-        <button class="pill" data-val="dawn">Dawn</button>
-        <button class="pill" data-val="day">Day</button>
-        <button class="pill" data-val="golden hour">Golden Hour</button>
-        <button class="pill" data-val="dusk">Dusk</button>
-        <button class="pill active" data-val="night">Night</button>
-      </div>
+  <div class="field">
+    <label>Location</label>
+    <textarea id="location" placeholder="e.g. Small police interrogation room, grey walls, one-way mirror on the left, metal table bolted to floor, single chair for the suspect" style="min-height:72px;"></textarea>
+  </div>
+  <div class="field">
+    <label>Time of day</label>
+    <div class="pills" id="timeGroup">
+      <button class="pill" data-val="dawn">Dawn</button>
+      <button class="pill" data-val="morning">Morning</button>
+      <button class="pill" data-val="midday">Midday</button>
+      <button class="pill" data-val="golden hour">Golden Hour</button>
+      <button class="pill" data-val="dusk">Dusk</button>
+      <button class="pill active" data-val="night">Night</button>
     </div>
   </div>
   <div class="row2">
@@ -118,6 +210,42 @@ h1 span{color:var(--accent);}
     <div class="field">
       <label>Atmosphere</label>
       <input type="text" id="atmosphere" placeholder="e.g. Tense, confined, oppressive">
+    </div>
+  </div>
+  <div class="field">
+    <label>Aspect ratio</label>
+    <div class="pills" id="ratioGroup">
+      <button class="pill" data-val="16:9 widescreen">16:9</button>
+      <button class="pill active" data-val="2.39:1 anamorphic widescreen">2.39:1 Scope</button>
+      <button class="pill" data-val="4:3 academy ratio">4:3 Academy</button>
+      <button class="pill" data-val="1:1 square">1:1</button>
+    </div>
+  </div>
+  <div class="row2">
+    <div class="field">
+      <label>Look &amp; Texture</label>
+      <div class="pills" id="filmGroup">
+        <button class="pill active" data-val="">None</button>
+        <button class="pill" data-val="Kodak Vision3 500T film stock, warm shadows, fine grain">Kodak 500T</button>
+        <button class="pill" data-val="Fuji 8543 film stock, cool tones, high contrast">Fuji 8543</button>
+        <button class="pill" data-val="Arri Alexa digital cinema, clean, natural skin tones">Arri Alexa</button>
+        <button class="pill" data-val="RED digital cinema, ultra sharp, high dynamic range">RED</button>
+        <button class="pill" data-val="16mm film grain, heavy grain, raw documentary texture">16mm Grain</button>
+        <button class="pill" data-val="Super 8 film, faded colours, strong grain, nostalgic texture">Super 8</button>
+      </div>
+    </div>
+    <div class="field">
+      <label>Scene mood / tone</label>
+      <div class="pills" id="moodGroup">
+        <button class="pill" data-val="tense">Tense</button>
+        <button class="pill" data-val="melancholic">Melancholic</button>
+        <button class="pill" data-val="euphoric">Euphoric</button>
+        <button class="pill active" data-val="suspenseful">Suspenseful</button>
+        <button class="pill" data-val="romantic">Romantic</button>
+        <button class="pill" data-val="menacing">Menacing</button>
+        <button class="pill" data-val="contemplative">Contemplative</button>
+      </div>
+      <div style="font-size:11px;color:var(--dim);margin-top:5px;">Film stock or camera system — affects grain, colour response, and overall texture of the image</div>
     </div>
   </div>
   <div class="row2">
@@ -131,276 +259,1205 @@ h1 span{color:var(--accent);}
         <button class="pill" data-val="natural">Natural</button>
       </div>
     </div>
-    <div class="field">
-      <label>Lens</label>
-      <div class="pills" id="lensGroup">
-        <button class="pill" data-val="24mm wide angle">24mm Wide</button>
-        <button class="pill active" data-val="35mm standard">35mm</button>
-        <button class="pill" data-val="anamorphic">Anamorphic</button>
-        <button class="pill" data-val="85mm telephoto">85mm</button>
-      </div>
-    </div>
+
   </div>
 </div>
 
 <div class="section">
-  <div class="stitle">Characters</div>
-  <div class="chars">
-    <div class="char-card">
-      <div class="char-title">Character 1</div>
+  <div class="stitle" style="justify-content:space-between;">
+    <span>Characters</span>
+    <button class="add-char-btn" onclick="addCharacter()" id="addCharBtn">+ Add Character</button>
+  </div>
+  <div class="chars" id="charsContainer">
+
+    <div class="char-card" id="char-1">
+      <div class="char-header">
+        <div class="char-title">Character 1</div>
+      </div>
       <div class="field"><label>Name</label><input type="text" id="c1name" placeholder="e.g. Detective Maya"></div>
       <div class="field"><label>Appearance</label><textarea id="c1desc" placeholder="e.g. Late 30s, dark hair pulled back, navy blazer, badge on belt" style="min-height:80px;"></textarea></div>
       <div class="field"><label>Role in scene</label><input type="text" id="c1role" placeholder="e.g. Interrogating, calm and intense"></div>
+      <div class="char-ref-upload">
+        <span class="char-ref-label">Reference Image <span style="font-weight:400;color:var(--dim);">(optional)</span></span>
+        <p class="char-ref-note"><strong>What gets extracted:</strong> appearance only — costume, clothing, hair, skin tone, physical build, accessories. The actual photo is never used — only the description it generates.</p>
+        <div class="ref-upload-row">
+          <button class="ref-upload-btn" type="button" onclick="triggerRefUpload(1)">📎 Upload photo</button>
+          <input type="file" id="refimg-c1" accept="image/*" style="display:none;" onchange="previewRef(1, this)">
+          <img class="ref-img-preview" id="refprev-c1" alt="Reference">
+          <span class="ref-img-filename" id="refname-c1"></span>
+          <button class="extract-btn" id="extbtn-c1" onclick="extractRef(1)">✨ Extract Appearance</button>
+        </div>
+        <div class="extract-status" id="extstatus-c1">✓ Appearance extracted and filled</div>
+      </div>
     </div>
-    <div class="char-card">
-      <div class="char-title">Character 2 <span style="color:var(--dim);font-weight:400;">(optional)</span></div>
+
+    <div class="char-card char-optional" id="char-2" style="opacity:0.4;pointer-events:none;">
+      <div class="char-header">
+        <div class="char-title">Character 2</div>
+        <div class="char-controls">
+          <label class="toggle-label"><input type="checkbox" id="c2toggle" onchange="toggleChar(2)"> Enable</label>
+          <button class="remove-char" onclick="removeChar(2)">✕ Remove</button>
+        </div>
+      </div>
       <div class="field"><label>Name</label><input type="text" id="c2name" placeholder="e.g. Suspect Ravi"></div>
       <div class="field"><label>Appearance</label><textarea id="c2desc" placeholder="e.g. Early 40s, stocky, grey stubble, brown jacket, wire-frame glasses" style="min-height:80px;"></textarea></div>
       <div class="field"><label>Role in scene</label><input type="text" id="c2role" placeholder="e.g. Defensive, nervous, avoiding eye contact"></div>
+      <div class="char-ref-upload">
+        <span class="char-ref-label">Reference Image <span style="font-weight:400;color:var(--dim);">(optional)</span></span>
+        <p class="char-ref-note"><strong>What gets extracted:</strong> appearance only — costume, clothing, hair, skin tone, physical build, accessories. The actual photo is never used — only the description it generates.</p>
+        <div class="ref-upload-row">
+          <button class="ref-upload-btn" type="button" onclick="triggerRefUpload(2)">📎 Upload photo</button>
+          <input type="file" id="refimg-c2" accept="image/*" style="display:none;" onchange="previewRef(2, this)">
+          <img class="ref-img-preview" id="refprev-c2" alt="Reference">
+          <span class="ref-img-filename" id="refname-c2"></span>
+          <button class="extract-btn" id="extbtn-c2" onclick="extractRef(2)">✨ Extract Appearance</button>
+        </div>
+        <div class="extract-status" id="extstatus-c2">✓ Appearance extracted and filled</div>
+      </div>
     </div>
+
   </div>
 </div>
 
 <div class="section">
   <div class="stitle">Select Shots</div>
-  <div class="shots" id="shotsGrid">
-    <div class="shot selected" data-shot="wide-establishing"><input type="checkbox" checked><div><div class="shot-name">Wide Establishing</div><div class="shot-desc">Full location, both characters, sets scale</div></div></div>
-    <div class="shot selected" data-shot="medium-both"><input type="checkbox" checked><div><div class="shot-name">Medium — Both Characters</div><div class="shot-desc">Waist-up, conversation in progress</div></div></div>
-    <div class="shot" data-shot="ots-char1"><input type="checkbox"><div><div class="shot-name">OTS — Char 1 Speaking</div><div class="shot-desc">Over shoulder of Char 2, Char 1 in focus</div></div></div>
-    <div class="shot" data-shot="ots-char2"><input type="checkbox"><div><div class="shot-name">OTS — Char 2 Responding</div><div class="shot-desc">Over shoulder of Char 1, Char 2 in focus</div></div></div>
-    <div class="shot" data-shot="closeup-char1"><input type="checkbox"><div><div class="shot-name">Close-Up — Char 1</div><div class="shot-desc">Face fills frame, emotion and reaction</div></div></div>
-    <div class="shot" data-shot="closeup-char2"><input type="checkbox"><div><div class="shot-name">Close-Up — Char 2</div><div class="shot-desc">Face fills frame, emotion and reaction</div></div></div>
-    <div class="shot" data-shot="insert"><input type="checkbox"><div><div class="shot-name">Insert Shot</div><div class="shot-desc">Key object or detail</div></div></div>
-    <div class="shot" data-shot="wide-final"><input type="checkbox"><div><div class="shot-name">Wide — Scene Resolved</div><div class="shot-desc">Back to wide, scene conclusion</div></div></div>
-  </div>
-  <div class="field" id="insertField" style="display:none;margin-top:12px;">
-    <label>Insert shot — what object?</label>
-    <input type="text" id="insertDetail" placeholder="e.g. A manila folder with crime scene photos spilling out">
-  </div>
-</div>
+  <div class="shots-list" id="shotsGrid">
+    <div class="shot-row selected" id="srow-wide-establishing" data-shot="wide-establishing">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="wide-establishing" checked onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">Wide Establishing</div>
+            <div class="shot-desc">Full location, sets scale and geography</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-wide-establishing">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-wide-establishing"><button class="mini-pill" data-group="lens-wide-establishing" data-val="14mm">Ultra-Wide</button><button class="mini-pill active" data-group="lens-wide-establishing" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-wide-establishing" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-wide-establishing" data-val="28mm">28mm</button><button class="mini-pill" data-group="lens-wide-establishing" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-wide-establishing" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-wide-establishing" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-wide-establishing" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-wide-establishing" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-wide-establishing" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-wide-establishing" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-wide-establishing"><button class="mini-pill active" data-group="move-wide-establishing" data-val="static">Static</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-wide-establishing" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-wide-establishing" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-wide-establishing" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-wide-establishing" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-wide-establishing" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-wide-establishing" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-wide-establishing" placeholder="e.g. Maya enters the room and sits down, placing a folder on the table. Ravi watches nervously."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-wide-establishing" onclick="switchTab('wide-establishing','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-wide-establishing" onclick="switchTab('wide-establishing','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-wide-establishing">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-wide-establishing" onclick="generateShot('wide-establishing','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-wide-establishing" style="display:none;">
+            <div class="shot-result-text" id="gtxt-wide-establishing"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('wide-establishing','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-wide-establishing">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-wide-establishing" onclick="generateShot('wide-establishing','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-wide-establishing" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-wide-establishing"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('wide-establishing','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
 
-<button class="gen-btn" id="genBtn">🎬 Generate Scene Builder Output</button>
-<div class="err" id="errMsg"></div>
-
-<div class="results" id="results">
-  <div class="res-section">
-    <div class="res-title">Step 1 — Reference Images for Midjourney</div>
-    <div class="workflow-tip"><strong>Workflow:</strong> Generate these in Midjourney first → Save the images → Upload as image references in Kling AI alongside each shot prompt below for maximum consistency.</div>
-    <div id="refResults"></div>
-  </div>
-  <div class="res-section">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
-      <div class="res-title" style="margin-bottom:0;">Step 2 — Shot Prompts for Kling AI / Runway</div>
-      <button class="copy-all-btn" onclick="copyAll()">Copy All</button>
     </div>
-    <div id="shotResults"></div>
-  </div>
-</div>
+    <div class="shot-row selected" id="srow-medium-both" data-shot="medium-both">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="medium-both" checked onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">Medium — Both Characters</div>
+            <div class="shot-desc">Waist-up, conversation in progress</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-medium-both">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-medium-both"><button class="mini-pill" data-group="lens-medium-both" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-medium-both" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-medium-both" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-medium-both" data-val="28mm">28mm</button><button class="mini-pill active" data-group="lens-medium-both" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-medium-both" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-medium-both" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-medium-both" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-medium-both" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-medium-both" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-medium-both" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-medium-both"><button class="mini-pill active" data-group="move-medium-both" data-val="static">Static</button><button class="mini-pill" data-group="move-medium-both" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-medium-both" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-medium-both" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-medium-both" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-medium-both" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-medium-both" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-medium-both" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-medium-both" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-medium-both" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-medium-both" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-medium-both" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-medium-both" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-medium-both" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-medium-both" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-medium-both" placeholder="e.g. Maya leans forward, her voice calm but firm. Ravi avoids eye contact, hands fidgeting."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-medium-both" onclick="switchTab('medium-both','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-medium-both" onclick="switchTab('medium-both','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-medium-both">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-medium-both" onclick="generateShot('medium-both','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-medium-both" style="display:none;">
+            <div class="shot-result-text" id="gtxt-medium-both"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('medium-both','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-medium-both">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-medium-both" onclick="generateShot('medium-both','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-medium-both" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-medium-both"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('medium-both','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
 
+    </div>
+    <div class="shot-row" id="srow-ots-char1" data-shot="ots-char1">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="ots-char1" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">OTS — Favouring Char 1</div>
+            <div class="shot-desc">Camera behind Char 2, Char 1 in focus — either can speak</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-ots-char1">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-ots-char1"><button class="mini-pill" data-group="lens-ots-char1" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-ots-char1" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-ots-char1" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-ots-char1" data-val="28mm">28mm</button><button class="mini-pill" data-group="lens-ots-char1" data-val="35mm">35mm</button><button class="mini-pill active" data-group="lens-ots-char1" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-ots-char1" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-ots-char1" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-ots-char1" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-ots-char1" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-ots-char1" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-ots-char1"><button class="mini-pill active" data-group="move-ots-char1" data-val="static">Static</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-ots-char1" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-ots-char1" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-ots-char1" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-ots-char1" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-ots-char1" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-ots-char1" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-ots-char1" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-ots-char1" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-ots-char1" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-ots-char1" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-ots-char1" placeholder="e.g. Maya speaks — "Where were you on the 14th?" Ravi visible soft focus behind her shoulder."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-ots-char1" onclick="switchTab('ots-char1','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-ots-char1" onclick="switchTab('ots-char1','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-ots-char1">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-ots-char1" onclick="generateShot('ots-char1','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-ots-char1" style="display:none;">
+            <div class="shot-result-text" id="gtxt-ots-char1"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('ots-char1','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-ots-char1">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-ots-char1" onclick="generateShot('ots-char1','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-ots-char1" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-ots-char1"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('ots-char1','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-ots-char2" data-shot="ots-char2">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="ots-char2" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">OTS — Favouring Char 2</div>
+            <div class="shot-desc">Camera behind Char 1, Char 2 in focus — either can speak</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-ots-char2">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-ots-char2"><button class="mini-pill" data-group="lens-ots-char2" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-ots-char2" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-ots-char2" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-ots-char2" data-val="28mm">28mm</button><button class="mini-pill" data-group="lens-ots-char2" data-val="35mm">35mm</button><button class="mini-pill active" data-group="lens-ots-char2" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-ots-char2" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-ots-char2" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-ots-char2" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-ots-char2" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-ots-char2" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-ots-char2"><button class="mini-pill active" data-group="move-ots-char2" data-val="static">Static</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-ots-char2" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-ots-char2" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-ots-char2" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-ots-char2" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-ots-char2" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-ots-char2" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-ots-char2" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-ots-char2" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-ots-char2" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-ots-char2" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-ots-char2" placeholder="e.g. Ravi responds — "I was home." Maya's shoulder in foreground, Ravi looking slightly away."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-ots-char2" onclick="switchTab('ots-char2','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-ots-char2" onclick="switchTab('ots-char2','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-ots-char2">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-ots-char2" onclick="generateShot('ots-char2','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-ots-char2" style="display:none;">
+            <div class="shot-result-text" id="gtxt-ots-char2"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('ots-char2','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-ots-char2">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-ots-char2" onclick="generateShot('ots-char2','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-ots-char2" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-ots-char2"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('ots-char2','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-closeup-char1" data-shot="closeup-char1">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="closeup-char1" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">Close-Up — Char 1</div>
+            <div class="shot-desc">Face fills frame, emotion and reaction</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-closeup-char1">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-closeup-char1"><button class="mini-pill" data-group="lens-closeup-char1" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-closeup-char1" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-closeup-char1" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-closeup-char1" data-val="28mm">28mm</button><button class="mini-pill" data-group="lens-closeup-char1" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-closeup-char1" data-val="50mm">50mm</button><button class="mini-pill active" data-group="lens-closeup-char1" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-closeup-char1" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-closeup-char1" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-closeup-char1" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-closeup-char1" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-closeup-char1"><button class="mini-pill active" data-group="move-closeup-char1" data-val="static">Static</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-closeup-char1" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-closeup-char1" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-closeup-char1" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-closeup-char1" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-closeup-char1" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-closeup-char1" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-closeup-char1" placeholder="e.g. Maya registers something — a flicker of doubt crosses her face. She controls it immediately."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-closeup-char1" onclick="switchTab('closeup-char1','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-closeup-char1" onclick="switchTab('closeup-char1','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-closeup-char1">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-closeup-char1" onclick="generateShot('closeup-char1','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-closeup-char1" style="display:none;">
+            <div class="shot-result-text" id="gtxt-closeup-char1"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('closeup-char1','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-closeup-char1">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-closeup-char1" onclick="generateShot('closeup-char1','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-closeup-char1" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-closeup-char1"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('closeup-char1','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-closeup-char2" data-shot="closeup-char2">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="closeup-char2" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">Close-Up — Char 2</div>
+            <div class="shot-desc">Face fills frame, emotion and reaction</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-closeup-char2">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-closeup-char2"><button class="mini-pill" data-group="lens-closeup-char2" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-closeup-char2" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-closeup-char2" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-closeup-char2" data-val="28mm">28mm</button><button class="mini-pill" data-group="lens-closeup-char2" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-closeup-char2" data-val="50mm">50mm</button><button class="mini-pill active" data-group="lens-closeup-char2" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-closeup-char2" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-closeup-char2" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-closeup-char2" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-closeup-char2" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-closeup-char2"><button class="mini-pill active" data-group="move-closeup-char2" data-val="static">Static</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-closeup-char2" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-closeup-char2" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-closeup-char2" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-closeup-char2" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-closeup-char2" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-closeup-char2" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-closeup-char2" placeholder="e.g. Ravi swallows hard. Sweat on his upper lip. His eyes dart left."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-closeup-char2" onclick="switchTab('closeup-char2','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-closeup-char2" onclick="switchTab('closeup-char2','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-closeup-char2">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-closeup-char2" onclick="generateShot('closeup-char2','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-closeup-char2" style="display:none;">
+            <div class="shot-result-text" id="gtxt-closeup-char2"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('closeup-char2','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-closeup-char2">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-closeup-char2" onclick="generateShot('closeup-char2','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-closeup-char2" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-closeup-char2"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('closeup-char2','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-pov-char1" data-shot="pov-char1">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="pov-char1" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">POV — Char 1</div>
+            <div class="shot-desc">Char 1's eye-level first-person view</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-pov-char1">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-pov-char1"><button class="mini-pill" data-group="lens-pov-char1" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-pov-char1" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-pov-char1" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-pov-char1" data-val="28mm">28mm</button><button class="mini-pill active" data-group="lens-pov-char1" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-pov-char1" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-pov-char1" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-pov-char1" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-pov-char1" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-pov-char1" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-pov-char1" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-pov-char1"><button class="mini-pill" data-group="move-pov-char1" data-val="static">Static</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-pov-char1" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-pov-char1" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-pov-char1" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-pov-char1" data-val="tracking right">Track R</button><button class="mini-pill active" data-group="move-pov-char1" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-pov-char1" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-pov-char1" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-pov-char1" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-pov-char1" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-pov-char1" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-pov-char1" placeholder="e.g. Maya's POV — Ravi fidgeting with a ring on his finger. She notices it."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-pov-char1" onclick="switchTab('pov-char1','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-pov-char1" onclick="switchTab('pov-char1','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-pov-char1">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-pov-char1" onclick="generateShot('pov-char1','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-pov-char1" style="display:none;">
+            <div class="shot-result-text" id="gtxt-pov-char1"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('pov-char1','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-pov-char1">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-pov-char1" onclick="generateShot('pov-char1','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-pov-char1" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-pov-char1"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('pov-char1','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-pov-char2" data-shot="pov-char2">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="pov-char2" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">POV — Char 2</div>
+            <div class="shot-desc">Char 2's eye-level first-person view</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-pov-char2">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-pov-char2"><button class="mini-pill" data-group="lens-pov-char2" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-pov-char2" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-pov-char2" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-pov-char2" data-val="28mm">28mm</button><button class="mini-pill active" data-group="lens-pov-char2" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-pov-char2" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-pov-char2" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-pov-char2" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-pov-char2" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-pov-char2" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-pov-char2" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-pov-char2"><button class="mini-pill" data-group="move-pov-char2" data-val="static">Static</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-pov-char2" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-pov-char2" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-pov-char2" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-pov-char2" data-val="tracking right">Track R</button><button class="mini-pill active" data-group="move-pov-char2" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-pov-char2" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-pov-char2" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-pov-char2" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-pov-char2" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-pov-char2" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-pov-char2" placeholder="e.g. Ravi's POV — Maya opens the folder slowly and slides a photograph across the table."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-pov-char2" onclick="switchTab('pov-char2','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-pov-char2" onclick="switchTab('pov-char2','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-pov-char2">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-pov-char2" onclick="generateShot('pov-char2','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-pov-char2" style="display:none;">
+            <div class="shot-result-text" id="gtxt-pov-char2"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('pov-char2','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-pov-char2">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-pov-char2" onclick="generateShot('pov-char2','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-pov-char2" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-pov-char2"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('pov-char2','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-extreme-cu" data-shot="extreme-cu">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="extreme-cu" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">Extreme Close-Up</div>
+            <div class="shot-desc">Eyes, hands, or key detail on face</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-extreme-cu">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-extreme-cu"><button class="mini-pill" data-group="lens-extreme-cu" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-extreme-cu" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-extreme-cu" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-extreme-cu" data-val="28mm">28mm</button><button class="mini-pill" data-group="lens-extreme-cu" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-extreme-cu" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-extreme-cu" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-extreme-cu" data-val="100mm">100mm</button><button class="mini-pill active" data-group="lens-extreme-cu" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-extreme-cu" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-extreme-cu" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-extreme-cu"><button class="mini-pill active" data-group="move-extreme-cu" data-val="static">Static</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-extreme-cu" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-extreme-cu" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-extreme-cu" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-extreme-cu" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-extreme-cu" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-extreme-cu" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-extreme-cu" placeholder="e.g. Ravi's hand — the ring, turning and turning. Or Maya's eyes narrowing."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-extreme-cu" onclick="switchTab('extreme-cu','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-extreme-cu" onclick="switchTab('extreme-cu','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-extreme-cu">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-extreme-cu" onclick="generateShot('extreme-cu','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-extreme-cu" style="display:none;">
+            <div class="shot-result-text" id="gtxt-extreme-cu"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('extreme-cu','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-extreme-cu">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-extreme-cu" onclick="generateShot('extreme-cu','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-extreme-cu" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-extreme-cu"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('extreme-cu','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-low-angle" data-shot="low-angle">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="low-angle" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">Low Angle</div>
+            <div class="shot-desc">Camera below waist, looking up — power/dominance</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-low-angle">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-low-angle"><button class="mini-pill" data-group="lens-low-angle" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-low-angle" data-val="18mm">18mm</button><button class="mini-pill active" data-group="lens-low-angle" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-low-angle" data-val="28mm">28mm</button><button class="mini-pill" data-group="lens-low-angle" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-low-angle" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-low-angle" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-low-angle" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-low-angle" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-low-angle" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-low-angle" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-low-angle"><button class="mini-pill active" data-group="move-low-angle" data-val="static">Static</button><button class="mini-pill" data-group="move-low-angle" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-low-angle" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-low-angle" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-low-angle" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-low-angle" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-low-angle" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-low-angle" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-low-angle" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-low-angle" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-low-angle" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-low-angle" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-low-angle" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-low-angle" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-low-angle" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-low-angle" placeholder="e.g. Looking up at Maya as she stands. She dominates the frame — authority and control."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-low-angle" onclick="switchTab('low-angle','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-low-angle" onclick="switchTab('low-angle','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-low-angle">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-low-angle" onclick="generateShot('low-angle','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-low-angle" style="display:none;">
+            <div class="shot-result-text" id="gtxt-low-angle"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('low-angle','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-low-angle">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-low-angle" onclick="generateShot('low-angle','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-low-angle" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-low-angle"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('low-angle','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-high-angle" data-shot="high-angle">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="high-angle" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">High Angle</div>
+            <div class="shot-desc">Camera above, looking down — vulnerability</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-high-angle">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-high-angle"><button class="mini-pill" data-group="lens-high-angle" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-high-angle" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-high-angle" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-high-angle" data-val="28mm">28mm</button><button class="mini-pill active" data-group="lens-high-angle" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-high-angle" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-high-angle" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-high-angle" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-high-angle" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-high-angle" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-high-angle" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-high-angle"><button class="mini-pill active" data-group="move-high-angle" data-val="static">Static</button><button class="mini-pill" data-group="move-high-angle" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-high-angle" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-high-angle" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-high-angle" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-high-angle" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-high-angle" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-high-angle" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-high-angle" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-high-angle" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-high-angle" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-high-angle" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-high-angle" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-high-angle" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-high-angle" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-high-angle" placeholder="e.g. Looking down at Ravi in the chair. He seems small, trapped, surrounded by grey walls."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-high-angle" onclick="switchTab('high-angle','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-high-angle" onclick="switchTab('high-angle','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-high-angle">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-high-angle" onclick="generateShot('high-angle','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-high-angle" style="display:none;">
+            <div class="shot-result-text" id="gtxt-high-angle"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('high-angle','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-high-angle">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-high-angle" onclick="generateShot('high-angle','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-high-angle" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-high-angle"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('high-angle','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-two-shot" data-shot="two-shot">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="two-shot" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">Two-Shot Wide</div>
+            <div class="shot-desc">Both characters in same frame, side by side</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-two-shot">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-two-shot"><button class="mini-pill" data-group="lens-two-shot" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-two-shot" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-two-shot" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-two-shot" data-val="28mm">28mm</button><button class="mini-pill active" data-group="lens-two-shot" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-two-shot" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-two-shot" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-two-shot" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-two-shot" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-two-shot" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-two-shot" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-two-shot"><button class="mini-pill active" data-group="move-two-shot" data-val="static">Static</button><button class="mini-pill" data-group="move-two-shot" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-two-shot" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-two-shot" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-two-shot" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-two-shot" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-two-shot" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-two-shot" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-two-shot" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-two-shot" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-two-shot" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-two-shot" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-two-shot" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-two-shot" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-two-shot" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-two-shot" placeholder="e.g. Both characters in profile, facing each other across the table. Equal but opposed."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-two-shot" onclick="switchTab('two-shot','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-two-shot" onclick="switchTab('two-shot','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-two-shot">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-two-shot" onclick="generateShot('two-shot','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-two-shot" style="display:none;">
+            <div class="shot-result-text" id="gtxt-two-shot"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('two-shot','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-two-shot">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-two-shot" onclick="generateShot('two-shot','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-two-shot" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-two-shot"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('two-shot','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-dutch-tilt" data-shot="dutch-tilt">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="dutch-tilt" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">Dutch Tilt</div>
+            <div class="shot-desc">Camera canted for psychological unease</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-dutch-tilt">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-dutch-tilt"><button class="mini-pill" data-group="lens-dutch-tilt" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-dutch-tilt" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-dutch-tilt" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-dutch-tilt" data-val="28mm">28mm</button><button class="mini-pill active" data-group="lens-dutch-tilt" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-dutch-tilt" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-dutch-tilt" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-dutch-tilt" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-dutch-tilt" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-dutch-tilt" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-dutch-tilt" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-dutch-tilt"><button class="mini-pill active" data-group="move-dutch-tilt" data-val="static">Static</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-dutch-tilt" placeholder="e.g. The frame tilts as Ravi's alibi begins to crack. The world is no longer straight."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-dutch-tilt" onclick="switchTab('dutch-tilt','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-dutch-tilt" onclick="switchTab('dutch-tilt','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-dutch-tilt">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-dutch-tilt" onclick="generateShot('dutch-tilt','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-dutch-tilt" style="display:none;">
+            <div class="shot-result-text" id="gtxt-dutch-tilt"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('dutch-tilt','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-dutch-tilt">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-dutch-tilt" onclick="generateShot('dutch-tilt','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-dutch-tilt" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-dutch-tilt"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('dutch-tilt','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-insert" data-shot="insert">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="insert" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">Insert Shot</div>
+            <div class="shot-desc">Key object or environmental detail</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-insert">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-insert"><button class="mini-pill" data-group="lens-insert" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-insert" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-insert" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-insert" data-val="28mm">28mm</button><button class="mini-pill" data-group="lens-insert" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-insert" data-val="50mm">50mm</button><button class="mini-pill active" data-group="lens-insert" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-insert" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-insert" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-insert" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-insert" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-insert"><button class="mini-pill active" data-group="move-insert" data-val="static">Static</button><button class="mini-pill" data-group="move-insert" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-insert" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-insert" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-insert" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-insert" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-insert" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-insert" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-insert" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-insert" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-insert" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-insert" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-insert" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-insert" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-insert" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        <div class="field insert-detail" style="margin-top:8px;display:none;"><label>What object/detail?</label><input type="text" id="insertDetail" placeholder="e.g. A manila folder with crime scene photos spilling out"></div>
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-insert" placeholder="e.g. The manila folder — a corner of a photo visible. A date. A name."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-insert" onclick="switchTab('insert','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-insert" onclick="switchTab('insert','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-insert">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-insert" onclick="generateShot('insert','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-insert" style="display:none;">
+            <div class="shot-result-text" id="gtxt-insert"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('insert','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-insert">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-insert" onclick="generateShot('insert','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-insert" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-insert"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('insert','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+    <div class="shot-row" id="srow-wide-final" data-shot="wide-final">
+      <div class="shot-row-top">
+        <label class="shot-check-label">
+          <input type="checkbox" class="shot-cb" data-shot="wide-final" onchange="toggleShotRow(this)">
+          <div class="shot-row-info">
+            <div class="shot-name">Wide — Scene Resolved</div>
+            <div class="shot-desc">Back to wide, scene conclusion</div>
+          </div>
+        </label>
+      </div>
+      <div class="shot-controls" id="sctrl-wide-final">
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Lens</span>
+          <div class="mini-pills" id="lens-wide-final"><button class="mini-pill" data-group="lens-wide-final" data-val="14mm">Ultra-Wide</button><button class="mini-pill active" data-group="lens-wide-final" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-wide-final" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-wide-final" data-val="28mm">28mm</button><button class="mini-pill" data-group="lens-wide-final" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-wide-final" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-wide-final" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-wide-final" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-wide-final" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-wide-final" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-wide-final" data-val="anamorphic">Anamorphic</button></div>
+        </div>
+        <div class="shot-ctrl-row">
+          <span class="ctrl-label">Movement</span>
+          <div class="mini-pills" id="move-wide-final"><button class="mini-pill" data-group="move-wide-final" data-val="static">Static</button><button class="mini-pill" data-group="move-wide-final" data-val="slow push in">Push In</button><button class="mini-pill active" data-group="move-wide-final" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-wide-final" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-wide-final" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-wide-final" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-wide-final" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-wide-final" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-wide-final" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-wide-final" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-wide-final" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-wide-final" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-wide-final" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-wide-final" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-wide-final" data-val="360 orbit">360 Orbit</button></div>
+        </div>
+        
+      
+        <div class="shot-desc-field">
+          <label>Action / Emotion / Dialogue</label>
+          <textarea id="sdesc-wide-final" placeholder="e.g. Maya gathers the folder and leaves. Ravi remains seated, alone in the grey room."></textarea>
+        </div>
+      </div>
+        <div class="shot-tabs">
+          <button class="shot-tab-btn active" id="vtab-wide-final" onclick="switchTab('wide-final','video')">🎬 Video Prompt</button>
+          <button class="shot-tab-btn" id="rtab-wide-final" onclick="switchTab('wide-final','ref')">🖼 Reference Image</button>
+        </div>
+        <div class="shot-tab-panel active" id="vpanel-wide-final">
+          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
+          <button class="shot-gen-btn" id="gbtn-wide-final" onclick="generateShot('wide-final','video')">⚡ Generate Video Prompt</button>
+          <div id="gres-wide-final" style="display:none;">
+            <div class="shot-result-text" id="gtxt-wide-final"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('wide-final','video')">Copy</button>
+            </div>
+          </div>
+        </div>
+        <div class="shot-tab-panel" id="rpanel-wide-final">
+          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
+          <button class="mj-gen-btn" id="mjbtn-wide-final" onclick="generateShot('wide-final','ref')">🖼 Generate Reference Prompt</button>
+          <div id="mjres-wide-final" style="display:none;">
+            <div class="mj-result-text" id="mjtxt-wide-final"></div>
+            <div class="shot-result-actions">
+              <button class="copy-shot-btn" onclick="copyShot('wide-final','ref')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
 </div>
 
 <script>
-var selVals = { time: 'night', grade: 'cold desaturated', lens: '35mm standard' };
-
-function setupPills(groupId, key) {
-  document.querySelectorAll('#' + groupId + ' .pill').forEach(function(p) {
-    p.addEventListener('click', function() {
-      document.querySelectorAll('#' + groupId + ' .pill').forEach(function(x) { x.classList.remove('active'); });
+// ── PILL HELPERS ─────────────────────────────────────────────────────────────
+function pillVal(groupId) {
+  var el = document.querySelector('#' + groupId + ' .pill.active');
+  return el ? el.dataset.val : '';
+}
+function v(id) {
+  var el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+function setupPills(groupId) {
+  var group = document.getElementById(groupId);
+  if (!group) return;
+  group.querySelectorAll('.pill').forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      group.querySelectorAll('.pill').forEach(function(p) { p.classList.remove('active'); });
       this.classList.add('active');
-      selVals[key] = this.dataset.val;
     });
   });
 }
-setupPills('timeGroup', 'time');
-setupPills('gradeGroup', 'grade');
-setupPills('lensGroup', 'lens');
 
-document.querySelectorAll('.shot').forEach(function(item) {
-  item.addEventListener('click', function(e) {
-    if (e.target.type === 'checkbox') return;
-    var cb = this.querySelector('input[type=checkbox]');
-    cb.checked = !cb.checked;
-    this.classList.toggle('selected', cb.checked);
-    checkInsert();
-  });
-  item.querySelector('input').addEventListener('change', function() {
-    item.classList.toggle('selected', this.checked);
-    checkInsert();
-  });
+// ── SHOT ROW TOGGLE ──────────────────────────────────────────────────────────
+function toggleShotRow(cb) {
+  var sid = cb.dataset.shot;
+  var row = document.getElementById('srow-' + sid);
+  if (!row) return;
+  if (cb.checked) {
+    row.classList.add('selected');
+  } else {
+    row.classList.remove('selected');
+  }
+  if (sid === 'insert') {
+    var det = row.querySelector('.insert-detail');
+    if (det) det.style.display = cb.checked ? 'block' : 'none';
+  }
+}
+
+// ── MINI PILL CLICK (per-shot lens/movement) ─────────────────────────────────
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('mini-pill')) {
+    var group = e.target.dataset.group;
+    document.querySelectorAll('[data-group="' + group + '"]').forEach(function(p) {
+      p.classList.remove('active');
+    });
+    e.target.classList.add('active');
+  }
 });
 
-function checkInsert() {
-  var insertCb = document.querySelector('[data-shot="insert"] input');
-  document.getElementById('insertField').style.display = insertCb.checked ? 'block' : 'none';
-}
+// ── CHARACTER MANAGEMENT ─────────────────────────────────────────────────────
+var charCount = 1;
+var maxChars = 4;
+var enabledChars = new Set([1]);
 
-function getSelectedShots() {
-  return Array.from(document.querySelectorAll('.shot')).filter(function(s) {
-    return s.querySelector('input').checked;
-  }).map(function(s) { return s.dataset.shot; });
-}
-
-async function callClaude(apiKey, system, user, maxTokens) {
-  var r = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-api-key': apiKey,
-      'anthropic-version': '2023-06-01',
-      'anthropic-dangerous-direct-browser-access': 'true'
-    },
-    body: JSON.stringify({
-      model: 'claude-haiku-4-5-20251001',
-      max_tokens: maxTokens || 400,
-      system: system,
-      messages: [{ role: 'user', content: user }]
-    })
-  });
-  var d = await r.json();
-  if (!r.ok) throw new Error(d.error ? d.error.message : 'API error ' + r.status);
-  return d.content[0].text.trim();
-}
-
-function showErr(msg) {
-  var el = document.getElementById('errMsg');
-  el.textContent = msg;
-  el.style.display = 'block';
-  var btn = document.getElementById('genBtn');
-  btn.disabled = false;
-  btn.textContent = '🎬 Generate Scene Builder Output';
-}
-
-function copyText(btn, text) {
-  navigator.clipboard.writeText(text).then(function() {
-    btn.textContent = 'Copied!';
-    btn.classList.add('ok');
-    setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('ok'); }, 2000);
-  });
-}
-
-function copyAll() {
-  var all = [];
-  document.querySelectorAll('.prompt-text').forEach(function(el, i) {
-    all.push('SHOT ' + (i+1) + '\n' + el.textContent);
-  });
-  navigator.clipboard.writeText(all.join('\n\n---\n\n'));
-}
-
-document.getElementById('genBtn').addEventListener('click', async function() {
-  var apiKey = document.getElementById('apiKey').value.trim();
-  if (!apiKey) { showErr('Please enter your Anthropic API key.'); return; }
-
-  var shots = getSelectedShots();
-  if (shots.length === 0) { showErr('Please select at least one shot.'); return; }
-
-  var c1name = document.getElementById('c1name').value.trim() || 'Character 1';
-  var c1desc = document.getElementById('c1desc').value.trim();
-  var c1role = document.getElementById('c1role').value.trim();
-  var c2name = document.getElementById('c2name').value.trim() || 'Character 2';
-  var c2desc = document.getElementById('c2desc').value.trim();
-  var c2role = document.getElementById('c2role').value.trim();
-  var scene  = document.getElementById('sceneDesc').value.trim();
-  var loc    = document.getElementById('location').value.trim();
-  var light  = document.getElementById('lighting').value.trim();
-  var atmos  = document.getElementById('atmosphere').value.trim();
-  var insert = document.getElementById('insertDetail').value.trim();
-
-  if (!scene) { showErr('Please describe the scene.'); return; }
-  if (!loc)   { showErr('Please enter a location.'); return; }
-  if (!c1desc){ showErr('Please describe Character 1.'); return; }
-
-  var btn = document.getElementById('genBtn');
-  btn.disabled = true;
-  btn.innerHTML = '<span class="spinner"></span> Generating...';
-  document.getElementById('errMsg').style.display = 'none';
-  document.getElementById('results').style.display = 'none';
-
-  var bible = 'SCENE: ' + scene +
-    '\nLOCATION: ' + loc +
-    '\nTIME: ' + selVals.time +
-    '\nLIGHTING: ' + (light || 'cinematic') +
-    '\nATMOSPHERE: ' + (atmos || '') +
-    '\nCOLOR GRADE: ' + selVals.grade +
-    '\nLENS: ' + selVals.lens +
-    '\nCHARACTER 1 — ' + c1name + ': ' + c1desc + '. Role: ' + (c1role || 'main character') +
-    (c2desc ? '\nCHARACTER 2 — ' + c2name + ': ' + c2desc + '. Role: ' + (c2role || 'secondary') : '');
-
-  var shotDefs = {
-    'wide-establishing': 'WIDE ESTABLISHING: Full location, both characters visible, sets scale and atmosphere.',
-    'medium-both': 'MEDIUM SHOT: Both characters waist-up, facing each other, conversation in progress.',
-    'ots-char1': 'OVER THE SHOULDER: Camera behind ' + c2name + ', focused on ' + c1name + ' speaking. ' + c2name + ' shoulder blurred in foreground. Lighting axis flipped — adjust key light direction.',
-    'ots-char2': 'OVER THE SHOULDER: Camera behind ' + c1name + ', focused on ' + c2name + ' responding. ' + c1name + ' shoulder blurred in foreground. Lighting axis flipped — adjust key light direction.',
-    'closeup-char1': 'CLOSE-UP of ' + c1name + ': Face fills frame. Show emotion and reaction. Eyes sharp with catchlight.',
-    'closeup-char2': 'CLOSE-UP of ' + c2name + ': Face fills frame. Show emotion and reaction. Eyes sharp with catchlight.',
-    'insert': 'INSERT SHOT: Extreme close-up of: ' + (insert || 'a key object in the scene') + '. Sharp focus, everything else blurred.',
-    'wide-final': 'WIDE SHOT — resolution: Both characters, tension resolved or escalated, sense of conclusion.'
-  };
-
-  var shotLabels = {
-    'wide-establishing': 'Wide Establishing Shot',
-    'medium-both': 'Medium Shot — Both Characters',
-    'ots-char1': 'OTS — ' + c1name + ' Speaking',
-    'ots-char2': 'OTS — ' + c2name + ' Responding',
-    'closeup-char1': 'Close-Up — ' + c1name,
-    'closeup-char2': 'Close-Up — ' + c2name,
-    'insert': 'Insert Shot',
-    'wide-final': 'Wide Shot — Resolved'
-  };
-
-  var refSys = 'You write Midjourney image prompts. Write ONLY the prompt — no explanation. End with aspect ratio flag.';
-  var shotSys = 'You write AI video prompts for Kling AI and Runway. Single paragraph, 3-5 sentences. Professional cinematography language. Keep all character and location details exactly consistent with the scene bible. No title, no numbering, just the prompt.';
-
-  var refDefs = [
-    { label:'LOCATION', name:'Location Reference', desc:'Use as environment reference in Kling AI for ALL shots', instr:'Write a Midjourney prompt for a photorealistic reference image of this location: ' + loc + '. Time: ' + selVals.time + '. Lighting: ' + (light||'cinematic') + '. No people. Photorealistic, cinematic. End with --ar 16:9 --style raw' },
-    { label:'CHARACTER 1', name:c1name + ' Reference', desc:'Use as character reference for all shots with ' + c1name, instr:'Write a Midjourney prompt for a character reference portrait of: ' + c1desc + '. Neutral expression, looking slightly off camera, plain dark background, cinematic portrait lighting, photorealistic. End with --ar 1:1 --style raw' }
-  ];
-  if (c2desc) {
-    refDefs.push({ label:'CHARACTER 2', name:c2name + ' Reference', desc:'Use as character reference for all shots with ' + c2name, instr:'Write a Midjourney prompt for a character reference portrait of: ' + c2desc + '. Neutral expression, looking slightly off camera, plain dark background, cinematic portrait lighting, photorealistic. End with --ar 1:1 --style raw' });
+function toggleChar(n) {
+  var cb = document.getElementById('c' + n + 'toggle');
+  var card = document.getElementById('char-' + n);
+  if (!card || !cb) return;
+  if (cb.checked) {
+    card.style.opacity = '1';
+    card.style.pointerEvents = 'auto';
+    enabledChars.add(n);
+  } else {
+    card.style.opacity = '0.4';
+    card.style.pointerEvents = 'none';
+    enabledChars.delete(n);
   }
-  refDefs.push({ label:'BOTH IN SCENE', name:'Scene Reference', desc:'Generate this AFTER getting individual references. Use for wide and medium shots', instr:'Write a Midjourney prompt for a reference image showing both characters in the scene: ' + c1name + ' (' + c1desc + ') and ' + c2name + ' (' + c2desc + ') in location: ' + loc + '. Time: ' + selVals.time + '. Lighting: ' + (light||'cinematic') + '. Photorealistic, cinematic. End with --ar 16:9 --style raw' });
+}
 
-  try {
-    var refResults = [];
-    for (var i = 0; i < refDefs.length; i++) {
-      try {
-        var p = await callClaude(apiKey, refSys, refDefs[i].instr, 200);
-        refResults.push({ def: refDefs[i], prompt: p });
-      } catch(e) {
-        refResults.push({ def: refDefs[i], prompt: 'Error: ' + e.message });
-      }
-    }
+function removeChar(n) {
+  var card = document.getElementById('char-' + n);
+  if (card) { card.remove(); enabledChars.delete(n); charCount = Math.max(1, charCount - 1); }
+  checkAddBtn();
+}
 
-    btn.innerHTML = '<span class="spinner"></span> Generating shot list...';
+function addCharacter() {
+  if (charCount >= maxChars) return;
 
-    var shotResults = [];
-    for (var j = 0; j < shots.length; j++) {
-      try {
-        var sp = await callClaude(apiKey, shotSys, 'SCENE BIBLE:\n' + bible + '\n\nSHOT:\n' + shotDefs[shots[j]] + '\n\nWrite ONLY the video prompt.', 400);
-        shotResults.push({ shot: shots[j], prompt: sp });
-      } catch(e) {
-        shotResults.push({ shot: shots[j], prompt: 'Error: ' + e.message });
-      }
-    }
-
-    document.getElementById('refResults').innerHTML = refResults.map(function(r, idx) {
-      return '<div class="shot-result"><div class="shot-result-header"><div><div class="shot-label">' + r.def.label + ' — ' + r.def.name + '</div><div class="shot-sub">' + r.def.desc + '</div></div><button class="copy-btn" id="rb' + idx + '" onclick="copyText(this, document.getElementById(\'rp' + idx + '\').textContent)">Copy</button></div><div class="prompt-text" id="rp' + idx + '">' + r.prompt + '</div></div>';
-    }).join('');
-
-    document.getElementById('shotResults').innerHTML = shotResults.map(function(r, idx) {
-      return '<div class="shot-result"><div class="shot-result-header"><div class="shot-label">Shot ' + (idx+1) + ' — ' + shotLabels[r.shot] + '</div><button class="copy-btn" id="sb' + idx + '" onclick="copyText(this, document.getElementById(\'sp' + idx + '\').textContent)">Copy</button></div><div class="prompt-text" id="sp' + idx + '">' + r.prompt + '</div></div>';
-    }).join('');
-
-    document.getElementById('results').style.display = 'block';
-    document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-  } catch(e) {
-    showErr('Error: ' + e.message);
+  // Enable char-2 first if it exists and is disabled
+  var char2 = document.getElementById('char-2');
+  if (char2 && !enabledChars.has(2)) {
+    char2.style.opacity = '1';
+    char2.style.pointerEvents = 'auto';
+    var cb2 = document.getElementById('c2toggle');
+    if (cb2) cb2.checked = true;
+    enabledChars.add(2);
+    charCount = 2;
+    checkAddBtn();
     return;
   }
 
-  btn.disabled = false;
-  btn.textContent = '🎬 Regenerate';
+  charCount++;
+  var n = charCount;
+  enabledChars.add(n);
+  var div = document.createElement('div');
+  div.className = 'char-card char-optional enabled';
+  div.id = 'char-' + n;
+  div.innerHTML =
+    '<div class="char-header">' +
+      '<div class="char-title">Character ' + n + '</div>' +
+      '<div class="char-controls">' +
+        '<label class="toggle-label"><input type="checkbox" id="c' + n + 'toggle" onchange="toggleChar(' + n + ')" checked> Enable</label>' +
+        '<button class="remove-char" onclick="removeChar(' + n + ')">✕ Remove</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="field"><label>Name</label><input type="text" id="c' + n + 'name" placeholder="Character name"></div>' +
+    '<div class="field"><label>Appearance</label><textarea id="c' + n + 'desc" placeholder="Physical description, clothing, distinguishing features" style="min-height:80px;"></textarea></div>' +
+    '<div class="field"><label>Role in scene</label><input type="text" id="c' + n + 'role" placeholder="What are they doing / feeling"></div>' +
+    '<div class="char-ref-upload">' +
+      '<span class="char-ref-label">Reference Image <span style="font-weight:400;color:var(--dim);">(optional)</span></span>' +
+      '<p class="char-ref-note"><strong>What gets extracted:</strong> appearance only — costume, clothing, hair, skin tone, physical build, accessories.</p>' +
+      '<div class="ref-upload-row">' +
+        '<button class="ref-upload-btn" type="button" onclick="triggerRefUpload(' + n + ')">📎 Upload photo</button>' +
+        '<input type="file" id="refimg-c' + n + '" accept="image/*" style="display:none;" onchange="previewRef(' + n + ', this)">' +
+        '<img class="ref-img-preview" id="refprev-c' + n + '" alt="Reference">' +
+        '<span class="ref-img-filename" id="refname-c' + n + '"></span>' +
+        '<button class="extract-btn" id="extbtn-c' + n + '" onclick="extractRef(' + n + ')">✨ Extract Appearance</button>' +
+      '</div>' +
+      '<div class="extract-status" id="extstatus-c' + n + '">✓ Appearance extracted and filled</div>' +
+    '</div>';
+  document.getElementById('charsContainer').appendChild(div);
+  checkAddBtn();
+}
+
+function checkAddBtn() {
+  var btn = document.getElementById('addCharBtn');
+  if (btn) btn.disabled = (charCount >= maxChars);
+}
+
+function getCharacters() {
+  var chars = [];
+  for (var i = 1; i <= maxChars; i++) {
+    if (!enabledChars.has(i)) continue;
+    var nameEl = document.getElementById('c' + i + 'name');
+    var descEl = document.getElementById('c' + i + 'desc');
+    var roleEl = document.getElementById('c' + i + 'role');
+    if (!nameEl) continue;
+    var name = nameEl.value.trim();
+    var desc = descEl ? descEl.value.trim() : '';
+    var role = roleEl ? roleEl.value.trim() : '';
+    if (name || desc) chars.push({ name: name || 'Character ' + i, desc: desc, role: role });
+  }
+  return chars;
+}
+
+// ── REFERENCE IMAGE ───────────────────────────────────────────────────────────
+function triggerRefUpload(n) {
+  var input = document.getElementById('refimg-c' + n);
+  if (input) input.click();
+}
+
+function previewRef(n, input) {
+  if (!input.files || !input.files[0]) return;
+  var file = input.files[0];
+  var prev   = document.getElementById('refprev-c' + n);
+  var name   = document.getElementById('refname-c' + n);
+  var btn    = document.getElementById('extbtn-c' + n);
+  var status = document.getElementById('extstatus-c' + n);
+  if (status) status.style.display = 'none';
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    if (prev) { prev.src = e.target.result; prev.style.display = 'block'; }
+    if (name) { name.textContent = file.name; name.style.display = 'inline'; }
+    if (btn)  { btn.style.display = 'inline-block'; }
+  };
+  reader.readAsDataURL(file);
+}
+
+async function extractRef(n) {
+  var input  = document.getElementById('refimg-c' + n);
+  var btn    = document.getElementById('extbtn-c' + n);
+  var descEl = document.getElementById('c' + n + 'desc');
+  var status = document.getElementById('extstatus-c' + n);
+  if (!input || !input.files || !input.files[0] || !descEl) return;
+  btn.disabled = true;
+  btn.textContent = '⏳ Extracting...';
+  var file = input.files[0];
+  var base64 = await new Promise(function(resolve, reject) {
+    var r = new FileReader();
+    r.onload = function(e) { resolve(e.target.result.split(',')[1]); };
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+  try {
+    var resp = await fetch('/api/scene', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: 'You are a casting and costume description specialist. Analyse the person in the image and describe ONLY their appearance — physical attributes, clothing, costume, hair, skin tone, accessories, and distinguishing visual details. Be specific. Do NOT mention the photo background or interpret their personality. Output a single paragraph of 2-4 sentences.',
+        user: "Describe this person's appearance for use as a character reference in AI video generation. Include: approximate age and build, skin tone, hair colour/style/length, clothing and costume details, accessories. Appearance only.",
+        imageBase64: base64,
+        imageMediaType: file.type || 'image/jpeg',
+        max_tokens: 300
+      })
+    });
+    var data = await resp.json();
+    if (data.error) throw new Error(data.error);
+    descEl.value = data.result.trim();
+    descEl.style.borderColor = 'var(--green)';
+    setTimeout(function() { descEl.style.borderColor = ''; }, 2000);
+    if (status) status.style.display = 'block';
+    btn.textContent = '✨ Re-extract';
+  } catch(e) {
+    alert('Extraction error: ' + e.message);
+    btn.textContent = '✨ Extract Appearance';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+// ── SHOT TABS ─────────────────────────────────────────────────────────────────
+function switchTab(sid, tab) {
+  document.getElementById('vpanel-' + sid).classList.toggle('active', tab === 'video');
+  document.getElementById('rpanel-' + sid).classList.toggle('active', tab === 'ref');
+  document.getElementById('vtab-' + sid).classList.toggle('active', tab === 'video');
+  document.getElementById('rtab-' + sid).classList.toggle('active', tab === 'ref');
+}
+
+// ── SCENE CONTEXT HELPERS ─────────────────────────────────────────────────────
+function getSceneContext() {
+  var chars = getCharacters();
+  var charsText = chars.map(function(c, i) {
+    return 'Character ' + (i+1) + ': ' + c.name + (c.desc ? ' — ' + c.desc : '') + (c.role ? ' (' + c.role + ')' : '');
+  }).join('\n');
+  return {
+    scene:      v('sceneDesc'),
+    location:   v('location'),
+    time:       pillVal('timeGroup'),
+    lighting:   v('lighting'),
+    atmosphere: v('atmosphere'),
+    grade:      pillVal('gradeGroup'),
+    ratio:      pillVal('ratioGroup'),
+    film:       pillVal('filmGroup'),
+    mood:       pillVal('moodGroup'),
+    charsText:  charsText
+  };
+}
+
+function getShotData(sid) {
+  var lensEl  = document.querySelector('#lens-' + sid + ' .mini-pill.active');
+  var moveEl  = document.querySelector('#move-' + sid + ' .mini-pill.active');
+  var descEl  = document.getElementById('sdesc-' + sid);
+  var insertEl = document.getElementById('insertDetail');
+  var nameEl  = document.querySelector('#srow-' + sid + ' .shot-name');
+  return {
+    name:   nameEl ? nameEl.textContent.trim() : sid,
+    lens:   lensEl ? lensEl.dataset.val : '35mm',
+    move:   moveEl ? moveEl.dataset.val : 'static',
+    desc:   descEl ? descEl.value.trim() : '',
+    insert: (sid === 'insert' && insertEl) ? insertEl.value.trim() : ''
+  };
+}
+
+// ── GENERATE PROMPT ───────────────────────────────────────────────────────────
+async function generateShot(sid, mode) {
+  var isRef  = mode === 'ref';
+  var btnId  = isRef ? 'mjbtn-' + sid : 'gbtn-' + sid;
+  var resId  = isRef ? 'mjres-' + sid : 'gres-' + sid;
+  var txtId  = isRef ? 'mjtxt-' + sid : 'gtxt-' + sid;
+  var btn    = document.getElementById(btnId);
+  var resDiv = document.getElementById(resId);
+  var txtDiv = document.getElementById(txtId);
+  if (!btn || !resDiv || !txtDiv) return;
+
+  var sc = getSceneContext();
+  var sh = getShotData(sid);
+
+  btn.disabled = true;
+  btn.textContent = '⏳ Generating...';
+  resDiv.style.display = 'none';
+
+  var sceneBlock =
+    (sc.scene      ? 'Scene: '      + sc.scene      + '\n' : '') +
+    (sc.location   ? 'Location: '   + sc.location   + '\n' : '') +
+    (sc.time       ? 'Time: '       + sc.time       + '\n' : '') +
+    (sc.lighting   ? 'Lighting: '   + sc.lighting   + '\n' : '') +
+    (sc.atmosphere ? 'Atmosphere: ' + sc.atmosphere + '\n' : '') +
+    (sc.grade      ? 'Color grade: '+ sc.grade      + '\n' : '') +
+    (sc.ratio      ? 'Aspect ratio: '+ sc.ratio     + '\n' : '') +
+    (sc.film       ? 'Look/Texture: '+ sc.film      + '\n' : '') +
+    (sc.mood       ? 'Mood: '       + sc.mood       + '\n' : '') +
+    (sc.charsText  ? '\nCharacters:\n' + sc.charsText + '\n' : '');
+
+  var shotBlock =
+    'Shot type: ' + sh.name + '\n' +
+    'Lens: ' + sh.lens + '\n' +
+    (sh.desc   ? 'Action/emotion/dialogue: ' + sh.desc + '\n' : '') +
+    (sh.insert ? 'Insert object: ' + sh.insert + '\n' : '');
+
+  var systemPrompt, userPrompt;
+  if (isRef) {
+    var arMap = {'16:9 widescreen':'16:9','2.39:1 anamorphic widescreen':'21:9','4:3 academy ratio':'4:3','1:1 square':'1:1'};
+    var ar = arMap[sc.ratio] || '16:9';
+    systemPrompt = 'You are a professional cinematographer creating Midjourney reference image prompts. Write a single precise Midjourney prompt for a static cinematic still frame. Use Midjourney syntax. End with --ar ' + ar + ' --style raw --v 6.1. Output ONLY the prompt.';
+    userPrompt = 'Write a Midjourney reference image prompt for this exact frame.\n\nSCENE:\n' + sceneBlock + '\nSHOT:\n' + shotBlock + '\nRequirements: static frame, detailed subject description, exact lighting, cinematic composition, end with --ar ' + ar + ' --style raw --v 6.1';
+  } else {
+    systemPrompt = 'You are a professional cinematographer writing AI video prompts for Kling AI and Runway. Write precise technical prompts using real filmmaking language. Include lens, camera movement, composition, lighting quality, character performance, and mood. Output ONLY the prompt — no explanation or preamble. 2-4 sentences.';
+    userPrompt = 'Write an AI video prompt for this shot.\n\nSCENE:\n' + sceneBlock + '\nSHOT:\n' + shotBlock + 'Camera movement: ' + sh.move + '\n\nOutput ONLY the video prompt.';
+  }
+
+  try {
+    var resp = await fetch('/api/scene', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system: systemPrompt,
+        user: userPrompt,
+        max_tokens: 400
+      })
+    });
+    var data = await resp.json();
+    if (data.error) throw new Error(data.error);
+    txtDiv.textContent = data.result.trim();
+    resDiv.style.display = 'block';
+    btn.textContent = isRef ? '🖼 Regenerate' : '⚡ Regenerate';
+  } catch(e) {
+    alert('Error: ' + e.message);
+    btn.textContent = isRef ? '🖼 Generate Reference Prompt' : '⚡ Generate Video Prompt';
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function copyShot(sid, mode) {
+  var txtId = mode === 'ref' ? 'mjtxt-' + sid : 'gtxt-' + sid;
+  var resId = mode === 'ref' ? 'mjres-' + sid : 'gres-' + sid;
+  var txtDiv = document.getElementById(txtId);
+  if (!txtDiv) return;
+  navigator.clipboard.writeText(txtDiv.textContent).then(function() {
+    var btn = document.querySelector('#' + resId + ' .copy-shot-btn');
+    if (btn) {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    }
+  });
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  // Setup global pill groups
+  ['timeGroup','gradeGroup','ratioGroup','filmGroup','moodGroup'].forEach(setupPills);
+  // Init shot rows
+  document.querySelectorAll('.shot-cb').forEach(toggleShotRow);
+  // Char-2 starts disabled
+  var char2 = document.getElementById('char-2');
+  if (char2) {
+    char2.style.opacity = '0.4';
+    char2.style.pointerEvents = 'none';
+    var cb2 = document.getElementById('c2toggle');
+    if (cb2) cb2.checked = false;
+  }
 });
+
 </script>
 </body>
 </html>
