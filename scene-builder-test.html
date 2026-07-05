@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Scene Builder v7 | PromptKits</title>
+<title>Scene Builder | PromptKits</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -166,407 +166,14 @@ h1 span{color:var(--accent);}
 
 
 </style>
-<script defer>
-// ── PILL HELPERS ─────────────────────────────────────────────────────────────
-function pillVal(groupId) {
-  var el = document.querySelector('#' + groupId + ' .pill.active');
-  return el ? el.dataset.val : '';
-}
-function v(id) {
-  var el = document.getElementById(id);
-  return el ? el.value.trim() : '';
-}
-function setupPills(groupId) {
-  var group = document.getElementById(groupId);
-  if (!group) return;
-  group.querySelectorAll('.pill').forEach(function(pill) {
-    pill.onclick = function() {
-      group.querySelectorAll('.pill').forEach(function(p) { p.classList.remove('active'); });
-      this.classList.add('active');
-    };
-  });
-}
 
-// ── SHOT ROW TOGGLE ──────────────────────────────────────────────────────────
-function toggleShotRow(cb) {
-  if (!cb) return;
-  var sid = cb.dataset ? cb.dataset.shot : cb.getAttribute('data-shot');
-  if (!sid) return;
-  var row = document.getElementById('srow-' + sid);
-  if (!row) return;
-  if (cb.checked) {
-    row.classList.add('selected');
-  } else {
-    row.classList.remove('selected');
-  }
-  if (sid === 'insert') {
-    var det = row.querySelector('.insert-detail');
-    if (det) det.style.display = cb.checked ? 'block' : 'none';
-  }
-}
-
-// ── MINI PILL CLICK (per-shot lens/movement) ─────────────────────────────────
-function initMiniPills() {
-  document.querySelectorAll('.mini-pill').forEach(function(pill) {
-    pill.onclick = function() {
-      var group = this.dataset.group;
-      document.querySelectorAll('.mini-pill[data-group="' + group + '"]').forEach(function(p) {
-        p.classList.remove('active');
-      });
-      this.classList.add('active');
-    };
-  });
-}
-document.addEventListener('DOMContentLoaded', initMiniPills);
-window.addEventListener('load', initMiniPills);
-
-// ── CHARACTER MANAGEMENT ─────────────────────────────────────────────────────
-var charCount = 1;
-var maxChars = 4;
-var enabledChars = new Set([1]);
-
-function toggleChar(n) {
-  var cb = document.getElementById('c' + n + 'toggle');
-  var card = document.getElementById('char-' + n);
-  if (!card || !cb) return;
-  if (cb.checked) {
-    card.style.opacity = '1';
-    card.style.pointerEvents = 'auto';
-    enabledChars.add(n);
-  } else {
-    card.style.opacity = '0.4';
-    card.style.pointerEvents = 'none';
-    enabledChars.delete(n);
-  }
-}
-
-function removeChar(n) {
-  var card = document.getElementById('char-' + n);
-  if (card) { card.remove(); enabledChars.delete(n); charCount = Math.max(1, charCount - 1); }
-  checkAddBtn();
-}
-
-function addCharacter() {
-  if (charCount >= maxChars) return;
-
-  // Enable char-2 first if it exists and is disabled
-  var char2 = document.getElementById('char-2');
-  if (char2 && !enabledChars.has(2)) {
-    char2.style.opacity = '1';
-    char2.style.pointerEvents = 'auto';
-    var cb2 = document.getElementById('c2toggle');
-    if (cb2) cb2.checked = true;
-    enabledChars.add(2);
-    charCount = 2;
-    checkAddBtn();
-    return;
-  }
-
-  charCount++;
-  var n = charCount;
-  enabledChars.add(n);
-  var div = document.createElement('div');
-  div.className = 'char-card char-optional enabled';
-  div.id = 'char-' + n;
-  div.innerHTML =
-    '<div class="char-header">' +
-      '<div class="char-title">Character ' + n + '</div>' +
-      '<div class="char-controls">' +
-        '<label class="toggle-label"><input type="checkbox" id="c' + n + 'toggle" onchange="toggleChar(' + n + ')" checked> Enable</label>' +
-        '<button class="remove-char" onclick="removeChar(' + n + ')">✕ Remove</button>' +
-      '</div>' +
-    '</div>' +
-    '<div class="field"><label>Name</label><input type="text" id="c' + n + 'name" placeholder="Character name"></div>' +
-    '<div class="field"><label>Appearance</label><textarea id="c' + n + 'desc" placeholder="Physical description, clothing, distinguishing features" style="min-height:80px;"></textarea></div>' +
-    '<div class="field"><label>Role in scene</label><input type="text" id="c' + n + 'role" placeholder="What are they doing / feeling"></div>' +
-    '<div class="char-ref-upload">' +
-      '<span class="char-ref-label">Reference Image <span style="font-weight:400;color:var(--dim);">(optional)</span></span>' +
-      '<p class="char-ref-note"><strong>What gets extracted:</strong> appearance only — costume, clothing, hair, skin tone, physical build, accessories.</p>' +
-      '<div class="ref-upload-row">' +
-        '<button class="ref-upload-btn" type="button" onclick="triggerRefUpload(' + n + ')">📎 Upload photo</button>' +
-        '<input type="file" id="refimg-c' + n + '" accept="image/*" style="display:none;" onchange="previewRef(' + n + ', this)">' +
-        '<img class="ref-img-preview" id="refprev-c' + n + '" alt="Reference">' +
-        '<span class="ref-img-filename" id="refname-c' + n + '"></span>' +
-        '<button class="extract-btn" id="extbtn-c' + n + '" onclick="extractRef(' + n + ')">✨ Extract Appearance</button>' +
-      '</div>' +
-      '<div class="extract-status" id="extstatus-c' + n + '">✓ Appearance extracted and filled</div>' +
-    '</div>';
-  document.getElementById('charsContainer').appendChild(div);
-  checkAddBtn();
-  initMiniPills();
-}
-
-function checkAddBtn() {
-  var btn = document.getElementById('addCharBtn');
-  if (btn) btn.disabled = (charCount >= maxChars);
-}
-
-function getCharacters() {
-  var chars = [];
-  for (var i = 1; i <= maxChars; i++) {
-    if (!enabledChars.has(i)) continue;
-    var nameEl = document.getElementById('c' + i + 'name');
-    var descEl = document.getElementById('c' + i + 'desc');
-    var roleEl = document.getElementById('c' + i + 'role');
-    if (!nameEl) continue;
-    var name = nameEl.value.trim();
-    var desc = descEl ? descEl.value.trim() : '';
-    var role = roleEl ? roleEl.value.trim() : '';
-    if (name || desc) chars.push({ name: name || 'Character ' + i, desc: desc, role: role });
-  }
-  return chars;
-}
-
-// ── REFERENCE IMAGE ───────────────────────────────────────────────────────────
-function triggerRefUpload(n) {
-  var input = document.getElementById('refimg-c' + n);
-  if (input) input.click();
-}
-
-function previewRef(n, input) {
-  if (!input.files || !input.files[0]) return;
-  var file = input.files[0];
-  var prev   = document.getElementById('refprev-c' + n);
-  var name   = document.getElementById('refname-c' + n);
-  var btn    = document.getElementById('extbtn-c' + n);
-  var status = document.getElementById('extstatus-c' + n);
-  if (status) status.style.display = 'none';
-  var reader = new FileReader();
-  reader.onload = function(e) {
-    if (prev) { prev.src = e.target.result; prev.style.display = 'block'; }
-    if (name) { name.textContent = file.name; name.style.display = 'inline'; }
-    if (btn)  { btn.style.display = 'inline-block'; }
-  };
-  reader.readAsDataURL(file);
-}
-
-async function extractRef(n) {
-  var input  = document.getElementById('refimg-c' + n);
-  var btn    = document.getElementById('extbtn-c' + n);
-  var descEl = document.getElementById('c' + n + 'desc');
-  var status = document.getElementById('extstatus-c' + n);
-  if (!input || !input.files || !input.files[0] || !descEl) return;
-  btn.disabled = true;
-  btn.textContent = '⏳ Extracting...';
-  var file = input.files[0];
-  var base64 = await new Promise(function(resolve, reject) {
-    var r = new FileReader();
-    r.onload = function(e) { resolve(e.target.result.split(',')[1]); };
-    r.onerror = reject;
-    r.readAsDataURL(file);
-  });
-  try {
-    var resp = await fetch('/api/scene', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system: 'You are a casting and costume description specialist. Analyse the person in the image and describe ONLY their appearance — physical attributes, clothing, costume, hair, skin tone, accessories, and distinguishing visual details. Be specific. Do NOT mention the photo background or interpret their personality. Output a single paragraph of 2-4 sentences.',
-        user: "Describe this person's appearance for use as a character reference in AI video generation. Include: approximate age and build, skin tone, hair colour/style/length, clothing and costume details, accessories. Appearance only.",
-        imageBase64: base64,
-        imageMediaType: file.type || 'image/jpeg',
-        max_tokens: 300
-      })
-    });
-    var data = await resp.json();
-    if (data.error) throw new Error(data.error);
-    descEl.value = data.result.trim();
-    descEl.style.borderColor = 'var(--green)';
-    setTimeout(function() { descEl.style.borderColor = ''; }, 2000);
-    if (status) status.style.display = 'block';
-    btn.textContent = '✨ Re-extract';
-  } catch(e) {
-    alert('Extraction error: ' + e.message);
-    btn.textContent = '✨ Extract Appearance';
-  } finally {
-    btn.disabled = false;
-  }
-}
-
-// ── SHOT TABS ─────────────────────────────────────────────────────────────────
-function switchTab(sid, tab) {
-  document.getElementById('vpanel-' + sid).classList.toggle('active', tab === 'video');
-  document.getElementById('rpanel-' + sid).classList.toggle('active', tab === 'ref');
-  document.getElementById('vtab-' + sid).classList.toggle('active', tab === 'video');
-  document.getElementById('rtab-' + sid).classList.toggle('active', tab === 'ref');
-}
-
-// ── SCENE CONTEXT HELPERS ─────────────────────────────────────────────────────
-function getSceneContext() {
-  var chars = getCharacters();
-  var charsText = chars.map(function(c, i) {
-    return 'Character ' + (i+1) + ': ' + c.name + (c.desc ? ' — ' + c.desc : '') + (c.role ? ' (' + c.role + ')' : '');
-  }).join('\n');
-  return {
-    scene:      v('sceneDesc'),
-    location:   v('location'),
-    time:       pillVal('timeGroup'),
-    lighting:   v('lighting'),
-    atmosphere: v('atmosphere'),
-    grade:      pillVal('gradeGroup'),
-    ratio:      pillVal('ratioGroup'),
-    film:       pillVal('filmGroup'),
-    mood:       pillVal('moodGroup'),
-    charsText:  charsText
-  };
-}
-
-function getShotData(sid) {
-  var lensEl  = document.querySelector('#lens-' + sid + ' .mini-pill.active');
-  var moveEl  = document.querySelector('#move-' + sid + ' .mini-pill.active');
-  var descEl  = document.getElementById('sdesc-' + sid);
-  var insertEl = document.getElementById('insertDetail');
-  var nameEl  = document.querySelector('#srow-' + sid + ' .shot-name');
-  return {
-    name:   nameEl ? nameEl.textContent.trim() : sid,
-    lens:   lensEl ? lensEl.dataset.val : '35mm',
-    move:   moveEl ? moveEl.dataset.val : 'static',
-    desc:   descEl ? descEl.value.trim() : '',
-    insert: (sid === 'insert' && insertEl) ? insertEl.value.trim() : ''
-  };
-}
-
-// ── GENERATE PROMPT ───────────────────────────────────────────────────────────
-async function generateShot(sid, mode) {
-  var isRef  = mode === 'ref';
-  var btnId  = isRef ? 'mjbtn-' + sid : 'gbtn-' + sid;
-  var resId  = isRef ? 'mjres-' + sid : 'gres-' + sid;
-  var txtId  = isRef ? 'mjtxt-' + sid : 'gtxt-' + sid;
-  var btn    = document.getElementById(btnId);
-  var resDiv = document.getElementById(resId);
-  var txtDiv = document.getElementById(txtId);
-  if (!btn || !resDiv || !txtDiv) return;
-
-  var sc = getSceneContext();
-  var sh = getShotData(sid);
-
-  btn.disabled = true;
-  btn.textContent = '⏳ Generating...';
-  resDiv.style.display = 'none';
-
-  var sceneBlock =
-    (sc.scene      ? 'Scene: '      + sc.scene      + '\n' : '') +
-    (sc.location   ? 'Location: '   + sc.location   + '\n' : '') +
-    (sc.time       ? 'Time: '       + sc.time       + '\n' : '') +
-    (sc.lighting   ? 'Lighting: '   + sc.lighting   + '\n' : '') +
-    (sc.atmosphere ? 'Atmosphere: ' + sc.atmosphere + '\n' : '') +
-    (sc.grade      ? 'Color grade: '+ sc.grade      + '\n' : '') +
-    (sc.ratio      ? 'Aspect ratio: '+ sc.ratio     + '\n' : '') +
-    (sc.film       ? 'Look/Texture: '+ sc.film      + '\n' : '') +
-    (sc.mood       ? 'Mood: '       + sc.mood       + '\n' : '') +
-    (sc.charsText  ? '\nCharacters:\n' + sc.charsText + '\n' : '');
-
-  var shotBlock =
-    'Shot type: ' + sh.name + '\n' +
-    'Lens: ' + sh.lens + '\n' +
-    (sh.desc   ? 'Action/emotion/dialogue: ' + sh.desc + '\n' : '') +
-    (sh.insert ? 'Insert object: ' + sh.insert + '\n' : '');
-
-  var systemPrompt, userPrompt;
-  if (isRef) {
-    var arMap = {'16:9 widescreen':'16:9','2.39:1 anamorphic widescreen':'21:9','4:3 academy ratio':'4:3','1:1 square':'1:1'};
-    var ar = arMap[sc.ratio] || '16:9';
-    systemPrompt = 'You are a professional cinematographer creating Midjourney reference image prompts. Write a single precise Midjourney prompt for a static cinematic still frame. Use Midjourney syntax. End with --ar ' + ar + ' --style raw --v 6.1. Output ONLY the prompt.';
-    userPrompt = 'Write a Midjourney reference image prompt for this exact frame.\n\nSCENE:\n' + sceneBlock + '\nSHOT:\n' + shotBlock + '\nRequirements: static frame, detailed subject description, exact lighting, cinematic composition, end with --ar ' + ar + ' --style raw --v 6.1';
-  } else {
-    systemPrompt = 'You are a professional cinematographer writing AI video prompts for Kling AI and Runway. Write prompts for ONE single continuous shot — one camera position, one lens, one movement. Include ALL of the following in every prompt: the exact camera framing and lens, the camera movement, the precise lighting quality, the characters with their appearance and emotional state, any dialogue or action described (translate dialogue into performance description — e.g. 'she leans forward and says something, her voice low and controlled'), and the overall atmosphere. Do NOT omit action, emotion, or dialogue — these are essential to the shot. End every prompt with: single continuous shot, no cuts. Output ONLY the prompt — no explanation or preamble. 3-5 sentences.';
-    userPrompt = 'Write an AI video prompt for this shot.\n\nSCENE:\n' + sceneBlock + '\nSHOT:\n' + shotBlock + 'Camera movement: ' + sh.move + '\n\nIMPORTANT: Include the action, emotion, and dialogue in the prompt — translate them into cinematic performance description. ONE camera position, no cuts. Output ONLY the video prompt.';
-  }
-
-  try {
-    var resp = await fetch('/api/scene', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system: systemPrompt,
-        user: userPrompt,
-        max_tokens: 400
-      })
-    });
-    var data = await resp.json();
-    if (data.error) throw new Error(data.error);
-    txtDiv.textContent = data.result.trim();
-    resDiv.style.display = 'block';
-    btn.textContent = isRef ? '🖼 Regenerate' : '⚡ Regenerate';
-  } catch(e) {
-    alert('Error: ' + e.message);
-    btn.textContent = isRef ? '🖼 Generate Reference Prompt' : '⚡ Generate Video Prompt';
-  } finally {
-    btn.disabled = false;
-  }
-}
-
-function copyShot(sid, mode) {
-  var txtId = mode === 'ref' ? 'mjtxt-' + sid : 'gtxt-' + sid;
-  var resId = mode === 'ref' ? 'mjres-' + sid : 'gres-' + sid;
-  var txtDiv = document.getElementById(txtId);
-  if (!txtDiv) return;
-  navigator.clipboard.writeText(txtDiv.textContent).then(function() {
-    var btn = document.querySelector('#' + resId + ' .copy-shot-btn');
-    if (btn) {
-      btn.textContent = 'Copied!';
-      btn.classList.add('copied');
-      setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-    }
-  });
-}
-
-// ── INIT ──────────────────────────────────────────────────────────────────────
-function initPage() {
-  // Setup global pill groups
-  ['timeGroup','gradeGroup','ratioGroup','filmGroup','moodGroup'].forEach(function(id) {
-    setupPills(id);
-  });
-  // Init shot rows — expand pre-checked ones
-  document.querySelectorAll('.shot-cb').forEach(function(cb) {
-    toggleShotRow(cb);
-  });
-  // Char-2 starts disabled
-  var char2 = document.getElementById('char-2');
-  if (char2) {
-    char2.style.opacity = '0.4';
-    char2.style.pointerEvents = 'none';
-    var cb2 = document.getElementById('c2toggle');
-    if (cb2) cb2.checked = false;
-    enabledChars.delete(2);
-  }
-}
-// Run on both events as fallback
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initPage);
-} else {
-  initPage();
-}
-window.addEventListener('load', function() {
-  // Re-run in case DOMContentLoaded missed anything
-  document.querySelectorAll('.shot-cb').forEach(function(cb) {
-    var sid = cb.dataset.shot;
-    var row = document.getElementById('srow-' + sid);
-    if (!row) return;
-    if (cb.checked) row.classList.add('selected');
-    else row.classList.remove('selected');
-  });
-});
-
-// ── EXPOSE TO WINDOW (required for onclick attributes) ───────────────────────
-window.toggleShotRow  = toggleShotRow;
-window.switchTab      = switchTab;
-window.generateShot   = generateShot;
-window.copyShot       = copyShot;
-window.toggleChar     = toggleChar;
-window.removeChar     = removeChar;
-window.addCharacter   = addCharacter;
-window.triggerRefUpload = triggerRefUpload;
-window.previewRef     = previewRef;
-window.extractRef     = extractRef;
-window.initMiniPills  = initMiniPills;
-</script>
 </head>
 <body>
 
 <div class="wrap">
 
 <div class="header">
-  <div class="badge"><div class="dot"></div> PromptKits Scene Builder v7</div>
+  <div class="badge"><div class="dot"></div> PromptKits — Scene Builder</div>
   <h1>🎬 <span>Scene Builder</span></h1>
   <p class="sub">Fill your scene bible once. Get consistent reference images + shot prompts for every angle.</p>
 </div>
@@ -1500,5 +1107,279 @@ window.initMiniPills  = initMiniPills;
     </div>
   </div>
 </div>
+
+<script>
+var charCount = 1;
+var maxChars = 4;
+var enabledChars = new Set([1]);
+
+function pillVal(id) {
+  var el = document.querySelector('#' + id + ' .pill.active');
+  return el ? el.dataset.val : '';
+}
+function v(id) {
+  var el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+function setupPills(id) {
+  var g = document.getElementById(id);
+  if (!g) return;
+  g.querySelectorAll('.pill').forEach(function(p) {
+    p.onclick = function() {
+      g.querySelectorAll('.pill').forEach(function(x) { x.classList.remove('active'); });
+      p.classList.add('active');
+    };
+  });
+}
+function initMiniPills() {
+  document.querySelectorAll('.mini-pill').forEach(function(p) {
+    p.onclick = function() {
+      var grp = p.dataset.group;
+      document.querySelectorAll('.mini-pill[data-group="' + grp + '"]').forEach(function(x) { x.classList.remove('active'); });
+      p.classList.add('active');
+    };
+  });
+}
+function toggleShotRow(cb) {
+  if (!cb) return;
+  var sid = cb.getAttribute('data-shot');
+  var row = document.getElementById('srow-' + sid);
+  if (!row) return;
+  if (cb.checked) row.classList.add('selected');
+  else row.classList.remove('selected');
+  if (sid === 'insert') {
+    var det = row.querySelector('.insert-detail');
+    if (det) det.style.display = cb.checked ? 'block' : 'none';
+  }
+}
+function switchTab(sid, tab) {
+  document.getElementById('vpanel-' + sid).classList.toggle('active', tab === 'video');
+  document.getElementById('rpanel-' + sid).classList.toggle('active', tab === 'ref');
+  document.getElementById('vtab-' + sid).classList.toggle('active', tab === 'video');
+  document.getElementById('rtab-' + sid).classList.toggle('active', tab === 'ref');
+}
+function toggleChar(n) {
+  var cb = document.getElementById('c' + n + 'toggle');
+  var card = document.getElementById('char-' + n);
+  if (!card || !cb) return;
+  if (cb.checked) { card.style.opacity='1'; card.style.pointerEvents='auto'; enabledChars.add(n); }
+  else { card.style.opacity='0.4'; card.style.pointerEvents='none'; enabledChars.delete(n); }
+}
+function removeChar(n) {
+  var card = document.getElementById('char-' + n);
+  if (card) { card.remove(); enabledChars.delete(n); charCount = Math.max(1, charCount-1); }
+  checkAddBtn();
+}
+function checkAddBtn() {
+  var btn = document.getElementById('addCharBtn');
+  if (btn) btn.disabled = (charCount >= maxChars);
+}
+function addCharacter() {
+  if (charCount >= maxChars) return;
+  var char2 = document.getElementById('char-2');
+  if (char2 && !enabledChars.has(2)) {
+    char2.style.opacity = '1';
+    char2.style.pointerEvents = 'auto';
+    var cb2 = document.getElementById('c2toggle');
+    if (cb2) cb2.checked = true;
+    enabledChars.add(2);
+    charCount = 2;
+    checkAddBtn();
+    return;
+  }
+  charCount++;
+  var n = charCount;
+  enabledChars.add(n);
+  var div = document.createElement('div');
+  div.className = 'char-card char-optional enabled';
+  div.id = 'char-' + n;
+  div.innerHTML =
+    '<div class="char-header">' +
+      '<div class="char-title">Character ' + n + '</div>' +
+      '<div class="char-controls">' +
+        '<label class="toggle-label"><input type="checkbox" id="c' + n + 'toggle" checked onchange="toggleChar(' + n + ')"> Enable</label>' +
+        '<button class="remove-char" onclick="removeChar(' + n + ')">✕ Remove</button>' +
+      '</div>' +
+    '</div>' +
+    '<div class="field"><label>Name</label><input type="text" id="c' + n + 'name" placeholder="Character name"></div>' +
+    '<div class="field"><label>Appearance</label><textarea id="c' + n + 'desc" style="min-height:80px;" placeholder="Physical description, clothing, features"></textarea></div>' +
+    '<div class="field"><label>Role in scene</label><input type="text" id="c' + n + 'role" placeholder="What are they doing / feeling"></div>' +
+    '<div class="char-ref-upload">' +
+      '<span class="char-ref-label">Reference Image <span style="font-weight:400;color:var(--dim);">(optional)</span></span>' +
+      '<p class="char-ref-note"><strong>What gets extracted:</strong> appearance only — costume, clothing, hair, skin tone, build, accessories.</p>' +
+      '<div class="ref-upload-row">' +
+        '<button class="ref-upload-btn" type="button" onclick="triggerRefUpload(' + n + ')">📎 Upload photo</button>' +
+        '<input type="file" id="refimg-c' + n + '" accept="image/*" style="display:none;" onchange="previewRef(' + n + ', this)">' +
+        '<img class="ref-img-preview" id="refprev-c' + n + '" alt="">' +
+        '<span class="ref-img-filename" id="refname-c' + n + '"></span>' +
+        '<button class="extract-btn" id="extbtn-c' + n + '" onclick="extractRef(' + n + ')">✨ Extract Appearance</button>' +
+      '</div>' +
+      '<div class="extract-status" id="extstatus-c' + n + '">✓ Appearance extracted</div>' +
+    '</div>';
+  document.getElementById('charsContainer').appendChild(div);
+  checkAddBtn();
+  initMiniPills();
+}
+function getCharacters() {
+  var out = [];
+  for (var i = 1; i <= maxChars; i++) {
+    if (!enabledChars.has(i)) continue;
+    var ne = document.getElementById('c' + i + 'name');
+    var de = document.getElementById('c' + i + 'desc');
+    var re = document.getElementById('c' + i + 'role');
+    if (!ne) continue;
+    var nm = ne.value.trim(), ds = de ? de.value.trim() : '', rl = re ? re.value.trim() : '';
+    if (nm || ds) out.push({name: nm || 'Character '+i, desc: ds, role: rl});
+  }
+  return out;
+}
+function triggerRefUpload(n) {
+  var el = document.getElementById('refimg-c' + n);
+  if (el) el.click();
+}
+function previewRef(n, input) {
+  if (!input.files || !input.files[0]) return;
+  var file = input.files[0];
+  var prev = document.getElementById('refprev-c' + n);
+  var name = document.getElementById('refname-c' + n);
+  var btn  = document.getElementById('extbtn-c' + n);
+  var st   = document.getElementById('extstatus-c' + n);
+  if (st) st.style.display = 'none';
+  var r = new FileReader();
+  r.onload = function(e) {
+    if (prev) { prev.src = e.target.result; prev.style.display = 'block'; }
+    if (name) { name.textContent = file.name; name.style.display = 'inline'; }
+    if (btn)  btn.style.display = 'inline-block';
+  };
+  r.readAsDataURL(file);
+}
+async function extractRef(n) {
+  var input = document.getElementById('refimg-c' + n);
+  var btn   = document.getElementById('extbtn-c' + n);
+  var desc  = document.getElementById('c' + n + 'desc');
+  var st    = document.getElementById('extstatus-c' + n);
+  if (!input || !input.files || !input.files[0] || !desc) return;
+  btn.disabled = true; btn.textContent = '⏳ Extracting...';
+  var file = input.files[0];
+  var b64 = await new Promise(function(res, rej) {
+    var r = new FileReader();
+    r.onload = function(e) { res(e.target.result.split(',')[1]); };
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+  try {
+    var resp = await fetch('/api/scene', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        system:'You are a casting specialist. Describe ONLY the person\'s appearance — age, build, skin tone, hair, clothing, accessories. One paragraph, 2-4 sentences. No background, no personality.',
+        user:"Describe this person's appearance for AI video character reference. Include: age/build, skin tone, hair colour/style, clothing, accessories.",
+        imageBase64: b64, imageMediaType: file.type||'image/jpeg', max_tokens:300
+      })
+    });
+    var data = await resp.json();
+    if (data.error) throw new Error(data.error);
+    desc.value = data.result.trim();
+    desc.style.borderColor = 'var(--green)';
+    setTimeout(function() { desc.style.borderColor = ''; }, 2000);
+    if (st) st.style.display = 'block';
+    btn.textContent = '✨ Re-extract';
+  } catch(e) {
+    alert('Error: ' + e.message);
+    btn.textContent = '✨ Extract Appearance';
+  } finally { btn.disabled = false; }
+}
+function getSceneCtx() {
+  var chars = getCharacters();
+  var ct = chars.map(function(c,i) {
+    return 'Character '+(i+1)+': '+c.name+(c.desc?' — '+c.desc:'')+(c.role?' ('+c.role+')':'');
+  }).join('\n');
+  return {
+    scene:v('sceneDesc'), location:v('location'), time:pillVal('timeGroup'),
+    lighting:v('lighting'), atmosphere:v('atmosphere'), grade:pillVal('gradeGroup'),
+    ratio:pillVal('ratioGroup'), film:pillVal('filmGroup'), mood:pillVal('moodGroup'),
+    charsText:ct
+  };
+}
+function getShotData(sid) {
+  var ln = document.querySelector('#lens-'+sid+' .mini-pill.active');
+  var mv = document.querySelector('#move-'+sid+' .mini-pill.active');
+  var de = document.getElementById('sdesc-'+sid);
+  var ie = document.getElementById('insertDetail');
+  var ne = document.querySelector('#srow-'+sid+' .shot-name');
+  return {
+    name: ne ? ne.textContent.trim() : sid,
+    lens: ln ? ln.dataset.val : '35mm',
+    move: mv ? mv.dataset.val : 'static',
+    desc: de ? de.value.trim() : '',
+    insert: (sid==='insert' && ie) ? ie.value.trim() : ''
+  };
+}
+async function generateShot(sid, mode) {
+  var isRef = mode==='ref';
+  var btnId = isRef?'mjbtn-'+sid:'gbtn-'+sid;
+  var resId = isRef?'mjres-'+sid:'gres-'+sid;
+  var txtId = isRef?'mjtxt-'+sid:'gtxt-'+sid;
+  var btn=document.getElementById(btnId), resDiv=document.getElementById(resId), txtDiv=document.getElementById(txtId);
+  if (!btn||!resDiv||!txtDiv) return;
+  var sc=getSceneCtx(), sh=getShotData(sid);
+  btn.disabled=true; btn.textContent='⏳ Generating...'; resDiv.style.display='none';
+  var sb =
+    (sc.scene      ?'Scene: '+sc.scene+'\n':'') +
+    (sc.location   ?'Location: '+sc.location+'\n':'') +
+    (sc.time       ?'Time: '+sc.time+'\n':'') +
+    (sc.lighting   ?'Lighting: '+sc.lighting+'\n':'') +
+    (sc.atmosphere ?'Atmosphere: '+sc.atmosphere+'\n':'') +
+    (sc.grade      ?'Color grade: '+sc.grade+'\n':'') +
+    (sc.ratio      ?'Aspect ratio: '+sc.ratio+'\n':'') +
+    (sc.film       ?'Look/Texture: '+sc.film+'\n':'') +
+    (sc.mood       ?'Mood: '+sc.mood+'\n':'') +
+    (sc.charsText  ?'\nCharacters:\n'+sc.charsText+'\n':'');
+  var shb = 'Shot: '+sh.name+'\nLens: '+sh.lens+'\n'+(sh.desc?'Action/emotion/dialogue: '+sh.desc+'\n':'')+(sh.insert?'Insert object: '+sh.insert+'\n':'');
+  var sys, usr;
+  if (isRef) {
+    var arMap={'16:9 widescreen':'16:9','2.39:1 anamorphic widescreen':'21:9','4:3 academy ratio':'4:3','1:1 square':'1:1'};
+    var ar=arMap[sc.ratio]||'16:9';
+    sys='You are a cinematographer writing Midjourney prompts for static cinematic reference frames. Include subject, setting, lighting, composition. End with --ar '+ar+' --style raw --v 6.1. Output ONLY the prompt.';
+    usr='Write a Midjourney reference image prompt for this frame.\n\nSCENE:\n'+sb+'\nSHOT:\n'+shb+'\nStatic frame, cinematic composition. End with --ar '+ar+' --style raw --v 6.1';
+  } else {
+    sys='You are a cinematographer writing AI video prompts for Kling AI and Runway. Write ONE single continuous shot — one camera position, one lens, one movement. Include ALL of: exact framing/lens, camera movement, lighting quality, character appearance and emotional state, action/emotion/dialogue translated into performance description. End with: single continuous shot, no cuts. Output ONLY the prompt. 3-5 sentences.';
+    usr='Write an AI video prompt for this shot.\n\nSCENE:\n'+sb+'\nSHOT:\n'+shb+'Camera movement: '+sh.move+'\n\nInclude the action, emotion, and dialogue as performance description. ONE shot, no cuts. Output ONLY the prompt.';
+  }
+  try {
+    var resp=await fetch('/api/scene',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:sys,user:usr,max_tokens:400})});
+    var data=await resp.json();
+    if (data.error) throw new Error(data.error);
+    txtDiv.textContent=data.result.trim();
+    resDiv.style.display='block';
+    btn.textContent=isRef?'🖼 Regenerate':'⚡ Regenerate';
+  } catch(e) {
+    alert('Error: '+e.message);
+    btn.textContent=isRef?'🖼 Generate Reference Prompt':'⚡ Generate Video Prompt';
+  } finally { btn.disabled=false; }
+}
+function copyShot(sid, mode) {
+  var txtId=mode==='ref'?'mjtxt-'+sid:'gtxt-'+sid;
+  var resId=mode==='ref'?'mjres-'+sid:'gres-'+sid;
+  var el=document.getElementById(txtId);
+  if (!el) return;
+  navigator.clipboard.writeText(el.textContent).then(function() {
+    var btn=document.querySelector('#'+resId+' .copy-shot-btn');
+    if (btn){btn.textContent='Copied!';btn.classList.add('copied');setTimeout(function(){btn.textContent='Copy';btn.classList.remove('copied');},2000);}
+  });
+}
+// Init on load
+window.onload = function() {
+  setupPills('timeGroup'); setupPills('gradeGroup'); setupPills('ratioGroup');
+  setupPills('filmGroup'); setupPills('moodGroup');
+  initMiniPills();
+  document.querySelectorAll('.shot-cb').forEach(function(cb) { toggleShotRow(cb); });
+  var c2=document.getElementById('char-2');
+  if (c2) { c2.style.opacity='0.4'; c2.style.pointerEvents='none'; }
+  var cb2=document.getElementById('c2toggle');
+  if (cb2) cb2.checked=false;
+  enabledChars.delete(2);
+};
+
+</script>
 </body>
 </html>
