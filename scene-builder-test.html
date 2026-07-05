@@ -164,19 +164,6 @@ h1 span{color:var(--accent);}
 .shot-row.selected .shot-tab-panel.active{display:block !important;}
 
 
-.master-section{background:#fff;border:2px solid rgba(108,92,231,0.3);border-radius:14px;padding:22px;margin-bottom:14px;box-shadow:0 2px 8px rgba(108,92,231,0.08);}
-.master-title{font-size:15px;font-weight:700;color:#1a1a2e;margin-bottom:4px;}
-.master-sub{font-size:12px;color:var(--muted);margin-bottom:16px;line-height:1.5;}
-.master-gen-btn{width:100%;padding:13px;background:var(--accent);color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:"Inter",sans-serif;transition:opacity 0.2s;letter-spacing:0.01em;}
-.master-gen-btn:hover{opacity:0.88;}
-.master-gen-btn:disabled{opacity:0.45;cursor:not-allowed;}
-.master-result{margin-top:14px;display:none;}
-.master-result-text{background:#fafafa;border:1px solid rgba(108,92,231,0.2);border-radius:10px;padding:16px;font-size:13px;line-height:1.8;color:#1a1a2e;white-space:pre-wrap;word-break:break-word;}
-.master-result-actions{margin-top:10px;display:flex;gap:8px;align-items:center;}
-.master-copy-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:6px 18px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:"Inter",sans-serif;transition:all 0.15s;}
-.master-copy-btn:hover{border-color:var(--accent);color:var(--accent);}
-.master-copy-btn.copied{color:var(--green);border-color:var(--green);}
-.master-note{font-size:11px;color:var(--dim);line-height:1.5;}
 
 </style>
 </head>
@@ -331,20 +318,6 @@ h1 span{color:var(--accent);}
       </div>
     </div>
 
-  </div>
-</div>
-
-
-<div class="master-section">
-  <div class="master-title">🎬 Full Scene Prompt — Kling AI 15s</div>
-  <div class="master-sub">Generates one single 15-second master prompt covering the entire scene. Best used as your opening wide shot or a continuous observational take. Fill your Scene Bible and Characters first, then generate.</div>
-  <button class="master-gen-btn" id="masterBtn" onclick="generateMasterPrompt()">⚡ Generate 15s Master Prompt</button>
-  <div class="master-result" id="masterResult">
-    <div class="master-result-text" id="masterText"></div>
-    <div class="master-result-actions">
-      <button class="master-copy-btn" id="masterCopyBtn" onclick="copyMaster()">Copy</button>
-      <span class="master-note">Paste directly into Kling AI — set duration to 15 seconds</span>
-    </div>
   </div>
 </div>
 
@@ -1429,8 +1402,8 @@ async function generateShot(sid, mode) {
     systemPrompt = 'You are a professional cinematographer creating Midjourney reference image prompts. Write a single precise Midjourney prompt for a static cinematic still frame. Use Midjourney syntax. End with --ar ' + ar + ' --style raw --v 6.1. Output ONLY the prompt.';
     userPrompt = 'Write a Midjourney reference image prompt for this exact frame.\n\nSCENE:\n' + sceneBlock + '\nSHOT:\n' + shotBlock + '\nRequirements: static frame, detailed subject description, exact lighting, cinematic composition, end with --ar ' + ar + ' --style raw --v 6.1';
   } else {
-    systemPrompt = 'You are a professional cinematographer writing AI video prompts for Kling AI and Runway. Each prompt must describe ONE single continuous shot only — no cuts, no scene changes, no sequence of actions. Describe only what the camera sees in that one moment: the frame, the lens, the movement, the lighting, and one specific character action or held pose. If action is described, reduce it to a single gesture or expression — not a sequence. End every prompt with: single continuous shot, no cuts. Output ONLY the prompt — no explanation or preamble. 2-4 sentences.';
-    userPrompt = 'Write an AI video prompt for this shot.\n\nSCENE:\n' + sceneBlock + '\nSHOT:\n' + shotBlock + 'Camera movement: ' + sh.move + '\n\nIMPORTANT: This is ONE single shot. Describe only what happens in this one moment — one action or held pose, no sequence of events. Output ONLY the video prompt.';
+    systemPrompt = 'You are a professional cinematographer writing AI video prompts for Kling AI and Runway. Write prompts for ONE single continuous shot — one camera position, one lens, one movement. Include ALL of the following in every prompt: the exact camera framing and lens, the camera movement, the precise lighting quality, the characters with their appearance and emotional state, any dialogue or action described (translate dialogue into performance description — e.g. 'she leans forward and says something, her voice low and controlled'), and the overall atmosphere. Do NOT omit action, emotion, or dialogue — these are essential to the shot. End every prompt with: single continuous shot, no cuts. Output ONLY the prompt — no explanation or preamble. 3-5 sentences.';
+    userPrompt = 'Write an AI video prompt for this shot.\n\nSCENE:\n' + sceneBlock + '\nSHOT:\n' + shotBlock + 'Camera movement: ' + sh.move + '\n\nIMPORTANT: Include the action, emotion, and dialogue in the prompt — translate them into cinematic performance description. ONE camera position, no cuts. Output ONLY the video prompt.';
   }
 
   try {
@@ -1488,87 +1461,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-async function generateMasterPrompt() {
-  var btn = document.getElementById('masterBtn');
-  var result = document.getElementById('masterResult');
-  var txtDiv = document.getElementById('masterText');
-  if (!btn || !result || !txtDiv) return;
 
-  var sc = getSceneContext();
-  var chars = getCharacters();
-  var charsText = chars.map(function(c, i) {
-    return 'Character ' + (i+1) + ': ' + c.name + (c.desc ? ' — ' + c.desc : '') + (c.role ? ' (' + c.role + ')' : '');
-  }).join('\n');
-
-  btn.disabled = true;
-  btn.textContent = '⏳ Generating...';
-  result.style.display = 'none';
-
-  var systemPrompt = "You are a professional cinematographer writing a single 15-second AI video prompt for Kling AI. You will receive a full scene bible including location, lighting, mood, character descriptions, and a shot list showing the scene narrative arc — use all of this to write one cinematic master prompt. The prompt must be ONE continuous uncut shot — no jump cuts, no scene changes. Choose the best lens and camera movement to capture the emotional core of the whole scene in 15 seconds. Include: precise location details, character appearance and emotional state, lighting quality, camera lens and movement, composition, atmosphere. Reference the key dramatic moment from the shot list. End with: 15 seconds, single continuous shot, no cuts, Kling AI. Output ONLY the prompt — no explanation or preamble. Maximum 5 sentences.";
-
-  // Collect selected shots with their details
-  var selectedShots = getSelectedShots();
-  var shotsText = selectedShots.map(function(s) {
-    var nameEl = document.querySelector('#srow-' + s.id + ' .shot-name');
-    var name = nameEl ? nameEl.textContent.trim() : s.id;
-    return '- ' + name + ' [' + s.lens + ', ' + s.move + ']' + (s.desc ? ': ' + s.desc : '');
-  }).join('\n');
-
-  var userPrompt = "Write a single 15-second Kling AI master prompt for this scene.\n\n" +
-    "SCENE BIBLE:\n" +
-    (sc.scene      ? "Description: " + sc.scene + "\n" : "") +
-    (sc.location   ? "Location: " + sc.location + "\n" : "") +
-    (sc.time       ? "Time: " + sc.time + "\n" : "") +
-    (sc.lighting   ? "Lighting: " + sc.lighting + "\n" : "") +
-    (sc.atmosphere ? "Atmosphere: " + sc.atmosphere + "\n" : "") +
-    (sc.grade      ? "Color grade: " + sc.grade + "\n" : "") +
-    (sc.ratio      ? "Aspect ratio: " + sc.ratio + "\n" : "") +
-    (sc.film       ? "Look/Texture: " + sc.film + "\n" : "") +
-    (sc.mood       ? "Mood: " + sc.mood + "\n" : "") +
-    (charsText     ? "\nCHARACTERS:\n" + charsText + "\n" : "") +
-    (shotsText     ? "\nSELECTED SHOTS (narrative arc for reference):\n" + shotsText + "\n" : "") +
-    "\nUsing the scene bible, characters, and shot arc above as full context, write ONE 15-second Kling AI prompt that:\n" +
-    "- Captures the emotional core and atmosphere of the scene\n" +
-    "- Chooses the most cinematic lens and camera movement for a 15s wide observational take\n" +
-    "- Includes the characters physical appearance and emotional state\n" +
-    "- References the key action or dialogue moment that defines the scene\n" +
-    "- Uses precise lighting, composition, and mood language\n" +
-    "- Is ONE continuous shot, no cuts\n" +
-    "- Ends with: 15 seconds, single continuous shot, no cuts, Kling AI";
-
-  try {
-    var resp = await fetch('/api/scene', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        system: systemPrompt,
-        user: userPrompt,
-        max_tokens: 500
-      })
-    });
-    var data = await resp.json();
-    if (data.error) throw new Error(data.error);
-    txtDiv.textContent = data.result.trim();
-    result.style.display = 'block';
-    btn.textContent = '⚡ Regenerate';
-  } catch(e) {
-    alert('Error: ' + e.message);
-    btn.textContent = '⚡ Generate 15s Master Prompt';
-  } finally {
-    btn.disabled = false;
-  }
-}
-
-function copyMaster() {
-  var txt = document.getElementById('masterText');
-  var btn = document.getElementById('masterCopyBtn');
-  if (!txt || !btn) return;
-  navigator.clipboard.writeText(txt.textContent).then(function() {
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
-  });
-}
 
 </script>
 </body>
