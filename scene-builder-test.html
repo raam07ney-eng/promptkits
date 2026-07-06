@@ -3,14 +3,23 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Scene Builder | PromptKits</title>
+<title>AI Scene Builder — Free Cinematic AI Video Scene Prompts | PromptKits</title>
+<meta name="description" content="AI Scene Builder gives you director-level control over AI video. Lock characters, environment and lighting across 15 professional camera shots — copy-ready prompts for Kling AI, Runway and Midjourney. Free."/>
+<link rel="canonical" href="https://promptkits.in/scene-builder-test.html"/>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script src="/theme.js"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337511118941734" crossorigin="anonymous"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z7FTLCXJN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3Z7FTLCXJN');</script>
 <style>
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{--bg:#f5f5fa;--card:#ffffff;--input:#f0f0f8;--border:rgba(0,0,0,0.1);--accent:#6c5ce7;--text:#1a1a2e;--muted:#5a5a7a;--dim:#9a9ab0;--green:#2d9e6b;--red:#d94f4f;}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:32px 16px 64px;}
-.wrap{max-width:800px;margin:0 auto;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:0 0 64px;}
+.wrap{max-width:800px;margin:0 auto;padding:0 16px;}
 .header{text-align:center;margin-bottom:36px;}
 .badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
 .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
@@ -18,11 +27,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 h1{font-size:30px;font-weight:700;line-height:1.2;margin-bottom:8px;}
 h1 span{color:var(--accent);}
 .sub{font-size:14px;color:var(--muted);line-height:1.6;}
-.api-box{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.3);border-radius:10px;padding:14px 18px;margin-bottom:24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.api-box label{font-size:13px;font-weight:500;color:var(--accent);white-space:nowrap;}
-.api-box input{flex:1;min-width:200px;background:var(--input);border:1px solid var(--border);border-radius:6px;padding:8px 12px;color:var(--text);font-size:13px;font-family:monospace;}
-.api-box input:focus{outline:none;border-color:var(--accent);}
-.note{font-size:11px;color:var(--dim);width:100%;}
 .section{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,0.06);}
 .stitle{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:8px;}
 .stitle::after{content:'';flex:1;height:1px;background:var(--border);}
@@ -165,24 +169,160 @@ h1 span{color:var(--accent);}
 
 
 
-</style>
 
+
+
+    /* ── PAGE LAYOUT ── */
+    .guide-page{max-width:860px;margin:0 auto;padding:48px 24px 80px;}
+
+    /* ── HERO ── */
+    .guide-hero{text-align:center;padding:0 0 56px;}
+    .guide-eyebrow{display:inline-block;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);background:rgba(168,158,255,0.1);border:1px solid rgba(168,158,255,0.2);padding:5px 14px;border-radius:20px;margin-bottom:20px;}
+    .guide-hero h1{font-size:clamp(28px,5vw,46px);font-weight:700;line-height:1.1;letter-spacing:-0.02em;margin:0 0 16px;}
+    .guide-hero h1 span{color:var(--accent);}
+    .guide-hero-sub{font-size:17px;line-height:1.75;color:var(--text-secondary);max-width:600px;margin:0 auto 28px;}
+    .hero-cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+    .btn-primary{display:inline-block;padding:12px 28px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;border-radius:8px;text-decoration:none;transition:opacity 0.2s;}
+    .btn-primary:hover{opacity:0.85;}
+    .btn-outline{display:inline-block;padding:12px 28px;border:1px solid rgba(168,158,255,0.4);color:var(--accent);font-weight:600;font-size:14px;border-radius:8px;text-decoration:none;transition:all 0.2s;}
+    .btn-outline:hover{background:rgba(168,158,255,0.08);}
+
+    /* ── VS SECTION ── */
+    .vs-section{margin:0 0 64px;}
+    .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
+    .vs-card{border-radius:14px;padding:24px;}
+    .vs-card.auto{background:rgba(255,107,107,0.06);border:1px solid rgba(255,107,107,0.2);}
+    .vs-card.manual{background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.25);}
+    .vs-card-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
+    .vs-card.auto .vs-card-label{color:#ff6b6b;}
+    .vs-card.manual .vs-card-label{color:var(--accent);}
+    .vs-card h3{font-size:15px;font-weight:700;margin:0 0 12px;}
+    .vs-list{list-style:none;padding:0;margin:0;}
+    .vs-list li{font-size:13px;color:var(--text-secondary);line-height:1.6;padding:4px 0;padding-left:18px;position:relative;}
+    .vs-card.auto .vs-list li::before{content:"✗";position:absolute;left:0;color:#ff6b6b;font-size:11px;top:5px;}
+    .vs-card.manual .vs-list li::before{content:"✓";position:absolute;left:0;color:var(--accent);font-size:11px;top:5px;}
+
+    /* ── SECTION HEADINGS ── */
+    .section-block{margin:0 0 64px;}
+    .section-eyebrow{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;}
+    .section-block h2{font-size:22px;font-weight:700;margin:0 0 6px;}
+    .section-block .section-sub{font-size:14px;color:var(--text-secondary);margin:0 0 28px;line-height:1.6;}
+    .divider{height:1px;background:var(--border-card);margin:0 0 64px;}
+
+    /* ── HOW TO USE STEPS ── */
+    .steps{display:flex;flex-direction:column;gap:0;}
+    .step{display:grid;grid-template-columns:48px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--border-card);}
+    .step:last-child{border-bottom:none;}
+    .step-num{width:40px;height:40px;border-radius:10px;background:rgba(168,158,255,0.12);border:1px solid rgba(168,158,255,0.25);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--accent);flex-shrink:0;margin-top:2px;}
+    .step-content h3{font-size:15px;font-weight:700;margin:0 0 6px;color:var(--text-primary);}
+    .step-content p{font-size:13.5px;line-height:1.7;color:var(--text-secondary);margin:0 0 10px;}
+    .step-tip{display:inline-block;font-size:12px;color:var(--accent);background:rgba(168,158,255,0.08);border:1px solid rgba(168,158,255,0.2);border-radius:6px;padding:4px 10px;}
+
+    /* ── TIPS GRID ── */
+    .tips-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+    .tip-card{background:var(--bg-card);border:1px solid var(--border-card);border-radius:12px;padding:20px;transition:border-color 0.2s;}
+    .tip-card:hover{border-color:rgba(168,158,255,0.35);}
+    .tip-icon{font-size:22px;margin-bottom:10px;}
+    .tip-card h3{font-size:13px;font-weight:700;margin:0 0 6px;color:var(--text-primary);}
+    .tip-card p{font-size:12.5px;line-height:1.65;color:var(--text-secondary);margin:0;}
+    .tip-card .tip-example{font-size:11.5px;color:var(--accent);background:rgba(168,158,255,0.06);border-left:2px solid rgba(168,158,255,0.3);padding:7px 10px;border-radius:0 5px 5px 0;margin-top:8px;font-style:italic;line-height:1.5;}
+
+    /* ── FAQ ── */
+    .faq-list{display:flex;flex-direction:column;gap:4px;}
+    .faq-item{border:1px solid var(--border-card);border-radius:10px;overflow:hidden;background:var(--bg-card);}
+    .faq-q{padding:16px 20px;font-size:14px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--text-primary);user-select:none;}
+    .faq-q::after{content:"﹢";font-size:18px;color:var(--text-muted);flex-shrink:0;transition:transform 0.2s;}
+    .faq-item.open .faq-q::after{content:"−";}
+    .faq-a{display:none;padding:0 20px 16px;font-size:13.5px;line-height:1.75;color:var(--text-secondary);}
+    .faq-item.open .faq-a{display:block;}
+    .faq-a strong{color:var(--text-primary);}
+
+    /* ── WORKFLOW DIAGRAM ── */
+    .workflow{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin:24px 0;justify-content:center;}
+    .wf-step{background:var(--bg-card);border:1px solid var(--border-card);border-radius:10px;padding:12px 16px;text-align:center;min-width:120px;}
+    .wf-step-num{font-size:10px;font-weight:700;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px;}
+    .wf-step-label{font-size:12px;font-weight:600;color:var(--text-primary);}
+    .wf-arrow{font-size:18px;color:var(--text-muted);padding:0 8px;}
+
+    /* ── RICH CONTENT ── */
+    .rich-section{background:var(--bg-card);border:1px solid var(--border-card);border-radius:14px;padding:32px;margin:0 0 64px;}
+    .rich-section h2{font-size:18px;font-weight:700;margin:0 0 8px;}
+    .rich-section p{font-size:13.5px;line-height:1.8;color:var(--text-secondary);margin:0 0 12px;}
+    .rich-section p:last-child{margin:0;}
+
+    /* ── COMPARISON TABLE ── */
+    .comp-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:13px;}
+    .comp-table th{padding:10px 14px;text-align:left;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);border-bottom:1px solid var(--border-card);}
+    .comp-table td{padding:11px 14px;border-bottom:1px solid var(--border-card);color:var(--text-secondary);line-height:1.5;}
+    .comp-table tr:last-child td{border-bottom:none;}
+    .comp-table .check{color:#4caf80;font-weight:700;}
+    .comp-table .cross{color:#ff6b6b;font-weight:700;}
+    .comp-table .feature{color:var(--text-primary);font-weight:500;}
+
+    @media(max-width:640px){
+      .vs-grid{grid-template-columns:1fr;}
+      .workflow{flex-direction:column;}
+      .wf-arrow{transform:rotate(90deg);}
+    }
+  
+
+/* ===== AI Scene Builder page layout ===== */
+:root{--text-primary:var(--text);--text-secondary:var(--muted);--text-muted:var(--dim);--bg-card:var(--card);--border-card:var(--border);}
+[data-theme="dark"]{--bg:#0d0d14;--card:#16161f;--input:#1e1e2a;--border:rgba(255,255,255,0.09);--accent:#a89eff;--text:#f0f0f5;--muted:#a5a5bd;--dim:#6c6c82;}
+.sb-hero{padding:44px 16px 36px;text-align:center;}
+.hero-tagline{font-size:clamp(20px,3.2vw,30px);font-weight:700;letter-spacing:-0.02em;line-height:1.2;margin:8px 0 14px;}
+.hero-tagline span{color:var(--accent);}
+.hero-checks{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:6px;}
+.hero-check{font-size:12.5px;font-weight:600;color:var(--accent);background:rgba(168,158,255,0.08);border:1px solid rgba(168,158,255,0.25);padding:6px 14px;border-radius:20px;}
+.below-wrap{max-width:1000px;margin:72px auto 0;padding:0 16px;}
+.workflow-strip{max-width:1000px;margin:0 auto 64px;padding:0 16px;text-align:center;}
+.content-band{max-width:1240px;margin:0 auto;padding:0 16px;display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:32px;align-items:start;}
+.band-col{min-width:0;}
+.band-col .section-block{margin:0 0 32px;}
+.band-col .rich-section{padding:22px;margin:0 0 16px;}
+.band-col > div[style*="background"]{margin-bottom:16px !important;}
+.cta-block{text-align:center;padding:56px 16px 8px;}
+@media(max-width:1020px){.content-band{grid-template-columns:1fr;max-width:800px;}}
+
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why does the light direction keep changing between shots?", "acceptedAnswer": {"@type": "Answer", "text": "Kling AI has no memory between clips — every shot is a fresh generation from scratch. It reinterprets your scene setup each time, including the light source position. The fix is the Fixed Elements field — write your light direction there and it gets injected into every single shot prompt automatically. Example: \"Window light always from the LEFT wall — left side of every face always lit, right side always in shadow.\""}}, {"@type": "Question", "name": "Why is Kling generating multiple cuts in one clip when I only want one shot?", "acceptedAnswer": {"@type": "Answer", "text": "This happens when the shot description contains more than one action or a sequence of events. Kling reads narrative structure and creates cuts automatically. Keep the Action / Emotion / Dialogue field to a single moment — one gesture, one held expression, one action. For the Wide Establishing shot especially, describe only the starting state of the scene, not what will happen during it."}}, {"@type": "Question", "name": "What's the best way to keep characters consistent across shots?", "acceptedAnswer": {"@type": "Answer", "text": "Two things work together: (1) Reference image — generate a Midjourney reference frame for each shot and attach it in Kling. (2) Previous shot's last frame — pause your last Kling clip at the final second, screenshot it, and use that as the reference for the next shot. This carries over exact clothing, hand positions, and prop states. For large lens jumps (18mm to 85mm), generate a fresh Midjourney reference instead of using the previous frame."}}, {"@type": "Question", "name": "Should I use 5 seconds or 10 seconds per shot in Kling?", "acceptedAnswer": {"@type": "Answer", "text": "5 seconds for static shots — close-ups, OTS coverage, insert shots, any shot where the camera is locked off. 10 seconds for shots with camera movement (push in, pull back, tracking, crane) or long dialogue sequences. Kling needs the full duration to complete a movement cleanly. Going shorter on a movement shot gives you an incomplete camera move."}}, {"@type": "Question", "name": "Why does my prop keep changing position between shots?", "acceptedAnswer": {"@type": "Answer", "text": "Add it to Fixed Elements with its exact position. Be specific: \"Coffee cup always on the right side of the table in front of Character 2 — never moves.\" Also use the previous shot's last frame as your reference image — the prop position from the last clip carries into the next one."}}, {"@type": "Question", "name": "What is the 180-degree rule and why does it matter?", "acceptedAnswer": {"@type": "Answer", "text": "The 180-degree rule means the camera always stays on one side of an imaginary line drawn between two characters. If the camera crosses this line, the characters appear to have swapped positions on screen — which breaks spatial continuity for the viewer. In Scene Builder, put this in Fixed Elements: \"Camera always on the RIGHT side of the table axis — never crosses to the left side.\" Every shot prompt will then respect this rule."}}, {"@type": "Question", "name": "Does Scene Builder work with Runway and other AI video tools?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The prompts are written in professional cinematography language that works across Kling AI, Runway Gen-4, Google Veo/Flow, Pika, and Hailuo. The Reference Image tab outputs a Midjourney prompt optimised for static frames. The video prompt works with any AI video model — Kling is recommended because it responds best to detailed cinematic language."}}, {"@type": "Question", "name": "How is Scene Builder different from the Video Prompt Generator?", "acceptedAnswer": {"@type": "Answer", "text": "The Video Prompt Generator creates a single prompt for a single clip — good for standalone shots, hero moments, or social content. Scene Builder is for multi-shot scenes — it maintains a shared Scene Bible across all shots, locks consistency elements globally, and generates both a video prompt and a Midjourney reference image for each individual shot. Use Scene Builder whenever you need more than one clip to work together as a sequence."}}]}</script>
 </head>
 <body>
 
-<div class="wrap">
+<header>
+  <a class="logo" href="/">
+    <div class="logo-icon"><svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect x="7" y="5" width="5" height="22" rx="2" fill="white"/><path d="M12,5 Q25,5 25,13 Q25,21 12,21" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/><circle cx="25" cy="28" r="2.5" fill="#a89eff"/><circle cx="30" cy="23" r="1.5" fill="#a89eff"/><line x1="25" y1="28" x2="30" y2="23" stroke="#a89eff" stroke-width="1.2"/></svg></div>
+    <div class="logo-text"><span class="logo-p">Prompt</span><span class="logo-k">Kits</span></div>
+  </a>
+  <div class="header-right">
+    <nav>
+      <a href="/image-prompt.html">🖼 Image</a>
+      <a href="/video-prompt.html">🎬 Video</a>
+      <a href="/scene-builder-test.html">🎥 Scene Builder</a>
+      <a href="/prompt-library.html">📚 Library</a>
+      <a href="/learn.html">🎓 Learn</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" onclick="PKTheme.toggle()">Dark</button>
+  </div>
+</header>
 
-<div class="header">
-  <div class="badge"><div class="dot"></div> PromptKits — Scene Builder</div>
-  <h1>🎬 <span>Scene Builder</span></h1>
-  <p class="sub">Fill your scene bible once. Get consistent reference images + shot prompts for every angle.</p>
+<div class="guide-hero sb-hero">
+  <div class="guide-eyebrow">🎬 PromptKits — AI Video Tools</div>
+  <h1>AI Scene Builder</h1>
+  <div class="hero-tagline">Every shot. Your way. <span>Not the AI's guess.</span></div>
+  <p class="guide-hero-sub">Create an entire cinematic scene in one click.</p>
+  <div class="hero-checks">
+    <span class="hero-check">✓ Locked character consistency</span>
+    <span class="hero-check">✓ Locked environment</span>
+    <span class="hero-check">✓ 15 professional camera shots</span>
+    <span class="hero-check">✓ Copy-ready prompts</span>
+  </div>
 </div>
 
-<div class="api-box">
-  <label>🔑 API Key</label>
-  <input type="password" id="apiKey" placeholder="sk-ant-api03-...">
-  <div class="note">⚠️ For testing only. The live site uses a secure server-side key.</div>
-</div>
+<div class="wrap" id="tool">
+
+
+
 
 <div class="section">
   <div class="stitle">Scene Bible</div>
@@ -1114,7 +1254,339 @@ h1 span{color:var(--accent);}
     </div>
   </div>
 </div>
+
 </div>
+
+<div class="below-wrap">
+
+<div class="vs-section">
+    <div class="section-eyebrow">Why AI Scene Builder</div>
+    <h2 style="font-size:22px;font-weight:700;margin:0 0 6px;">Full control vs auto multi-shot</h2>
+    <p style="font-size:14px;color:var(--text-secondary);margin:0 0 24px;">AI video models like Kling AI have an auto multi-shot mode — it generates a sequence automatically from a single prompt. Here is what that costs you.</p>
+    <div class="vs-grid">
+      <div class="vs-card auto">
+        <div class="vs-card-label">Auto Multi-Shot Mode</div>
+        <h3>The AI decides everything</h3>
+        <ul class="vs-list">
+          <li>Random lens choices per cut</li>
+          <li>Unpredictable camera movement</li>
+          <li>Characters appear and disappear</li>
+          <li>Light direction changes between shots</li>
+          <li>No control over which moment gets a close-up</li>
+          <li>Props and background elements shift position</li>
+          <li>180-degree rule frequently broken</li>
+          <li>Regenerating changes everything</li>
+        </ul>
+      </div>
+      <div class="vs-card manual">
+        <div class="vs-card-label">Scene Builder — Shot by Shot</div>
+        <h3>You decide everything</h3>
+        <ul class="vs-list">
+          <li>Exact lens for every shot</li>
+          <li>Specific camera movement per clip</li>
+          <li>Character appearance locked via reference image</li>
+          <li>Light direction fixed in every prompt via Fixed Elements</li>
+          <li>You choose which moment gets the close-up</li>
+          <li>Props and background locked globally</li>
+          <li>180-degree rule maintained by design</li>
+          <li>Regenerate only the shots that need fixing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<div class="section-block">
+    <div class="section-eyebrow">Feature comparison</div>
+    <h2>AI Scene Builder vs single prompt generation</h2>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Single Prompt</th>
+          <th>Auto Multi-Shot</th>
+          <th>Scene Builder</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="feature">Per-shot lens control</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+        <tr><td class="feature">Per-shot camera movement</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+        <tr><td class="feature">Character consistency</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓ via reference image</td></tr>
+        <tr><td class="feature">Light direction locked</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓ via Fixed Elements</td></tr>
+        <tr><td class="feature">Action / dialogue per shot</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+        <tr><td class="feature">Regenerate individual shots</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+        <tr><td class="feature">Midjourney reference output</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓ per shot</td></tr>
+        <tr><td class="feature">180-degree rule control</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓</td></tr>
+        <tr><td class="feature">Scene-wide prop consistency</td><td class="cross">✗</td><td class="cross">✗</td><td class="check">✓ via Fixed Elements</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="workflow-strip">
+  <div class="section-eyebrow">The workflow</div>
+<div class="workflow">
+      <div class="wf-step"><div class="wf-step-num">Step 1</div><div class="wf-step-label">Scene Bible</div></div>
+      <div class="wf-arrow">→</div>
+      <div class="wf-step"><div class="wf-step-num">Step 2</div><div class="wf-step-label">Characters</div></div>
+      <div class="wf-arrow">→</div>
+      <div class="wf-step"><div class="wf-step-num">Step 3</div><div class="wf-step-label">Select Shots</div></div>
+      <div class="wf-arrow">→</div>
+      <div class="wf-step"><div class="wf-step-num">Step 4</div><div class="wf-step-label">Reference Image</div></div>
+      <div class="wf-arrow">→</div>
+      <div class="wf-step"><div class="wf-step-num">Step 5</div><div class="wf-step-label">Generate & Edit</div></div>
+    </div>
+</div>
+
+<div class="content-band">
+
+  <div class="band-col">
+    <div class="rich-section" id="about">
+      <h2>About AI Scene Builder</h2>
+      <p>AI Scene Builder gives you director-level control over every shot in your AI video scene. Instead of asking Kling AI to generate a full sequence automatically — where it invents the lens choices, the cutting rhythm, and the light direction — you define every technical decision yourself and generate each shot individually with professional cinematography language.</p>
+      <p>Every shot gets its own lens, camera movement, and action description. A shared Scene Bible feeds into every prompt automatically so your scene stays consistent from the wide establishing shot to the final resolved frame. Fixed Elements lock light direction, props, and background details globally across all shots.</p>
+      <p>Built by a working VFX artist with 12 years of industry experience — the same shot-by-shot approach used in professional film production.</p>
+    </div>
+<div class="rich-section">
+    <h2>Why shot-by-shot control produces better AI video</h2>
+    <p>AI video models are trained on enormous libraries of real cinematography. They understand lens compression, camera movement, depth of field, and lighting quality — but only when you give them the right language to work with. A prompt that says "cinematic shot of two people talking" gives the model nothing to anchor on. A prompt that specifies a 50mm lens, over-the-shoulder framing at eye level, camera locked off, single window light from the left, and a specific character expression — that gives the model a complete visual instruction it can execute with precision.</p>
+    <p>The fundamental problem with auto multi-shot generation is that the AI has to invent the editorial decisions that a human director would make. It invents the coverage, the cutting rhythm, the lens choices, and the light direction. Sometimes it gets lucky. More often, the result is generic — the kind of footage that looks like AI because no real director would cut that way.</p>
+    <p>Scene Builder is built on the opposite principle: the director makes every decision, and the AI executes it. You choose which moment gets the close-up. You decide when the camera pushes in. You lock the light source and the axis. The AI's job is to translate your visual instructions into a prompt that produces exactly the frame you designed.</p>
+  </div>
+<div style="background:var(--input);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Shot Duration Guide</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--muted);">Wide Establishing</span><span style="color:var(--accent);font-weight:600;">10s</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--muted);">OTS / Dialogue</span><span style="color:var(--accent);font-weight:600;">10s</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--muted);">Close-Up</span><span style="color:var(--accent);font-weight:600;">5s</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--muted);">Insert Shot</span><span style="color:var(--accent);font-weight:600;">5s</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
+          <span style="color:var(--muted);">Camera Movement</span><span style="color:var(--accent);font-weight:600;">10s</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;">
+          <span style="color:var(--muted);">Wide Resolved</span><span style="color:var(--accent);font-weight:600;">10s</span>
+        </div>
+      </div>
+    </div>
+<div style="background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:12px;padding:16px;">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;">Built by a VFX Pro</div>
+      <div style="font-size:12px;line-height:1.65;color:var(--muted);">AI Scene Builder is built by a VFX artist with 12 years of industry experience. Every feature is based on real professional film production workflow.</div>
+    </div>
+  </div>
+
+  <div class="band-col">
+<div class="section-block">
+    <div class="section-eyebrow">Common questions</div>
+    <h2>FAQ</h2>
+    <p class="section-sub"></p>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Why does the light direction keep changing between shots?</div>
+        <div class="faq-a">Kling AI has no memory between clips — every shot is a fresh generation from scratch. It reinterprets your scene setup each time, including the light source position. The fix is the <strong>Fixed Elements</strong> field — write your light direction there and it gets injected into every single shot prompt automatically. Example: <em>"Window light always from the LEFT wall — left side of every face always lit, right side always in shadow."</em></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Why is Kling generating multiple cuts in one clip when I only want one shot?</div>
+        <div class="faq-a">This happens when the shot description contains more than one action or a sequence of events. Kling reads narrative structure and creates cuts automatically. Keep the <strong>Action / Emotion / Dialogue</strong> field to a single moment — one gesture, one held expression, one action. For the Wide Establishing shot especially, describe only the starting state of the scene, not what will happen during it.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What's the best way to keep characters consistent across shots?</div>
+        <div class="faq-a">Two things work together: (1) <strong>Reference image</strong> — generate a Midjourney reference frame for each shot and attach it in Kling. (2) <strong>Previous shot's last frame</strong> — pause your last Kling clip at the final second, screenshot it, and use that as the reference for the next shot. This carries over exact clothing, hand positions, and prop states. For large lens jumps (18mm to 85mm), generate a fresh Midjourney reference instead of using the previous frame.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Should I use 5 seconds or 10 seconds per shot in Kling?</div>
+        <div class="faq-a"><strong>5 seconds</strong> for static shots — close-ups, OTS coverage, insert shots, any shot where the camera is locked off. <strong>10 seconds</strong> for shots with camera movement (push in, pull back, tracking, crane) or long dialogue sequences. Kling needs the full duration to complete a movement cleanly. Going shorter on a movement shot gives you an incomplete camera move.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Why does my prop keep changing position between shots?</div>
+        <div class="faq-a">Add it to <strong>Fixed Elements</strong> with its exact position. Be specific: <em>"Coffee cup always on the right side of the table in front of Character 2 — never moves."</em> Also use the previous shot's last frame as your reference image — the prop position from the last clip carries into the next one.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the 180-degree rule and why does it matter?</div>
+        <div class="faq-a">The 180-degree rule means the camera always stays on one side of an imaginary line drawn between two characters. If the camera crosses this line, the characters appear to have swapped positions on screen — which breaks spatial continuity for the viewer. In Scene Builder, put this in Fixed Elements: <em>"Camera always on the RIGHT side of the table axis — never crosses to the left side."</em> Every shot prompt will then respect this rule.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Does Scene Builder work with Runway and other AI video tools?</div>
+        <div class="faq-a">Yes. The prompts are written in professional cinematography language that works across Kling AI, Runway Gen-4, Google Veo/Flow, Pika, and Hailuo. The <strong>Reference Image tab</strong> outputs a Midjourney prompt optimised for static frames. The video prompt works with any AI video model — Kling is recommended because it responds best to detailed cinematic language.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How is Scene Builder different from the Video Prompt Generator?</div>
+        <div class="faq-a">The <strong>Video Prompt Generator</strong> creates a single prompt for a single clip — good for standalone shots, hero moments, or social content. <strong>Scene Builder</strong> is for multi-shot scenes — it maintains a shared Scene Bible across all shots, locks consistency elements globally, and generates both a video prompt and a Midjourney reference image for each individual shot. Use Scene Builder whenever you need more than one clip to work together as a sequence.</div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+
+  <div class="band-col">
+<div class="section-block" id="how-to-use">
+    <div class="section-eyebrow">Step by step</div>
+    <h2>How to use AI Scene Builder</h2>
+    <p class="section-sub">Fill the Scene Bible once — generate each shot individually. The whole scene is consistent because the context never changes.</p>
+
+    <!-- WORKFLOW DIAGRAM -->
+    
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Fill the Scene Bible</h3>
+          <p>Describe the location in detail, set the time of day, lighting, atmosphere, colour grade, and mood. This context feeds into every single shot prompt — you write it once and it applies everywhere.</p>
+          <span class="step-tip">💡 Be specific about location — "small coffee shop corner table, warm wooden interior, single window on the left wall" is better than "coffee shop"</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Set Fixed Elements</h3>
+          <p>Use the Fixed Elements field for anything that must stay consistent across every shot — prop positions, light source direction, background details. These are injected into every prompt automatically.</p>
+          <span class="step-tip">💡 Always lock your light source direction here — "window light always from the LEFT, left side of faces lit, right side in shadow"</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Add Characters</h3>
+          <p>Describe each character's appearance in detail — age, build, skin tone, hair, clothing, accessories. Optionally upload a reference photo to auto-extract the appearance description. Character 2 starts disabled — click Add Character to enable.</p>
+          <span class="step-tip">💡 Upload a reference photo for each character — the AI extracts their exact appearance and fills the field automatically</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Select and configure shots</h3>
+          <p>Check the shots you want. Each shot expands to show Lens, Camera Movement, and Action/Emotion/Dialogue fields. Set the lens and movement for each shot individually — then describe exactly what happens in that specific frame.</p>
+          <span class="step-tip">💡 The Action field drives the prompt — write only what happens in this single moment, not the full scene story</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Generate Reference Image first</h3>
+          <p>For each shot, use the Reference Image tab to generate a Midjourney prompt. Generate the static frame in Midjourney first — then use that image as your reference in Kling AI. This is the single most important step for visual consistency.</p>
+          <span class="step-tip">💡 Use the previous shot's last frame as the reference for the next shot — characters and props carry over naturally</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Generate Video Prompt and produce in Kling</h3>
+          <p>Switch to the Video Prompt tab and generate. Copy the prompt into Kling AI, attach your reference image, set duration (5s for most shots, 10s for movement shots and dialogue), and generate. Only regenerate the shots that need fixing — everything else stays.</p>
+          <span class="step-tip">💡 5 seconds for static shots, 10 seconds for camera movement shots and dialogue sequences</span>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="section-block">
+    <div class="section-eyebrow">Get the best results</div>
+    <h2>Tips for better output</h2>
+    <p class="section-sub">These are the differences between a Kling output that looks like AI and one that looks like it was shot on a professional camera.</p>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🔒</div>
+        <h3>Lock the light direction in Fixed Elements</h3>
+        <p>Light direction is the most common consistency failure. Kling will reinterpret it in every shot unless you lock it globally.</p>
+        <div class="tip-example">Window light always from the LEFT wall. Left side of every face always lit. Right side always in shadow.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🖼</div>
+        <h3>Reference image = previous shot's last frame</h3>
+        <p>After generating a clip in Kling, pause at the last second and screenshot it. Use that as the reference for the next shot. Props, hands, clothing all carry over.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">✂️</div>
+        <h3>One action per shot description</h3>
+        <p>Describe only what happens in this single moment. Multiple actions in one shot description causes Kling to generate a multi-shot sequence.</p>
+        <div class="tip-example">✗ "She enters, sits down, opens the folder"<br>✓ "She seated, folder closed in front of her, watching him in silence"</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📐</div>
+        <h3>Keep the camera on one side of the axis</h3>
+        <p>For dialogue scenes, decide which side of the table/axis the camera stays on — and never cross it. Put this in Fixed Elements so every prompt respects it.</p>
+        <div class="tip-example">Camera always on the RIGHT side of the table axis throughout all shots.</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⏱</div>
+        <h3>5 seconds for statics, 10 for movement</h3>
+        <p>Static shots work best at 5s. Any shot with camera movement — push in, pull back, tracking — needs 10s for Kling to complete the movement cleanly.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🎬</div>
+        <h3>Don't regenerate what works</h3>
+        <p>If 5 of 7 shots are perfect, only regenerate the 2 that need fixing. Start with the hardest shots first — wide establishing and any shot with two characters moving.</p>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">👤</div>
+        <h3>Translate dialogue into performance</h3>
+        <p>Kling AI sees visuals, not words. Describe what the camera sees during the dialogue — not the words themselves.</p>
+        <div class="tip-example">✗ "She says: I knew it was you"<br>✓ "She leans forward and speaks, voice low, eyes fixed — a statement not a question"</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🌅</div>
+        <h3>Describe lighting quality not just type</h3>
+        <p>Don't just say "golden hour" — describe the quality. Kling responds to specific descriptions of what the light does to the scene.</p>
+        <div class="tip-example">Warm amber side light raking across both faces from the left, long shadows stretching right, highlights catching the rim of the coffee cups</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🏠</div>
+        <h3>Location detail prevents drift</h3>
+        <p>The more specific your location description, the less Kling invents. Name specific details — wall colour, floor material, what's visible in the background.</p>
+        <div class="tip-example">Worn wooden table, exposed brick far wall, bookshelf behind the right character, soft-focus background patrons</div>
+      </div>
+    </div>
+  </div>
+<div style="background:var(--input);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Related Tools</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <a href="/video-prompt.html" style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(168,158,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:18px;">🎬</span>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text);">Video Generator</div><div style="font-size:11px;color:var(--muted);">Single clip prompts</div></div>
+        </a>
+        <a href="/image-prompt.html" style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(168,158,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:18px;">🖼</span>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text);">Image Generator</div><div style="font-size:11px;color:var(--muted);">Midjourney &amp; DALL·E</div></div>
+        </a>
+        <a href="/100-cinematic-ai-video-prompts.html" style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(168,158,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:18px;">📚</span>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text);">Cinematic Prompts</div><div style="font-size:11px;color:var(--muted);">100 ready-to-use</div></div>
+        </a>
+        <a href="/learn.html" style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(168,158,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
+          <span style="font-size:18px;">🎓</span>
+          <div><div style="font-size:13px;font-weight:600;color:var(--text);">Learn Cinematography</div><div style="font-size:11px;color:var(--muted);">Lens, lighting, angles</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cta-block">
+  <div style="font-size:20px;font-weight:700;margin-bottom:8px;">Ready to build your scene?</div>
+  <p style="font-size:14px;color:var(--text-secondary);margin:0 0 24px;">No account needed. Free to use.</p>
+  <a href="#tool" class="btn-primary" style="font-size:15px;padding:14px 36px;">Build your scene ↑</a>
+</div>
+
+<footer>
+  <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/prompt-library.html">Prompt Library</a></p>
+  <p style="margin-top:6px;">Cinema-grade AI prompts, free forever.</p>
+</footer>
 
 <script>
 var charCount = 1;
@@ -1351,7 +1823,7 @@ async function generateShot(sid, mode) {
     sys='You are a cinematographer writing Midjourney prompts for static cinematic reference frames. Include subject, setting, lighting, composition. End with --ar '+ar+' --style raw --v 6.1. Output ONLY the prompt.';
     usr='Write a Midjourney reference image prompt for this specific frame only.\n\nSCENE CONTEXT (visual reference only — do not narrate the full story):\n'+sb+'\nTHIS FRAME:\n'+shb+'\nRULES:\n- This frame shows ONLY what is in the shot description above — nothing else from the scene narrative\n- Only include characters visible in this specific frame\n- Static single frame, cinematic composition\n- End with --ar '+ar+' --style raw --v 6.1\n- Output ONLY the Midjourney prompt';
   } else {
-    sys='You are a professional cinematographer writing AI video prompts for Kling AI and Runway. Rules: (1) ONE camera — single position, single lens, single movement, no cuts. (2) Always state the camera movement explicitly — if static, write 'camera locked off, static frame'. Never omit the movement. (3) Include EXACTLY what is provided: shot framing, lens, character appearance, action/emotion/dialogue. (4) FIXED ELEMENTS must appear in every prompt exactly as described. (5) Translate dialogue into visible performance — what the camera sees. (6) End every prompt with: single continuous shot, no cuts. Output ONLY the prompt. 3-5 sentences.';
+    sys='You are a professional cinematographer writing AI video prompts for Kling AI and Runway. Rules: (1) ONE camera — single position, single lens, single movement, no cuts. (2) Always state the camera movement explicitly — if static, write \'camera locked off, static frame\'. Never omit the movement. (3) Include EXACTLY what is provided: shot framing, lens, character appearance, action/emotion/dialogue. (4) FIXED ELEMENTS must appear in every prompt exactly as described. (5) Translate dialogue into visible performance — what the camera sees. (6) End every prompt with: single continuous shot, no cuts. Output ONLY the prompt. 3-5 sentences.';
     usr='Write an AI video prompt for this specific shot only.\n\nSCENE CONTEXT (visual reference — do not narrate the full story):\n'+sb+'\nTHIS SHOT:\n'+shb+'Camera movement: '+sh.move+'\n\nRULES:\n- The shot description is the ONLY action in this clip — do not add anything from the scene description\n- Only include characters that are visible in this specific shot\n- Use character appearance from context only if relevant to this frame\n- Translate dialogue into what the camera physically sees\n- Single continuous shot, no cuts (camera rule only)\n- Output ONLY the prompt';
   }
   try {
@@ -1390,195 +1862,11 @@ window.onload = function() {
 };
 
 </script>
-
-
-</body>
-</html>
-
-<div style="max-width:1100px;margin:0 auto;padding:48px 24px 64px;display:grid;grid-template-columns:200px 1fr 220px;gap:32px;align-items:start;">
-
-  <!-- LEFT COLUMN — Table of Contents -->
-  <div style="position:sticky;top:20px;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">On this page</div>
-    <div style="display:flex;flex-direction:column;gap:2px;">
-      <a href="#about" style="font-size:13px;color:var(--muted);text-decoration:none;padding:5px 8px;border-radius:5px;transition:all 0.15s;" onmouseover="this.style.background='rgba(168,158,255,0.08)';this.style.color='var(--accent)'" onmouseout="this.style.background='none';this.style.color='var(--muted)'">About Scene Builder</a>
-      <a href="#how-to-use" style="font-size:13px;color:var(--muted);text-decoration:none;padding:5px 8px;border-radius:5px;transition:all 0.15s;" onmouseover="this.style.background='rgba(168,158,255,0.08)';this.style.color='var(--accent)'" onmouseout="this.style.background='none';this.style.color='var(--muted)'">How to Use</a>
-      <a href="#tips" style="font-size:13px;color:var(--muted);text-decoration:none;padding:5px 8px;border-radius:5px;transition:all 0.15s;" onmouseover="this.style.background='rgba(168,158,255,0.08)';this.style.color='var(--accent)'" onmouseout="this.style.background='none';this.style.color='var(--muted)'">Tips for Better Output</a>
-      <a href="#faq" style="font-size:13px;color:var(--muted);text-decoration:none;padding:5px 8px;border-radius:5px;transition:all 0.15s;" onmouseover="this.style.background='rgba(168,158,255,0.08)';this.style.color='var(--accent)'" onmouseout="this.style.background='none';this.style.color='var(--muted)'">FAQ</a>
-      <a href="#why" style="font-size:13px;color:var(--muted);text-decoration:none;padding:5px 8px;border-radius:5px;transition:all 0.15s;" onmouseover="this.style.background='rgba(168,158,255,0.08)';this.style.color='var(--accent)'" onmouseout="this.style.background='none';this.style.color='var(--muted)'">Why Shot-by-Shot</a>
-    </div>
-  </div>
-
-  <!-- CENTER COLUMN — Main Content -->
-  <div>
-
-    <div id="about" style="margin-bottom:48px;">
-      <h2 style="font-size:22px;font-weight:700;color:var(--text);margin:0 0 16px;letter-spacing:-0.01em;">About Scene Builder</h2>
-      <div style="font-size:14px;line-height:1.85;color:var(--muted);">
-        <p style="margin:0 0 14px;">Scene Builder gives you director-level control over every shot in your AI video scene. Instead of asking Kling AI to generate a full sequence automatically — where it invents the lens choices, the cutting rhythm, and the light direction — Scene Builder lets you define every technical decision yourself and generate each shot individually with professional cinematography language.</p>
-        <p style="margin:0 0 14px;">Every shot gets its own lens, camera movement, and action description. A shared Scene Bible feeds into every prompt automatically so your scene stays consistent from the wide establishing shot to the final resolved frame. Fixed Elements lock light direction, props, and background details globally across all shots.</p>
-        <p style="margin:0;">Built by a working VFX compositor with 12 years of industry experience — the same shot-by-shot approach used in professional film production.</p>
-      </div>
-    </div>
-
-    <div id="how-to-use" style="margin-bottom:48px;">
-      <h2 style="font-size:22px;font-weight:700;color:var(--text);margin:0 0 20px;letter-spacing:-0.01em;">How to Use Scene Builder</h2>
-      <div style="display:flex;flex-direction:column;gap:14px;">
-        <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="min-width:28px;height:28px;border-radius:50%;background:#a89eff;color:#0d0d14;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Fill the Scene Bible</div><div style="font-size:13px;line-height:1.65;color:var(--muted);">Describe location, time of day, lighting, atmosphere, colour grade, and mood. This feeds into every shot prompt automatically.</div></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="min-width:28px;height:28px;border-radius:50%;background:#a89eff;color:#0d0d14;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Add Fixed Elements</div><div style="font-size:13px;line-height:1.65;color:var(--muted);">Lock anything that must stay consistent — light source direction, prop positions, camera axis. Example: "Window light always from the LEFT wall."</div></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="min-width:28px;height:28px;border-radius:50%;background:#a89eff;color:#0d0d14;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Add Characters</div><div style="font-size:13px;line-height:1.65;color:var(--muted);">Describe each character's appearance. Upload a reference photo to auto-extract appearance. Start with one character — click Add Character for more.</div></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="min-width:28px;height:28px;border-radius:50%;background:#a89eff;color:#0d0d14;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">4</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Select Shots and Set Per-Shot Details</div><div style="font-size:13px;line-height:1.65;color:var(--muted);">Check the shots you want. Each expands to show Lens, Camera Movement, and Action/Emotion/Dialogue. Set individually for each shot — describe only what happens in that single frame.</div></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="min-width:28px;height:28px;border-radius:50%;background:#a89eff;color:#0d0d14;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">5</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Generate Reference Image First</div><div style="font-size:13px;line-height:1.65;color:var(--muted);">Use the Reference Image tab to get a Midjourney prompt for each shot. Generate the static frame in Midjourney first — then attach it in Kling AI for visual consistency.</div></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:flex-start;">
-          <div style="min-width:28px;height:28px;border-radius:50%;background:#a89eff;color:#0d0d14;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">6</div>
-          <div><div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px;">Generate Video Prompt and Produce in Kling</div><div style="font-size:13px;line-height:1.65;color:var(--muted);">Switch to Video Prompt tab, generate, copy into Kling AI, attach reference image. Set 5s for static shots, 10s for movement shots. Only regenerate shots that need fixing.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div id="tips" style="margin-bottom:48px;">
-      <h2 style="font-size:22px;font-weight:700;color:var(--text);margin:0 0 16px;letter-spacing:-0.01em;">Tips for Better Output</h2>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="padding:14px 16px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
-          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;">🔒 Lock light direction in Fixed Elements</div>
-          <div style="font-size:13px;line-height:1.65;color:var(--muted);">Light direction is the most common consistency failure. Without locking it globally, Kling reinterprets the light source in every clip. Write it once: "Window light always from the LEFT wall. Left side of every face always lit, right side in shadow."</div>
-        </div>
-        <div style="padding:14px 16px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
-          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;">🖼 Use previous shot's last frame as reference</div>
-          <div style="font-size:13px;line-height:1.65;color:var(--muted);">After generating a Kling clip, pause at the final second and screenshot it. Use that as the reference for the next shot. Clothing, hand positions, and props carry over exactly — this is the most reliable consistency technique available right now.</div>
-        </div>
-        <div style="padding:14px 16px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
-          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;">✂️ One action per shot description</div>
-          <div style="font-size:13px;line-height:1.65;color:var(--muted);">Describe only what happens in this single moment. Multiple actions in one description causes Kling to generate unwanted cuts. For Wide Establishing, describe only the starting state — not what will happen during the clip.</div>
-        </div>
-        <div style="padding:14px 16px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
-          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;">⏱ 5 seconds static, 10 seconds movement</div>
-          <div style="font-size:13px;line-height:1.65;color:var(--muted);">Use 5s for locked-off shots — close-ups, OTS, insert shots. Use 10s for any shot with camera movement (push in, pull back, crane, tracking) — Kling needs the full duration to complete the move cleanly.</div>
-        </div>
-        <div style="padding:14px 16px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
-          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;">🎭 Translate dialogue into visible performance</div>
-          <div style="font-size:13px;line-height:1.65;color:var(--muted);">Kling sees visuals, not words. Describe what the camera physically sees during the dialogue — "she leans forward and speaks, jaw set, eyes fixed" not the actual words of the line.</div>
-        </div>
-        <div style="padding:14px 16px;background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.15);border-radius:8px;">
-          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;">📐 Lock the 180-degree axis in Fixed Elements</div>
-          <div style="font-size:13px;line-height:1.65;color:var(--muted);">For dialogue scenes, write the camera axis in Fixed Elements: "Camera always on the RIGHT side of the table axis — never crosses to the left." This maintains spatial continuity across all shots automatically.</div>
-        </div>
-      </div>
-    </div>
-
-    <div id="faq" style="margin-bottom:48px;">
-      <h2 style="font-size:22px;font-weight:700;color:var(--text);margin:0 0 20px;letter-spacing:-0.01em;">Frequently Asked Questions</h2>
-      <div style="display:flex;flex-direction:column;gap:12px;">
-        <div style="border:1px solid var(--border);border-radius:10px;padding:16px 18px;background:var(--input);">
-          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Why does the light direction keep changing between shots?</div>
-          <div style="font-size:13px;line-height:1.7;color:var(--muted);">Kling has no memory between clips — every shot is generated fresh. Add your light direction to Fixed Elements and it injects into every shot prompt automatically. Example: "Window light always from the LEFT wall. Left side of every face always lit, right side in shadow."</div>
-        </div>
-        <div style="border:1px solid var(--border);border-radius:10px;padding:16px 18px;background:var(--input);">
-          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Why is Kling generating multiple cuts inside one clip?</div>
-          <div style="font-size:13px;line-height:1.7;color:var(--muted);">The Action field contains more than one action or a sequence of events. Kling reads narrative structure and creates cuts automatically. Keep the description to a single moment — one gesture, one held expression, one starting state only.</div>
-        </div>
-        <div style="border:1px solid var(--border);border-radius:10px;padding:16px 18px;background:var(--input);">
-          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">How do I keep characters consistent across all shots?</div>
-          <div style="font-size:13px;line-height:1.7;color:var(--muted);">Generate a Midjourney reference image per shot and attach it in Kling. For maximum consistency, use the previous shot's last frame as the reference for the next shot — pause at the final second, screenshot, use as reference. Clothing, hands, and props carry over exactly.</div>
-        </div>
-        <div style="border:1px solid var(--border);border-radius:10px;padding:16px 18px;background:var(--input);">
-          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">Does Scene Builder work with Runway and other tools?</div>
-          <div style="font-size:13px;line-height:1.7;color:var(--muted);">Yes — the prompts work across Kling AI, Runway Gen-4, Google Veo/Flow, Pika, and Hailuo. Kling AI is recommended as it responds best to detailed cinematic language. The Reference Image tab outputs Midjourney prompts usable as reference in any tool.</div>
-        </div>
-        <div style="border:1px solid var(--border);border-radius:10px;padding:16px 18px;background:var(--input);">
-          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">What is the 180-degree rule?</div>
-          <div style="font-size:13px;line-height:1.7;color:var(--muted);">The camera must always stay on one side of an imaginary line between two characters. Crossing this line makes characters appear to swap positions, breaking spatial continuity. Lock it in Fixed Elements: "Camera always on the RIGHT side of the table axis."</div>
-        </div>
-        <div style="border:1px solid var(--border);border-radius:10px;padding:16px 18px;background:var(--input);">
-          <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;">How is Scene Builder different from the Video Prompt Generator?</div>
-          <div style="font-size:13px;line-height:1.7;color:var(--muted);">Video Prompt Generator creates a single prompt for one standalone clip. Scene Builder is for multi-shot scenes — shared Scene Bible across all shots, Fixed Elements for global consistency, and both a video prompt and Midjourney reference image per shot. Use Scene Builder whenever you need multiple clips to work together as a scene.</div>
-        </div>
-      </div>
-    </div>
-
-    <div id="why" style="margin-bottom:16px;">
-      <h2 style="font-size:22px;font-weight:700;color:var(--text);margin:0 0 16px;letter-spacing:-0.01em;">Why Shot-by-Shot Control Produces Better AI Video</h2>
-      <div style="font-size:14px;line-height:1.85;color:var(--muted);">
-        <p style="margin:0 0 14px;">AI video models understand cinematography — lens compression, camera movement, depth of field, lighting quality — but only when you give them the right language. A prompt that says "cinematic shot of two people talking" gives the model nothing to anchor on. A prompt that specifies a 50mm lens, over-the-shoulder framing, camera locked off, single window light from the left, and a specific character expression gives the model a complete visual instruction it can execute precisely.</p>
-        <p style="margin:0 0 14px;">The fundamental problem with auto multi-shot generation is that the AI invents the editorial decisions a human director would make — the coverage, the cutting rhythm, the lens choices, the light direction. Sometimes it gets lucky. More often the result is generic footage that looks like AI because no real director would cut that way.</p>
-        <p style="margin:0;">Scene Builder works on the opposite principle: you make every decision and the AI executes it. You choose which moment gets the close-up. You decide when the camera pushes in. You lock the light and the axis. The AI translates your visual instructions into exactly the frame you designed.</p>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- RIGHT COLUMN — Related Tools & Quick Links -->
-  <div style="position:sticky;top:20px;">
-
-    <div style="background:var(--input);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Related Tools</div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <a href="/video-prompt.html" style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(168,158,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
-          <span style="font-size:18px;">🎬</span>
-          <div><div style="font-size:13px;font-weight:600;color:var(--text);">Video Generator</div><div style="font-size:11px;color:var(--muted);">Single clip prompts</div></div>
-        </a>
-        <a href="/image-prompt.html" style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(168,158,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
-          <span style="font-size:18px;">🖼</span>
-          <div><div style="font-size:13px;font-weight:600;color:var(--text);">Image Generator</div><div style="font-size:11px;color:var(--muted);">Midjourney &amp; DALL·E</div></div>
-        </a>
-        <a href="/100-cinematic-ai-video-prompts.html" style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(168,158,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
-          <span style="font-size:18px;">📚</span>
-          <div><div style="font-size:13px;font-weight:600;color:var(--text);">Cinematic Prompts</div><div style="font-size:11px;color:var(--muted);">100 ready-to-use</div></div>
-        </a>
-        <a href="/learn.html" style="display:flex;align-items:center;gap:10px;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;text-decoration:none;transition:border-color 0.15s;" onmouseover="this.style.borderColor='rgba(168,158,255,0.4)'" onmouseout="this.style.borderColor='var(--border)'">
-          <span style="font-size:18px;">🎓</span>
-          <div><div style="font-size:13px;font-weight:600;color:var(--text);">Learn Cinematography</div><div style="font-size:11px;color:var(--muted);">Lens, lighting, angles</div></div>
-        </a>
-      </div>
-    </div>
-
-    <div style="background:var(--input);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Shot Duration Guide</div>
-      <div style="display:flex;flex-direction:column;gap:6px;">
-        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
-          <span style="color:var(--muted);">Wide Establishing</span><span style="color:var(--accent);font-weight:600;">10s</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
-          <span style="color:var(--muted);">OTS / Dialogue</span><span style="color:var(--accent);font-weight:600;">10s</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
-          <span style="color:var(--muted);">Close-Up</span><span style="color:var(--accent);font-weight:600;">5s</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
-          <span style="color:var(--muted);">Insert Shot</span><span style="color:var(--accent);font-weight:600;">5s</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px solid var(--border);">
-          <span style="color:var(--muted);">Camera Movement</span><span style="color:var(--accent);font-weight:600;">10s</span>
-        </div>
-        <div style="display:flex;justify-content:space-between;font-size:12px;padding:5px 0;">
-          <span style="color:var(--muted);">Wide Resolved</span><span style="color:var(--accent);font-weight:600;">10s</span>
-        </div>
-      </div>
-    </div>
-
-    <div style="background:rgba(168,158,255,0.06);border:1px solid rgba(168,158,255,0.2);border-radius:12px;padding:16px;">
-      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:6px;">Built by a VFX Pro</div>
-      <div style="font-size:12px;line-height:1.65;color:var(--muted);">Scene Builder is built by a VFX compositor with 12 years of industry experience. Every feature is based on real professional film production workflow.</div>
-    </div>
-
-  </div>
-
-</div>
-
+<script>
+function toggleFaq(el) {
+  var item = el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
 </body>
 </html>
