@@ -214,6 +214,10 @@ h1 span{color:var(--accent);}
       <label>Atmosphere</label>
       <input type="text" id="atmosphere" placeholder="e.g. Tense, confined, oppressive">
     </div>
+  <div class="field">
+    <label>Fixed Elements <span style="font-weight:400;color:var(--dim);font-size:11px;">— injected into every shot prompt</span></label>
+    <textarea id="fixedElements" placeholder="e.g. Kerosene lamp fixed on the right corner of the boat floor, warm orange glow constant. Red oxide floor always visible. Iron gate slightly open throughout." style="min-height:80px;"></textarea>
+  </div>
   </div>
   <div class="field">
     <label>Aspect ratio</label>
@@ -255,11 +259,14 @@ h1 span{color:var(--accent);}
     <div class="field">
       <label>Color grade</label>
       <div class="pills" id="gradeGroup">
-        <button class="pill" data-val="teal and orange">Teal & Orange</button>
-        <button class="pill active" data-val="cold desaturated">Cold Desaturated</button>
-        <button class="pill" data-val="warm vintage">Warm Vintage</button>
-        <button class="pill" data-val="black and white">B&W</button>
-        <button class="pill" data-val="natural">Natural</button>
+        <button class="pill" data-val="teal and orange cinematic">Teal & Orange</button>
+        <button class="pill" data-val="golden hour warm, amber highlights, warm brown shadows">Golden Hour Warm</button>
+        <button class="pill active" data-val="cold desaturated, muted palette">Cold Desaturated</button>
+        <button class="pill" data-val="warm vintage, lifted blacks, faded highlights">Warm Vintage</button>
+        <button class="pill" data-val="bleach bypass, high contrast, silver retention">Bleach Bypass</button>
+        <button class="pill" data-val="high contrast black and white">B&W</button>
+        <button class="pill" data-val="natural, clean, no grade">Natural</button>
+        <button class="pill" data-val="neon cyberpunk, deep blacks, saturated practical lights">Neon</button>
       </div>
     </div>
 
@@ -1297,6 +1304,7 @@ function getSceneCtx() {
     scene:v('sceneDesc'), location:v('location'), time:pillVal('timeGroup'),
     lighting:v('lighting'), atmosphere:v('atmosphere'), grade:pillVal('gradeGroup'),
     ratio:pillVal('ratioGroup'), film:pillVal('filmGroup'), mood:pillVal('moodGroup'),
+    fixed:v('fixedElements'),
     charsText:ct
   };
 }
@@ -1324,26 +1332,26 @@ async function generateShot(sid, mode) {
   var sc=getSceneCtx(), sh=getShotData(sid);
   btn.disabled=true; btn.textContent='⏳ Generating...'; resDiv.style.display='none';
   var sb =
-    (sc.scene      ?'Scene: '+sc.scene+'\n':'') +
     (sc.location   ?'Location: '+sc.location+'\n':'') +
-    (sc.time       ?'Time: '+sc.time+'\n':'') +
+    (sc.time       ?'Time of day: '+sc.time+'\n':'') +
     (sc.lighting   ?'Lighting: '+sc.lighting+'\n':'') +
     (sc.atmosphere ?'Atmosphere: '+sc.atmosphere+'\n':'') +
     (sc.grade      ?'Color grade: '+sc.grade+'\n':'') +
     (sc.ratio      ?'Aspect ratio: '+sc.ratio+'\n':'') +
     (sc.film       ?'Look/Texture: '+sc.film+'\n':'') +
     (sc.mood       ?'Mood: '+sc.mood+'\n':'') +
-    (sc.charsText  ?'\nCharacters:\n'+sc.charsText+'\n':'');
+    (sc.fixed      ?'\nFIXED ELEMENTS (must appear exactly as described in every shot): '+sc.fixed+'\n':'') +
+    (sc.charsText  ?'\nCharacters (appearance reference only — use only what is visible in this shot):\n'+sc.charsText+'\n':'');
   var shb = 'Shot: '+sh.name+'\nLens: '+sh.lens+'\n'+(sh.desc?'Action/emotion/dialogue: '+sh.desc+'\n':'')+(sh.insert?'Insert object: '+sh.insert+'\n':'');
   var sys, usr;
   if (isRef) {
     var arMap={'16:9 widescreen':'16:9','2.39:1 anamorphic widescreen':'21:9','4:3 academy ratio':'4:3','1:1 square':'1:1'};
     var ar=arMap[sc.ratio]||'16:9';
     sys='You are a cinematographer writing Midjourney prompts for static cinematic reference frames. Include subject, setting, lighting, composition. End with --ar '+ar+' --style raw --v 6.1. Output ONLY the prompt.';
-    usr='Write a Midjourney reference image prompt for this frame.\n\nSCENE:\n'+sb+'\nSHOT:\n'+shb+'\nStatic frame, cinematic composition. End with --ar '+ar+' --style raw --v 6.1';
+    usr='Write a Midjourney reference image prompt for this specific frame only.\n\nSCENE CONTEXT (visual reference only — do not narrate the full story):\n'+sb+'\nTHIS FRAME:\n'+shb+'\nRULES:\n- This frame shows ONLY what is in the shot description above — nothing else from the scene narrative\n- Only include characters visible in this specific frame\n- Static single frame, cinematic composition\n- End with --ar '+ar+' --style raw --v 6.1\n- Output ONLY the Midjourney prompt';
   } else {
-    sys='You are a cinematographer writing AI video prompts for Kling AI and Runway. Write ONE single continuous shot — one camera position, one lens, one movement. Include ALL of: exact framing/lens, camera movement, lighting quality, character appearance and emotional state, action/emotion/dialogue translated into performance description. End with: single continuous shot, no cuts. Output ONLY the prompt. 3-5 sentences.';
-    usr='Write an AI video prompt for this shot.\n\nSCENE:\n'+sb+'\nSHOT:\n'+shb+'Camera movement: '+sh.move+'\n\nInclude the action, emotion, and dialogue as performance description. ONE shot, no cuts. Output ONLY the prompt.';
+    sys='You are a professional cinematographer writing AI video prompts for Kling AI and Runway. Rules: (1) ONE camera — single position, single lens, single movement, no cuts. (2) Include EXACTLY what is provided: shot framing, lens, lighting, character appearance, action/emotion/dialogue. (3) FIXED ELEMENTS listed in the scene context must appear in every prompt exactly as described — never change their position, state, or appearance. (4) Translate dialogue into visible performance — what the camera sees. (5) End every prompt with: single continuous shot, no cuts. Output ONLY the prompt. 3-5 sentences.';
+    usr='Write an AI video prompt for this specific shot only.\n\nSCENE CONTEXT (visual reference — do not narrate the full story):\n'+sb+'\nTHIS SHOT:\n'+shb+'Camera movement: '+sh.move+'\n\nRULES:\n- The shot description is the ONLY action in this clip — do not add anything from the scene description\n- Only include characters that are visible in this specific shot\n- Use character appearance from context only if relevant to this frame\n- Translate dialogue into what the camera physically sees\n- Single continuous shot, no cuts (camera rule only)\n- Output ONLY the prompt';
   }
   try {
     var resp=await fetch('/api/scene',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({system:sys,user:usr,max_tokens:400})});
