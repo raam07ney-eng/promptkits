@@ -226,6 +226,12 @@
 .vs-grid{grid-template-columns:1fr;}
 .vs-grid{grid-template-columns:1fr;}
 .vs-section{margin:0 0 32px;}
+.hero-tagline{font-size:clamp(20px,3vw,30px);font-weight:700;letter-spacing:-0.02em;line-height:1.25;margin:10px 0 12px;color:var(--text-primary);}
+.hero-tagline span{color:#a89eff;}
+.hero-checks{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px;}
+.hero-check{font-size:12.5px;font-weight:600;color:#a89eff;background:rgba(168,158,255,0.08);border:1px solid rgba(168,158,255,0.25);padding:6px 14px;border-radius:20px;}
+#tool .section{background:transparent;border:none;box-shadow:none;border-radius:0;padding:0;margin-bottom:28px;}
+#tool .section:not(:last-child){border-bottom:1px solid var(--border-card);padding-bottom:26px;}
 .hero-video{max-width:840px;margin:0 auto 8px;padding:0 24px;}
 .hero-video iframe{width:100%;aspect-ratio:16/9;border-radius:14px;border:1px solid var(--border-card);display:block;box-shadow:0 8px 40px rgba(0,0,0,0.25);}
 </style>
@@ -257,13 +263,15 @@
 </header>
 
 <div class="hero">
-  <div class="badge"><div class="badge-dot"></div> Free AI Scene Builder</div>
-  <h1>Every shot. <span>Your way.</span><br>Not the AI's guess.</h1>
-  <p>Create an entire cinematic scene in one click — locked characters, locked environment, copy-ready prompts for Kling AI, Runway, Veo, and more.</p>
-  <div class="stats-row">
-    <div><div class="stat-num">15</div><div class="stat-label">Shot Types</div></div>
-    <div><div class="stat-num">11</div><div class="stat-label">Cinema Lenses</div></div>
-    <div><div class="stat-num">100%</div><div class="stat-label">Free</div></div>
+  <div class="badge"><div class="badge-dot"></div> 🎬 PromptKits — AI Video Tools</div>
+  <h1>AI Scene Builder</h1>
+  <div class="hero-tagline">Every shot. Your way. <span>Not the AI's guess.</span></div>
+  <p>Create an entire cinematic scene in one click.</p>
+  <div class="hero-checks">
+    <span class="hero-check">✓ Locked character consistency</span>
+    <span class="hero-check">✓ Locked environment</span>
+    <span class="hero-check">✓ 15 professional camera shots</span>
+    <span class="hero-check">✓ Copy-ready prompts</span>
   </div>
 </div>
 
@@ -318,6 +326,7 @@
   </div>
 </div><div class="gen-main"><main class="main">
 <div class="wrap" id="tool">
+<div class="card">
 
 
 
@@ -1255,6 +1264,7 @@
 </div>
 
 
+</div>
 </div>
 
 <div style="max-width:880px;margin:0 auto;padding:0 24px;">
