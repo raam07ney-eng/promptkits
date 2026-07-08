@@ -253,6 +253,12 @@
 @media(max-width:1120px){.video-row{grid-template-columns:1fr;}.video-side{display:none;}}
 .hero-video{max-width:1000px;margin:0 auto 8px;padding:0 24px;}
 .hero-video iframe{width:100%;aspect-ratio:16/9;border-radius:14px;border:1px solid var(--border-card);display:block;box-shadow:0 8px 40px rgba(0,0,0,0.25);}
+/* fixes & add-ons */
+.shot-result-text{background:var(--input);}
+.sb-savebar{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12px;color:var(--text-muted);border:1px solid var(--border-card);border-radius:8px;padding:8px 12px;margin-bottom:20px;}
+.sb-savebar button{background:transparent;border:1px solid var(--border-card);color:var(--text-secondary);font-size:11.5px;font-weight:600;border-radius:6px;padding:5px 12px;cursor:pointer;font-family:inherit;}
+.sb-savebar button:hover{border-color:#e05b5b;color:#e05b5b;}
+.ref-remove-btn{background:transparent;border:1px solid rgba(224,91,91,0.4);color:#e05b5b;font-size:11.5px;border-radius:6px;padding:5px 10px;cursor:pointer;font-family:inherit;margin-left:6px;}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why does the light direction keep changing between shots?", "acceptedAnswer": {"@type": "Answer", "text": "AI video models have no memory between clips — every shot is a fresh generation from scratch. It reinterprets your scene setup each time, including the light source position. The fix is the Fixed Elements field — write your light direction there and it gets injected into every single shot prompt automatically. Example: \"Window light always from the LEFT wall — left side of every face always lit, right side always in shadow.\""}}, {"@type": "Question", "name": "Why is the AI generating multiple cuts in one clip when I only want one shot?", "acceptedAnswer": {"@type": "Answer", "text": "This happens when the shot description contains more than one action or a sequence of events. The model reads narrative structure and creates cuts automatically. Keep the Action / Emotion / Dialogue field to a single moment — one gesture, one held expression, one action. For the Wide Establishing shot especially, describe only the starting state of the scene, not what will happen during it."}}, {"@type": "Question", "name": "What's the best way to keep characters consistent across shots?", "acceptedAnswer": {"@type": "Answer", "text": "Two things work together: (1) Reference image — generate a reference frame for each shot in ChatGPT, Midjourney, or any image model and attach it in your video tool. (2) Previous shot's last frame — pause your last generated clip at the final second, screenshot it, and use that as the reference for the next shot. This carries over exact clothing, hand positions, and prop states. For large lens jumps (18mm to 85mm), generate a fresh reference image instead of using the previous frame."}}, {"@type": "Question", "name": "Should I use 5 seconds or 10 seconds per shot?", "acceptedAnswer": {"@type": "Answer", "text": "5 seconds for static shots — close-ups, OTS coverage, insert shots, any shot where the camera is locked off. 10 seconds for shots with camera movement (push in, pull back, tracking, crane) or long dialogue sequences. The model needs the full duration to complete a movement cleanly. Going shorter on a movement shot gives you an incomplete camera move."}}, {"@type": "Question", "name": "Why does my prop keep changing position between shots?", "acceptedAnswer": {"@type": "Answer", "text": "Add it to Fixed Elements with its exact position. Be specific: \"Coffee cup always on the right side of the table in front of Character 2 — never moves.\" Also use the previous shot's last frame as your reference image — the prop position from the last clip carries into the next one."}}, {"@type": "Question", "name": "What is the 180-degree rule and why does it matter?", "acceptedAnswer": {"@type": "Answer", "text": "The 180-degree rule means the camera always stays on one side of an imaginary line drawn between two characters. If the camera crosses this line, the characters appear to have swapped positions on screen — which breaks spatial continuity for the viewer. In Scene Builder, put this in Fixed Elements: \"Camera always on the RIGHT side of the table axis — never crosses to the left side.\" Every shot prompt will then respect this rule."}}, {"@type": "Question", "name": "Does Scene Builder work with Runway and other AI video tools?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The prompts are written in professional cinematography language that works across Kling AI, Runway Gen-4, Google Veo/Flow, Pika, and Hailuo. The use the Reference Image tab to generate an image prompt — works in ChatGPT, Midjourney, or DALL-E."}}, {"@type": "Question", "name": "How is Scene Builder different from the Video Prompt Generator?", "acceptedAnswer": {"@type": "Answer", "text": "The Video Prompt Generator creates a single prompt for a single clip — good for standalone shots, hero moments, or social content. Scene Builder is for multi-shot scenes — it maintains a shared Scene Bible across all shots, locks consistency elements globally, and generates both a video prompt and a reference image prompt (for ChatGPT, Midjourney, or DALL-E) for each individual shot. Use Scene Builder whenever you need more than one clip to work together as a sequence."}}]}</script>
 </head>
@@ -386,6 +392,7 @@
 </div><div class="gen-main"><main class="main">
 <div class="wrap" id="tool">
 <div class="card">
+<div class="sb-savebar"><span id="sbSaveState">💾 Auto-saves in your browser</span><button type="button" id="sbClearBtn">Clear form</button></div>
 
 
 
@@ -1609,8 +1616,8 @@ async function extractRef(n) {
     var resp = await fetch('/api/scene', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
-        system:'You are a casting specialist. Describe ONLY the person\'s appearance — age, build, skin tone, hair, clothing, accessories. One paragraph, 2-4 sentences. No background, no personality.',
-        user:"Describe this person's appearance for AI video character reference. Include: age/build, skin tone, hair colour/style, clothing, accessories.",
+        system:'You are a casting specialist. Describe ONLY the person\'s appearance — age, build, skin tone, hair, clothing, accessories. Use EXACT specific colour names for every clothing item and for hair (e.g. \'navy blue crew-neck sweater\', \'charcoal grey blazer\') — never vague words like dark, light or colourful. These words lock the character across many video shots. One paragraph, 2-4 sentences. No background, no personality.',
+        user:"Describe this person's appearance for AI video character reference. Include: age/build, skin tone, hair colour/style, clothing, accessories. Name each garment with its precise colour and type.",
         imageBase64: b64, imageMediaType: file.type||'image/jpeg', max_tokens:300
       })
     });
@@ -1719,6 +1726,92 @@ window.onload = function() {
   enabledChars.delete(2);
 };
 
+</script>
+<script>
+/* PromptKits add-on: photo remove + form autosave. The tool's own code is untouched. */
+(function(){
+  // ---- remove photo buttons ----
+  function removeRef(n){
+    var inp=document.getElementById('refimg-c'+n); if(inp) inp.value='';
+    var prev=document.getElementById('refprev-c'+n); if(prev){prev.src='';prev.style.display='none';}
+    var name=document.getElementById('refname-c'+n); if(name){name.textContent='';name.style.display='none';}
+    var st=document.getElementById('extstatus-c'+n); if(st) st.style.display='none';
+    var eb=document.getElementById('extbtn-c'+n); if(eb) eb.style.display='none';
+  }
+  function injectRemoveBtns(){
+    document.querySelectorAll('input[id^="refimg-c"]').forEach(function(inp){
+      var n=inp.id.replace('refimg-c','');
+      if(document.getElementById('rmref-c'+n)) return;
+      var b=document.createElement('button');
+      b.type='button'; b.id='rmref-c'+n; b.className='ref-remove-btn'; b.textContent='✕ Remove'; b.style.display='none';
+      b.onclick=function(){ removeRef(n); b.style.display='none'; };
+      inp.parentNode.appendChild(b);
+      inp.addEventListener('change',function(){ if(inp.files&&inp.files[0]) b.style.display='inline-block'; });
+    });
+  }
+  injectRemoveBtns();
+  var toolEl=document.getElementById('tool');
+  if(toolEl) new MutationObserver(injectRemoveBtns).observe(toolEl,{childList:true,subtree:true});
+
+  // ---- autosave / restore / clear ----
+  var KEY='pk_scenebuilder_v1', restoring=false, t;
+  function collect(){
+    var d={f:{},cb:{},sh:{},pills:{},mini:{},cards:[]};
+    document.querySelectorAll('#tool input[type="text"], #tool textarea').forEach(function(el){ if(el.id) d.f[el.id]=el.value; });
+    document.querySelectorAll('#tool input[type="checkbox"]').forEach(function(el){
+      if(el.classList.contains('shot-cb') && el.dataset.shot) d.sh[el.dataset.shot]=el.checked;
+      else if(el.id) d.cb[el.id]=el.checked;
+    });
+    document.querySelectorAll('#tool .pills').forEach(function(g){ var a=g.querySelector('.pill.active'); if(g.id&&a) d.pills[g.id]=a.dataset.val; });
+    document.querySelectorAll('#tool .mini-pill.active').forEach(function(p){ if(p.dataset.group) d.mini[p.dataset.group]=p.dataset.val; });
+    document.querySelectorAll('#tool .char-card').forEach(function(c){ if(c.id) d.cards.push(c.id); });
+    return d;
+  }
+  function flag(msg){ var s=document.getElementById('sbSaveState'); if(!s) return; s.textContent=msg; setTimeout(function(){ s.textContent='💾 Auto-saves in your browser'; },1400); }
+  function save(){
+    if(restoring) return;
+    clearTimeout(t);
+    t=setTimeout(function(){ try{ localStorage.setItem(KEY, JSON.stringify(collect())); flag('💾 Saved'); }catch(e){} },400);
+  }
+  function restore(){
+    var raw=null; try{ raw=localStorage.getItem(KEY); }catch(e){}
+    if(!raw) return;
+    var d; try{ d=JSON.parse(raw); }catch(e){ return; }
+    restoring=true;
+    try{
+      (d.cards||[]).sort().forEach(function(id){
+        if(!document.getElementById(id) && typeof addCharacter==='function') addCharacter();
+      });
+      Object.keys(d.cb||{}).forEach(function(k){
+        var el=document.getElementById(k);
+        if(el && el.checked!==d.cb[k]){ el.checked=d.cb[k]; el.dispatchEvent(new Event('change')); }
+      });
+      Object.keys(d.sh||{}).forEach(function(shot){
+        var el=document.querySelector('.shot-cb[data-shot="'+shot+'"]');
+        if(el && el.checked!==d.sh[shot]){ el.checked=d.sh[shot]; el.dispatchEvent(new Event('change')); }
+      });
+      Object.keys(d.f||{}).forEach(function(k){ var el=document.getElementById(k); if(el) el.value=d.f[k]; });
+      Object.keys(d.pills||{}).forEach(function(gid){
+        var g=document.getElementById(gid); if(!g) return;
+        var p=g.querySelector('.pill[data-val="'+d.pills[gid]+'"]'); if(p) p.click();
+      });
+      Object.keys(d.mini||{}).forEach(function(grp){
+        var p=document.querySelector('.mini-pill[data-group="'+grp+'"][data-val="'+d.mini[grp]+'"]'); if(p) p.click();
+      });
+      flag('💾 Restored your saved scene');
+    } finally { restoring=false; }
+  }
+  if(toolEl){
+    ['input','change','click'].forEach(function(ev){ toolEl.addEventListener(ev, save, true); });
+    restore();
+  }
+  var cbtn=document.getElementById('sbClearBtn');
+  if(cbtn) cbtn.onclick=function(){
+    if(!confirm('Clear the form and delete the saved scene?')) return;
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    location.reload();
+  };
+})();
 </script>
 </body>
 </html>
