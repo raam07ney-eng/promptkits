@@ -80,7 +80,7 @@ img,iframe,table{max-width:100%;}
 /* mobile: sidebar becomes collapsed browse panel at bottom */
 .pk-browse{display:none;}
 @media(max-width:768px){
-  .pk-browse{display:block;margin:32px 16px 8px;}
+  .pk-browse{display:block;margin:16px 16px 4px;}
   .pk-browse details{background:var(--bg-card);border:1px solid var(--border-card);border-radius:12px;overflow:hidden;}
   .pk-browse summary{cursor:pointer;list-style:none;padding:14px 18px;font-size:14px;font-weight:700;color:#a89eff;display:flex;align-items:center;justify-content:space-between;}
   .pk-browse summary::-webkit-details-marker{display:none;}
@@ -507,7 +507,7 @@ document.querySelectorAll('.sb-item').forEach(function(el) {
       if(sb && main && !document.querySelector('.pk-browse')){
         var wrap=document.createElement('div'); wrap.className='pk-browse';
         wrap.innerHTML='<details><summary>\uD83D\uDCDA Browse all collections</summary></details>';
-        main.parentNode.insertBefore(wrap, main.nextSibling);
+        main.parentNode.insertBefore(wrap, main);
         wrap.querySelector('details').appendChild(sb);
       }
     }
