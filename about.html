@@ -4,7 +4,7 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About – PromptKits | Built by a VFX Professional</title>
-  <meta name="description" content="PromptKits is built by a VFX compositor with 12 years of industry experience — bringing real cinematography knowledge to every AI prompt."/>
+  <meta name="description" content="PromptKits is built by a VFX artist with 12 years of industry experience — bringing real cinematography knowledge to every AI prompt."/>
   <link rel="canonical" href="https://promptkits.in/about.html"/>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,7 +65,24 @@
     .cta-btn-outline:hover{background:rgba(168,158,255,0.08);}
 
     @media(max-width:600px){.stat-row{gap:20px;}.skills-grid{grid-template-columns:1fr 1fr;}}
-  </style>
+  
+/* ===== Mobile responsive fix (PromptKits) ===== */
+html,body{max-width:100%;overflow-x:hidden;}
+img,iframe,table{max-width:100%;}
+@media(max-width:820px){
+  header{position:relative;display:flex !important;flex-wrap:wrap;align-items:center;justify-content:space-between;height:auto !important;min-height:0 !important;max-height:none !important;padding:12px 16px !important;overflow:visible !important;}
+  header nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:2px;padding:10px 0 6px;border-top:1px solid var(--border-card);margin-top:12px;order:10;overflow:visible !important;height:auto !important;position:static !important;}
+  header.pk-open nav{display:flex !important;}
+  header nav a{padding:12px 14px;font-size:15px;border-radius:8px;white-space:nowrap;}
+  .pk-burger{display:inline-flex !important;}
+  body{padding-top:0 !important;}
+}
+.pk-burger{display:none;align-items:center;justify-content:center;background:var(--bg-adv,rgba(128,128,128,0.08));border:1px solid var(--border-card,rgba(128,128,128,0.25));border-radius:9px;padding:8px 13px;font-size:19px;line-height:1;cursor:pointer;color:var(--text-primary,inherit);font-family:inherit;}
+@media(max-width:820px){
+  .about-wrap{padding:40px 20px 60px;}
+  .about-hero-title{overflow-wrap:break-word;}
+}
+</style>
 </head>
 <body>
 <header>
@@ -83,7 +100,7 @@
       <a href="/image-to-prompt.html">🔍 Img2Prompt</a>
       <a href="/prompt-library.html">📚 Library</a>
       <a href="/learn.html">🎓 Learn</a>
-      <a href="/ahout.html" class="active">About</a>
+      <a href="/about.html" class="active">About</a>
     </nav>
     <button class="theme-btn" id="themeBtn" onclick="PKTheme.toggle()">Dark</button>
   </div>
@@ -102,11 +119,11 @@
       <div class="stat-label">Years in VFX</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">1150+</div>
+      <div class="stat-num">1230+</div>
       <div class="stat-label">Prompts in the library</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">13</div>
+      <div class="stat-num">15</div>
       <div class="stat-label">Prompt collections</div>
     </div>
     <div class="stat-item">
@@ -119,8 +136,8 @@
 
   <!-- Who built this -->
   <div class="about-section-label">Who built this</div>
-  <h2 class="about-section-title">A VFX compositor with a decade in professional production</h2>
-  <p class="about-body">PromptKits is built and maintained by a VFX compositor with 12 years of industry experience. The work spans feature films, visual effects pipelines, and digital content production — with deep hands-on expertise in compositing, paint and prep work, wire and rig removal, and clean plate generation.</p>
+  <h2 class="about-section-title">A VFX artist with a decade in professional production</h2>
+  <p class="about-body">PromptKits is built and maintained by a VFX artist with 12 years of industry experience. The work spans feature films, visual effects pipelines, and digital content production — with deep hands-on expertise in compositing, paint and prep work, wire and rig removal, and clean plate generation.</p>
   <p class="about-body">Working inside professional VFX pipelines means understanding exactly how cinematographers, DPs, and directors communicate on set — the specific language of camera angles, lens choices, lighting setups, and colour grades. That language is what separates a generic AI video prompt from one that actually produces cinematic results.</p>
 
   <div class="about-quote">
@@ -173,7 +190,7 @@
   <!-- What is PromptKits -->
   <div class="about-section-label">What PromptKits is</div>
   <h2 class="about-section-title">Professional cinematography language, made accessible</h2>
-  <p class="about-body">PromptKits is a free collection of AI prompt tools and a curated library of over 1150 ready-to-use prompts — written with real filmmaking principles. Every prompt specifies the camera movement, lens type, lighting setup, colour grade, and mood using the exact vocabulary that AI video models respond to best.</p>
+  <p class="about-body">PromptKits is a free collection of AI prompt tools and a curated library of over 1230 ready-to-use prompts — written with real filmmaking principles. Every prompt specifies the camera movement, lens type, lighting setup, colour grade, and mood using the exact vocabulary that AI video models respond to best.</p>
   <p class="about-body">The library covers video prompts (cinematic, horror, drone shots, sci-fi, nature, action sports, time-lapse, character study, Kling AI) and image prompts (Midjourney portraits, food photography, wedding cinematics, portrait lighting) — all written from a VFX professional's understanding of what makes a shot work.</p>
 
   <div class="promptkits-mission">
@@ -206,5 +223,26 @@
   <p>© 2024 PromptKits · <a href="/privacy.html">Privacy Policy</a> · <a href="/terms.html">Terms</a> · <a href="/prompt-library.html">Prompt Library</a></p>
   <p style="margin-top:6px;">Cinema-grade AI prompts, free forever.</p>
 </footer>
+<script>
+/* PromptKits mobile menu */
+(function(){
+  function init(){
+    var h=document.querySelector('header');
+    if(h && !document.querySelector('.pk-burger')){
+      var nav=h.querySelector('nav')||document.querySelector('nav');
+      if(nav){
+        if(window.innerWidth<=820 && nav.parentNode!==h) h.appendChild(nav);
+        var b=document.createElement('button');
+        b.className='pk-burger'; b.type='button'; b.setAttribute('aria-label','Menu'); b.textContent='\u2630';
+        b.onclick=function(){var open=h.classList.toggle('pk-open'); b.textContent=open?'\u2715':'\u2630';};
+        var t=h.querySelector('.theme-btn')||h.querySelector('button:not(.pk-burger)');
+        if(t) t.insertAdjacentElement('afterend', b); else h.appendChild(b);
+        nav.addEventListener('click',function(e){ if(e.target.tagName==='A'){ h.classList.remove('pk-open'); b.textContent='\u2630'; }});
+      }
+    }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
+</script>
 </body>
 </html>
