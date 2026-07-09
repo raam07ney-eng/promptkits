@@ -39,6 +39,32 @@
 .gs-link:hover{border-color:#a89eff;color:#a89eff;}
 @media(max-width:1300px){.gen-right{display:none;}}
 @media(max-width:1000px){.gen-left{display:none;}.gen-layout{display:block;}}
+
+/* ===== Mobile responsive fix (PromptKits) ===== */
+html,body{max-width:100%;overflow-x:hidden;}
+img,iframe,table{max-width:100%;}
+@media(max-width:1300px){
+  .gen-layout{flex-wrap:wrap;}
+  .gen-right{display:block !important;position:static;width:100%;min-width:0;height:auto;overflow:visible;border-left:none;border-top:1px solid var(--border-card);order:3;flex-basis:100%;padding:32px 24px;}
+}
+@media(max-width:1000px){
+  .gen-layout{display:flex !important;flex-direction:column;}
+  .gen-main{order:1;}
+  .gen-left{display:block !important;position:static;width:100%;min-width:0;height:auto;overflow:visible;border-right:none;border-top:1px solid var(--border-card);order:2;padding:32px 24px;}
+  .gen-right{order:3;}
+}
+@media(max-width:820px){
+  header{position:relative;display:flex !important;flex-wrap:wrap;align-items:center;justify-content:space-between;height:auto !important;min-height:0 !important;max-height:none !important;padding:12px 16px !important;overflow:visible !important;}
+  header nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:2px;padding:10px 0 6px;border-top:1px solid var(--border-card);margin-top:12px;order:10;overflow:visible !important;height:auto !important;position:static !important;}
+  header.pk-open nav{display:flex !important;}
+  header nav a{padding:12px 14px;font-size:15px;border-radius:8px;white-space:nowrap;}
+  .pk-burger{display:inline-flex !important;}
+  body{padding-top:0 !important;}
+  .hero{padding-left:20px;padding-right:20px;}
+  .hero h1,.hero p{max-width:100%;overflow-wrap:break-word;}
+  .wrap,.card{min-width:0;}
+}
+.pk-burger{display:none;align-items:center;justify-content:center;background:var(--bg-adv,rgba(128,128,128,0.08));border:1px solid var(--border-card,rgba(128,128,128,0.25));border-radius:9px;padding:8px 13px;font-size:19px;line-height:1;cursor:pointer;color:var(--text-primary,inherit);font-family:inherit;}
 </style>
 </head>
 <body>
@@ -453,6 +479,23 @@
 </script>
 <script>
 function toggleGuide(btn){var b=btn.nextElementSibling;var c=btn.querySelector('.guide-chev');var o=b.classList.contains('open');b.classList.toggle('open',!o);if(c)c.classList.toggle('open',!o);}
+</script>
+<script>
+/* PromptKits mobile menu */
+(function(){
+  function init(){
+    var h=document.querySelector('header'); if(!h||document.querySelector('.pk-burger')) return;
+    var nav=h.querySelector('nav')||document.querySelector('nav'); if(!nav) return;
+    if(window.innerWidth<=820 && nav.parentNode!==h) h.appendChild(nav);
+    var b=document.createElement('button');
+    b.className='pk-burger'; b.type='button'; b.setAttribute('aria-label','Menu'); b.textContent='\u2630';
+    b.onclick=function(){var open=h.classList.toggle('pk-open'); b.textContent=open?'\u2715':'\u2630';};
+    var t=h.querySelector('.theme-btn')||h.querySelector('button:not(.pk-burger)');
+    if(t) t.insertAdjacentElement('afterend', b); else h.appendChild(b);
+    nav.addEventListener('click',function(e){ if(e.target.tagName==='A'){ h.classList.remove('pk-open'); b.textContent='\u2630'; }});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
+})();
 </script>
 </body>
 </html>
