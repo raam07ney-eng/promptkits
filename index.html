@@ -248,7 +248,24 @@
     .compact-card p{font-size:12px !important;margin-bottom:10px !important;}
     .compact-card .tool-icon{font-size:20px !important;margin-bottom:8px !important;}
     /* Light theme handled automatically by CSS variables */
-  </style>
+  
+/* ===== Mobile responsive fix (PromptKits) ===== */
+html,body{max-width:100%;overflow-x:hidden;}
+header{flex-wrap:wrap;row-gap:6px;}
+nav{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch;scrollbar-width:none;flex-wrap:nowrap;}
+nav::-webkit-scrollbar{display:none;}
+img,iframe,table{max-width:100%;}
+@media(max-width:1300px){
+  .home-wrap{flex-wrap:wrap;}
+  .home-right{display:block !important;position:static;width:100%;min-width:0;height:auto;overflow:visible;border-left:none;border-top:1px solid var(--border-card);order:3;flex-basis:100%;padding:32px 24px;}
+}
+@media(max-width:1000px){
+  .home-wrap{display:flex !important;flex-direction:column;}
+  .home-main{order:1;}
+  .home-left{display:block !important;position:static;width:100%;min-width:0;height:auto;overflow:visible;border-right:none;border-top:1px solid var(--border-card);order:2;padding:32px 24px;}
+  .home-right{order:3;}
+}
+</style>
 <style>
 .home-wrap{display:flex;gap:0;}
 .home-left{width:340px;min-width:340px;flex-shrink:0;position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid var(--border-card);padding:60px 20px 24px;background:var(--bg-card);}
