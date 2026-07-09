@@ -259,6 +259,36 @@
 .sb-savebar button{background:transparent;border:1px solid var(--border-card);color:var(--text-secondary);font-size:11.5px;font-weight:600;border-radius:6px;padding:5px 12px;cursor:pointer;font-family:inherit;}
 .sb-savebar button:hover{border-color:#e05b5b;color:#e05b5b;}
 .ref-remove-btn{background:transparent;border:1px solid rgba(224,91,91,0.4);color:#e05b5b;font-size:11.5px;border-radius:6px;padding:5px 10px;cursor:pointer;font-family:inherit;margin-left:6px;}
+
+/* ===== Mobile responsive fix (PromptKits) ===== */
+html,body{max-width:100%;overflow-x:hidden;}
+img,iframe,table{max-width:100%;}
+@media(max-width:1300px){
+  .gen-layout{flex-wrap:wrap;}
+  .gen-right{display:block !important;position:static;width:100%;min-width:0;height:auto;overflow:visible;border-left:none;border-top:1px solid var(--border-card);order:3;flex-basis:100%;padding:32px 24px;}
+}
+@media(max-width:1000px){
+  .gen-layout{display:flex !important;flex-direction:column;}
+  .gen-main{order:1;}
+  .gen-left{display:block !important;position:static;width:100%;min-width:0;height:auto;overflow:visible;border-right:none;border-top:1px solid var(--border-card);order:2;padding:32px 24px;}
+  .gen-right{order:3;}
+}
+@media(max-width:820px){
+  header{position:relative;display:flex !important;flex-wrap:wrap;align-items:center;justify-content:space-between;height:auto !important;min-height:0 !important;max-height:none !important;padding:12px 16px !important;overflow:visible !important;}
+  header nav{display:none;width:100%;flex-direction:column;align-items:stretch;gap:2px;padding:10px 0 6px;border-top:1px solid var(--border-card);margin-top:12px;order:10;overflow:visible !important;height:auto !important;position:static !important;}
+  header.pk-open nav{display:flex !important;}
+  header nav a{padding:12px 14px;font-size:15px;border-radius:8px;white-space:nowrap;}
+  .pk-burger{display:inline-flex !important;}
+  body{padding-top:0 !important;}
+  .hero{padding-left:20px;padding-right:20px;}
+  .hero h1,.hero p{max-width:100%;overflow-wrap:break-word;}
+  .comp-table{font-size:11px;}
+  .comp-table th,.comp-table td{padding:7px 6px;}
+  .wrap{padding:0 14px;}
+  .video-inputs{padding:0 16px;}
+  .hero-video{padding:0 16px;}
+}
+.pk-burger{display:none;align-items:center;justify-content:center;background:var(--bg-adv,rgba(128,128,128,0.08));border:1px solid var(--border-card,rgba(128,128,128,0.25));border-radius:9px;padding:8px 13px;font-size:19px;line-height:1;cursor:pointer;color:var(--text-primary,inherit);font-family:inherit;}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why does the light direction keep changing between shots?", "acceptedAnswer": {"@type": "Answer", "text": "AI video models have no memory between clips — every shot is a fresh generation from scratch. It reinterprets your scene setup each time, including the light source position. The fix is the Fixed Elements field — write your light direction there and it gets injected into every single shot prompt automatically. Example: \"Window light always from the LEFT wall — left side of every face always lit, right side always in shadow.\""}}, {"@type": "Question", "name": "Why is the AI generating multiple cuts in one clip when I only want one shot?", "acceptedAnswer": {"@type": "Answer", "text": "This happens when the shot description contains more than one action or a sequence of events. The model reads narrative structure and creates cuts automatically. Keep the Action / Emotion / Dialogue field to a single moment — one gesture, one held expression, one action. For the Wide Establishing shot especially, describe only the starting state of the scene, not what will happen during it."}}, {"@type": "Question", "name": "What's the best way to keep characters consistent across shots?", "acceptedAnswer": {"@type": "Answer", "text": "Two things work together: (1) Reference image — generate a reference frame for each shot in ChatGPT, Midjourney, or any image model and attach it in your video tool. (2) Previous shot's last frame — pause your last generated clip at the final second, screenshot it, and use that as the reference for the next shot. This carries over exact clothing, hand positions, and prop states. For large lens jumps (18mm to 85mm), generate a fresh reference image instead of using the previous frame."}}, {"@type": "Question", "name": "Should I use 5 seconds or 10 seconds per shot?", "acceptedAnswer": {"@type": "Answer", "text": "5 seconds for static shots — close-ups, OTS coverage, insert shots, any shot where the camera is locked off. 10 seconds for shots with camera movement (push in, pull back, tracking, crane) or long dialogue sequences. The model needs the full duration to complete a movement cleanly. Going shorter on a movement shot gives you an incomplete camera move."}}, {"@type": "Question", "name": "Why does my prop keep changing position between shots?", "acceptedAnswer": {"@type": "Answer", "text": "Add it to Fixed Elements with its exact position. Be specific: \"Coffee cup always on the right side of the table in front of Character 2 — never moves.\" Also use the previous shot's last frame as your reference image — the prop position from the last clip carries into the next one."}}, {"@type": "Question", "name": "What is the 180-degree rule and why does it matter?", "acceptedAnswer": {"@type": "Answer", "text": "The 180-degree rule means the camera always stays on one side of an imaginary line drawn between two characters. If the camera crosses this line, the characters appear to have swapped positions on screen — which breaks spatial continuity for the viewer. In Scene Builder, put this in Fixed Elements: \"Camera always on the RIGHT side of the table axis — never crosses to the left side.\" Every shot prompt will then respect this rule."}}, {"@type": "Question", "name": "Does Scene Builder work with Runway and other AI video tools?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The prompts are written in professional cinematography language that works across Kling AI, Runway Gen-4, Google Veo/Flow, Pika, and Hailuo. The use the Reference Image tab to generate an image prompt — works in ChatGPT, Midjourney, or DALL-E."}}, {"@type": "Question", "name": "How is Scene Builder different from the Video Prompt Generator?", "acceptedAnswer": {"@type": "Answer", "text": "The Video Prompt Generator creates a single prompt for a single clip — good for standalone shots, hero moments, or social content. Scene Builder is for multi-shot scenes — it maintains a shared Scene Bible across all shots, locks consistency elements globally, and generates both a video prompt and a reference image prompt (for ChatGPT, Midjourney, or DALL-E) for each individual shot. Use Scene Builder whenever you need more than one clip to work together as a sequence."}}]}</script>
 </head>
@@ -1811,6 +1841,23 @@ window.onload = function() {
     try{ localStorage.removeItem(KEY); }catch(e){}
     location.reload();
   };
+})();
+</script>
+<script>
+/* PromptKits mobile menu */
+(function(){
+  function init(){
+    var h=document.querySelector('header'); if(!h||document.querySelector('.pk-burger')) return;
+    var nav=h.querySelector('nav')||document.querySelector('nav'); if(!nav) return;
+    if(window.innerWidth<=820 && nav.parentNode!==h) h.appendChild(nav);
+    var b=document.createElement('button');
+    b.className='pk-burger'; b.type='button'; b.setAttribute('aria-label','Menu'); b.textContent='\u2630';
+    b.onclick=function(){var open=h.classList.toggle('pk-open'); b.textContent=open?'\u2715':'\u2630';};
+    var t=h.querySelector('.theme-btn')||h.querySelector('button:not(.pk-burger)');
+    if(t) t.insertAdjacentElement('afterend', b); else h.appendChild(b);
+    nav.addEventListener('click',function(e){ if(e.target.tagName==='A'){ h.classList.remove('pk-open'); b.textContent='\u2630'; }});
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
 </script>
 </body>
