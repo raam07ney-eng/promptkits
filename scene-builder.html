@@ -261,11 +261,6 @@
 .sb-savebar button:hover{border-color:#e05b5b;color:#e05b5b;}
 .ref-remove-btn{background:transparent;border:1px solid rgba(224,91,91,0.4);color:#e05b5b;font-size:11.5px;border-radius:6px;padding:5px 10px;cursor:pointer;font-family:inherit;margin-left:6px;}
 
-.cpill-input{width:100%;margin-top:8px;background:var(--input);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;font-family:inherit;}
-.cpill-input:focus{outline:none;border-color:var(--accent);}
-.cmove-input,.cframe-input{width:100%;margin-top:8px;background:var(--input);border:1px solid var(--border);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;font-family:inherit;}
-.cframe-input{margin-top:0;flex:1;}
-.cmove-input:focus,.cframe-input:focus{outline:none;border-color:var(--accent);}
 /* ===== Mobile responsive fix (PromptKits) ===== */
 header nav a{font-family:'Inter','Noto Color Emoji',sans-serif;}
 html,body{max-width:100%;overflow-x:hidden;}
@@ -305,120 +300,6 @@ img,iframe,table{max-width:100%;}
     <div class="logo-icon">
       <svg width="20" height="20" viewBox="0 0 32 32" fill="none"><rect x="7" y="5" width="5" height="22" rx="2" fill="white"/><path d="M12,5 Q25,5 25,13 Q25,21 12,21" fill="none" stroke="white" stroke-width="5" stroke-linecap="round"/><circle cx="25" cy="28" r="2.5" fill="#a89eff"/><circle cx="30" cy="23" r="1.5" fill="#a89eff"/><line x1="25" y1="28" x2="30" y2="23" stroke="#a89eff" stroke-width="1.2"/></svg>
     </div>
-
-<div class="shot-row" id="srow-custom-1" data-shot="custom-1">
-      <div class="shot-row-top">
-        <label class="shot-check-label">
-          <input type="checkbox" class="shot-cb" data-shot="custom-1" onchange="toggleShotRow(this)">
-          <div class="shot-row-info">
-            <div class="shot-name">✏️ Custom Shot 1</div>
-            <div class="shot-desc">Define your own framing, angle and movement</div>
-          </div>
-        </label>
-      </div>
-      <div class="shot-controls" id="sctrl-custom-1">
-        <div class="shot-ctrl-row">
-          <span class="ctrl-label">Framing</span>
-          <input type="text" class="cframe-input" id="cframe-custom-1" placeholder="e.g. 3/4 angle medium close-up, low angle, favouring screen-left">
-        </div>
-        <div class="shot-ctrl-row">
-          <span class="ctrl-label">Lens</span>
-          <div class="mini-pills" id="lens-custom-1"><button class="mini-pill" data-group="lens-custom-1" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-custom-1" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-custom-1" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-custom-1" data-val="28mm">28mm</button><button class="mini-pill active" data-group="lens-custom-1" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-custom-1" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-custom-1" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-custom-1" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-custom-1" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-custom-1" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-custom-1" data-val="anamorphic">Anamorphic</button></div>
-        </div>
-        <div class="shot-ctrl-row">
-          <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-custom-1"><button class="mini-pill active" data-group="move-custom-1" data-val="static">Static</button><button class="mini-pill" data-group="move-custom-1" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-custom-1" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-custom-1" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-custom-1" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-custom-1" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-custom-1" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-custom-1" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-custom-1" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-custom-1" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-custom-1" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-custom-1" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-custom-1" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-custom-1" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-custom-1" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-custom-1" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-custom-1" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
-        </div>
-        
-      
-        <div class="shot-desc-field">
-          <label>Action / Emotion / Dialogue</label>
-          <textarea id="sdesc-custom-1" placeholder="e.g. She turns from the window to face camera, delivering the line with a slight smile."></textarea>
-        </div>
-      </div>
-        <div class="shot-tabs">
-          <button class="shot-tab-btn active" id="vtab-custom-1" onclick="switchTab('custom-1','video')">🎬 Video Prompt</button>
-          <button class="shot-tab-btn" id="rtab-custom-1" onclick="switchTab('custom-1','ref')">🖼 Reference Image</button>
-        </div>
-        <div class="shot-tab-panel active" id="vpanel-custom-1">
-          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
-          <button class="shot-gen-btn" id="gbtn-custom-1" onclick="generateShot('custom-1','video')">⚡ Generate Video Prompt</button>
-          <div id="gres-custom-1" style="display:none;">
-            <div class="shot-result-text" id="gtxt-custom-1"></div>
-            <div class="shot-result-actions">
-              <button class="copy-shot-btn" onclick="copyShot('custom-1','video')">Copy</button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-tab-panel" id="rpanel-custom-1">
-          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
-          <button class="mj-gen-btn" id="mjbtn-custom-1" onclick="generateShot('custom-1','ref')">🖼 Generate Reference Prompt</button>
-          <div id="mjres-custom-1" style="display:none;">
-            <div class="mj-result-text" id="mjtxt-custom-1"></div>
-            <div class="shot-result-actions">
-              <button class="copy-shot-btn" onclick="copyShot('custom-1','ref')">Copy</button>
-            </div>
-          </div>
-        </div>
-
-    </div>
-
-<div class="shot-row" id="srow-custom-2" data-shot="custom-2">
-      <div class="shot-row-top">
-        <label class="shot-check-label">
-          <input type="checkbox" class="shot-cb" data-shot="custom-2" onchange="toggleShotRow(this)">
-          <div class="shot-row-info">
-            <div class="shot-name">✏️ Custom Shot 2</div>
-            <div class="shot-desc">Define your own framing, angle and movement</div>
-          </div>
-        </label>
-      </div>
-      <div class="shot-controls" id="sctrl-custom-2">
-        <div class="shot-ctrl-row">
-          <span class="ctrl-label">Framing</span>
-          <input type="text" class="cframe-input" id="cframe-custom-2" placeholder="e.g. 3/4 angle medium close-up, low angle, favouring screen-left">
-        </div>
-        <div class="shot-ctrl-row">
-          <span class="ctrl-label">Lens</span>
-          <div class="mini-pills" id="lens-custom-2"><button class="mini-pill" data-group="lens-custom-2" data-val="14mm">Ultra-Wide</button><button class="mini-pill" data-group="lens-custom-2" data-val="18mm">18mm</button><button class="mini-pill" data-group="lens-custom-2" data-val="24mm">24mm</button><button class="mini-pill" data-group="lens-custom-2" data-val="28mm">28mm</button><button class="mini-pill active" data-group="lens-custom-2" data-val="35mm">35mm</button><button class="mini-pill" data-group="lens-custom-2" data-val="50mm">50mm</button><button class="mini-pill" data-group="lens-custom-2" data-val="85mm">85mm</button><button class="mini-pill" data-group="lens-custom-2" data-val="100mm">100mm</button><button class="mini-pill" data-group="lens-custom-2" data-val="135mm">135mm</button><button class="mini-pill" data-group="lens-custom-2" data-val="200mm">200mm</button><button class="mini-pill" data-group="lens-custom-2" data-val="anamorphic">Anamorphic</button></div>
-        </div>
-        <div class="shot-ctrl-row">
-          <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-custom-2"><button class="mini-pill active" data-group="move-custom-2" data-val="static">Static</button><button class="mini-pill" data-group="move-custom-2" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-custom-2" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-custom-2" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-custom-2" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-custom-2" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-custom-2" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-custom-2" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-custom-2" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-custom-2" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-custom-2" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-custom-2" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-custom-2" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-custom-2" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-custom-2" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-custom-2" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-custom-2" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
-        </div>
-        
-      
-        <div class="shot-desc-field">
-          <label>Action / Emotion / Dialogue</label>
-          <textarea id="sdesc-custom-2" placeholder="e.g. She turns from the window to face camera, delivering the line with a slight smile."></textarea>
-        </div>
-      </div>
-        <div class="shot-tabs">
-          <button class="shot-tab-btn active" id="vtab-custom-2" onclick="switchTab('custom-2','video')">🎬 Video Prompt</button>
-          <button class="shot-tab-btn" id="rtab-custom-2" onclick="switchTab('custom-2','ref')">🖼 Reference Image</button>
-        </div>
-        <div class="shot-tab-panel active" id="vpanel-custom-2">
-          <p class="tab-hint">AI video prompt for Kling AI or Runway — includes lens, movement, and action.</p>
-          <button class="shot-gen-btn" id="gbtn-custom-2" onclick="generateShot('custom-2','video')">⚡ Generate Video Prompt</button>
-          <div id="gres-custom-2" style="display:none;">
-            <div class="shot-result-text" id="gtxt-custom-2"></div>
-            <div class="shot-result-actions">
-              <button class="copy-shot-btn" onclick="copyShot('custom-2','video')">Copy</button>
-            </div>
-          </div>
-        </div>
-        <div class="shot-tab-panel" id="rpanel-custom-2">
-          <p class="tab-hint">Midjourney reference image prompt — static frame, cinematic composition. Generate first, use as image reference in Kling AI for visual consistency.</p>
-          <button class="mj-gen-btn" id="mjbtn-custom-2" onclick="generateShot('custom-2','ref')">🖼 Generate Reference Prompt</button>
-          <div id="mjres-custom-2" style="display:none;">
-            <div class="mj-result-text" id="mjtxt-custom-2"></div>
-            <div class="shot-result-actions">
-              <button class="copy-shot-btn" onclick="copyShot('custom-2','ref')">Copy</button>
-            </div>
-          </div>
-        </div>
-
-    </div>
     <div class="logo-text"><span class="logo-p">Prompt</span><span class="logo-k">Kits</span></div>
   </a>
   <div class="header-right">
@@ -445,7 +326,7 @@ img,iframe,table{max-width:100%;}
   <div class="hero-checks">
     <span class="hero-check">✓ Locked character consistency</span>
     <span class="hero-check">✓ Locked environment</span>
-    <span class="hero-check">✓ 15+ shots · custom angles</span>
+    <span class="hero-check">✓ 15 professional camera shots</span>
     <span class="hero-check">✓ Copy-ready prompts</span>
   </div>
 </div>
@@ -567,9 +448,8 @@ img,iframe,table{max-width:100%;}
       <button class="pill" data-val="midday">Midday</button>
       <button class="pill" data-val="golden hour">Golden Hour</button>
       <button class="pill" data-val="dusk">Dusk</button>
-      <button class="pill active" data-val="night">Night</button><button class="pill" data-val="__custom">✏️ Custom</button>
+      <button class="pill active" data-val="night">Night</button>
     </div>
-<input type="text" class="cpill-input" id="cpill-timeGroup" placeholder="e.g. 3 AM blue hour, sodium streetlights still on" style="display:none;">
   </div>
   <div class="row2">
     <div class="field">
@@ -604,9 +484,8 @@ img,iframe,table{max-width:100%;}
         <button class="pill" data-val="Arri Alexa digital cinema, clean, natural skin tones">Arri Alexa</button>
         <button class="pill" data-val="RED digital cinema, ultra sharp, high dynamic range">RED</button>
         <button class="pill" data-val="16mm film grain, heavy grain, raw documentary texture">16mm Grain</button>
-        <button class="pill" data-val="Super 8 film, faded colours, strong grain, nostalgic texture">Super 8</button><button class="pill" data-val="__custom">✏️ Custom</button>
+        <button class="pill" data-val="Super 8 film, faded colours, strong grain, nostalgic texture">Super 8</button>
       </div>
-<input type="text" class="cpill-input" id="cpill-filmGroup" placeholder="e.g. 16mm Ektachrome, heavy halation, dusty print" style="display:none;">
     </div>
     <div class="field">
       <label>Scene mood / tone</label>
@@ -617,9 +496,8 @@ img,iframe,table{max-width:100%;}
         <button class="pill active" data-val="suspenseful">Suspenseful</button>
         <button class="pill" data-val="romantic">Romantic</button>
         <button class="pill" data-val="menacing">Menacing</button>
-        <button class="pill" data-val="contemplative">Contemplative</button><button class="pill" data-val="__custom">✏️ Custom</button>
+        <button class="pill" data-val="contemplative">Contemplative</button>
       </div>
-<input type="text" class="cpill-input" id="cpill-moodGroup" placeholder="e.g. quiet menace beneath the politeness" style="display:none;">
       <div style="font-size:11px;color:var(--dim);margin-top:5px;">Film stock or camera system — affects grain, colour response, and overall texture of the image</div>
     </div>
   </div>
@@ -634,9 +512,8 @@ img,iframe,table{max-width:100%;}
         <button class="pill" data-val="bleach bypass, high contrast, silver retention">Bleach Bypass</button>
         <button class="pill" data-val="high contrast black and white">B&W</button>
         <button class="pill" data-val="natural, clean, no grade">Natural</button>
-        <button class="pill" data-val="neon cyberpunk, deep blacks, saturated practical lights">Neon</button><button class="pill" data-val="__custom">✏️ Custom</button>
+        <button class="pill" data-val="neon cyberpunk, deep blacks, saturated practical lights">Neon</button>
       </div>
-<input type="text" class="cpill-input" id="cpill-gradeGroup" placeholder="e.g. bleach bypass, crushed greens, silver highlights" style="display:none;">
     </div>
 
   </div>
@@ -718,7 +595,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-wide-establishing"><button class="mini-pill active" data-group="move-wide-establishing" data-val="static">Static</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-wide-establishing" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-wide-establishing" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-wide-establishing" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-wide-establishing" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-wide-establishing" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-wide-establishing" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-wide-establishing" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-wide-establishing" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-wide-establishing"><button class="mini-pill active" data-group="move-wide-establishing" data-val="static">Static</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-wide-establishing" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-wide-establishing" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-wide-establishing" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-wide-establishing" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-wide-establishing" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-wide-establishing" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-wide-establishing" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-wide-establishing" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -770,7 +647,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-medium-both"><button class="mini-pill active" data-group="move-medium-both" data-val="static">Static</button><button class="mini-pill" data-group="move-medium-both" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-medium-both" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-medium-both" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-medium-both" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-medium-both" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-medium-both" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-medium-both" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-medium-both" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-medium-both" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-medium-both" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-medium-both" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-medium-both" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-medium-both" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-medium-both" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-medium-both" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-medium-both" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-medium-both"><button class="mini-pill active" data-group="move-medium-both" data-val="static">Static</button><button class="mini-pill" data-group="move-medium-both" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-medium-both" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-medium-both" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-medium-both" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-medium-both" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-medium-both" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-medium-both" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-medium-both" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-medium-both" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-medium-both" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-medium-both" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-medium-both" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-medium-both" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-medium-both" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -822,7 +699,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-ots-char1"><button class="mini-pill active" data-group="move-ots-char1" data-val="static">Static</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-ots-char1" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-ots-char1" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-ots-char1" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-ots-char1" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-ots-char1" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-ots-char1" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-ots-char1" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-ots-char1" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-ots-char1" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-ots-char1" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-ots-char1" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-ots-char1" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-ots-char1"><button class="mini-pill active" data-group="move-ots-char1" data-val="static">Static</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-ots-char1" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-ots-char1" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-ots-char1" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-ots-char1" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-ots-char1" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-ots-char1" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-ots-char1" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-ots-char1" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-ots-char1" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-ots-char1" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-ots-char1" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -874,7 +751,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-ots-char2"><button class="mini-pill active" data-group="move-ots-char2" data-val="static">Static</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-ots-char2" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-ots-char2" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-ots-char2" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-ots-char2" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-ots-char2" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-ots-char2" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-ots-char2" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-ots-char2" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-ots-char2" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-ots-char2" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-ots-char2" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-ots-char2" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-ots-char2"><button class="mini-pill active" data-group="move-ots-char2" data-val="static">Static</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-ots-char2" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-ots-char2" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-ots-char2" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-ots-char2" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-ots-char2" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-ots-char2" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-ots-char2" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-ots-char2" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-ots-char2" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-ots-char2" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-ots-char2" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -926,7 +803,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-closeup-char1"><button class="mini-pill active" data-group="move-closeup-char1" data-val="static">Static</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-closeup-char1" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-closeup-char1" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-closeup-char1" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-closeup-char1" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-closeup-char1" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-closeup-char1" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-closeup-char1" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-closeup-char1" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-closeup-char1"><button class="mini-pill active" data-group="move-closeup-char1" data-val="static">Static</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-closeup-char1" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-closeup-char1" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-closeup-char1" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-closeup-char1" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-closeup-char1" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-closeup-char1" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-closeup-char1" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-closeup-char1" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -978,7 +855,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-closeup-char2"><button class="mini-pill active" data-group="move-closeup-char2" data-val="static">Static</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-closeup-char2" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-closeup-char2" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-closeup-char2" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-closeup-char2" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-closeup-char2" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-closeup-char2" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-closeup-char2" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-closeup-char2" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-closeup-char2"><button class="mini-pill active" data-group="move-closeup-char2" data-val="static">Static</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-closeup-char2" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-closeup-char2" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-closeup-char2" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-closeup-char2" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-closeup-char2" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-closeup-char2" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-closeup-char2" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-closeup-char2" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -1030,7 +907,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-pov-char1"><button class="mini-pill" data-group="move-pov-char1" data-val="static">Static</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-pov-char1" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-pov-char1" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-pov-char1" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-pov-char1" data-val="tracking right">Track R</button><button class="mini-pill active" data-group="move-pov-char1" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-pov-char1" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-pov-char1" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-pov-char1" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-pov-char1" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-pov-char1" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-pov-char1" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-pov-char1" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-pov-char1"><button class="mini-pill" data-group="move-pov-char1" data-val="static">Static</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-pov-char1" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-pov-char1" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-pov-char1" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-pov-char1" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-pov-char1" data-val="tracking right">Track R</button><button class="mini-pill active" data-group="move-pov-char1" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-pov-char1" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-pov-char1" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-pov-char1" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-pov-char1" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-pov-char1" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -1082,7 +959,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-pov-char2"><button class="mini-pill" data-group="move-pov-char2" data-val="static">Static</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-pov-char2" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-pov-char2" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-pov-char2" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-pov-char2" data-val="tracking right">Track R</button><button class="mini-pill active" data-group="move-pov-char2" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-pov-char2" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-pov-char2" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-pov-char2" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-pov-char2" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-pov-char2" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-pov-char2" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-pov-char2" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-pov-char2"><button class="mini-pill" data-group="move-pov-char2" data-val="static">Static</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-pov-char2" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-pov-char2" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-pov-char2" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-pov-char2" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-pov-char2" data-val="tracking right">Track R</button><button class="mini-pill active" data-group="move-pov-char2" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-pov-char2" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-pov-char2" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-pov-char2" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-pov-char2" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-pov-char2" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -1134,7 +1011,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-extreme-cu"><button class="mini-pill active" data-group="move-extreme-cu" data-val="static">Static</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-extreme-cu" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-extreme-cu" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-extreme-cu" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-extreme-cu" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-extreme-cu" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-extreme-cu" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-extreme-cu" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-extreme-cu" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-extreme-cu"><button class="mini-pill active" data-group="move-extreme-cu" data-val="static">Static</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-extreme-cu" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-extreme-cu" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-extreme-cu" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-extreme-cu" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-extreme-cu" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-extreme-cu" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-extreme-cu" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-extreme-cu" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -1186,7 +1063,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-low-angle"><button class="mini-pill active" data-group="move-low-angle" data-val="static">Static</button><button class="mini-pill" data-group="move-low-angle" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-low-angle" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-low-angle" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-low-angle" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-low-angle" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-low-angle" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-low-angle" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-low-angle" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-low-angle" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-low-angle" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-low-angle" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-low-angle" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-low-angle" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-low-angle" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-low-angle" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-low-angle" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-low-angle"><button class="mini-pill active" data-group="move-low-angle" data-val="static">Static</button><button class="mini-pill" data-group="move-low-angle" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-low-angle" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-low-angle" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-low-angle" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-low-angle" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-low-angle" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-low-angle" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-low-angle" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-low-angle" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-low-angle" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-low-angle" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-low-angle" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-low-angle" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-low-angle" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -1238,7 +1115,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-high-angle"><button class="mini-pill active" data-group="move-high-angle" data-val="static">Static</button><button class="mini-pill" data-group="move-high-angle" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-high-angle" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-high-angle" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-high-angle" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-high-angle" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-high-angle" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-high-angle" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-high-angle" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-high-angle" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-high-angle" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-high-angle" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-high-angle" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-high-angle" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-high-angle" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-high-angle" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-high-angle" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-high-angle"><button class="mini-pill active" data-group="move-high-angle" data-val="static">Static</button><button class="mini-pill" data-group="move-high-angle" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-high-angle" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-high-angle" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-high-angle" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-high-angle" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-high-angle" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-high-angle" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-high-angle" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-high-angle" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-high-angle" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-high-angle" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-high-angle" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-high-angle" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-high-angle" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -1290,7 +1167,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-two-shot"><button class="mini-pill active" data-group="move-two-shot" data-val="static">Static</button><button class="mini-pill" data-group="move-two-shot" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-two-shot" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-two-shot" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-two-shot" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-two-shot" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-two-shot" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-two-shot" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-two-shot" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-two-shot" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-two-shot" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-two-shot" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-two-shot" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-two-shot" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-two-shot" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-two-shot" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-two-shot" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-two-shot"><button class="mini-pill active" data-group="move-two-shot" data-val="static">Static</button><button class="mini-pill" data-group="move-two-shot" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-two-shot" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-two-shot" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-two-shot" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-two-shot" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-two-shot" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-two-shot" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-two-shot" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-two-shot" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-two-shot" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-two-shot" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-two-shot" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-two-shot" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-two-shot" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -1342,7 +1219,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-dutch-tilt"><button class="mini-pill active" data-group="move-dutch-tilt" data-val="static">Static</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-dutch-tilt" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-dutch-tilt"><button class="mini-pill active" data-group="move-dutch-tilt" data-val="static">Static</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-dutch-tilt" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -1394,7 +1271,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-insert"><button class="mini-pill active" data-group="move-insert" data-val="static">Static</button><button class="mini-pill" data-group="move-insert" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-insert" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-insert" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-insert" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-insert" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-insert" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-insert" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-insert" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-insert" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-insert" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-insert" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-insert" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-insert" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-insert" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-insert" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-insert" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-insert"><button class="mini-pill active" data-group="move-insert" data-val="static">Static</button><button class="mini-pill" data-group="move-insert" data-val="slow push in">Push In</button><button class="mini-pill" data-group="move-insert" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-insert" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-insert" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-insert" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-insert" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-insert" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-insert" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-insert" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-insert" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-insert" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-insert" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-insert" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-insert" data-val="360 orbit">360 Orbit</button></div>
         </div>
         <div class="field insert-detail" style="margin-top:8px;display:none;"><label>What object/detail?</label><input type="text" id="insertDetail" placeholder="e.g. A manila folder with crime scene photos spilling out"></div>
       
@@ -1446,7 +1323,7 @@ img,iframe,table{max-width:100%;}
         </div>
         <div class="shot-ctrl-row">
           <span class="ctrl-label">Movement</span>
-          <div class="mini-pills" id="move-wide-final"><button class="mini-pill" data-group="move-wide-final" data-val="static">Static</button><button class="mini-pill" data-group="move-wide-final" data-val="slow push in">Push In</button><button class="mini-pill active" data-group="move-wide-final" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-wide-final" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-wide-final" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-wide-final" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-wide-final" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-wide-final" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-wide-final" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-wide-final" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-wide-final" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-wide-final" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-wide-final" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-wide-final" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-wide-final" data-val="360 orbit">360 Orbit</button><button class="mini-pill" data-group="move-wide-final" data-val="__custom">✏️ Custom</button></div><input type="text" class="cmove-input" id="cmove-wide-final" placeholder="e.g. slow lateral arc around the subject, left to right" style="display:none;">
+          <div class="mini-pills" id="move-wide-final"><button class="mini-pill" data-group="move-wide-final" data-val="static">Static</button><button class="mini-pill" data-group="move-wide-final" data-val="slow push in">Push In</button><button class="mini-pill active" data-group="move-wide-final" data-val="slow pull back">Pull Back</button><button class="mini-pill" data-group="move-wide-final" data-val="slow pan left">Pan L</button><button class="mini-pill" data-group="move-wide-final" data-val="slow pan right">Pan R</button><button class="mini-pill" data-group="move-wide-final" data-val="tilt up">Tilt Up</button><button class="mini-pill" data-group="move-wide-final" data-val="tilt down">Tilt Down</button><button class="mini-pill" data-group="move-wide-final" data-val="tracking left">Track L</button><button class="mini-pill" data-group="move-wide-final" data-val="tracking right">Track R</button><button class="mini-pill" data-group="move-wide-final" data-val="handheld">Handheld</button><button class="mini-pill" data-group="move-wide-final" data-val="crane up">Crane Up</button><button class="mini-pill" data-group="move-wide-final" data-val="crane down">Crane Down</button><button class="mini-pill" data-group="move-wide-final" data-val="dolly zoom">Dolly Zoom</button><button class="mini-pill" data-group="move-wide-final" data-val="dutch tilt">Dutch Tilt</button><button class="mini-pill" data-group="move-wide-final" data-val="360 orbit">360 Orbit</button></div>
         </div>
         
       
@@ -1596,8 +1473,6 @@ img,iframe,table{max-width:100%;}
   <div class="gs-item"><div class="gs-term">🌅 Describe lighting quality not just type</div><div class="gs-def">Don't just say "golden hour" — describe the quality. AI video models respond to specific descriptions of what the light does to the scene.</div></div>
   <div class="gs-item"><div class="gs-term">🏠 Location detail prevents drift</div><div class="gs-def">The more specific your location description, the less the AI invents. Name specific details — wall colour, floor material, what's visible in the background.</div></div>
 
-  <div class="gs-item"><div class="gs-term">✏️ Custom shots</div><div class="gs-def">Two Custom Shot slots let you type any framing or angle — 3/4 angles, profiles, FPV — plus a Custom option in every shot's movement row.</div></div>
-
   <div class="gs-label" style="margin-top:16px;">Related tools</div>
   <a href="/image-prompt.html" class="gs-link">🖼️ Image Prompt Generator</a>
   <a href="/video-prompt.html" class="gs-link">🎬 Video Prompt Generator</a>
@@ -1617,12 +1492,7 @@ var enabledChars = new Set([1]);
 
 function pillVal(id) {
   var el = document.querySelector('#' + id + ' .pill.active');
-  var v = el ? el.dataset.val : '';
-  if (v === '__custom') {
-    var c = document.getElementById('cpill-' + id);
-    v = (c && c.value.trim()) ? c.value.trim() : '';
-  }
-  return v;
+  return el ? el.dataset.val : '';
 }
 function v(id) {
   var el = document.getElementById(id);
@@ -1817,8 +1687,7 @@ function getShotData(sid) {
   return {
     name: ne ? ne.textContent.trim() : sid,
     lens: ln ? ln.dataset.val : '35mm',
-    move: (function(){var m=mv?mv.dataset.val:'static';if(m==='__custom'){var cm=document.getElementById('cmove-'+sid);m=(cm&&cm.value.trim())?cm.value.trim():'static';}return m;})(),
-    framing: (function(){var f=document.getElementById('cframe-'+sid);return f?f.value.trim():'';})(),
+    move: mv ? mv.dataset.val : 'static',
     desc: de ? de.value.trim() : '',
     insert: (sid==='insert' && ie) ? ie.value.trim() : ''
   };
@@ -1843,7 +1712,7 @@ async function generateShot(sid, mode) {
     (sc.mood       ?'Mood: '+sc.mood+'\n':'') +
     (sc.fixed      ?'\nFIXED ELEMENTS (must appear exactly as described in every shot): '+sc.fixed+'\n':'') +
     (sc.charsText  ?'\nCharacters (appearance reference only — use only what is visible in this shot):\n'+sc.charsText+'\n':'');
-  var shb = 'Shot type: '+sh.name+'\n'+(sh.framing?'Framing/Angle (use exactly this framing): '+sh.framing+'\n':'')+'Lens: '+sh.lens+'\nCamera movement: '+sh.move+' (must be explicitly stated in the prompt)\n'+(sh.desc?'Action/emotion/dialogue: '+sh.desc+'\n':'')+(sh.insert?'Insert object: '+sh.insert+'\n':'');
+  var shb = 'Shot type: '+sh.name+'\nLens: '+sh.lens+'\nCamera movement: '+sh.move+' (must be explicitly stated in the prompt)\n'+(sh.desc?'Action/emotion/dialogue: '+sh.desc+'\n':'')+(sh.insert?'Insert object: '+sh.insert+'\n':'');
   var sys, usr;
   if (isRef) {
     var arMap={'16:9 widescreen':'16:9','2.39:1 anamorphic widescreen':'21:9','4:3 academy ratio':'4:3','1:1 square':'1:1'};
@@ -1992,23 +1861,6 @@ window.onload = function() {
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
 })();
-</script>
-
-<script>
-/* custom movement input toggle */
-document.addEventListener('click', function(e){
-  var p = e.target.closest('.mini-pill');
-  if(!p || !p.dataset.group || p.dataset.group.indexOf('move-')!==0) return;
-  var sid = p.dataset.group.slice(5);
-  var inp = document.getElementById('cmove-'+sid);
-  if(inp) inp.style.display = (p.dataset.val==='__custom') ? 'block' : 'none';
-});
-document.addEventListener('click', function(e){
-  var p = e.target.closest('.pill');
-  if(!p || !p.parentElement || !p.parentElement.id) return;
-  var inp = document.getElementById('cpill-' + p.parentElement.id);
-  if(inp) inp.style.display = (p.dataset.val==='__custom') ? 'block' : 'none';
-});
 </script>
 </body>
 </html>
