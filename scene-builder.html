@@ -1932,7 +1932,7 @@ window.onload = function() {
   function save(){
     if(restoring) return;
     clearTimeout(t);
-    t=setTimeout(function(){ try{ localStorage.setItem(KEY, JSON.stringify(collect())); flag('💾 Saved'); }catch(e){} },400);
+    t=setTimeout(function(){ if(restoring) return; try{ localStorage.setItem(KEY, JSON.stringify(collect())); flag('💾 Saved'); }catch(e){} },400);
   }
   function restore(){
     var raw=null; try{ raw=localStorage.getItem(KEY); }catch(e){}
@@ -1969,6 +1969,7 @@ window.onload = function() {
   var cbtn=document.getElementById('sbClearBtn');
   if(cbtn) cbtn.onclick=function(){
     if(!confirm('Clear the form and delete the saved scene?')) return;
+    restoring=true; clearTimeout(t);
     try{ localStorage.removeItem(KEY); }catch(e){}
     location.reload();
   };
